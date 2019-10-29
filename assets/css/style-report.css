@@ -1,0 +1,53 @@
+.custom-select>option {
+    text-transform: capitalize;
+}
+
+
+.quantitave {
+    padding: 0 1rem;
+}
+
+.quantitave header.create-report-header {
+    background: #2196f3;
+    color: #fff;
+}
+
+.quantitave .quantitave-table-wrapper {
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.quantitave .quantitave-table-wrapper table .table-primary,
+.table-primary>td,
+.table-primary>th {
+    background-color: #2196f3 !important;
+    color: #ffffff !important;
+    border-color: #2196f3 !important;
+}
+
+.quantitave .quantitave-table-wrapper table th,
+td {
+    border-top: none;
+}
+
+.quantitave .quantitave-table-wrapper table tr {
+    border: 1px solid #ccc;
+}
+
+.quantitave .quantitave-table-wrapper form.quantitative-form h6,
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    min-height: 49px;
+}
+
+.quantitave .quantitave-table-wrapper form.quantitative-form h6 {
+    background-color: #2196f3;
+    color: #ffffff;
+    padding: 0 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+

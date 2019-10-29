@@ -1,0 +1,82 @@
+.custom-select>option {
+	text-transform: capitalize;
+}
+
+
+.quantitave {
+	padding: 0 1rem;
+}
+
+.quantitave header.create-report-header {
+	background: #2196f3;
+	color: #fff;
+}
+
+.quantitave .quantitave-table-wrapper {
+	border: 1px solid #2196f3;
+	border-top: none;
+}
+
+.quantitave .quantitave-table-wrapper table .table-primary,
+.table-primary>td,
+.table-primary>th {
+	background-color: #2196f3 !important;
+	color: #ffffff !important;
+	border-color: #2196f3 !important;
+}
+
+.quantitave .quantitave-table-wrapper table th {
+	max-height: 49px;
+	max-width: 100%;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.form-group {
+	height: 45px !important;
+	margin: 2px 0 !important;
+}
+
+.quantitave .quantitave-table-wrapper table th,
+.quantitave .quantitave-table-wrapper table td {
+	border-top: none;
+}
+
+.quantitave .quantitave-table-wrapper table tr {
+	border: 1px solid #ccc;
+}
+
+.quantitave>.quantitave-table-wrapper .quantitative-form h6,
+.quantitave>.quantitave-table-wrapper .quantitative-form .form-group {
+	display: flex;
+	align-items: center;
+	margin-bottom: 0;
+	min-height: 46.9px;
+}
+
+.quantitave .quantitave-table-wrapper .quantitative-form h6 {
+	background-color: #2196f3;
+	color: #ffffff;
+	padding: 0 10px;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.discription #inputFinancialPerformance {
+	min-height: 300px;
+}
+
+.report-create .aaa {
+	max-width: 180px !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.table th,
+.table td {
+	padding: 0.75rem 0 0.75rem 8px;
+	border-left: 1px solid #cccccc;
+}

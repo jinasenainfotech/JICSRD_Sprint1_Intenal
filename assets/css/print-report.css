@@ -1,0 +1,162 @@
+.main-logo {
+    width: 300px;
+}
+
+.print-report {}
+
+.report-head {
+    text-align: center;
+    margin-top: 50px;
+    color: black;
+}
+
+.report-head h1 {
+    font-size: 2.grem;
+}
+
+.report-body {
+    margin-top: 50px;
+
+}
+
+.report-body h2 {
+    font-size: 2rem;
+    color: #c12835;
+}
+
+.report-body h4 {
+    font-size: 1.5rem;
+    color: #4e4e4e;
+    margin-bottom: 20px;
+}
+
+.cardview {
+    float: left;
+    width: 49%;
+    padding: 10px;
+    margin: 0.5%;
+    background-color: #efefef;
+}
+
+.chart {
+    background: white;
+    padding: 10px;
+}
+
+.up {
+    color: green;
+}
+
+.down {
+    color: red;
+}
+
+.same {
+    color: rgb(0, 0, 165);
+}
+
+.chart svg {
+    width: 100%;
+}
+
+.summary-table {
+    background: #ffe8ea;
+    padding: 10px !important;
+    width: 100%;
+}
+
+.theading {
+    color: #ff8d00;
+    font-size: 18px;
+}
+
+@media print {
+
+    .table .table td,
+    .table th {
+        background-color: red !important;
+    }
+}
+
+progress:not(value) {
+    /* Add your styles here. As part of this walkthrough we will focus only on determinate progress bars. */
+}
+
+/* Styling the determinate progress element */
+
+progress[value] {
+    /* Get rid of the default appearance */
+    appearance: none;
+
+    /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+    border: none;
+
+    /* Add dimensions */
+    width: 100%;
+    height: 20px;
+
+    /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+    background-color: whiteSmoke;
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .5) inset;
+
+    /* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
+    color: royalblue;
+
+    position: relative;
+    margin: 0 0 1.5em;
+}
+
+/*
+Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
+-webkit-progress-bar -> To style the progress element container
+-webkit-progress-value -> To style the progress element value.
+*/
+
+progress[value]::-webkit-progress-bar {
+    background-image:
+        -webkit-linear-gradient(135deg,
+            transparent,
+            transparent 33%,
+            rgba(0, 0, 0, 0.1) 33%,
+            rgba(0, 0, 0, .1) 66%,
+            transparent 66%),
+        -webkit-linear-gradient(top,
+            rgba(255, 255, 255, .25),
+            rgba(0, 0, 0, .2)),
+        -webkit-linear-gradient(left, #ff0015, #ffbb00, #2bff00);
+    height: 50px;
+
+}
+
+progress[value]::-webkit-progress-value {
+    position: relative;
+    opacity: 0.9;
+    background-size: 120px 60px, 100% 100%, 100% 100%;
+    border-radius: 3px;
+    height: 50px;
+
+    /* Let's animate this */
+    animation: animate-stripes 5s linear infinite;
+}
+
+
+
+
+.html5::-webkit-progress-value,
+.python::-webkit-progress-value {
+    /* Gradient background with Stripes */
+    background: none;
+    border-right: 2px solid white;
+    border-radius: 0;
+}
+
+
+/* THE END */
+
+@media print {
+    .cardview {
+        background-color: #efefef !important;
+        -webkit-print-color-adjust: exact;
+    }
+}

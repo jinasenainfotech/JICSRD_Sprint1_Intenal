@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Loging Page</title>
+</head>
+<body>
+
+	<?php echo validation_errors('<div class="error">', '</div>'); ?>
+	<!-- This php tag shows Form validation errors -->
+
+	<?php if(isset($first_name) and isset($last_name)){?>
+		<!-- if admin user enter recovery code as password this div is shown -->
+
+		<div>
+			<h4>Hey, <?= $first_name?><?= $last_name?></h4>
+			<p>Are you forget your password ???	if this is mistake you can press back button. if you want to changed your password plese enter new password</p>	
+		</div>
+		<a href="<?= base_url()?>">Back Button </a>
+		<div>
+			<?= form_open('Authentication/password_recovery');?>
+			<?= form_input('hid', (isset($hid)? $hid : ''), 'id="hid"'); ?>
+			<?= form_label('New Password', 'password_1', 'class=""'); ?>
+			<?= form_password('password_1', '', 'class="" placeholder="password"'); ?>
+			<?= form_label('Conform Password', 'password_2', 'class=""'); ?>
+			<?= form_password('password_2', '', 'class="" placeholder="password"'); ?>
+			<?= form_submit('submit', 'Change the Password'); ?>
+			<?= form_close()?>
+		</div>
+	<?php }else{ ?>
+		<!-- Always Show this Div-->
+		
+		<div>
+			<?= form_open('loging');?>
+			<?= form_label('Name', 'username', 'class=""'); ?>
+			<?= form_input('username', '', 'class="" placeholder="User Name"'); ?>
+			<?= form_label('Password', 'password', 'class=""'); ?>
+			<?= form_password('password', '', 'class="" placeholder="password"'); ?>
+			<?= form_submit('submit', 'Login'); ?>
+			<?= form_close()?>			
+
+		</div>	
+
+	<?php } ?>
+</body>
+</html>
