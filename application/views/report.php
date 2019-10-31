@@ -27,16 +27,18 @@
                 <br>ASIC Extract Date: <b>30-08-2019
                     <!-- API --> 11:14:12
                     <!-- API --></b></p>
-                </div>
+                </div> 
 
                 <div class="report-body">
                     <page size="A4">
                         <div class="header"></div>
                         <div class="content">
-                            <div class="report-head cover-page">
+                            <div class="report-head cover-page" >
                                 <img src="<?= base_url('assets/img/logo-report.png')?>" alt="" class="main-logo">
                                 <p>Phone 1300 50 13 12 | Email admin@creditorwatch.com.au</p>
                                 <h1>Financial Analysis Enriched Credit Report</h1>
+                            <div class="d-flex flex-wrap justify-content-center pt-2 ">
+                                <button class="btn btn-primary mt-5 printbtn" onclick="window.print();" style="font-size:30px">Print this page</button></div>
                             </div>
                         </div>
 
@@ -2062,6 +2064,9 @@ reason in making a decision about the entity.</p>
         page {
           border: none;
 
+      }
+      .printbtn{
+display:none
       }
   }
 

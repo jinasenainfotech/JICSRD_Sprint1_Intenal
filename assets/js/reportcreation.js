@@ -75,11 +75,24 @@ $(document).on("keyup", ".form-control", function () {
 			// $(this).val(0);
 		}
 
+
+
 	});
+
+	if (e.which === 13) {
+		$(this).next('.form-control').focus();
+	}
 
 
 });
-
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
 $(document).on("keyup", ".ebit", function () {
 	row = $(this).attr('data-id');
 });
@@ -264,7 +277,6 @@ function clone() {
 	}
 	if (typeof (localStorage.getItem('company_name')) != 'undefined' && localStorage.getItem('company_name') !== null) {
 		var company_name = localStorage.getItem('company_name');
-		$('#name_' + count).val(parseInt(company_name))
 	} else {
 		var company_name = '';
 	}
@@ -985,6 +997,7 @@ function clone() {
 		console.log(data1);
 		console.log(data2);
 
+		document.querySelector('#name_0').value = company_name;
 		document.querySelector('#rounding_0').value = rounding;
 		document.querySelector('#base_currency_0').value = base_currency;
 		document.querySelector('#quality_0').value = quality;
@@ -994,7 +1007,7 @@ function clone() {
 		document.querySelector('#financial_year_0').value = financial_year;
 		document.querySelector('#month_0').value = month;
 
-		$('.custom-select').removeClass('is-invalid');
+		// $('.custom-select').removeClass('is-invalid');
 
 // $('#rounding_' + count + '').val(rounding);
 

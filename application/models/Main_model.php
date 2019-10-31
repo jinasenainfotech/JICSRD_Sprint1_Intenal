@@ -2,7 +2,18 @@
 
 Class Main_model extends CI_Model {
 
-
+	public function recent_report_by_id($id){
+		$query = $this->db->get_where('quantitave_input', array('id' => $id));
+		if($query->num_rows() > 0)
+		{
+			foreach($query->result() as $key=>$item)
+			{
+				$data[] = $item;
+			}
+			return $data;
+		}
+		return false;
+	}
 	public function recent_reports($name){
 		$query = $this->db->get_where('quantitave_input', array('company_name' => $name));
 		if($query->num_rows() > 0)
@@ -117,8 +128,10 @@ Class Main_model extends CI_Model {
 	}
 
 
-	public function report_row(){
-		$query = $this->db->query("SELECT `abn`,`acn`,`company_name`,`rounding`,`base_currency`,`quality`,`reporting_period_months`,`scope`,`confidentiality_record`,`financial_year`,`month`,`sales`,`cost_of_sales`,`gross_profit`,`other_income`,`depreciation`,`amortisation`,`impairment`,`interest_expense_gross`,`operating_lease_expense`,`finance_lease_hire_purchase_charges`,`non_recurring_gains_losses`,`other_gains_losses`,`other_expenses`,`ebit`,`ebitda`,normalised_ebitda,`profit_before_tax`,`profit_before_tax_after_abnormals`,`tax_benefit_expense`,`profit_after_tax`,`distribution_ordividends`,`other_post_tax_items_gains_losses`,`profit_after_tax_distribution`,`cash`,`trade_debtors`,`total_inventories`,`loans_to_related_parties_1`,`other_current_assets`,`total_current_assets`,`fixed_assets`,`net_intangibles`,`loan_to_related_parties_2`,`other_non_current_assets`,`total_non_curent_assets`,`total_assets`,`trade_creditors`,`interest_bearing_debt_1`,`lone_from_related_parties`,`other_current_liabilities`,`total_current_liabilities`,`total_current_liabilities_2`,`loans_from_related_parites`,`other_non_current_liabilities`,`total_non_current_liabilities`,`total_liabilities`,`share_capital`,`prefence_shares`,`treasury_shares`,`equity_owner_ships`,`total_reserves`,`ratained_earning`,`minorty_interest`,`total_equity`,`balance`,`operating_cash_flow`,`contingent_liabilities`,`other_commitmentes`,`operating_lease_outstanding` FROM quantitave_input ORDER BY id DESC LIMIT 3");
+	public function report_row($com){
+
+		$query = $this->db->query("SELECT `quantitave_input`.*, `company_information`.`entity_name`	FROM`jicscw_dev`.`company_information` INNER JOIN `jicscw_dev`.`quantitave_input` ON (`company_information`.`id` = `quantitave_input`.`company_name`) WHERE company_name = '". $com ."' ORDER BY `quantitave_input`.`id` DESC LIMIT 3;");
+		// $query = $this->db->query("SELECT `abn`,`acn`,`company_name`,`rounding`,`base_currency`,`quality`,`reporting_period_months`,`scope`,`confidentiality_record`,`financial_year`,`month`,`sales`,`cost_of_sales`,`gross_profit`,`other_income`,`depreciation`,`amortisation`,`impairment`,`interest_expense_gross`,`operating_lease_expense`,`finance_lease_hire_purchase_charges`,`non_recurring_gains_losses`,`other_gains_losses`,`other_expenses`,`ebit`,`ebitda`,normalised_ebitda,`profit_before_tax`,`profit_before_tax_after_abnormals`,`tax_benefit_expense`,`profit_after_tax`,`distribution_ordividends`,`other_post_tax_items_gains_losses`,`profit_after_tax_distribution`,`cash`,`trade_debtors`,`total_inventories`,`loans_to_related_parties_1`,`other_current_assets`,`total_current_assets`,`fixed_assets`,`net_intangibles`,`loan_to_related_parties_2`,`other_non_current_assets`,`total_non_curent_assets`,`total_assets`,`trade_creditors`,`interest_bearing_debt_1`,`lone_from_related_parties`,`other_current_liabilities`,`total_current_liabilities`,`total_current_liabilities_2`,`loans_from_related_parites`,`other_non_current_liabilities`,`total_non_current_liabilities`,`total_liabilities`,`share_capital`,`prefence_shares`,`treasury_shares`,`equity_owner_ships`,`total_reserves`,`ratained_earning`,`minorty_interest`,`total_equity`,`balance`,`operating_cash_flow`,`contingent_liabilities`,`other_commitmentes`,`operating_lease_outstanding` FROM quantitave_input WHERE company_name=".$com." ORDER BY id DESC LIMIT 3");
 		if($query->num_rows() > 0)
 		{
 			foreach($query->result() as $key=>$item)

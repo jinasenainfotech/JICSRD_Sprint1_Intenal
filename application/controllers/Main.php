@@ -3,23 +3,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends MY_Controller {
 	
+	/**
+	 * Auth Token
+	 *
+	 * @var string
+	 */
+	protected $authToken;
+
+	/**
+	 * Api Username
+	 *
+	 * @var string
+	 */
+	protected $apiUsername;
+
+	/**
+	 * Api Password
+	 *
+	 * @var string
+	 */
+	protected $apiPassword;
+
+	
+	protected $apiDataModel;
+
+	protected $creditScoreHistoryModel;
+
+	
 	public function __construct() {
 		parent::__construct();
 		$this->load->library('jics');
 
 		$Auth_model = $this->load->model('Main_model');
+		 $this->load->model('ApiDataModel');
+		$this->load->model('CreditScoreHistory_model');
+
+
+		$this->apiUsername = 'csapiuser';
+		$this->apiPassword = 'JICSAPI@';
 			// $this->jics->alert('success','Roosri','This is a testing');
 	}
 
+
 	public function index()
 	{
-
-
-
-
-
-
-
 
 		$this->data['country'] = $this->jics->get_companies();
 		$this->data['companies'] = $this->Main_model->get_companies();
@@ -90,6 +117,19 @@ class Main extends MY_Controller {
 		};
 	}
 
+/*	public function report_list(){
+
+		$this->data['temp'] = '';
+
+		$this->data['table'] = $this->Main_model->get_repots_list();
+
+		$this->page_construct('reportlist',$this->data);
+
+
+	}
+*/
+
+	
 	public function report_list(){
 
 		$this->data['temp'] = '';
@@ -120,14 +160,247 @@ class Main extends MY_Controller {
 			redirect(base_url('main/companieslist'),'refresh');
 		}
 	}
-
-	public function newreport(){
+	/**
+	 * Get Authentication Token
+	 *
+	 * @return void
+	 */
+	public function getAuthToken()
+	{
+		$authUrl = 'https://api.creditorwatch.com.au/login';
 		
-		if (isset($_GET['com']) and $_GET['com'] == '') {
+		$data = array(
+			'username' => $this->apiUsername,
+			'password' => $this->apiPassword
+		);
+
+		$payload = json_encode($data);
+		
+		 
+		// Prepare new cURL resource
+		$ch = curl_init($authUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+		 
+		// Set HTTP Header for POST request 
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json'
+		));
+		 
+		// Submit the POST request
+		$result = curl_exec($ch);
+		$responseData = json_decode($result);
+		// Close cURL session handle
+		curl_close($ch);
+
+		if($responseData->token){
+			
+			return $responseData->token;
+		}else{
+			return false;
+		}
+
+	}
+
+	/**
+	 * Get CustomProfile Data using Auth Token
+	 *
+	 * @param string $token
+	 * @return void
+	 */
+	public function getCustomProfileData($token,$abn,$acn)
+	{
+		if(($abn==null) || empty($abn)){
+			$url = 'https://api.creditorwatch.com.au/custom-profile?acn='.$acn;
+		}else{
+
+			$url = 'https://api.creditorwatch.com.au/custom-profile?abn='.$abn;
+		}
+		
+		 
+		// Prepare new cURL resource
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+		 
+		// Set HTTP Header for GET request 
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json',
+			'Authorization: Bearer '.$this->authToken.''
+		));
+		 
+		// Submit the POST request
+		$result = curl_exec($ch);
+		$data = json_decode($result,true);
+
+		// Close cURL session handle
+		curl_close($ch);
+
+		
+		if(isset($data['errors']))
+		{
+			$response = [
+				'errors'=> $data['errors'],
+				'abrData'=> [],
+				'asicData'=> []
+			];
+			return $response;
+		}
+		$response = [
+			'abrData'=>$data['abrData'],
+			'asicData'=> $data['asicData']
+		];
+
+		return $response;
+
+	}
+
+	/**
+	 * Get Credit Score Data
+	 *
+	 * @param string $authToken
+	 * @param int $abn
+	 * @param int $acn
+	 * @return void
+	 */
+	public function getCreditScoreData($authToken,$abn,$acn)
+	{
+
+		if(($abn==null) || empty($abn)){
+			$url = 'https://api.creditorwatch.com.au/credit-score?acn='.$acn;
+		}else{
+
+			$url = 'https://api.creditorwatch.com.au/credit-score?abn='.$abn;
+		}
+		
+		
+		 
+		// Prepare new cURL resource
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+		 
+		// Set HTTP Header for GET request 
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json',
+			'Authorization: Bearer '.$this->authToken.''
+		));
+		 
+		// Submit the POST request
+		$result = curl_exec($ch);
+		$data = json_decode($result,true);
+
+		// Close cURL session handle
+		curl_close($ch);
+		
+		$response = $data['creditScore']['scores'];
+
+		return $response;
+	}
+
+	/**
+	 * Save API Data
+	 *
+	 * @return void
+	 */
+	public function saveApiData()
+	{
+		$reportId = $_GET['report_id'];	
+		$abn = $_GET['abn'];
+		$acn = $_GET['acn'];
+
+		//Check Exist Api Data
+		$checkExistApiData = $this->ApiDataModel->checkExist($reportId);
+
+		if($checkExistApiData<1)
+		{
+			//Get Auth Token
+		$this->authToken = $this->getAuthToken();
+
+		// Get Custom Profile Data
+		$customProfile = $this->getCustomProfileData($this->authToken, $abn, $acn);
+
+		if(isset($customProfile['errors'])){
+			$response = [
+				'status' => false,
+				'msg' => $customProfile['errors'][0]['detail']
+			];
+			
+			echo json_encode($response);
+			die;
+		}
+		$creditScoreData = $this->getCreditScoreData($this->authToken, $abn, $acn);
+		
+		$creditScoreHistory = $creditScoreData['creditScoreHistory'];
+
+		$abrData = $customProfile['abrData'];
+		$asicData = $customProfile['asicData'];
+
+		$address = $asicData['organisation']['address'];
+
+		$apiDataArray = [
+			'report_id' => $reportId,
+			'main_name' => $abrData['name'],
+			'abn' => $abrData['abn'],
+			'entity_status' => $abrData['status'],
+			'entity_status_effective_from' => date('Y-m-d',strtotime($abrData['gst'][0]['effectiveFrom'])),
+			'entity_type' => $abrData['description'],
+			'gst' =>  date('Y-m-d',strtotime($abrData['gst'][0]['effectiveFrom'])),
+			'locality' => $abrData['addresses'][0]['postcode'].' '.$abrData['addresses'][0]['stateCode'],
+			'record_last_updated' => date('Y-m-d',strtotime($abrData['updatedDate'])),
+			'name' => $asicData['organisation']['name'],
+			'acn' => $abrData['acn'],
+			'type' => $asicData['organisation']['type'],
+			'staus' => $asicData['organisation']['status'],
+			'registration_date' => date('Y-m-d',strtotime($asicData['organisation']['registrationDate'])),
+			'review_date' => date('Y-m-d',strtotime($asicData['organisation']['reviewDate'])),
+			'calss' => $asicData['organisation']['class'],
+			'subclass' => $asicData['organisation']['subclass'],
+			'asic_locality' => $address['suburb'].' '.$address['state'].' '.$address['postcode'],
+			'current_credit_score' => $creditScoreData['currentCreditScore'],
+			'history_credit_score'  => '',
+		];
+
+		// Store Api Data
+
+		$apiDataResult = $this->ApiDataModel->store($apiDataArray);
+		
+		$apiDataId = $apiDataResult['id'];
+
+		$this->CreditScoreHistory_model->store($creditScoreHistory,$apiDataId);
+
+		echo json_encode(['status'=>true]);
+		}else {
+			echo json_encode(['status'=>true]);
+		}
+		
+
+	}
+
+	
+	public function newreport(){
+
+		// var_dump($_POST);exit();
+		$this->jics->auth();
+		
+		if (isset($_GET['com']) and $_GET['cun'] != '') {
 			$company = $this->Main_model->companies_get_by_id($this->input->get('com'));
-			$this->data['company_name'] = $company[0]->entity_name;
+			$this->data['company_name'] = $this->input->get('com');
 			$this->data['abn'] = $company[0]->abn;
 			$this->data['acn'] = $company[0]->acn;
+			$com_name = $_GET['com'];
+			$rep = $this->Main_model->report_row(intval($com_name));
+
+			// var_dump($rep);
+			
+
+			(isset($rep[0]))? $this->data['year_1'] = $rep[0] : ''; 
+			(isset($rep[1]))? $this->data['year_2'] = $rep[1] : '';
+			(isset($rep[2]))? $this->data['year_3'] = $rep[2] : '';
+			// $this->data['year_2'] = $rep[1];
+			// $this->data['year_3'] = $rep[2];
 		}
 
 		$cuntry  = $this->jics->get_companies();
@@ -139,14 +412,19 @@ class Main extends MY_Controller {
 		$this->data['companies'] = $this->Main_model->get_companies();
 		
 		if (isset($_GET['id'])) {
-			$this->data['data_list'] = $this->Main_model->get_data_for_report($_GET['id']);
-			
+			$x = $this->Main_model->get_data_for_report($_GET['id']);
+			$this->data['data_list'] = $x;
+			$com_name = $x[0]->company_name;
+			$this->data['year_1'] = $this->Main_model->recent_reports(intval($com_name));
+			$this->data['year_2'] = $this->Main_model->recent_reports(intval($com_name)-1);
+			$this->data['year_3'] = $this->Main_model->recent_reports(intval($com_name)-2);
+			// var_dump();exit();
+		}else{
 		}
+		
 
-
-		$this->jics->auth();
 		$this->form_validation->set_rules('abn[]', 'Entity Name', 'required');
-		$this->form_validation->set_rules('type', 'Entity Name', 'required');
+		// $this->form_validation->set_rules('type', 'Entity Name', 'required');
 
 		if ($this->form_validation->run() == TRUE) {
 
@@ -251,9 +529,10 @@ $sub_2 = (intval($resent_year[0]->sales) / 12) * intval($resent_year[0]->reporti
 $sub_3 = (intval($resent_year[1]->sales) / 12) * intval($resent_year[1]->reporting_period_months);
 
 
-
-if($sub_1 != 0 or $sub_0 != 0){$x118 = (($sub_1 - $sub_0) / $sub_0) * 100 ;}else{ $x118 = 0; }
-($sub_2 != 0 or $sub_3 != 0)? $x119 = (($sub_3 - $sub_2) / $sub_2) * 100 : $x119 = 0;
+// var_dump($sub_0);exit();
+if(isset($sub_0) and $sub_0 != '0'){$x118 = (($sub_1 - $sub_0) / $sub_0) * 100 ;}else{ $x118 = 0; }
+(isset($sub_2) and $sub_2 != '' )? $x119 = (($sub_3 - $sub_2) / $sub_2) * 100  : $x119 = 0 ;
+// ($sub_2 != 0 or $sub_3 != 0)? : ;
 
 // Financial Indicators calculation engine
 $x82 = intval($_POST['total_assets'][$r]) - intval($_POST['total_liabilities'][$r]) - intval($_POST['net_intangibles'][$r]);
@@ -269,49 +548,84 @@ $x74 = intval($_POST['total_current_assets'][$r]) - intval($_POST['total_current
 (intval($_POST['total_assets'][$r]) != 0)? $x122 = $x74 / intval($_POST['total_assets'][$r]) : $x122 = 0 ;
 $x127 = number_format((float)(1.2 * $x112)+(1.4 * $x123)+(3.3 * $x124)+(0.6 * $x125)+(1 * $x126), 2, '.', '');
 
-// var_dump($x127);
 // // $this->jics->alert('warning','Report part calculation not compleded yet','OOPS....!!!!');
 // // redirect(base_url('main/companieslist'),'refresh');
+
+
+// var_dump($_POST['sales'][$r]);
 // exit();
 
+// (isset($) and $ != '')? : "",
+
 $cal = array(
-	'gross_profit_margin'				=> (intval($_POST['gross_profit'][$r]) / intval($_POST['sales'][$r])) * 100 ,
+	'gross_profit_margin'				=> (isset($_POST['sales'][$r]) and $_POST['sales'][$r] !="")?(intval($_POST['gross_profit'][$r]) / intval($_POST['sales'][$r])) * 100 : "",
 	'ebitda'							=> intval( $_POST['ebitda'][$r]),
 	'normalised_ebitda'					=> intval($_POST['normalised_ebitda'][$r]),
 	'ebit'								=> intval($_POST['ebit'][$r]),
-	'net_profit_margin'					=> (intval($_POST['profit_before_tax_after_abnormals'][$r]) / intval($_POST['sales'][$r])) * 100,
-	'profitability'						=> ($x109 / intval($_POST['total_assets'][$r]) * 100),
-	'reinvestment'						=> (intval($_POST['ratained_earning'][$r]) / intval($_POST['total_assets'][$r])) * 100,
-	'return_on_assets'					=> ($x110 / intval($_POST['total_assets'][$r]))* 100,
-	'return_on_equity'					=> ($x111 / intval($_POST['total_equity'][$r])) * 100,
+	'net_profit_margin'					=> (isset($_POST['sales'][$r]) and $_POST['sales'][$r] != "")?(intval($_POST['profit_before_tax_after_abnormals'][$r]) / intval($_POST['sales'][$r])) * 100 : "" ,
+	'profitability'						=> (isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != "")? ($x109 / intval($_POST['total_assets'][$r]) * 100) : "" ,
+	'reinvestment'						=> (isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != "")? (intval($_POST['ratained_earning'][$r]) / intval($_POST['total_assets'][$r])) * 100 : "",
+	'return_on_assets'					=> (isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')? ($x110 / intval($_POST['total_assets'][$r]))* 100 : "" ,
+	'return_on_equity'					=> (isset($_POST['total_equity'][$r]) and $_POST['total_equity'][$r] != '')? ($x111 / intval($_POST['total_equity'][$r])) * 100 : "" ,
+
 	'working_capital'					=> $x74,
-	'working_capital_to_sales'			=> ($x74 / $x112) * 100,
-	'cash_flow_coverage'				=> ($x113 / intval($_POST['total_current_liabilities'][$r]) * 100),
-	'cash_ratio'						=> intval($_POST['cash'][$r]) /intval($_POST['total_current_liabilities'][$r]),
-	'current_ratio'						=> intval($_POST['total_current_assets'][$r]) / intval($_POST['total_current_liabilities'][$r]),
-	'quick_ratio'						=> (intval($_POST['cash'][$r]) - intval($_POST['total_inventories'][$r])) / intval($_POST['total_current_liabilities'][$r]),
-	'capital_adequacy'					=> (intval($_POST['total_assets'][$r]) - intval($_POST['total_liabilities'][$r]) - intval($_POST['net_intangibles'][$r]) - intval($_POST['loans_to_related_parties_1'][$r]) - intval($_POST['loan_to_related_parties_2'][$r]) / $x112),
+
+	'working_capital_to_sales'			=> (isset($x112[$r]) and $x112[$r] != '')? ($x74 / $x112) * 100 : "",
+
+	'cash_flow_coverage'				=> (isset($_POST['total_current_liabilities'][$r]) and $_POST['total_current_liabilities'][$r] != '')? ($x113 / intval($_POST['total_current_liabilities'][$r]) * 100): "" ,
+
+	'cash_ratio'						=> (isset($_POST['total_current_liabilities'][$r]) and $_POST['total_current_liabilities'][$r] != '')? intval($_POST['cash'][$r]) /intval($_POST['total_current_liabilities'][$r]): "" ,
+
+	'current_ratio'						=> (isset($_POST['total_current_liabilities'][$r]) and $_POST['total_current_liabilities'][$r] != '')? intval($_POST['total_current_assets'][$r]) / intval($_POST['total_current_liabilities'][$r]): "" ,
+
+	'quick_ratio'						=>  (isset($_POST['total_current_liabilities'][$r]) and $_POST['total_current_liabilities'][$r] != '')? (intval($_POST['cash'][$r]) - intval($_POST['total_inventories'][$r])) / intval($_POST['total_current_liabilities'][$r]): "" ,
+
+	'capital_adequacy'					=> (isset($x112[$r]) and $x112[$r] != '')? (intval($_POST['total_assets'][$r]) - intval($_POST['total_liabilities'][$r]) - intval($_POST['net_intangibles'][$r]) - intval($_POST['loans_to_related_parties_1'][$r]) - intval($_POST['loan_to_related_parties_2'][$r]) / $x112): "",
+
 	'net_tangible_worth'				=> $x82,
-	'net_asset_backing'					=> ($x82 / $x112) * 100,
-	'gearing'							=> (intval($_POST['total_liabilities'][$r]) / intval($_POST['total_assets'][$r])) * 100,
-	'debt_to_equity'					=> (intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) / intval($_POST['total_equity'][$r]),
-	'interest_coverage'					=> (intval($_POST['profit_before_tax_after_abnormals'][$r]) + intval( $_POST['interest_expense_gross'][$r])) / intval($_POST['interest_expense_gross'][$r]),
-	'repayment_capability'				=> ($x110 /  intval($_POST['total_liabilities'][$r])) * 100,
-	'financial_leverage'				=> (intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) / $x115,
+
+	'net_asset_backing'					=> (isset($x112[$r]) and $x112[$r] != '')? ($x82 / $x112) * 100 : "" ,
+
+	'gearing'							=> (isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')? (intval($_POST['total_liabilities'][$r]) / intval($_POST['total_assets'][$r])) * 100 : "" ,
+
+	'debt_to_equity'					=> (isset($_POST['total_equity'][$r]) and $_POST['total_equity'][$r] != '')? (intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) / intval($_POST['total_equity'][$r]) : "" ,
+
+	'interest_coverage'					=> (isset($_POST['interest_expense_gross'][$r]) and $_POST['interest_expense_gross'][$r] != '')? (intval($_POST['profit_before_tax_after_abnormals'][$r]) + intval( $_POST['interest_expense_gross'][$r])) / intval($_POST['interest_expense_gross'][$r]) : "",
+
+	'repayment_capability'				=> (isset($_POST['total_liabilities'][$r]) and $_POST['total_liabilities'][$r] != '')? ($x110 /  intval($_POST['total_liabilities'][$r])) * 100 : "" ,
+
+	'financial_leverage'				=> (isset($x115[$r]) and $x115[$r] != '')? (intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) / $x115 : "" ,
+
 	'short_ratio'						=> (intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r])) / ((intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) * 100),
-	'operating_leverage'				=> ($x119 != 0 )? $x118 / $x119 : 0 ,
-	'creditor_exposure'					=> (intval($_POST['trade_creditors'][$r]) / intval($_POST['total_assets'][$r])) * 100,
-	'creditor_days'						=> intval($_POST['trade_creditors'][$r]) / $x116 * 365,
-	'inventory_days'					=> intval($_POST['total_inventories'][$r]) / $x116 * 365,
-	'debtor_days'						=> intval($_POST['trade_debtors'][$r]) / $x112 * 365,
+
+	'operating_leverage'				=> (isset($x119[$r]) and $x119[$r] != '')? ($x119 != 0 )? $x118 / $x119 : 0 : "" ,
+
+	'creditor_exposure'					=> (isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')? (intval($_POST['trade_creditors'][$r]) / intval($_POST['total_assets'][$r])) * 100 : "" ,
+
+	'creditor_days'						=> (isset($x116[$r]) and $x116[$r] != '')? intval($_POST['trade_creditors'][$r]) / $x116 * 365 : "", 
+
+	'inventory_days'					=> (isset($x116[$r]) and $x116[$r] != '')? intval($_POST['total_inventories'][$r]) / $x116 * 365 : "",
+
+	'debtor_days'						=> (isset($x112[$r]) and $x112[$r] != '')? intval($_POST['trade_debtors'][$r]) / $x112 * 365 : "",
+
 	'cash_conversion_cycle'				=> (intval($_POST['trade_debtors'][$r]) / $x112 * 365) + (intval($_POST['total_inventories'][$r]) / $x116 * 365) - (intval($_POST['trade_creditors'][$r]) / $x116 * 365),
+
 	'sales_annualised'					=> $x112,
-	'activity'							=> $x112 / intval($_POST['total_assets'][$r]),
+
+	'activity'							=> (isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')? $x112 / intval($_POST['total_assets'][$r]) : "",
+
 	'sales_growth'						=> ($sub_3 != 0)? ($sub_2 - $sub_3 / $sub_3) * 100 : 0 , /*12345678912345678912345678912345678*/
-	'related_party_loans_receivable'	=> (intval($_POST['loans_to_related_parties_1'][$r]) + intval($_POST['loan_to_related_parties_2'][$r])) / intval($_POST['total_assets'][$r]) * 100,
-	'related_party_loans_payable'		=> (intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['loans_from_related_parites'][$r])) / intval($_POST['total_liabilities'][$r]) * 100,
-	'related_party_loans_dependency'	=> ((intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['loans_from_related_parites'][$r])) / $x74) * 100,
-	'quick_asset_composition'			=> (intval($_POST['total_current_assets'][$r]) - intval($_POST['total_inventories'][$r])) / intval($_POST['total_assets'][$r]) * 100,
+
+	'related_party_loans_receivable'	=> (isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')? (intval($_POST['loans_to_related_parties_1'][$r]) + intval($_POST['loan_to_related_parties_2'][$r])) / intval($_POST['total_assets'][$r]) * 100 : "" , 
+
+
+	'related_party_loans_payable'		=> (isset($_POST['total_liabilities'][$r]) and $_POST['total_liabilities'][$r] != '')? (intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['loans_from_related_parites'][$r])) / intval($_POST['total_liabilities'][$r]) * 100 : "", 
+
+	'related_party_loans_dependency'	=> (isset($x74[$r]) and $x74[$r] != '')? intval($_POST['lone_from_related_parties'][$r] + intval($_POST['loans_from_related_parites'][$r]) / $x74) * 100 : "",
+
+	'quick_asset_composition'			=> (isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')?(intval($_POST['total_current_assets'][$r]) - intval($_POST['total_inventories'][$r])) / intval($_POST['total_assets'][$r]) * 100 : "",
+
+	
 	'current_asset_composition'			=> (intval($_POST['total_current_assets'][$r]) - intval($_POST['total_assets'][$r])) * 100,
 	'current_liability_composition'		=> (intval($_POST['total_current_liabilities'][$r]) - intval($_POST['total_liabilities'][$r])) * 100,
 	'zscore_risk_measure'				=> $x127,
@@ -326,6 +640,8 @@ $data_tbl[] = array(
 
 krsort($data_tbl);
 
+// var_dump($data_tbl);
+
 if($this->Main_model->report_save($data_tbl) == true){
 	// var_dump($data_tbl);
 	$this->jics->alert('success','Recode Updated Successfull','Save');
@@ -335,13 +651,14 @@ if($this->Main_model->report_save($data_tbl) == true){
 
 }
 
+// $this->jics->alert('error',validation_errors(),'Form Validation');
 
-$this->data['row'] = $this->Main_model->report_row();
-$this->data['col'] = $this->Main_model->report_col();
+/*$this->data['row'] = $this->Main_model->report_row($_GET['com']);
+$this->data['col'] = $this->Main_model->report_col();*/
 
 
 
-$this->page_construct('new_report',$this->data);
+$this->page_construct('report_creation',$this->data);
 }
 
 public function companieslist(){
@@ -364,7 +681,7 @@ public function companies(){
 			'entity_name' => $this->input->post('name'), 
 			'entity_type' => $this->input->post('entity_type'), 
 			'abn' => $this->input->post('abn'), 
-			'acn' => $this->input->post('can'), 
+			'acn' => $this->input->post('acn'), 
 			'rbn' => $this->input->post('rbn'), 
 			'equity' => $this->input->post('equity'), 
 			'date_established' => $this->input->post('dateestablished'), 

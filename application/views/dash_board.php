@@ -44,10 +44,16 @@
             $(document).on('click', '#newreport', function(event) {
                 event.preventDefault();
                 /* Act on the event */
-                var company = $('#inlineFormCustomSelectPref').val();
+                var company = $('#coaskd').val();
                 var country = $('#country').val();
 
-                location.href = '<?= base_url('newreport')?>?com='+ company + '&cun=' + country;
+
+                if(company != "" && country != ""){
+                    location.href = '<?= base_url('newreport')?>?com='+ company + '&cun=' + country;
+                }else {
+                    alert('select county and company');
+                }
+
 
             });
             $(document).on('click', '#find', function(event) {
@@ -75,7 +81,7 @@
                         </tr>
                     </thead>
                     <tbody  id="tablellll">
-                       
+
                     </tbody>
                 </table>
             </div>
