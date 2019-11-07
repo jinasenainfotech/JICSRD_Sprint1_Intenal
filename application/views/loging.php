@@ -107,7 +107,7 @@
 
 
 
-	<?= form_open('loging');?>
+	<?= form_open('login');?>
 	
 </div>
 	<?= form_label('Username', 'username', 'class="form-label-group"'); ?>
