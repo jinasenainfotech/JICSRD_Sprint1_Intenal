@@ -102,7 +102,8 @@ Class Main_model extends CI_Model {
 	}
 
 	public function get_data_for_report($id){
-		$query = $this->db->get_where('quantitave_input', array('id' => $id));
+	
+		$query = $this->db->get_where('quantitave_input',['id'=>$id]);
 		if($query->num_rows() > 0)
 		{
 			foreach($query->result() as $key=>$item)
@@ -112,6 +113,125 @@ Class Main_model extends CI_Model {
 			return $data;
 		}
 		return false;
+	}
+
+	public function getReportData($where){
+		
+		$query = $this->db->get_where('quantitave_input',$where);
+		if($query->num_rows() > 0)
+		{
+			foreach($query->result() as $key=>$item)
+			{
+				$data[] = $item;
+			}
+			return $data;
+		}
+		return false;
+	}
+	
+/**
+ * Get Apidata for Report by Report ID
+ *
+ * @param int $id
+ * @return void
+ */
+	public function getApiData($id)
+	{
+		$query = $this->db->get_where('api_data',['report_id' => $id]);
+		
+		return $query->result()[0];
+	}
+
+	/**
+	 * Get Credit Score Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getCreditScoreData($id)
+	{
+		$query = $this->db->get_where('credit_score_history',['api_data_entry_no' => $id]);
+		if($query->num_rows() > 0)
+		{
+			foreach($query->result() as $key=>$item)
+			{
+				$data[] = $item;
+			}
+			return $data;
+		}
+		return false;
+	}
+
+	
+
+	/**
+	 * Get Key Ratio Data for Report
+	 *
+	 * @param array $where
+	 * @return void
+	 */
+	public function getKeyRatioDataForReport($where)
+	{
+		$query = $this->db->get_where('key_ratio_calculations',$where);
+		if($query->num_rows() > 0)
+		{
+			foreach($query->result() as $key=>$item)
+			{
+				$data[] = $item;
+			}
+			return $data;
+		}
+		return false;
+	}
+
+	/**
+	 * Get Previous Years Key Ratio
+	 *
+	 * @param int $reportId
+	 * @return void
+	 */
+	public function getPreviousKeyRatio($reportId)
+	{
+		$query = $this->db->get_where('key_ratio_calculations',['qun_id' => $reportId]);
+		
+		return $query->result()[0];
+	}
+
+	/**
+	 * Get Key Ratio
+	 *
+	 * @param int $reportId
+	 * @return void
+	 */
+	public function getKeyRatio($reportId)
+	{
+		$query = $this->db->get_where('key_ratio_calculations',['qun_id' => $reportId]);
+		
+		return $query->result()[0];
+	}
+
+	/**
+	 * Get Previous year data
+	 *
+	 * @param int $year
+	 * @param int $company
+	 * @return void
+	 */
+	public function getPreviousYearData($year,$company)
+	{
+		 $this->db->where('financial_year<',$year);
+		 $this->db->where('company_name',$company);
+		 $this->db->from('quantitave_input');
+		 $query = $this->db->get();
+
+		 $data = [];
+		 foreach($query->result() as $row){
+			$data[$row->financial_year] = $row;
+		 }
+
+		 return $data;
+
+		
 	}
 
 	public function get_data_cal($id){

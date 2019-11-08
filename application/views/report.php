@@ -19,11 +19,13 @@
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
             <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
         </head>
-
+<?php 
+// var_dump();die;
+?>
         <div class="footer">
             <hr>
-            <p class="float-right">Report Ref: <b>0000202092019</b></p>
-            <p class="float-left">Report Date: <b>30-08-2019 11:14:12</b>
+            <p class="float-right">Report Ref: <b><?php echo $input_data['current_year']->id ?></b></p>
+            <p class="float-left">Report Date: <b><?php echo $input_data['current_year']->created_at ?></b>
                 <br>ASIC Extract Date: <b>30-08-2019
                     <!-- API --> 11:14:12
                     <!-- API --></b></p>
@@ -38,7 +40,7 @@
                                 <p>Phone 1300 50 13 12 | Email admin@creditorwatch.com.au</p>
                                 <h1>Financial Analysis Enriched Credit Report</h1>
                             <div class="d-flex flex-wrap justify-content-center pt-2 ">
-                                <button class="btn btn-primary mt-5 printbtn" onclick="window.print();" style="font-size:30px">Print this page</button></div>
+                                <button class="btn btn-primary mt-5 " onclick="window.print();" style="font-size:30px">Print this page</button></div>
                             </div>
                         </div>
 
@@ -56,27 +58,27 @@
                                         <tr>
                                             <th scope="row">Main Name</th>
                                             <!-- API -->
-                                            <td>GREYHOUND AUSTRALIA PTY LTD</td>
+                                            <td><?php echo $api_data->main_name ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Main Trading Name</th>
                                             <!-- API -->
-                                            <td>GREYHOUND AUSTRALIA</td>
+                                            <td><?php echo $api_data->main_name ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ABN</th>
                                             <!-- API -->
-                                            <td>59 104 326 383</td>
+                                            <td><?php echo $api_data->abn ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Entity Status</th>
                                             <!-- API -->
-                                            <td>Active</td>
+                                            <td><?php echo $api_data->entity_status ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Entity Status Effective from</th>
                                             <!-- API -->
-                                            <td>04-04-2003</td>
+                                            <td><?php echo $api_data->entity_status_effective_from ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ABN is Current</th>
@@ -86,22 +88,22 @@
                                         <tr>
                                             <th scope="row">Entity Type</th>
                                             <!-- API -->
-                                            <td>Australian Private Company</td>
+                                            <td><?php echo $api_data->entity_type ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">GST</th>
                                             <!-- API -->
-                                            <td>Registered for GST effective from 04-04-2003</td>
+                                            <td><?php echo $api_data->gst ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Locality</th>
                                             <!-- API -->
-                                            <td>4008 QLD</td>
+                                            <td><?php echo $api_data->locality ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Record Last Updated</th>
                                             <!-- API -->
-                                            <td>03-07-2018</td>
+                                            <td><?php echo $api_data->record_last_updated ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -115,22 +117,22 @@
                                         <tr>
                                             <th scope="row">Name</th>
                                             <!-- API -->
-                                            <td>GREYHOUND AUSTRALIA PTY LTD</td>
+                                            <td><?php echo $api_data->name ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ACN</th>
                                             <!-- API -->
-                                            <td>104 326 383</td>
+                                            <td><?php echo $api_data->acn ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Type</th>
                                             <!-- API -->
-                                            <td>Australian Proprietary Company</td>
+                                            <td><?php echo $api_data->type ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Status</th>
                                             <!-- API -->
-                                            <td>Registered</td>
+                                            <td><?php echo $api_data->staus ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Controlling Jurisdiction</th>
@@ -140,32 +142,32 @@
                                         <tr>
                                             <th scope="row">Registration Date</th>
                                             <!-- API -->
-                                            <td>04-04-2003</td>
+                                            <td><?php echo $api_data->registration_date ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Review Date</th>
                                             <!-- API -->
-                                            <td>04-04-2020</td>
+                                            <td><?php echo $api_data->review_date ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Class</th>
                                             <!-- API -->
-                                            <td>Limited By Shares</td>
+                                            <td><?php echo $api_data->calss ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Subclass</th>
                                             <!-- API -->
-                                            <td>Proprietary Company</td>
+                                            <td><?php echo $api_data->subclass ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Locality</th>
                                             <!-- API -->
-                                            <td>PINKENBA QLD 4008</td>
+                                            <td><?php echo $api_data->asic_locality ?></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Next Review Date</th>
                                             <!-- API -->
-                                            <td>04-04-2019</td>
+                                            <td><?php echo $api_data->review_date ?></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -193,488 +195,9 @@
                         <h2 class="mt-5">Historical Credit Scores</h2>
 
                         <!-- API -->
-                        <div class="chart">
-                            <svg version="1.1" class="highcharts-root"
-                            style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;"
-                            xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
-                            <desc>Created with Highcharts 7.2.0</desc>
-                            <defs>
-                                <clipPath id="highcharts-x08nd36-1-">
-                                    <rect x="0" y="0" width="534" height="291" fill="none"></rect>
-                                </clipPath>
-                            </defs>
-                            <rect fill="#ffffff" class="highcharts-background" x="0" y="0" width="800" height="400"
-                            rx="0" ry="0"></rect>
-                            <rect fill="none" class="highcharts-plot-background" x="81" y="72" width="534" height="291">
-                            </rect>
-                            <g class="highcharts-grid highcharts-xaxis-grid" data-z-index="1">
-                                <path fill="none" data-z-index="1" class="highcharts-grid-line" d="M 85.5 72 L 85.5 363"
-                                opacity="1"></path>
-                                <path fill="none" data-z-index="1" class="highcharts-grid-line"
-                                d="M 235.5 72 L 235.5 363" opacity="1"></path>
-                                <path fill="none" data-z-index="1" class="highcharts-grid-line"
-                                d="M 384.5 72 L 384.5 363" opacity="1"></path>
-                                <path fill="none" data-z-index="1" class="highcharts-grid-line"
-                                d="M 534.5 72 L 534.5 363" opacity="1"></path>
-                                <path fill="none" data-z-index="1" class="highcharts-grid-line"
-                                d="M 160.5 72 L 160.5 363" opacity="1"></path>
-                                <path fill="none" data-z-index="1" class="highcharts-grid-line"
-                                d="M 310.5 72 L 310.5 363" opacity="1"></path>
-                                <path fill="none" data-z-index="1" class="highcharts-grid-line"
-                                d="M 459.5 72 L 459.5 363" opacity="1"></path>
-                                <path fill="none" data-z-index="1" class="highcharts-grid-line"
-                                d="M 609.5 72 L 609.5 363" opacity="1"></path>
-                            </g>
-                            <g class="highcharts-grid highcharts-yaxis-grid" data-z-index="1">
-                                <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1"
-                                class="highcharts-grid-line" d="M 81 363.5 L 615 363.5" opacity="1"></path>
-                                <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1"
-                                class="highcharts-grid-line" d="M 81 290.5 L 615 290.5" opacity="1"></path>
-                                <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1"
-                                class="highcharts-grid-line" d="M 81 218.5 L 615 218.5" opacity="1"></path>
-                                <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1"
-                                class="highcharts-grid-line" d="M 81 145.5 L 615 145.5" opacity="1"></path>
-                                <path fill="none" stroke="#e6e6e6" stroke-width="1" data-z-index="1"
-                                class="highcharts-grid-line" d="M 81 71.5 L 615 71.5" opacity="1"></path>
-                            </g>
-                            <rect fill="none" class="highcharts-plot-border" data-z-index="1" x="81" y="72" width="534"
-                            height="291"></rect>
-                            <g class="highcharts-axis highcharts-xaxis" data-z-index="2">
-                                <path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1"
-                                d="M 85.5 363 L 85.5 373" opacity="1"></path>
-                                <path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1"
-                                d="M 235.5 363 L 235.5 373" opacity="1"></path>
-                                <path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1"
-                                d="M 384.5 363 L 384.5 373" opacity="1"></path>
-                                <path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1"
-                                d="M 534.5 363 L 534.5 373" opacity="1"></path>
-                                <path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1"
-                                d="M 160.5 363 L 160.5 373" opacity="1"></path>
-                                <path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1"
-                                d="M 310.5 363 L 310.5 373" opacity="1"></path>
-                                <path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1"
-                                d="M 459.5 363 L 459.5 373" opacity="1"></path>
-                                <path fill="none" class="highcharts-tick" stroke="#ccd6eb" stroke-width="1"
-                                d="M 609.5 363 L 609.5 373" opacity="1"></path>
-                                <path fill="none" class="highcharts-axis-line" stroke="#ccd6eb" stroke-width="1"
-                                data-z-index="7" d="M 81 363.5 L 615 363.5"></path>
-                            </g>
-                            <g class="highcharts-axis highcharts-yaxis" data-z-index="2">
-                                <text x="26.390625" data-z-index="7" text-anchor="middle"
-                                transform="translate(0,0) rotate(270 26.390625 217.5)" class="highcharts-axis-title"
-                                style="color:#666666;fill:#666666;" y="217.5">
-                                <tspan>Number of Employees</tspan>
-                            </text>
-                            <path fill="none" class="highcharts-axis-line" data-z-index="7" d="M 81 72 L 81 363">
-                            </path>
-                        </g>
-                        <g class="highcharts-series-group" data-z-index="3">
-                            <g data-z-index="0.1"
-                            class="highcharts-series highcharts-series-0 highcharts-line-series highcharts-color-0        "
-                            transform="translate(81,72) scale(1 1)"
-                            clip-path="url(https://www.highcharts.com/demo/line-basic#highcharts-x08nd36-1-)"
-                            opacity="1">
-                            <path fill="none"
-                            d="M 5.2352941176424 227.07603 L 80.02521008403 214.608135 L 154.81512605042 207.807465 L 229.60504201681 189.64761 L 304.39495798319 149.819895 L 379.18487394958 116.500395 L 453.97478991597 91.471485 L 528.76470588236 66.675375"
-                            class="highcharts-graph" data-z-index="1" stroke="#7cb5ec" stroke-width="2"
-                            stroke-linejoin="round" stroke-linecap="round"></path>
-                            <path fill="none"
-                            d="M -4.7647058823576 227.07603 L 5.2352941176424 227.07603 L 80.02521008403 214.608135 L 154.81512605042 207.807465 L 229.60504201681 189.64761 L 304.39495798319 149.819895 L 379.18487394958 116.500395 L 453.97478991597 91.471485 L 528.76470588236 66.675375 L 538.76470588236 66.675375"
-                            visibility="visible" data-z-index="2" class="highcharts-tracker-line"
-                            stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="22">
-                        </path>
-                    </g>
-                    <g data-z-index="0.1"
-                    class="highcharts-markers highcharts-series-0 highcharts-line-series highcharts-color-0  highcharts-tracker       "
-                    transform="translate(81,72) scale(1 1)" opacity="1">
-                    <path fill="#7cb5ec" d="M 229 189.64761 A 0 0 0 1 1 229 189.64761 Z"
-                    class="highcharts-halo highcharts-color-0" data-z-index="-1" fill-opacity="0.25"
-                    visibility="hidden"></path>
-                    <path fill="#7cb5ec"
-                    d="M 5 231.07603 A 4 4 0 1 1 5.0039999993333355 231.07602800000018 Z"
-                    opacity="1" class="highcharts-point highcharts-color-0"></path>
-                    <path fill="#7cb5ec"
-                    d="M 80 218.608135 A 4 4 0 1 1 80.00399999933333 218.60813300000018 Z"
-                    opacity="1" class="highcharts-point highcharts-color-0"></path>
-                    <path fill="#7cb5ec"
-                    d="M 154 211.807465 A 4 4 0 1 1 154.00399999933333 211.80746300000018 Z"
-                    opacity="1" class="highcharts-point highcharts-color-0"></path>
-                    <path fill="#7cb5ec"
-                    d="M 229 193.64761 A 4 4 0 1 1 229.00399999933333 193.64760800000016 Z"
-                    opacity="1" class="highcharts-point highcharts-color-0 "
-                    stroke-width="0.00015790535835003006"></path>
-                    <path fill="#7cb5ec"
-                    d="M 304 153.819895 A 4 4 0 1 1 304.00399999933336 153.81989300000018 Z"
-                    opacity="1" class="highcharts-point highcharts-color-0 "
-                    stroke-width="0.001119917565748918"></path>
-                    <path fill="#7cb5ec"
-                    d="M 379 120.500395 A 4 4 0 1 1 379.00399999933336 120.50039300000016 Z"
-                    opacity="1" class="highcharts-point highcharts-color-0 "
-                    stroke-width="0.0002467198171342"></path>
-                    <path fill="#7cb5ec"
-                    d="M 453 95.471485 A 4 4 0 1 1 453.00399999933336 95.47148300000016 Z"
-                    opacity="1" class="highcharts-point highcharts-color-0 "
-                    stroke-width="0.0014205498696930885"></path>
-                    <path fill="#7cb5ec"
-                    d="M 528 70.675375 A 4 4 0 1 1 528.0039999993334 70.67537300000016 Z"
-                    opacity="1" class="highcharts-point highcharts-color-0 "
-                    stroke-width="0.000004010099284301738"></path>
-                </g>
-                <g data-z-index="0.1"
-                class="highcharts-series highcharts-series-1 highcharts-line-series highcharts-color-1        "
-                transform="translate(81,72) scale(1 1)"
-                clip-path="url(https://www.highcharts.com/demo/line-basic#highcharts-x08nd36-1-)"
-                opacity="1">
-                <path fill="none"
-                d="M 5.2352941176424 254.74722 L 80.02521008403 255.98687999999999 L 154.81512605042 247.72539 L 229.60504201681 247.566795 L 304.39495798319 243.72705000000002 L 379.18487394958 246.93969 L 453.97478991597 235.53394500000002 L 528.76470588236 232.16853"
-                class="highcharts-graph" data-z-index="1" stroke="#434348" stroke-width="2"
-                stroke-linejoin="round" stroke-linecap="round"></path>
-                <path fill="none"
-                d="M -4.7647058823576 254.74722 L 5.2352941176424 254.74722 L 80.02521008403 255.98687999999999 L 154.81512605042 247.72539 L 229.60504201681 247.566795 L 304.39495798319 243.72705000000002 L 379.18487394958 246.93969 L 453.97478991597 235.53394500000002 L 528.76470588236 232.16853 L 538.76470588236 232.16853"
-                visibility="visible" data-z-index="2" class="highcharts-tracker-line"
-                stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="22">
-            </path>
-        </g>
-        <g data-z-index="0.1"
-        class="highcharts-markers highcharts-series-1 highcharts-line-series highcharts-color-1  highcharts-tracker       "
-        transform="translate(81,72) scale(1 1)" opacity="1">
-        <path fill="#434348" d="M 229 247.566795 A 0 0 0 1 1 229 247.566795 Z"
-        class="highcharts-halo highcharts-color-1" data-z-index="-1" fill-opacity="0.25"
-        visibility="hidden"></path>
-        <path fill="#434348"
-        d="M 5 250.74722 L 9 254.74722 5 258.74721999999997 1 254.74722 Z" opacity="1"
-        class="highcharts-point highcharts-color-1"></path>
-        <path fill="#434348"
-        d="M 80 251.98687999999999 L 84 255.98687999999999 80 259.98688 76 255.98687999999999 Z"
-        opacity="1" class="highcharts-point highcharts-color-1"></path>
-        <path fill="#434348"
-        d="M 154 243.72539 L 158 247.72539 154 251.72539 150 247.72539 Z" opacity="1"
-        class="highcharts-point highcharts-color-1"></path>
-        <path fill="#434348"
-        d="M 229 243.566795 L 233 247.566795 229 251.566795 225 247.566795 Z"
-        opacity="1" class="highcharts-point highcharts-color-1  "
-        stroke-width="0.0017791363490250456"></path>
-        <path fill="#434348"
-        d="M 304 239.72705000000002 L 308 243.72705000000002 304 247.72705000000002 300 243.72705000000002 Z"
-        opacity="1" class="highcharts-point highcharts-color-1"></path>
-        <path fill="#434348"
-        d="M 379 242.93969 L 383 246.93969 379 250.93969 375 246.93969 Z" opacity="1"
-        class="highcharts-point highcharts-color-1"></path>
-        <path fill="#434348"
-        d="M 453 231.53394500000002 L 457 235.53394500000002 453 239.53394500000002 449 235.53394500000002 Z"
-        opacity="1" class="highcharts-point highcharts-color-1"></path>
-        <path fill="#434348"
-        d="M 528 228.16853 L 532 232.16853 528 236.16853 524 232.16853 Z" opacity="1"
-        class="highcharts-point highcharts-color-1"></path>
-    </g>
-    <g data-z-index="0.1"
-    class="highcharts-series highcharts-series-2 highcharts-line-series highcharts-color-2         "
-    transform="translate(81,72) scale(1 1)"
-    clip-path="url(https://www.highcharts.com/demo/line-basic#highcharts-x08nd36-1-)"
-    opacity="1">
-    <path fill="none"
-    d="M 5.2352941176424 273.91248 L 80.02521008403 265.21449 L 154.81512605042 267.712725 L 229.60504201681 262.233195 L 304.39495798319 261.630825 L 379.18487394958 255.531465 L 453.97478991597 244.226115 L 528.76470588236 233.691915"
-    class="highcharts-graph" data-z-index="1" stroke="#90ed7d" stroke-width="2"
-    stroke-linejoin="round" stroke-linecap="round"></path>
-    <path fill="none"
-    d="M -4.7647058823576 273.91248 L 5.2352941176424 273.91248 L 80.02521008403 265.21449 L 154.81512605042 267.712725 L 229.60504201681 262.233195 L 304.39495798319 261.630825 L 379.18487394958 255.531465 L 453.97478991597 244.226115 L 528.76470588236 233.691915 L 538.76470588236 233.691915"
-    visibility="visible" data-z-index="2" class="highcharts-tracker-line"
-    stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="22">
-</path>
-</g>
-<g data-z-index="0.1"
-class="highcharts-markers highcharts-series-2 highcharts-line-series highcharts-color-2  highcharts-tracker        "
-transform="translate(81,72) scale(1 1)" opacity="1">
-<path fill="#90ed7d" d="M 229 262.233195 A 0 0 0 1 1 229 262.233195 Z"
-class="highcharts-halo highcharts-color-2" data-z-index="-1" fill-opacity="0.25"
-visibility="hidden"></path>
-<path fill="#90ed7d" d="M 1 269.91248 L 9 269.91248 9 277.91248 1 277.91248 Z"
-opacity="1" class="highcharts-point highcharts-color-2"></path>
-<path fill="#90ed7d" d="M 76 261.21449 L 84 261.21449 84 269.21449 76 269.21449 Z"
-opacity="1" class="highcharts-point highcharts-color-2"></path>
-<path fill="#90ed7d"
-d="M 150 263.712725 L 158 263.712725 158 271.712725 150 271.712725 Z"
-opacity="1" class="highcharts-point highcharts-color-2"></path>
-<path fill="#90ed7d"
-d="M 225 258.233195 L 233 258.233195 233 266.233195 225 266.233195 Z"
-opacity="1" class="highcharts-point highcharts-color-2  "
-stroke-width="0.00030194214670076214"></path>
-<path fill="#90ed7d"
-d="M 300 257.630825 L 308 257.630825 308 265.630825 300 265.630825 Z"
-opacity="1" class="highcharts-point highcharts-color-2"></path>
-<path fill="#90ed7d"
-d="M 375 251.531465 L 383 251.531465 383 259.531465 375 259.531465 Z"
-opacity="1" class="highcharts-point highcharts-color-2"></path>
-<path fill="#90ed7d"
-d="M 449 240.226115 L 457 240.226115 457 248.226115 449 248.226115 Z"
-opacity="1" class="highcharts-point highcharts-color-2"></path>
-<path fill="#90ed7d"
-d="M 524 229.691915 L 532 229.691915 532 237.691915 524 237.691915 Z"
-opacity="1" class="highcharts-point highcharts-color-2"></path>
-</g>
-<g data-z-index="0.1"
-class="highcharts-series highcharts-series-3 highcharts-line-series highcharts-color-3         "
-transform="translate(81,72) scale(1 1)"
-clip-path="url(https://www.highcharts.com/demo/line-basic#highcharts-x08nd36-1-)"
-opacity="1">
-<path fill="none"
-d="M 154.81512605042 279.37746 L 229.60504201681 273.294105 L 304.39495798319 269.01204 L 379.18487394958 258.33234 L 453.97478991597 240.948 L 528.76470588236 241.199715"
-class="highcharts-graph" data-z-index="1" stroke="#f7a35c" stroke-width="2"
-stroke-linejoin="round" stroke-linecap="round"></path>
-<path fill="none"
-d="M 144.81512605042 279.37746 L 154.81512605042 279.37746 L 229.60504201681 273.294105 L 304.39495798319 269.01204 L 379.18487394958 258.33234 L 453.97478991597 240.948 L 528.76470588236 241.199715 L 538.76470588236 241.199715"
-visibility="visible" data-z-index="2" class="highcharts-tracker-line"
-stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="22">
-</path>
-</g>
-<g data-z-index="0.1"
-class="highcharts-markers highcharts-series-3 highcharts-line-series highcharts-color-3  highcharts-tracker        "
-transform="translate(81,72) scale(1 1)" opacity="1">
-<path fill="#f7a35c" d="M 304 269.01204 A 0 0 0 1 1 304 269.01204 Z"
-class="highcharts-halo highcharts-color-3" data-z-index="-1" fill-opacity="0.25"
-visibility="hidden"></path>
-<path fill="#f7a35c" d="M 154 275.37746 L 158 283.37746 150 283.37746 Z" opacity="1"
-class="highcharts-point highcharts-color-3"></path>
-<path fill="#f7a35c" d="M 229 269.294105 L 233 277.294105 225 277.294105 Z"
-opacity="1" class="highcharts-point highcharts-color-3 "></path>
-<path fill="#f7a35c" d="M 304 265.01204 L 308 273.01204 300 273.01204 Z" opacity="1"
-class="highcharts-point highcharts-color-3 "></path>
-<path fill="#f7a35c" d="M 379 254.33234 L 383 262.33234 375 262.33234 Z" opacity="1"
-class="highcharts-point highcharts-color-3"></path>
-<path fill="#f7a35c" d="M 453 236.948 L 457 244.948 449 244.948 Z" opacity="1"
-class="highcharts-point highcharts-color-3"></path>
-<path fill="#f7a35c" d="M 528 237.199715 L 532 245.199715 524 245.199715 Z"
-opacity="1" class="highcharts-point highcharts-color-3"></path>
-</g>
-<g data-z-index="0.1"
-class="highcharts-series highcharts-series-4 highcharts-line-series highcharts-color-4         "
-transform="translate(81,72) scale(1 1)"
-clip-path="url(https://www.highcharts.com/demo/line-basic#highcharts-x08nd36-1-)"
-opacity="1">
-<path fill="none"
-d="M 5.2352941176424 272.21886 L 80.02521008403 282.34566 L 154.81512605042 279.207225 L 229.60504201681 274.63416 L 304.39495798319 277.921005 L 379.18487394958 273.80772 L 453.97478991597 264.41133 L 528.76470588236 264.648495"
-class="highcharts-graph" data-z-index="1" stroke="#8085e9" stroke-width="2"
-stroke-linejoin="round" stroke-linecap="round"></path>
-<path fill="none"
-d="M -4.7647058823576 272.21886 L 5.2352941176424 272.21886 L 80.02521008403 282.34566 L 154.81512605042 279.207225 L 229.60504201681 274.63416 L 304.39495798319 277.921005 L 379.18487394958 273.80772 L 453.97478991597 264.41133 L 528.76470588236 264.648495 L 538.76470588236 264.648495"
-visibility="visible" data-z-index="2" class="highcharts-tracker-line"
-stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="22">
-</path>
-</g>
-<g data-z-index="0.1"
-class="highcharts-markers highcharts-series-4 highcharts-line-series highcharts-color-4  highcharts-tracker        "
-transform="translate(81,72) scale(1 1)" opacity="1">
-<path fill="#8085e9" d="M 304 277.921005 A 0 0 0 1 1 304 277.921005 Z"
-class="highcharts-halo highcharts-color-4" data-z-index="-1" fill-opacity="0.25"
-visibility="hidden"></path>
-<path fill="#8085e9" d="M 1 268.21886 L 9 268.21886 5 276.21886 Z" opacity="1"
-class="highcharts-point highcharts-color-4"></path>
-<path fill="#8085e9" d="M 76 278.34566 L 84 278.34566 80 286.34566 Z" opacity="1"
-class="highcharts-point highcharts-color-4"></path>
-<path fill="#8085e9" d="M 150 275.207225 L 158 275.207225 154 283.207225 Z"
-opacity="1" class="highcharts-point highcharts-color-4"></path>
-<path fill="#8085e9" d="M 225 270.63416 L 233 270.63416 229 278.63416 Z" opacity="1"
-class="highcharts-point highcharts-color-4"></path>
-<path fill="#8085e9" d="M 300 273.921005 L 308 273.921005 304 281.921005 Z"
-opacity="1" class="highcharts-point highcharts-color-4 "
-stroke-width="0.00040087933764582084"></path>
-<path fill="#8085e9" d="M 375 269.80772 L 383 269.80772 379 277.80772 Z" opacity="1"
-class="highcharts-point highcharts-color-4"></path>
-<path fill="#8085e9" d="M 449 260.41133 L 457 260.41133 453 268.41133 Z" opacity="1"
-class="highcharts-point highcharts-color-4"></path>
-<path fill="#8085e9" d="M 524 260.648495 L 532 260.648495 528 268.648495 Z"
-opacity="1" class="highcharts-point highcharts-color-4"></path>
-</g>
-</g>
-<g class="highcharts-exporting-group" data-z-index="3">
-    <g class="highcharts-button highcharts-contextbutton" stroke-linecap="round"
-    transform="translate(766,10)">
-    <title>Chart context menu</title>
-    <rect fill="#ffffff" class="highcharts-button-box" x="0.5" y="0.5" width="24"
-    height="22" rx="2" ry="2" stroke="none" stroke-width="1"></rect>
-    <path fill="#666666" d="M 6 6.5 L 20 6.5 M 6 11.5 L 20 11.5 M 6 16.5 L 20 16.5"
-    class="highcharts-button-symbol" data-z-index="1" stroke="#666666"
-    stroke-width="3"></path>
-    <text x="0" data-z-index="1"
-    style="font-weight:normal;color:#333333;cursor:pointer;fill:#333333;"
-    y="12"></text>
-</g>
-</g>
-<g class="highcharts-label highcharts-series-label highcharts-series-label-0 highcharts-color-0"
-opacity="1" data-z-index="3" transform="translate(540,117)">
-<path fill="none" class="highcharts-label-box" d="M 0 0" stroke="#7cb5ec"
-stroke-width="1"></path>
-<text x="0" data-z-index="1" style="font-weight:bold;color:#7cb5ec;fill:#7cb5ec;"
-y="12">Installation</text>
-</g>
-<g class="highcharts-label highcharts-series-label highcharts-series-label-1 highcharts-color-1"
-opacity="1" data-z-index="3" transform="translate(191,298)">
-<path fill="none" class="highcharts-label-box" d="M 0 0" stroke="#434348"
-stroke-width="1"></path>
-<text x="0" data-z-index="1" style="font-weight:bold;color:#434348;fill:#434348;"
-y="12">Manufacturing</text>
-</g>
-<g class="highcharts-label highcharts-series-label highcharts-series-label-2 highcharts-color-2"
-opacity="1" data-z-index="3" transform="translate(488,284)">
-<path fill="none" class="highcharts-label-box" d="M 0 0" stroke="#90ed7d"
-stroke-width="1"></path>
-<text x="0" data-z-index="1" style="font-weight:bold;color:#90ed7d;fill:#90ed7d;"
-y="12">
-<tspan>Sales &amp; Distribution</tspan>
-</text>
-</g>
-<g class="highcharts-label highcharts-series-label highcharts-series-label-4 highcharts-color-4"
-opacity="1" data-z-index="3" transform="translate(572,340)">
-<path fill="none" class="highcharts-label-box" d="M 0 0" stroke="#8085e9"
-stroke-width="1"></path>
-<text x="0" data-z-index="1" style="font-weight:bold;color:#8085e9;fill:#8085e9;"
-y="12">Other</text>
-</g>
-<text x="400" text-anchor="middle" class="highcharts-title" data-z-index="4"
-style="color:#333333;font-size:18px;fill:#333333;" y="24">
-<tspan>Solar Employment Growth by Sector, 2010-2016</tspan>
-</text>
-<text x="400" text-anchor="middle" class="highcharts-subtitle" data-z-index="4"
-style="color:#666666;fill:#666666;" y="52">
-<tspan>Source: thesolarfoundation.com</tspan>
-</text>
-<text x="10" text-anchor="start" class="highcharts-caption" data-z-index="4"
-style="color:#666666;fill:#666666;" y="397"></text>
-<g class="highcharts-legend" data-z-index="7" transform="translate(627,147)">
-    <rect fill="none" class="highcharts-legend-box" rx="0" ry="0" x="0" y="0" width="162"
-    height="101" visibility="visible"></rect>
-    <g data-z-index="1">
-        <g>
-            <g class="highcharts-legend-item highcharts-line-series highcharts-color-0 highcharts-series-0"
-            data-z-index="1" transform="translate(8,3)">
-            <path fill="none" d="M 0 11 L 16 11" class="highcharts-graph"
-            stroke="#7cb5ec" stroke-width="2"></path>
-            <path fill="#7cb5ec"
-            d="M 8 15 A 4 4 0 1 1 8.003999999333336 14.999998000000167 Z"
-            class="highcharts-point" opacity="1"></path>
-            <text x="21"
-            style="color:#333333;cursor:pointer;font-size:12px;font-weight:bold;fill:#333333;"
-            text-anchor="start" data-z-index="2" y="15">
-            <tspan>Installation</tspan>
-        </text>
-    </g>
-    <g class="highcharts-legend-item highcharts-line-series highcharts-color-1 highcharts-series-1"
-    data-z-index="1" transform="translate(8,21)">
-    <path fill="none" d="M 0 11 L 16 11" class="highcharts-graph"
-    stroke="#434348" stroke-width="2"></path>
-    <path fill="#434348" d="M 8 7 L 12 11 8 15 4 11 Z" class="highcharts-point"
-    opacity="1"></path>
-    <text x="21" y="15"
-    style="color:#333333;cursor:pointer;font-size:12px;font-weight:bold;fill:#333333;"
-    text-anchor="start" data-z-index="2">
-    <tspan>Manufacturing</tspan>
-</text>
-</g>
-<g class="highcharts-legend-item highcharts-line-series highcharts-color-2 highcharts-series-2"
-data-z-index="1" transform="translate(8,39)">
-<path fill="none" d="M 0 11 L 16 11" class="highcharts-graph"
-stroke="#90ed7d" stroke-width="2"></path>
-<path fill="#90ed7d" d="M 4 7 L 12 7 12 15 4 15 Z" class="highcharts-point"
-opacity="1"></path>
-<text x="21" y="15"
-style="color:#333333;cursor:pointer;font-size:12px;font-weight:bold;fill:#333333;"
-text-anchor="start" data-z-index="2">
-<tspan>Sales &amp; Distribution</tspan>
-</text>
-</g>
-<g class="highcharts-legend-item highcharts-line-series highcharts-color-3 highcharts-series-3"
-data-z-index="1" transform="translate(8,57)">
-<path fill="none" d="M 0 11 L 16 11" class="highcharts-graph"
-stroke="#f7a35c" stroke-width="2"></path>
-<path fill="#f7a35c" d="M 8 7 L 12 15 4 15 Z" class="highcharts-point"
-opacity="1"></path>
-<text x="21" y="15"
-style="color:#333333;cursor:pointer;font-size:12px;font-weight:bold;fill:#333333;"
-text-anchor="start" data-z-index="2">
-<tspan>Project Development</tspan>
-</text>
-</g>
-<g class="highcharts-legend-item highcharts-line-series highcharts-color-4 highcharts-series-4"
-data-z-index="1" transform="translate(8,75)">
-<path fill="none" d="M 0 11 L 16 11" class="highcharts-graph"
-stroke="#8085e9" stroke-width="2"></path>
-<path fill="#8085e9" d="M 4 7 L 12 7 8 15 Z" class="highcharts-point"
-opacity="1"></path>
-<text x="21" y="15"
-style="color:#333333;cursor:pointer;font-size:12px;font-weight:bold;fill:#333333;"
-text-anchor="start" data-z-index="2">
-<tspan>Other</tspan>
-</text>
-</g>
-</g>
-</g>
-</g>
-<g class="highcharts-axis-labels highcharts-xaxis-labels" data-z-index="7">
-    <text x="86.235294117642"
-    style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="middle" transform="translate(0,0)" y="382" opacity="1">2010</text>
-    <text x="235.81512605042"
-    style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="middle" transform="translate(0,0)" y="382" opacity="1">2012</text>
-    <text x="385.39495798319"
-    style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="middle" transform="translate(0,0)" y="382" opacity="1">2014</text>
-    <text x="534.97478991597"
-    style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="middle" transform="translate(0,0)" y="382" opacity="1">2016</text>
-    <text x="161.02521008403"
-    style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="middle" transform="translate(0,0)" y="382" opacity="1">2011</text>
-    <text x="310.60504201681"
-    style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="middle" transform="translate(0,0)" y="382" opacity="1">2013</text>
-    <text x="460.18487394958"
-    style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="middle" transform="translate(0,0)" y="382" opacity="1">2015</text>
-    <text x="609.76470588236"
-    style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="middle" transform="translate(0,0)" y="382" opacity="1">2017</text>
-</g>
-<g class="highcharts-axis-labels highcharts-yaxis-labels" data-z-index="7">
-    <text x="66" style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="end" transform="translate(0,0)" y="367" opacity="1">0</text>
-    <text x="66" style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="end" transform="translate(0,0)" y="294" opacity="1">50k</text>
-    <text x="66" style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="end" transform="translate(0,0)" y="222" opacity="1">100k</text>
-    <text x="66" style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="end" transform="translate(0,0)" y="149" opacity="1">150k</text>
-    <text x="66" style="color:#666666;cursor:default;font-size:11px;fill:#666666;"
-    text-anchor="end" transform="translate(0,0)" y="76" opacity="1">200k</text>
-</g>
-
-<g class="highcharts-label highcharts-tooltip            highcharts-color-4"
-style="pointer-events:none;white-space:nowrap;" data-z-index="8"
-transform="translate(332,-9999)" opacity="0" visibility="visible">
-<path fill="none" class="highcharts-label-box highcharts-tooltip-box highcharts-shadow"
-d="M 3.5 0.5 L 103.5 0.5 C 106.5 0.5 106.5 0.5 106.5 3.5 L 106.5 44.5 C 106.5 47.5 106.5 47.5 103.5 47.5 L 58.5 47.5 52.5 53.5 46.5 47.5 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"
-stroke="#000000" stroke-opacity="0.049999999999999996" stroke-width="5"
-transform="translate(1, 1)"></path>
-<path fill="none" class="highcharts-label-box highcharts-tooltip-box highcharts-shadow"
-d="M 3.5 0.5 L 103.5 0.5 C 106.5 0.5 106.5 0.5 106.5 3.5 L 106.5 44.5 C 106.5 47.5 106.5 47.5 103.5 47.5 L 58.5 47.5 52.5 53.5 46.5 47.5 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"
-stroke="#000000" stroke-opacity="0.09999999999999999" stroke-width="3"
-transform="translate(1, 1)"></path>
-<path fill="none" class="highcharts-label-box highcharts-tooltip-box highcharts-shadow"
-d="M 3.5 0.5 L 103.5 0.5 C 106.5 0.5 106.5 0.5 106.5 3.5 L 106.5 44.5 C 106.5 47.5 106.5 47.5 103.5 47.5 L 58.5 47.5 52.5 53.5 46.5 47.5 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"
-stroke="#000000" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)">
-</path>
-<path fill="rgba(247,247,247,0.85)" class="highcharts-label-box highcharts-tooltip-box"
-d="M 3.5 0.5 L 103.5 0.5 C 106.5 0.5 106.5 0.5 106.5 3.5 L 106.5 44.5 C 106.5 47.5 106.5 47.5 103.5 47.5 L 58.5 47.5 52.5 53.5 46.5 47.5 3.5 47.5 C 0.5 47.5 0.5 47.5 0.5 44.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"
-stroke="#8085e9" stroke-width="1"></path>
-<text x="8" data-z-index="1"
-style="font-size:12px;color:#333333;cursor:default;fill:#333333;" y="20">
-<tspan style="font-size: 10px">2014</tspan>
-<tspan style="fill:#8085e9" x="8" dy="15">●</tspan>
-<tspan dx="0"> Other: </tspan>
-<tspan style="font-weight:bold" dx="0">8 989</tspan>
-</text>
-</g>
-</svg>
+                        <div class="container" id="credit-chart">
+                        </div>
+                            
 
 <h2 class="mt-5">Recommendations</h2>
 <table class="table cardview">
@@ -735,194 +258,421 @@ reason in making a decision about the entity.</p>
     <div class="header"></div>
     <div class="content">
         <!-- Financial Summary  -->
-        <h2 class="mt-5">Financial Summary </h2>
-        <table class="table cardview summary-table">
+       <div class="container">
+       <h2 class="mt-5">Financial Summary </h2>
+        <table class="table cardview summary-table table-bordered">
             <tbody>
+            <tr>
+                    <th width='300px' style="text-align:left">Financial Year</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><strong><?= $previous->financial_year?>(previous)</strong></td>
+                    <?php } ?>
+                    
+                    <td width="14%" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                   
+                </tr>
                 <tr>
-                    <th width='30px' style="text-align:left">Rounding</th>
-                    <td width="14%" style="text-align:right"><?= ucfirst($qun_3[0]->rounding)?></td>
-                    <td width="14%" style="text-align:right"><?= ucfirst($qun_2[0]->rounding)?></td>
-                    <td width="14%" style="text-align:right"></td>
-                    <td width="14%" style="text-align:right"><?= ucfirst($qun_1[0]->rounding)?></td>
-                    <td width="14%" style="text-align:right"></td>
+                    <th width='300px' style="text-align:left">Rounding</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= ucfirst($previous->rounding)?></td>
+                    <?php } ?>
+                    
+                    <td width="14%" style="text-align:right"><?= ucfirst($input_data['current_year']->rounding)?></td>
+                   
                 </tr>
                 <tr>
                     <th style="width:40%">Base Currency</th>
-                    <td style="text-align:right"><?= strtoupper($qun_3[0]->base_currency) ?></td>
-                    <td style="text-align:right"><?= strtoupper($qun_2[0]->base_currency) ?></td>
-                    <td style="text-align:right"></td>
-                    <td style="text-align:right"><?= strtoupper($qun_1[0]->base_currency) ?></td>
-                    <td style="text-align:right"></td>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= strtoupper($previous->base_currency)?></td>
+                    <?php } ?>
+                  
+                    <td style="text-align:right"><?= strtoupper($input_data['current_year']->base_currency) ?></td>
+                    
 
                 </tr>
                 <tr>
                     <th style="width:40%">Quality</th>
-                    <td style="text-align:right"><?= ucfirst($qun_3[0]->quality) ?></td>
-                    <td style="text-align:right"><?= ucfirst($qun_2[0]->quality) ?></td>
-                    <td style="text-align:right"></td>
-                    <td style="text-align:right"><?= ucfirst($qun_1[0]->quality) ?></td>
-                    <td style="text-align:right"></td>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= ucfirst($previous->quality)?></td>
+                    <?php } ?>
+                    
+                    <td style="text-align:right"><?= ucfirst($input_data['current_year']->quality) ?></td>
+                    
                 </tr>
                 <tr>
                     <th style="width:40%">Reporting Period - Months</th>
-                    <td style="text-align:right"><?= $qun_3[0]->reporting_period_months?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->reporting_period_months?></td>
-                    <td style="text-align:right"></td>
-                    <td style="text-align:right"><?= $qun_1[0]->reporting_period_months?></td>
-                    <td style="text-align:right"></td>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= $previous->reporting_period_months?></td>
+                    <?php } ?>
+                   
+                    <td style="text-align:right"><?= $input_data['current_year']->reporting_period_months?></td>
+                    
                 </tr>
                 <tr>
                     <th style="width:40%">Financial Year</th>
-                    <td style="text-align:right">FY <?= $qun_3[0]->financial_year?></td>
-                    <td style="text-align:right">FY <?= $qun_2[0]->financial_year?></td>
-                    <td style="text-align:right"></td>
-                    <td style="text-align:right">FY <?= $qun_1[0]->financial_year?></td>
-                    <td style="text-align:right"></td>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= $previous->financial_year?></td>
+                    <?php } ?>
+                    
+                    <td style="text-align:right">FY <?= $input_data['current_year']->financial_year?></td>
+                    
                 </tr>
                 <tr>
                     <th style="width:40%">Month</th>
-                    <td style="text-align:right"><?= $this->jics->month_format($qun_3[0]->month)?></td>
-                    <td style="text-align:right"><?= $this->jics->month_format($qun_2[0]->month)?></td>
-                    <td style="text-align:right"></td>
-                    <td style="text-align:right"><?= $this->jics->month_format($qun_1[0]->month)?></td>
-                    <td style="text-align:right"></td>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= $previous->month?></td>
+                    <?php } ?>
+                  
+                    <td style="text-align:right"><?= $input_data['current_year']->month?></td>
+                    
                 </tr>
             </tbody>
         </table>
+       </div>
         <div class="clearfix"></div>
         <!-- Income Statement -->
         <h4 class="mt-3">Income Statement</h4>
-        <table class="table">
+        <table class="table table-bordered">
             <tbody>
-                <tr>
-                    <td width='30px' style="text-align:left">Sales</td>
-                    <td width="14%" style="text-align:right"><?= number_format($qun_3[0]->sales)?></td>
-                    <td width="14%" style="text-align:right"><?= number_format($qun_2[0]->sales)?></td>
-                    <td width="14%" style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->sales) - intval($qun_2[0]->sales))?></td>
-                    <td width="14%" style="text-align:right"><?= number_format($qun_1[0]->sales)?></td>
-                    <td width="14%" style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->sales) - intval($qun_1[0]->sales))?></td>
+            <tr>
+                    <td colspan="<?php echo count($input_data['previous_year']);?>" width='300px' style="text-align:left">Financial Year</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?>(Previous)</strong></td>
+                    <?php }
+                   
+                   
+                    ?>
+                   
+                    <td colspan="<?php echo (count($input_data['previous_year']>0))? 2 : "" ?>" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td>Gross Profit</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->gross_profit)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->gross_profit)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->gross_profit) - intval($qun_2[0]->gross_profit))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->gross_profit)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->gross_profit) - intval($qun_1[0]->gross_profit))?></td>
+                    <td width='300px' style="text-align:left">Sales</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->sales)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->sales - $input_data['previous_year'][$key-1]->sales)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->sales)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->sales - $input_data['previous_year'][$key]->sales)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>Other Income</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->other_income)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->other_income)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->other_income) - intval($qun_2[0]->other_income))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->other_income)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->other_income) - intval($qun_1[0]->other_income))?></td>
+                    <td width='300px' style="text-align:left">Gross Profit</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->gross_profit)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->gross_profit - $input_data['previous_year'][$key-1]->gross_profit)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->gross_profit)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->gross_profit - $input_data['previous_year'][$key]->gross_profit)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>EBIT</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->ebit)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->ebit)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->ebit) - intval($qun_2[0]->ebit))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->ebit)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->ebit) - intval($qun_1[0]->ebit))?></td>
+                    <td width='300px' style="text-align:left">Other Income</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_income)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->other_income - $input_data['previous_year'][$key-1]->other_income)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_income)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->other_income - $input_data['previous_year'][$key]->other_income)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                </tr>
+               
+                <tr>
+                    <td width='300px' style="text-align:left">EBIT</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->ebit)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->ebit - $input_data['previous_year'][$key-1]->ebit)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->ebit)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->ebit - $input_data['previous_year'][$key]->ebit)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                </tr>
+            
+                <tr>
+                    <td width='300px' style="text-align:left">EBITDA</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->ebitda)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->ebitda - $input_data['previous_year'][$key-1]->ebitda)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->ebitda)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->ebitda - $input_data['previous_year'][$key]->ebitda)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>EBITDA</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->ebitda)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->ebitda)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->ebitda) - intval($qun_2[0]->ebitda))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->ebitda)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->ebitda) - intval($qun_1[0]->ebitda))?></td>
+                    <td width='300px' style="text-align:left">Profit Before Tax</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->profit_before_tax)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->profit_before_tax - $input_data['previous_year'][$key-1]->profit_before_tax)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->profit_before_tax)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->profit_before_tax - $input_data['previous_year'][$key]->profit_before_tax)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>Profit Before Tax</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->profit_before_tax)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->profit_before_tax)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->profit_before_tax) - intval($qun_2[0]->profit_before_tax))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->profit_before_tax)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->profit_before_tax) - intval($qun_1[0]->profit_before_tax))?></td>
+                    <td width='300px' style="text-align:left">Profit After Tax</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->profit_after_tax)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->profit_after_tax - $input_data['previous_year'][$key-1]->profit_after_tax)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->profit_after_tax)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->profit_after_tax - $input_data['previous_year'][$key]->profit_after_tax)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
-                <tr>
-                    <td>Profit After Tax</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->profit_after_tax) - intval($qun_2[0]->profit_after_tax))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->profit_after_tax) - intval($qun_1[0]->profit_after_tax))?></td>
-                </tr>
+
             </tbody>
         </table>
         <!-- Income Statement -->
         <div class="clearfix"></div>
         <!-- Balance Sheet -->
         <h4 class="mt-3">Balance Sheet</h4>
-        <table class="table">
+        <table class="table table-bordered">
             <tbody>
-                <tr>
-                    <td width='30px' style="text-align:left">Total Current Assets </td>
-                    <td width="14%" style="text-align:right"><?= number_format($qun_3[0]->total_current_assets)?></td>
-                    <td width="14%" style="text-align:right"><?= number_format($qun_2[0]->total_current_assets)?></td>
-                    <td width="14%" style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->total_current_assets) - intval($qun_2[0]->total_current_assets))?></td>
-                    <td width="14%" style="text-align:right"><?= number_format($qun_1[0]->total_current_assets)?></td>
-                    <td width="14%" style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->total_current_assets) - intval($qun_1[0]->total_current_assets))?></td>
+            <tr>
+                    <td colspan="<?php echo count($input_data['previous_year']);?>" width='300px' style="text-align:left">Financial Year</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?>(Previous)</strong></td>
+                    <?php }
+                   
+                   
+                    ?>
+                   
+                    <td colspan="<?php echo (count($input_data['previous_year']>0))? 2 : "" ?>" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td>Total Non-Current Assets</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->total_non_curent_assets)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->total_non_curent_assets)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->total_non_curent_assets) - intval($qun_2[0]->total_non_curent_assets))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->total_non_curent_assets)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->total_non_curent_assets) - intval($qun_1[0]->total_non_curent_assets))?></td>
+                    <td width='300px' style="text-align:left">Total Current Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_current_assets)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_current_assets - $input_data['previous_year'][$key-1]->total_current_assets)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_current_assets)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_current_assets - $input_data['previous_year'][$key]->total_current_assets)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>Total Assets</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->total_assets)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->total_assets)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->total_assets) - intval($qun_2[0]->total_assets))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->total_assets)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->total_assets) - intval($qun_1[0]->total_assets))?></td>
+                    <td width='300px' style="text-align:left">Total Non-Current Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_non_curent_assets)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_non_curent_assets - $input_data['previous_year'][$key-1]->total_non_curent_assets)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_non_curent_assets)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_non_curent_assets - $input_data['previous_year'][$key]->total_non_curent_assets)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>Total Current Liabilities</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->other_current_liabilities)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->other_current_liabilities)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->other_current_liabilities) - intval($qun_2[0]->other_current_liabilities))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->other_current_liabilities)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->other_current_liabilities) - intval($qun_1[0]->other_current_liabilities))?></td>
+                    <td width='300px' style="text-align:left">Total Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_assets)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_assets - $input_data['previous_year'][$key-1]->total_assets)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_assets)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_assets - $input_data['previous_year'][$key]->total_assets)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>Total Non-Current Liabilities</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->total_non_current_liabilities)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->total_non_current_liabilities)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->total_non_current_liabilities) - intval($qun_2[0]->total_non_current_liabilities))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->total_non_current_liabilities)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->total_non_current_liabilities) - intval($qun_1[0]->total_non_current_liabilities))?></td>
+                    <td width='300px' style="text-align:left">Total Current Liabilities</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_current_liabilities)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->other_current_liabilities - $input_data['previous_year'][$key-1]->other_current_liabilities)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_current_liabilities)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->other_current_liabilities - $input_data['previous_year'][$key]->other_current_liabilities)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-
-                    <td>Total Liabilities </td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->total_liabilities)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->total_liabilities)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->total_liabilities) - intval($qun_2[0]->total_liabilities))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->total_liabilities)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->total_liabilities) - intval($qun_1[0]->total_liabilities))?></td>
+                    <td width='300px' style="text-align:left">Total Non-Current Liabilities</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_non_current_liabilities)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_non_current_liabilities - $input_data['previous_year'][$key-1]->total_non_current_liabilities)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_non_current_liabilities)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_non_current_liabilities - $input_data['previous_year'][$key]->total_non_current_liabilities)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>Share Capital </td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->profit_after_tax) - intval($qun_2[0]->profit_after_tax))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->profit_after_tax) - intval($qun_1[0]->profit_after_tax))?></td>
+                    <td width='300px' style="text-align:left">Total Liabilities</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_liabilities)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_liabilities - $input_data['previous_year'][$key-1]->total_liabilities)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_liabilities)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_liabilities - $input_data['previous_year'][$key]->total_liabilities)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
                 <tr>
-                    <td>Total Equity</td>
-                    <td style="text-align:right"><?= number_format($qun_3[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= number_format($qun_2[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_3[0]->profit_after_tax) - intval($qun_2[0]->profit_after_tax))?></td>
-                    <td style="text-align:right"><?= number_format($qun_1[0]->profit_after_tax)?></td>
-                    <td style="text-align:right"><?= $this->jics->indicators(intval($qun_2[0]->profit_after_tax) - intval($qun_1[0]->profit_after_tax))?></td>
+                    <td width='300px' style="text-align:left">Share Capital</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->share_capital)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->share_capital - $input_data['previous_year'][$key-1]->share_capital)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->share_capital)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->share_capital - $input_data['previous_year'][$key]->share_capital)?></td>
+                    <?php }
+                   
+                    ?>
+                   
                 </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Total Equity</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_equity)?></td>
+                    <?php }
+                    if(count($input_data['previous_year']) > 1){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_equity - $input_data['previous_year'][$key-1]->total_equity)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_equity)?></td>
+                    <?php 
+                    if(count($input_data['previous_year']) > 0){ ?>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_equity - $input_data['previous_year'][$key]->total_equity)?></td>
+                    <?php }
+                   
+                    ?>
+                   
+                </tr>
+            
+        
             </tbody>
         </table>
         <!-- Balance Sheet -->
@@ -946,33 +696,33 @@ reason in making a decision about the entity.</p>
             <tbody>
                 <tr>
                     <td><b> Gross Profit Margin</b></td>
-                    <td><?= $this->jics->gross_profit_margin($cal_1[0]->gross_profit_margin) ?></td>
+                    <td><?= $this->jics->gross_profit_margin($key_ratio['current_year']->gross_profit_margin) ?></td>
                 </tr>
                 <tr>
                     <td><b> Net Profit Margin </b></td>
-                    <td><?= $this->jics->net_profit_margin($cal_1[0]->net_profit_margin) ?></td>
+                    <td><?= $this->jics->net_profit_margin($key_ratio['current_year']->net_profit_margin) ?></td>
                 </tr>
 
                 <tr>
                     <td><b> Return on Assets</b></td>
-                    <td><?= $this->jics->return_on_assets($cal_1[0]->return_on_assets) ?></td>
+                    <td><?= $this->jics->return_on_assets($key_ratio['current_year']->return_on_assets) ?></td>
                 </tr>
                 <tr>
                     <td><b> Current Ratio</b> </td>
-                    <td><?= $this->jics->current_ratio($cal_1[0]->current_ratio) ?></td>
+                    <td><?= $this->jics->current_ratio($key_ratio['current_year']->current_ratio) ?></td>
                 </tr>
                 <tr>
                     <td><b> Quick Ratio</b> </td>
-                    <td><?= $this->jics->quick_ratio($cal_1[0]->quick_ratio) ?></td>
+                    <td><?= $this->jics->quick_ratio($key_ratio['current_year']->quick_ratio) ?></td>
                 </tr>
 
                 <tr>
                     <td><b> Gearing</b></td>
-                    <td><?= $this->jics->gearing($cal_1[0]->gearing) ?></td>
+                    <td><?= $this->jics->gearing($key_ratio['current_year']->gearing) ?></td>
                 </tr>
                 <tr>
                     <td><b> Interest Coverage </b></td>
-                    <td><?= $this->jics->interest_coverage($cal_1[0]->interest_coverage) ?></td>
+                    <td><?= $this->jics->interest_coverage($key_ratio['current_year']->interest_coverage) ?></td>
                 </tr>
             </tbody>
         </table>
@@ -988,193 +738,18 @@ reason in making a decision about the entity.</p>
         <h2 class="mt-5">Financial Trend Graphs</h2>
         <div class="col-md-12 row chart">
 
-            <table id="gp_np_table" style="display: none;">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>GP Margin</th>
-                        <th>NP Margin</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th><?= $qun_3[0]->financial_year ?></th>
-                        <td><?= $qun_3[0]->gross_profit ?></td>
-                        <td><?= $cal_3[0]->net_profit_margin ?></td>
-                    </tr>
-                    <tr>
-                      <th><?= $qun_2[0]->financial_year ?></th>
-                      <td><?= $qun_2[0]->gross_profit ?></td>
-                      <td><?= $cal_2[0]->net_profit_margin ?></td>
-                  </tr>
-                  <tr>
-                     <th><?= $qun_1[0]->financial_year ?></th>
-                     <td><?= $qun_1[0]->gross_profit ?></td>
-                     <td><?= $cal_1[0]->net_profit_margin ?></td>
-                 </tr>
-             </tbody>
-         </table>
-
-         <table id="gp_np_margin_bar_tbl" style="display: none;">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Gross Profit</th>
-                    <th>Profit Before Tax </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th><?= $qun_3[0]->financial_year ?></th>
-                            <td><?= $qun_3[0]->gross_profit ?></td>
-                            <td><?= $qun_3[0]->profit_before_tax ?></td>
-                        </tr>
-                        <tr>
-                            <th><?= $qun_2[0]->financial_year ?></th>
-                            <td><?= $qun_2[0]->gross_profit ?></td>
-                            <td><?= $qun_2[0]->profit_before_tax ?></td>
-                        </tr>
-                        <tr>
-                            <th><?= $qun_1[0]->financial_year ?></th>
-                            <td><?= $qun_1[0]->gross_profit ?></td>
-                            <td><?= $qun_1[0]->profit_before_tax ?></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-                <table id="ebitda_ebit_tbl" style="display: none;">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Normalised EBITDA</th>
-                            <th>EBIT</tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th><?= $qun_3[0]->financial_year ?></th>
-                                    <td><?= $qun_3[0]->ebitda ?></td>
-                                    <td><?= $qun_3[0]->ebit ?></td>
-                                </tr>
-                                <tr>
-                                    <th><?= $qun_2[0]->financial_year ?></th>
-                                    <td><?= $qun_2[0]->ebitda ?></td>
-                                    <td><?= $qun_2[0]->ebit ?></td>
-                                </tr>
-                                <tr>
-                                    <th><?= $qun_1[0]->financial_year ?></th>
-                                    <td><?= $qun_1[0]->ebitda ?></td>
-                                    <td><?= $qun_1[0]->ebit ?></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <table id="revenue_tbl" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th><?= $qun_3[0]->financial_year ?></th>
-                                    <th><?= $qun_2[0]->financial_year ?></th>
-                                    <th><?= $qun_1[0]->financial_year ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td><?= $qun_2[0]->sales ?></td>
-                                    <td><?= $qun_1[0]->sales ?></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table id="liq_ratio_tbl" style="display: none;">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Liquidity Ratio </th>
-                                    <th>EBIT</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th><?= $qun_3[0]->financial_year ?></th>
-                                        <td><?= $cal_3[0]->current_ratio ?></td>
-                                        <td><?= $cal_3[0]->quick_ratio ?></td>
-                                        <td><?= $cal_3[0]->cash_ratio ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= $qun_2[0]->financial_year ?></th>
-                                        <td><?= $cal_2[0]->current_ratio ?></td>
-                                        <td><?= $cal_2[0]->quick_ratio ?></td>
-                                        <td><?= $cal_2[0]->cash_ratio ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= $qun_1[0]->financial_year ?></th>
-                                        <td><?= $cal_1[0]->current_ratio ?></td>
-                                        <td><?= $cal_1[0]->quick_ratio ?></td>
-                                        <td><?= $cal_1[0]->cash_ratio ?></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table id="un_kwn_tbl" style="display: none;">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Current Assets</th>
-                                        <th>Current Liabilities</th>
-                                        <th>Working Capital</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th><?= $qun_3[0]->financial_year ?></th>
-                                            <td><?= $qun_3[0]->total_current_assets ?></td>
-                                            <td><?= $qun_3[0]->total_current_liabilities ?></td>
-                                            <td><?= $cal_3[0]->working_capital ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th><?= $qun_2[0]->financial_year ?></th>
-                                            <td><?= $qun_2[0]->total_current_assets ?></td>
-                                            <td><?= $qun_2[0]->total_current_liabilities ?></td>
-                                            <td><?= $cal_2[0]->working_capital ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th><?= $qun_1[0]->financial_year ?></th>
-                                            <td><?= $qun_1[0]->total_current_assets ?></td>
-                                            <td><?= $qun_1[0]->total_current_liabilities ?></td>
-                                            <td><?= $cal_1[0]->working_capital ?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <div class="col-md-6" id="gp_np_margin"></div>
-                                <div class="col-md-6" id="revenue_chart"></div>
-                                <div class="col-md-6" id="gp_np_margin_bar_chart"></div>
-                                <div class="col-md-6" id="ebitda_ebit_chart"></div>
-                                <div class="col-md-6" id="liq_ratio_chart"></div>
-                                <div class="col-md-6" id="un_kwn_chart"></div>
-                            </div>
-                            <script type="text/javascript">
-                                Highcharts.chart('gp_np_margin', {
-                                    data: {
-                                        table: 'revenue_table'
-                                    },
-                                    chart: {
-                                        type: 'line'
-                                    },
-                                    title: {
-                                        text: 'GP & NP Margin'
-                                    },
-                                    yAxis: {
-                                        allowDecimals: false,
-                                        title: {
-                                            text: ''
-                                        }
-                                    },
-                                    tooltip: {
-                                        formatter: function () {
-                                            return '<b>' + this.series.name + '</b><br/>' +
-                                            this.point.y + ' ' + this.point.name.toLowerCase();
-                                        }
-                                    }
-                                });
-                            </script>
+           
+            <div class="col-md-6" id="revenue_chart"></div>
+            <div class="col-md-6" id="gp_np_margin"></div>
+            <div class="col-md-6" id="gp_np"></div>
+            <div class="col-md-6" id="ebitda"></div>
+            <div class="col-md-6" id="ratio"></div>
+            <div class="col-md-6" id="capital"></div>
+            <div class="col-md-6" id="equity"></div>
+            <div class="col-md-6" id="interest_cover"></div>
+            
+        </div>
+                            
                             <!-- Financial Performance  -->
 
                         </div>
@@ -1188,207 +763,381 @@ reason in making a decision about the entity.</p>
                  <!-- Financial Performance  -->
 
                  <div class="row">
-                    <h2>Financial Performance </h2>
-                    <table class="table cardview summary-table">
-                        <tbody>
-                            <tr>
-                                <th style="width:40%">Rounding</th>
-                                <td style="text-align:right"><?= $qun_3[0]->rounding ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->rounding ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->rounding ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Base Currency</th>
-                                <td style="text-align:right"><?= $qun_3[0]->base_currency ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->base_currency ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->base_currency ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Quality</th>
-                                <td style="text-align:right"><?= $qun_3[0]->quality ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->quality ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->quality ?></td>
-                            </tr>
+                 <div class="container">
+       <h2 class="mt-5">Financial Performance </h2>
+        <table class="table cardview summary-table table-bordered">
+            <tbody>
+            <tr>
+                    <th width='300px' style="text-align:left">Financial Year</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><strong><?= $previous->financial_year?>(previous)</strong></td>
+                    <?php } ?>
+                    
+                    <td width="14%" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                   
+                </tr>
+                <tr>
+                    <th width='300px' style="text-align:left">Rounding</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= ucfirst($previous->rounding)?></td>
+                    <?php } ?>
+                    
+                    <td width="14%" style="text-align:right"><?= ucfirst($input_data['current_year']->rounding)?></td>
+                   
+                </tr>
+                <tr>
+                    <th style="width:40%">Base Currency</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= strtoupper($previous->base_currency)?></td>
+                    <?php } ?>
+                  
+                    <td style="text-align:right"><?= strtoupper($input_data['current_year']->base_currency) ?></td>
+                    
 
-                            <tr>
-                                <th style="width:40%">Reporting Period - Months</th>
-                                <td style="text-align:right"><?= $qun_3[0]->reporting_period_months ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->reporting_period_months ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->reporting_period_months ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Scope</th>
-                                <td style="text-align:right"><?= $qun_3[0]->scope ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->scope ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->scope ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Confidentiality Record </th>
-                                <td style="text-align:right"><?= $qun_3[0]->confidentiality_record ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->confidentiality_record ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->confidentiality_record ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Financial Year</th>
-                                <td style="text-align:right">FY<?= $qun_3[0]->financial_year ?></td>
-                                <td style="text-align:right">FY<?= $qun_2[0]->financial_year ?></td>
-                                <td style="text-align:right">FY<?= $qun_1[0]->financial_year ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Month</th>
-                                <td style="text-align:right"><?= $qun_3[0]->month ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->month ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->month ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                </tr>
+                <tr>
+                    <th style="width:40%">Quality</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= ucfirst($previous->quality)?></td>
+                    <?php } ?>
+                    
+                    <td style="text-align:right"><?= ucfirst($input_data['current_year']->quality) ?></td>
+                    
+                </tr>
+                <tr>
+                    <th style="width:40%">Reporting Period - Months</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= $previous->reporting_period_months?></td>
+                    <?php } ?>
+                   
+                    <td style="text-align:right"><?= $input_data['current_year']->reporting_period_months?></td>
+                    
+                </tr>
+                <tr>
+                    <th style="width:40%">Scope</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= $previous->scope?></td>
+                    <?php } ?>
+                   
+                    <td style="text-align:right"><?= $input_data['current_year']->scope?></td>
+                    
+                </tr>
+                <tr>
+                    <th style="width:40%">Confidentiality Record</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= $previous->confidentiality_record?></td>
+                    <?php } ?>
+                   
+                    <td style="text-align:right"><?= $input_data['current_year']->confidentiality_record?></td>
+                    
+                </tr>
+                <tr>
+                    <th style="width:40%">Financial Year</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= $previous->financial_year?></td>
+                    <?php } ?>
+                    
+                    <td style="text-align:right">FY <?= $input_data['current_year']->financial_year?></td>
+                    
+                </tr>
+                <tr>
+                    <th style="width:40%">Month</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="14%" style="text-align:right"><?= $previous->month?></td>
+                    <?php } ?>
+                  
+                    <td style="text-align:right"><?= $input_data['current_year']->month?></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+       </div>
+                 </div>
+                 <div class="col-md-12">
 
                     <!-- Income Statement -->
                     <h4>Income Statement</h4>
-                    <table class="table">
+                    <table class="table table-bordered">
                         <tbody>
-                            <tr>
-                                <th style="width:40%">Sales </th>
-                                <td style="text-align:right"><?= $qun_3[0]->sales ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->sales ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->sales ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Cost of Sales</th>
-                                <td style="text-align:right"><?= $qun_3[0]->cost_of_sales ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->cost_of_sales ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->cost_of_sales ?></td>
-                            </tr>
-
-                            <tr>
-                                <th style="width:40%">Gross Profit </th>
-                                <td style="text-align:right"><?= $qun_3[0]->gross_profit ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->gross_profit ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->gross_profit ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Depreciation </th>
-                                <td style="text-align:right"><?= $qun_3[0]->depreciation ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->depreciation ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->depreciation ?></td>
-                            </tr>
-
-                            <tr>
-                                <th style="width:40%">Amortisation </th>
-                                <td style="text-align:right"><?= $qun_3[0]->amortisation ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->amortisation ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->amortisation ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Impairment</th>
-                                <td style="text-align:right"><?= $qun_3[0]->impairment ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->impairment ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->impairment ?></td>
-                            </tr>
-
-                            <tr>
-                                <th style="width:40%">Interest Expense (Gross) </th>
-                                <td style="text-align:right"><?= $qun_3[0]->interest_expense_gross ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->interest_expense_gross ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->interest_expense_gross ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Operating Lease Expense</th>
-                                <td style="text-align:right"><?= $qun_3[0]->operating_lease_expense ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->operating_lease_expense ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->operating_lease_expense ?></td>
-                            </tr>
-
-                            <tr>
-                                <th style="width:40%">Finance Lease and hire purchase charges </th>
-                                <td style="text-align:right"><?= $qun_3[0]->finance_lease_hire_purchase_charges ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->finance_lease_hire_purchase_charges ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->finance_lease_hire_purchase_charges ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Non- Recurring Gains/ (Losses)</th>
-                                <td style="text-align:right"><?= $qun_3[0]->non_recurring_gains_losses ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->non_recurring_gains_losses ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->non_recurring_gains_losses ?></td>
-                            </tr>
-
-                            <tr>
-                                <th style="width:40%">Other Gains / (Losses) </th>
-                                <td style="text-align:right"><?= $qun_3[0]->other_gains_losses ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->other_gains_losses ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->other_gains_losses ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Other Expenses</th>
-                                <td style="text-align:right"><?= $qun_3[0]->other_expenses ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->other_expenses ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->other_expenses ?></td>
-                            </tr>
-
-                            <tr>
-                                <th style="width:40%">EBIT </th>
-                                <td style="text-align:right"><?= $qun_3[0]->ebit ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->ebit ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->ebit ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">EBITDA</th>
-                                <td style="text-align:right"><?= $qun_3[0]->ebitda ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->ebitda ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->ebitda ?></td>
-                            </tr>
-
-                            <tr>
-                                <th style="width:40%">Normalised EBITDA </th>
-                                <td style="text-align:right"><?= $qun_3[0]->normalised_ebitda ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->normalised_ebitda ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->normalised_ebitda ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Profit Before Tax </th>
-                                <td style="text-align:right"><?= $qun_3[0]->profit_before_tax ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->profit_before_tax ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->profit_before_tax ?></td>
-                            </tr>
-
-                            <tr>
-                                <th style="width:40%">Profit Before Tax (After Abnormals) </th>
-                                <td style="text-align:right"><?= $qun_3[0]->profit_before_tax_after_abnormals ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->profit_before_tax_after_abnormals ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->profit_before_tax_after_abnormals ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Tax benefit/ (expense)</th>
-                                <td style="text-align:right"><?= $qun_3[0]->tax_benefit_expense ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->tax_benefit_expense ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->tax_benefit_expense ?></td>
-                            </tr>
-                            <tr>
-                                <th style="width:40%">Profit After Tax</th>
-                                <td style="text-align:right"><?= $qun_3[0]->profit_after_tax ?></td>
-                                <td style="text-align:right"><?= $qun_2[0]->profit_after_tax ?></td>
-                                <td style="text-align:right"><?= $qun_1[0]->profit_after_tax ?></td>
-                            </tr>
-                        </tr>
-                        <tr>
-                            <th style="width:40%">Distribution or Dividends </th>
-                            <td style="text-align:right"><?= $qun_3[0]->distribution_ordividends ?></td>
-                            <td style="text-align:right"><?= $qun_2[0]->distribution_ordividends ?></td>
-                            <td style="text-align:right"><?= $qun_1[0]->distribution_ordividends ?></td>
-                        </tr>
-                    </tr>
                     <tr>
-                        <th style="width:40%">Other Post Tax Items - Gains/ (Losses)</th>
-                        <td style="text-align:right"><?= $qun_3[0]->other_post_tax_items_gains_losses ?></td>
-                        <td style="text-align:right"><?= $qun_2[0]->other_post_tax_items_gains_losses ?></td>
-                        <td style="text-align:right"><?= $qun_1[0]->other_post_tax_items_gains_losses ?></td>
-                    </tr>
-                    <tr>
-                        <th style="width:40%">Profit After Tax & Distribution </th>
-                        <td style="text-align:right"><?= $qun_3[0]->profit_after_tax_distribution ?></td>
-                        <td style="text-align:right"><?= $qun_2[0]->profit_after_tax_distribution ?></td>
-                        <td style="text-align:right"><?= $qun_1[0]->profit_after_tax_distribution ?></td>
-                    </tr>
+                    <td colspan="" width='300px' style="text-align:left">Financial Year</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?>(Previous)</strong></td>
+                    <?php }
+                   
+                   
+                    ?>
+                   
+                    <td colspan="" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Sales</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->sales)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->sales)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Cost of Sales</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->cost_of_sales)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->cost_of_sales)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Gross Profit </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->gross_profit)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->gross_profit)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Depreciation </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->depreciation)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->depreciation)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Amortisation </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->amortisation)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->amortisation)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Impairment </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->impairment)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->impairment)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Interest Expense (Gross) </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->interest_expense_gross)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->interest_expense_gross)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Operating Lease Expense </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->operating_lease_expense)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->operating_lease_expense)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Finance Lease and hire purchase charges </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->finance_lease_hire_purchase_charges)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->finance_lease_hire_purchase_charges)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Non- Recurring Gains/ (Losses) </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->non_recurring_gains_losses)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->non_recurring_gains_losses)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Other Gains / (Losses)  </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_gains_losses)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_gains_losses)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Other Gains / (Losses)  </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_gains_losses)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_gains_losses)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Other Expenses</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_expenses)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_expenses)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">EBIT</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->ebit)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->ebit)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">EBITDA</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->ebitda)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->ebitda)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Normalised EBITDA</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->normalised_ebitda)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->normalised_ebitda)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Profit Before Tax</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->profit_before_tax)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->profit_before_tax)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Profit Before Tax (After Abnormals)</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->profit_before_tax_after_abnormals)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->profit_before_tax_after_abnormals)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Tax benefit/ (expense)</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->tax_benefit_expense)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->tax_benefit_expense)?></td>
+                    
+                   
+                </tr>
+
+                <tr>
+                    <td width='300px' style="text-align:left">Profit After Tax</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->profit_after_tax)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->profit_after_tax)?></td>
+                    
+                   
+                </tr> 
+                <tr>
+                    <td width='300px' style="text-align:left">Distribution or Dividends</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->distribution_ordividends)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->distribution_ordividends)?></td>
+                    
+                   
+                </tr> 
+                <tr>
+                    <td width='300px' style="text-align:left">Distribution or Dividends</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->distribution_ordividends)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->distribution_ordividends)?></td>
+                    
+                   
+                </tr> 
+                <tr>
+                    <td width='300px' style="text-align:left">Other Post Tax Items - Gains/ (Losses)</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_post_tax_items_gains_losses)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_post_tax_items_gains_losses)?></td>
+                    
+                   
+                </tr> 
+                <tr>
+                    <td width='300px' style="text-align:left">Profit After Tax & Distribution</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->profit_after_tax_distribution)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->profit_after_tax_distribution)?></td>
+                    
+                   
+                </tr> 
+                  
 
                 </tbody>
             </table>
@@ -1410,150 +1159,281 @@ reason in making a decision about the entity.</p>
 
         <!-- Balance Sheet  -->
         <h4 class="mt-5">Balance Sheet </h4>
-        <table class="table">
+        
+        <table class="table table-bordered">
             <thead>
-                <tr>
-                    <th colspan="4" class="theading">Assets</th>
-                </tr>
+                
             </thead>
             <tr>
-                <td style="width:40%"><b>Cash</b></td>
-                <td style="text-align:right"><?= $qun_3[0]->cash ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->cash ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->cash ?></td>
-            </tr>
+                    <th colspan="<?php echo count($input_data['previous_year'])+2  ?>" class="theading">Assets</th>
+                </tr>
             <tr>
-                <td style="width:40%"><b>Trade Debtors</b></td>
-                <td style="text-align:right"><?= $qun_3[0]->trade_debtors ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->trade_debtors ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->trade_debtors ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Total Inventories</b></td>
-                <td style="text-align:right"><?= $qun_3[0]->total_inventories ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->total_inventories ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->total_inventories ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Loans to Related Parties</b></td>
-                <td style="text-align:right"><?= $qun_3[0]->loans_to_related_parties_1 ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->loans_to_related_parties_1 ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->loans_to_related_parties_1 ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Other Current Assets </b></td>
-                <td style="text-align:right"><?= $qun_3[0]->other_current_assets ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->other_current_assets ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->other_current_assets ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Total Current Assets</b></td>
-                <td style="text-align:right"><?= $qun_3[0]->total_current_assets ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->total_current_assets ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->total_current_assets ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Fixed Assets</b></td>
-                <td style="text-align:right"><?= $qun_3[0]->total_inventories ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->total_inventories ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->total_inventories ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Net Intangibles</b></td>
-                <td style="text-align:right"><?= $qun_3[0]->net_intangibles ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->net_intangibles ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->net_intangibles ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Loans to Related Parties</b></td>
-                <td style="text-align:right"><?= $qun_3[0]->loan_to_related_parties_2 ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->loan_to_related_parties_2 ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->loan_to_related_parties_2 ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Other Non-Current Assets </b></td>
-                <td style="text-align:right"><?= $qun_3[0]->other_non_current_assets ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->other_non_current_assets ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->other_non_current_assets ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Total Non-Current Assets </b></td>
-                <td style="text-align:right"><?= $qun_3[0]->total_non_curent_assets ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->total_non_curent_assets ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->total_non_curent_assets ?></td>
-            </tr>
-            <tr>
-                <td style="width:40%"><b>Total Assets </b></td>
-                <td style="text-align:right"><?= $qun_3[0]->total_assets ?></td>
-                <td style="text-align:right"><?= $qun_2[0]->total_assets ?></td>
-                <td style="text-align:right"><?= $qun_1[0]->total_assets ?></td>
-            </tr>
+                    <td colspan="" width='300px' style="text-align:left">Financial Year</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?>(Previous)</strong></td>
+                    <?php }
+                   
+                   
+                    ?>
+                   
+                    <td colspan="" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Cash</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->cash)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->cash)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Trade Debtors</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->trade_debtors)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->trade_debtors)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Total Inventories</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_inventories)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_inventories)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Loans to Related Parties</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->loans_to_related_parties_1)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->loans_to_related_parties_1)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Other Current Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_current_assets)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_current_assets)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Total Current Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_current_assets)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_current_assets)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Fixed Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_inventories)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_inventories)?></td>
+                    
+                   
+                </tr>
+            
+                <tr>
+                    <td width='300px' style="text-align:left">Net Intangibles</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->net_intangibles)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->net_intangibles)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Loans to Related Parties</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->loan_to_related_parties_2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->loan_to_related_parties_2)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Other Non-Current Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_non_current_assets)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_non_current_assets)?></td>
+                    
+                   
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Total Non-Current Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_non_curent_assets)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_non_curent_assets)?></td>
+                    
+                   
+                </tr>
+           
+                <tr>
+                    <td width='300px' style="text-align:left">Total Assets</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_assets)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_assets)?></td>
+                    
+                   
+                </tr>
+           
+            
             <thead>
                 <tr>
-                    <th colspan="4" class="theading">Liabilities</th>
+                    <th colspan="<?php echo count($input_data['previous_year'])+2  ?>" class="theading">Liabilities</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td  style="width:40%"><b>Trade Creditors</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->trade_creditors ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->trade_creditors ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->trade_creditors ?></td>
+            <tr>
+                    <td width='300px' style="text-align:left">Trade Creditors</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->trade_creditors)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->trade_creditors)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Interest Bearing Debt</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->interest_bearing_debt_1 ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->interest_bearing_debt_1 ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->interest_bearing_debt_1 ?></td>
+                    <td width='300px' style="text-align:left">Interest Bearing Debt</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->interest_bearing_debt_1)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->interest_bearing_debt_1)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Loan from Related Parties</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->lone_from_related_parties ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->lone_from_related_parties ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->lone_from_related_parties ?></td>
+                    <td width='300px' style="text-align:left">Loan from Related Parties</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->lone_from_related_parties)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->lone_from_related_parties)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Other Current Liabilities</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->other_current_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->other_current_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->other_current_liabilities ?></td>
+                    <td width='300px' style="text-align:left">Other Current Liabilities</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_current_liabilities)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_current_liabilities)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Total Current Liabilities</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->total_current_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->total_current_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->total_current_liabilities ?></td>
+                    <td width='300px' style="text-align:left">Total Current Liabilities</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_current_liabilities)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_current_liabilities)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Interest Bearing Debt </b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->total_current_liabilities_2 ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->total_current_liabilities_2 ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->total_current_liabilities_2 ?></td>
+                    <td width='300px' style="text-align:left">Interest Bearing Debt</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_current_liabilities_2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_current_liabilities_2)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Loan from Related Parties </b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->loans_from_related_parites ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->loans_from_related_parites ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->loans_from_related_parites ?></td>
+                    <td width='300px' style="text-align:left">Loan from Related Parties</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->loans_from_related_parites)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->loans_from_related_parites)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Other Non-Current Liabilities</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->other_non_current_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->other_non_current_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->other_non_current_liabilities ?></td>
+                    <td width='300px' style="text-align:left">Other Non-Current Liabilities</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_non_current_liabilities)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_non_current_liabilities)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Total Non-Current Liabilities</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->total_non_current_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->total_non_current_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->total_non_current_liabilities ?></td>
+                    <td width='300px' style="text-align:left">Total Non-Current Liabilities</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_non_current_liabilities)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_non_current_liabilities)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Total Liabilities </b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->total_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->total_liabilities ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->total_liabilities ?></td>
+                    <td width='300px' style="text-align:left">Total Liabilities</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_liabilities)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_liabilities)?></td>
+                    
+                   
                 </tr>
+                
+                
             </tbody>
 
         </table>
@@ -1566,88 +1446,149 @@ reason in making a decision about the entity.</p>
 <page size="A4">
     <div class="header"></div>
     <div class="content">
-        <table class="table">
-            <thead>
+        <table class="table table-bordered">
+        <thead>
                 <tr>
-                    <th class="theading">Equity</th>
+                    <th colspan="<?php echo count($input_data['previous_year'])+2  ?>" class="theading">Equity</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td  style="width:40%"><b>Share Capital </b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->share_capital ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->share_capital ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->share_capital ?></td>
+            <tr>
+                    <td width='300px' style="text-align:left">Share Capital</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->share_capital)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->share_capital)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Preference Shares </b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->prefence_shares ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->prefence_shares ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->prefence_shares ?></td>
+                    <td width='300px' style="text-align:left">Preference Shares</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->prefence_shares)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->prefence_shares)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Treasury Shares</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->treasury_shares ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->treasury_shares ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->treasury_shares ?></td>
+                    <td width='300px' style="text-align:left">Treasury Shares</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->treasury_shares)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->treasury_shares)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Equity Ownerships</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->equity_owner_ships ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->equity_owner_ships ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->equity_owner_ships ?></td>
+                    <td width='300px' style="text-align:left">Equity Ownerships</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->equity_owner_ships)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->equity_owner_ships)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Total Reserves</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->total_reserves ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->total_reserves ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->total_reserves ?></td>
+                    <td width='300px' style="text-align:left">Total Reserves</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_reserves)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_reserves)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Retained Earnings</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->ratained_earning ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->ratained_earning ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->ratained_earning ?></td>
+                    <td width='300px' style="text-align:left">Retained Earnings</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->ratained_earning)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->ratained_earning)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Minority Interest </b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->minorty_interest ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->minorty_interest ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->minorty_interest ?></td>
+                    <td width='300px' style="text-align:left">Minority Interest</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->minorty_interest)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->minorty_interest)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td  style="width:40%"><b>Total Equity </b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->total_equity ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->total_equity ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->total_equity ?></td>
+                    <td width='300px' style="text-align:left">Total Equity</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_equity)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_equity)?></td>
+                    
+                   
                 </tr>
+               
             </tbody>
         </table>
         <!-- Balance Sheet  -->
-        <table class="table  mt-5">
 
-
-            <tbody class="mt-3">
-                <tr>
-                    <td style="width:40%"><b>Net Operating Cash Flow</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->operating_cash_flow ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->operating_cash_flow ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->operating_cash_flow ?></td>
+        <table class="table table-bordered">
+        <thead>
+                
+            </thead>
+            <tbody>
+            <tr>
+                    <td width='300px' style="text-align:left">Net Operating Cash Flow</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->operating_cash_flow)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->operating_cash_flow)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td style="width:40%"><b>Other Commitments</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->other_commitmentes ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->other_commitmentes ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->other_commitmentes ?></td>
+                    <td width='300px' style="text-align:left">Other Commitments</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_commitmentes)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_commitmentes)?></td>
+                    
+                   
                 </tr>
                 <tr>
-                    <td style="width:40%"><b>Total Operating Lease Outstanding</b></td>
-                    <td style="text-align:right"><?= $qun_3[0]->operating_lease_outstanding ?></td>
-                    <td style="text-align:right"><?= $qun_2[0]->operating_lease_outstanding ?></td>
-                    <td style="text-align:right"><?= $qun_1[0]->operating_lease_outstanding ?></td>
+                    <td width='300px' style="text-align:left">Total Operating Lease Outstanding</td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->operating_lease_outstanding)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->operating_lease_outstanding)?></td>
+                    
+                   
                 </tr>
+                
+               
             </tbody>
         </table>
+        
     </div>
 </div>
 </page>
@@ -1658,215 +1599,293 @@ reason in making a decision about the entity.</p>
     <div class="content">
         <h2>Key Ratios</h2>
         <!-- table -->
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th></th>
                     <th>Denomination</th>
-                    <th class="text-right">FY<?= $qun_3[0]->financial_year ?></th>
-                    <th class="text-right">FY<?= $qun_2[0]->financial_year ?></th>
-                    <th class="text-right">FY<?= $qun_1[0]->financial_year ?></th>
-                    <th class="text-right">FY<?= $qun_1[0]->financial_year ?> Vs FY <?= $qun_2[0]->financial_year ?></th>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?=$previous->financial_year?></td>
+                    <?php }
+                    ?> 
+                    
+                    <td width="" style="text-align:right"><?= $input_data['current_year']->financial_year ?></td>
+                    
+                    <th class="text-right">FY<?= $input_data['current_year']->financial_year ?> Vs FY <?= $input_data['previous_year'][$key]->financial_year ?></th>
                 </tr>
                 <tr>
-                    <th colspan="6" class="theading">Profitability</th>
+                    <th colspan="<?php echo count($input_data['previous_year'])+4  ?>" class="theading">Profitability</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Gross Profit Margin</td>
+
+            <tr>
+                    <td width='300px' style="text-align:left">Gross Profit Margin</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->gross_profit_margin ?></td>
-                    <td><?= $cal_2[0]->gross_profit_margin ?></td>
-                    <td><?= $cal_1[0]->gross_profit_margin ?></td>
-                    <td><?= ($cal_1[0]->gross_profit_margin) - ($cal_2[0]->gross_profit_margin) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->gross_profit_margin)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->gross_profit_margin)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->gross_profit_margin - $key_ratio['previous_year'][$key]->gross_profit_margin) ?></td>
                 </tr>
                 <tr>
-                    <td>EBIDTA</td>
+                    <td width='300px' style="text-align:left">EBIDTA</td>
                     <td>Thousands</td>
-                    <td><?= $cal_3[0]->ebitda ?></td>
-                    <td><?= $cal_2[0]->ebitda ?></td>
-                    <td><?= $cal_1[0]->ebitda ?></td>
-                    <td><?= ($cal_1[0]->ebitda) - ($cal_2[0]->ebitda) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->ebitda)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->ebitda)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->ebitda - $key_ratio['previous_year'][$key]->ebitda) ?></td>
                 </tr>
                 <tr>
-                    <td>Net Profit Margin</td>
+                    <td width='300px' style="text-align:left">Net Profit Margin</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->ebitda ?></td>
-                    <td><?= $cal_2[0]->ebitda ?></td>
-                    <td><?= $cal_1[0]->ebitda ?></td>
-                    <td><?= ($cal_1[0]->ebitda) - ($cal_2[0]->ebitda) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->net_profit_margin)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->net_profit_margin)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->net_profit_margin - $key_ratio['previous_year'][$key]->net_profit_margin) ?></td>
                 </tr>
                 <tr>
-                    <td>Profitability</td>
+                    <td width='300px' style="text-align:left">Profitability</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->profitability ?></td>
-                    <td><?= $cal_2[0]->profitability ?></td>
-                    <td><?= $cal_1[0]->profitability ?></td>
-                    <td><?= ($cal_1[0]->profitability) - ($cal_2[0]->profitability) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->profitability)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->profitability)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->profitability - $key_ratio['previous_year'][$key]->profitability) ?></td>
                 </tr>
                 <tr>
-                    <td>Reinvestment </td>
+                    <td width='300px' style="text-align:left">Reinvestment</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->reinvestment ?></td>
-                    <td><?= $cal_2[0]->reinvestment ?></td>
-                    <td><?= $cal_1[0]->reinvestment ?></td>
-                    <td><?= ($cal_1[0]->reinvestment) - ($cal_2[0]->reinvestment) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->reinvestment)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->reinvestment)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->reinvestment - $key_ratio['previous_year'][$key]->reinvestment) ?></td>
                 </tr>
                 <tr>
-                    <td>Return on Assets</td>
+                    <td width='300px' style="text-align:left">Return on Assets</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->ebitda ?></td>
-                    <td><?= $cal_2[0]->ebitda ?></td>
-                    <td><?= $cal_1[0]->ebitda ?></td>
-                    <td><?= ($cal_1[0]->ebitda) - ($cal_2[0]->ebitda) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->return_on_assets)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->return_on_assets)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->return_on_assets - $key_ratio['previous_year'][$key]->return_on_assets) ?></td>
                 </tr>
                 <tr>
-                    <td>Return on Equity </td>
+                    <td width='300px' style="text-align:left">Return on Equity</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->return_on_equity ?></td>
-                    <td><?= $cal_2[0]->return_on_equity ?></td>
-                    <td><?= $cal_1[0]->return_on_equity ?></td>
-                    <td><?= ($cal_1[0]->return_on_equity) - ($cal_2[0]->return_on_equity) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->return_on_equity)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->return_on_equity)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->return_on_equity - $key_ratio['previous_year'][$key]->return_on_equity) ?></td>
                 </tr>
+                
             </tr>
         </tbody>
         <thead>
             <tr>
-                <th colspan="6" class="theading">Liquidity</th>
+            <th colspan="<?php echo count($input_data['previous_year'])+4  ?>" class="theading">Liquidity</th>
+               
             </tr>
 
         </thead>
         <tbody>
-            <tr>
-                <td>Working Capita</td>
-                <td>Thousands</td>
-                <td><?= $cal_3[0]->working_capital ?></td>
-                <td><?= $cal_2[0]->working_capital ?></td>
-                <td><?= $cal_1[0]->working_capital ?></td>
-                <td><?= ($cal_1[0]->working_capital) - ($cal_2[0]->working_capital) ?></td>
-            </tr>
-            <tr>
-                <td>Working Capital to Sales</td>
-                <td>%</td>
-                <td><?= $cal_3[0]->working_capital_to_sales ?></td>
-                <td><?= $cal_2[0]->working_capital_to_sales ?></td>
-                <td><?= $cal_1[0]->working_capital_to_sales ?></td>
-                <td><?= ($cal_1[0]->working_capital_to_sales) - ($cal_2[0]->working_capital_to_sales) ?></td>
-            </tr>
-            <tr>
-                <td>Cash Flow Coverage</td>
-                <td>%</td>
-                <td><?= $cal_3[0]->cash_flow_coverage ?></td>
-                <td><?= $cal_2[0]->cash_flow_coverage ?></td>
-                <td><?= $cal_1[0]->cash_flow_coverage ?></td>
-                <td><?= ($cal_1[0]->cash_flow_coverage) - ($cal_2[0]->cash_flow_coverage) ?></td>
-            </tr>
-            <tr>
-                <td>Cash Ratio</td>
-                <td>X</td>
-                <td><?= $cal_3[0]->cash_ratio ?></td>
-                <td><?= $cal_2[0]->cash_ratio ?></td>
-                <td><?= $cal_1[0]->cash_ratio ?></td>
-                <td><?= ($cal_1[0]->cash_ratio) - ($cal_2[0]->cash_ratio) ?></td>
-            </tr>
-            <tr>
-                <td>Current Ratio</td>
-                <td>x</td>
-                <td><?= $cal_3[0]->return_on_equity ?></td>
-                <td><?= $cal_2[0]->return_on_equity ?></td>
-                <td><?= $cal_1[0]->return_on_equity ?></td>
-                <td><?= ($cal_1[0]->return_on_equity) - ($cal_2[0]->return_on_equity) ?></td>
-            </tr>
-            <tr>
-                <td>Quick Ratio</td>
-                <td>x</td>
-                <td><?= $cal_3[0]->quick_ratio ?></td>
-                <td><?= $cal_2[0]->quick_ratio ?></td>
-                <td><?= $cal_1[0]->quick_ratio ?></td>
-                <td><?= ($cal_1[0]->quick_ratio) - ($cal_2[0]->quick_ratio) ?></td>
-            </tr>
-            <tr>
-                <td>Capital Adequacy</td>
-                <td>%</td>
-                <td><?= $cal_3[0]->capital_adequacy ?></td>
-                <td><?= $cal_2[0]->capital_adequacy ?></td>
-                <td><?= $cal_1[0]->capital_adequacy ?></td>
-                <td><?= ($cal_1[0]->capital_adequacy) - ($cal_2[0]->capital_adequacy) ?></td>
-            </tr>
+        <tr>
+                    <td width='300px' style="text-align:left">Working Capital</td>
+                    <td>Thousands</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->working_capital)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->working_capital)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->working_capital - $key_ratio['previous_year'][$key]->working_capital) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Working Capital to Sales</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->working_capital_to_sales)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->working_capital_to_sales)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->working_capital_to_sales - $key_ratio['previous_year'][$key]->working_capital_to_sales) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Cash Flow Coverage</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->cash_flow_coverage)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_flow_coverage)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_flow_coverage - $key_ratio['previous_year'][$key]->cash_flow_coverage) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Cash Ratio</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->cash_ratio)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_ratio)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_ratio - $key_ratio['previous_year'][$key]->cash_ratio) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Current Ratio</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->current_ratio)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->current_ratio)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->current_ratio - $key_ratio['previous_year'][$key]->current_ratio) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Quick Ratio</td>
+                    <td>x</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->quick_ratio)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->quick_ratio)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->quick_ratio - $key_ratio['previous_year'][$key]->quick_ratio) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Capital Adequacy</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->capital_adequacy)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->capital_adequacy)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->capital_adequacy - $key_ratio['previous_year'][$key]->capital_adequacy) ?></td>
+                </tr>
+            
+            
         </tbody>
 
         <thead>
             <tr>
-                <th colspan="6" class="theading">Gearing</th>
+            <th colspan="<?php echo count($input_data['previous_year'])+4  ?>" class="theading">Gearing</th>
             </tr>
 
         </thead>
         <tbody>
-            <tr>
-                <td>Net Tangible Worth</td>
-                <td>Thousands</td>
-                <td><?= $cal_3[0]->net_tangible_worth ?></td>
-                <td><?= $cal_2[0]->net_tangible_worth ?></td>
-                <td><?= $cal_1[0]->net_tangible_worth ?></td>
-                <td><?= ($cal_1[0]->net_tangible_worth) - ($cal_2[0]->net_tangible_worth) ?></td>
-            </tr>
-            <tr>
-                <td>Net Asset Backing</td>
-                <td>%</td>
-                <td><?= $cal_3[0]->net_asset_backing ?></td>
-                <td><?= $cal_2[0]->net_asset_backing ?></td>
-                <td><?= $cal_1[0]->net_asset_backing ?></td>
-                <td><?= ($cal_1[0]->net_asset_backing) - ($cal_2[0]->net_asset_backing) ?></td>
-            </tr>
-            <tr>
-                <td>Gearing</td>
-                <td>%</td>
-                <td><?= $cal_3[0]->gearing ?></td>
-                <td><?= $cal_2[0]->gearing ?></td>
-                <td><?= $cal_1[0]->gearing ?></td>
-                <td><?= ($cal_1[0]->gearing) - ($cal_2[0]->gearing) ?></td>
-            </tr>
-            <tr>
-                <td>Debt to Equity</td>
-                <td>X</td>
-                <td><?= $cal_3[0]->debt_to_equity ?></td>
-                <td><?= $cal_2[0]->debt_to_equity ?></td>
-                <td><?= $cal_1[0]->debt_to_equity ?></td>
-                <td><?= ($cal_1[0]->debt_to_equity) - ($cal_2[0]->debt_to_equity) ?></td>
-            </tr>
-            <tr>
-                <td>Interest Coverage</td>
-                <td>x</td>
-                <td><?= $cal_3[0]->interest_coverage ?></td>
-                <td><?= $cal_2[0]->interest_coverage ?></td>
-                <td><?= $cal_1[0]->interest_coverage ?></td>
-                <td><?= ($cal_1[0]->interest_coverage) - ($cal_2[0]->interest_coverage) ?></td>
-            </tr>
-            <tr>
-                <td>Repayment Capability</td>
-                <td>x</td>
-                <td><?= $cal_3[0]->repayment_capability ?></td>
-                <td><?= $cal_2[0]->repayment_capability ?></td>
-                <td><?= $cal_1[0]->repayment_capability ?></td>
-                <td><?= ($cal_1[0]->repayment_capability) - ($cal_2[0]->repayment_capability) ?></td>
-            </tr>
-            <tr>
-                <td>Financial Leverage</td>
-                <td>%</td>
-                <td><?= $cal_3[0]->financial_leverage ?></td>
-                <td><?= $cal_2[0]->financial_leverage ?></td>
-                <td><?= $cal_1[0]->financial_leverage ?></td>
-                <td><?= ($cal_1[0]->financial_leverage) - ($cal_2[0]->financial_leverage) ?></td>
-            </tr>
-            <tr>
-                <td>Short Ratio</td>
-                <td>x</td>
-                <td><?= $cal_3[0]->short_ratio ?></td>
-                <td><?= $cal_2[0]->short_ratio ?></td>
-                <td><?= $cal_1[0]->short_ratio ?></td>
-                <td><?= ($cal_1[0]->short_ratio) - ($cal_2[0]->short_ratio) ?></td>
-            </tr>
+        <tr>
+                    <td width='300px' style="text-align:left">Net Tangible Worth</td>
+                    <td>Thousands</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->net_tangible_worth)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->net_tangible_worth)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->net_tangible_worth - $key_ratio['previous_year'][$key]->net_tangible_worth) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Net Asset Backing</td>
+                    <td>Thousands</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->net_asset_backing)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->net_asset_backing)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->net_asset_backing - $key_ratio['previous_year'][$key]->net_asset_backing) ?></td>
+                </tr>
+               
+           
+                <tr>
+                    <td width='300px' style="text-align:left">Gearing</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->gearing)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->gearing)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->gearing - $key_ratio['previous_year'][$key]->gearing) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Debt to Equity</td>
+                    <td>X</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->debt_to_equity)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->debt_to_equity)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->debt_to_equity - $key_ratio['previous_year'][$key]->debt_to_equity) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Interest Coverage</td>
+                    <td>X</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->interest_coverage)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->interest_coverage)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->interest_coverage - $key_ratio['previous_year'][$key]->interest_coverage) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Repayment Capability</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->repayment_capability)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->repayment_capability)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->repayment_capability - $key_ratio['previous_year'][$key]->repayment_capability) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Financial Leverage</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->financial_leverage)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->financial_leverage)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->financial_leverage - $key_ratio['previous_year'][$key]->financial_leverage) ?></td>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Short Ratio</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->short_ratio)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->short_ratio)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->short_ratio - $key_ratio['previous_year'][$key]->short_ratio) ?></td>
+                </tr>
+            
         </tbody>
 
     </table>
@@ -1877,152 +1896,204 @@ reason in making a decision about the entity.</p>
 <page size="A4">
     <div class="header"></div>
     <div class="content">
-        <table class="table">
+        <table class="table table-bordered">
 
             <thead>
                 <tr>
-                    <th colspan="6" class="theading">Operating</th>
+                <th colspan="<?php echo count($input_data['previous_year'])+4  ?>" class="theading">Operating</th>
                 </tr>
 
             </thead>
             <tbody>
-                <tr>
-                    <td>Operating Leverage</td>
-                    <td>x</td>
-                    <td><?= $cal_3[0]->operating_leverage ?></td>
-                    <td><?= $cal_2[0]->operating_leverage ?></td>
-                    <td><?= $cal_1[0]->operating_leverage ?></td>
-                    <td><?= ($cal_1[0]->operating_leverage) - ($cal_2[0]->operating_leverage) ?></td>
-                </tr>
-                <tr>
-                    <td>Creditor Exposure</td>
+            <tr>
+                    <td width='300px' style="text-align:left">Operating Leverage</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->creditor_exposure ?></td>
-                    <td><?= $cal_2[0]->creditor_exposure ?></td>
-                    <td><?= $cal_1[0]->creditor_exposure ?></td>
-                    <td><?= ($cal_1[0]->creditor_exposure) - ($cal_2[0]->creditor_exposure) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->operating_leverage)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->operating_leverage)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->operating_leverage - $key_ratio['previous_year'][$key]->operating_leverage) ?></td>
                 </tr>
                 <tr>
-                    <td>Creditor Days</td>
-                    <td>Days</td>
-                    <td><?= $cal_3[0]->creditor_days ?></td>
-                    <td><?= $cal_2[0]->creditor_days ?></td>
-                    <td><?= $cal_1[0]->creditor_days ?></td>
-                    <td><?= ($cal_1[0]->creditor_days) - ($cal_2[0]->creditor_days) ?></td>
+                    <td width='300px' style="text-align:left">Creditor Exposure</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->creditor_exposure)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->creditor_exposure)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->creditor_exposure - $key_ratio['previous_year'][$key]->creditor_exposure) ?></td>
                 </tr>
                 <tr>
-                    <td>Inventory Days</td>
+                    <td width='300px' style="text-align:left">Creditor Days</td>
                     <td>Days</td>
-                    <td><?= $cal_3[0]->inventory_days ?></td>
-                    <td><?= $cal_2[0]->inventory_days ?></td>
-                    <td><?= $cal_1[0]->inventory_days ?></td>
-                    <td><?= ($cal_1[0]->inventory_days) - ($cal_2[0]->inventory_days) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->creditor_days)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->creditor_days)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->creditor_days - $key_ratio['previous_year'][$key]->creditor_days) ?></td>
                 </tr>
                 <tr>
-                    <td>Debtor Days</td>
+                    <td width='300px' style="text-align:left">Inventory Days</td>
                     <td>Days</td>
-                    <td><?= $cal_3[0]->debtor_days ?></td>
-                    <td><?= $cal_2[0]->debtor_days ?></td>
-                    <td><?= $cal_1[0]->debtor_days ?></td>
-                    <td><?= ($cal_1[0]->debtor_days) - ($cal_2[0]->debtor_days) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->inventory_days)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->inventory_days)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->inventory_days - $key_ratio['previous_year'][$key]->inventory_days) ?></td>
                 </tr>
                 <tr>
-                    <td>Cash Conversion Cycle</td>
+                    <td width='300px' style="text-align:left">Debtor Days</td>
                     <td>Days</td>
-                    <td><?= $cal_3[0]->cash_conversion_cycle ?></td>
-                    <td><?= $cal_2[0]->cash_conversion_cycle ?></td>
-                    <td><?= $cal_1[0]->cash_conversion_cycle ?></td>
-                    <td><?= ($cal_1[0]->cash_conversion_cycle) - ($cal_2[0]->cash_conversion_cycle) ?></td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->debtor_days)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->debtor_days)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->debtor_days - $key_ratio['previous_year'][$key]->debtor_days) ?></td>
                 </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Cash Conversion Cycle</td>
+                    <td>Days</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->cash_conversion_cycle)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_conversion_cycle)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_conversion_cycle - $key_ratio['previous_year'][$key]->cash_conversion_cycle) ?></td>
+                </tr>
+                
+                
             </tbody>
 
             <thead>
-                <tr>
-                    <th colspan="6" class="theading">Other Indicators</th>
+            <tr>
+                <th colspan="<?php echo count($input_data['previous_year'])+4  ?>" class="theading">Other Indicators</th>
                 </tr>
+               
 
             </thead>
             <tbody>
-                <tr>
-                    <td>Sales (Annualised) </td>
+            <tr>
+                    <td width='300px' style="text-align:left">Sales (Annualised)</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->sales_annualised ?></td>
-                    <td><?= $cal_2[0]->sales_annualised ?></td>
-                    <td><?= $cal_1[0]->sales_annualised ?></td>
-                    <td><?= ($cal_1[0]->sales_annualised) - ($cal_2[0]->sales_annualised) ?></td>
-                </tr>
-                <tr>
-                    <td>Activity</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->sales_annualised)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->sales_annualised)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->sales_annualised - $key_ratio['previous_year'][$key]->sales_annualised) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Activity</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->activity ?></td>
-                    <td><?= $cal_2[0]->activity ?></td>
-                    <td><?= $cal_1[0]->activity ?></td>
-                    <td><?= ($cal_1[0]->activity) - ($cal_2[0]->activity) ?></td>
-                </tr>
-                <tr>
-                    <td>Sales Growth</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->activity)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->activity)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->activity - $key_ratio['previous_year'][$key]->activity) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Sales Growth</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->sales_growth ?></td>
-                    <td><?= $cal_2[0]->sales_growth ?></td>
-                    <td><?= $cal_1[0]->sales_growth ?></td>
-                    <td><?= ($cal_1[0]->sales_growth) - ($cal_2[0]->sales_growth) ?></td>
-                </tr>
-                <tr>
-                    <td>Related Party Loans Receivable</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->sales_growth)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->sales_growth)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->sales_growth - $key_ratio['previous_year'][$key]->sales_growth) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Related Party Loans Receivable</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->related_party_loans_receivable ?></td>
-                    <td><?= $cal_2[0]->related_party_loans_receivable ?></td>
-                    <td><?= $cal_1[0]->related_party_loans_receivable ?></td>
-                    <td><?= ($cal_1[0]->related_party_loans_receivable) - ($cal_2[0]->related_party_loans_receivable) ?></td>
-                </tr>
-                <tr>
-                    <td>Related Party Loans Payable </td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->related_party_loans_receivable)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->related_party_loans_receivable)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->related_party_loans_receivable - $key_ratio['previous_year'][$key]->related_party_loans_receivable) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Related Party Loans Payable</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->related_party_loans_payable ?></td>
-                    <td><?= $cal_2[0]->related_party_loans_payable ?></td>
-                    <td><?= $cal_1[0]->related_party_loans_payable ?></td>
-                    <td><?= ($cal_1[0]->related_party_loans_payable) - ($cal_2[0]->related_party_loans_payable) ?></td>
-                </tr>
-                <tr>
-                    <td>Related Party Loans Dependency</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->related_party_loans_payable)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->related_party_loans_payable)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->related_party_loans_payable - $key_ratio['previous_year'][$key]->related_party_loans_payable) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Related Party Loans Dependency</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->related_party_loans_dependency ?></td>
-                    <td><?= $cal_2[0]->related_party_loans_dependency ?></td>
-                    <td><?= $cal_1[0]->related_party_loans_dependency ?></td>
-                    <td><?= ($cal_1[0]->related_party_loans_dependency) - ($cal_2[0]->related_party_loans_dependency) ?></td>
-                </tr>
-                <tr>
-                    <td>Quick Asset Composition</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->related_party_loans_dependency)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->related_party_loans_dependency)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->related_party_loans_dependency - $key_ratio['previous_year'][$key]->related_party_loans_dependency) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Quick Asset Composition</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->quick_asset_composition ?></td>
-                    <td><?= $cal_2[0]->quick_asset_composition ?></td>
-                    <td><?= $cal_1[0]->quick_asset_composition ?></td>
-                    <td><?= ($cal_1[0]->quick_asset_composition) - ($cal_2[0]->quick_asset_composition) ?></td>
-                </tr>
-                <tr>
-                    <td>Current Asset Composition</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->quick_asset_composition)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->quick_asset_composition)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->quick_asset_composition - $key_ratio['previous_year'][$key]->quick_asset_composition) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Current Asset Composition</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->current_asset_composition ?></td>
-                    <td><?= $cal_2[0]->current_asset_composition ?></td>
-                    <td><?= $cal_1[0]->current_asset_composition ?></td>
-                    <td><?= ($cal_1[0]->current_asset_composition) - ($cal_2[0]->current_asset_composition) ?></td>
-                </tr>
-                <tr>
-                    <td>Current Liability Composition</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->current_asset_composition)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->current_asset_composition)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->current_asset_composition - $key_ratio['previous_year'][$key]->current_asset_composition) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Current Liability Composition</td>
                     <td>%</td>
-                    <td><?= $cal_3[0]->current_liability_composition ?></td>
-                    <td><?= $cal_2[0]->current_liability_composition ?></td>
-                    <td><?= $cal_1[0]->current_liability_composition ?></td>
-                    <td><?= ($cal_1[0]->current_liability_composition) - ($cal_2[0]->current_liability_composition) ?></td>
-                </tr>
-                <tr>
-                    <td>Z-Score Risk Measure</td>
-                    <td></td>
-                    <td><?= $cal_3[0]->zscore_risk_measure ?></td>
-                    <td><?= $cal_2[0]->zscore_risk_measure ?></td>
-                    <td><?= $cal_1[0]->zscore_risk_measure ?></td>
-                    <td><?= ($cal_1[0]->zscore_risk_measure) - ($cal_2[0]->zscore_risk_measure) ?></td>
-                </tr>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->current_liability_composition)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->current_liability_composition)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->current_liability_composition - $key_ratio['previous_year'][$key]->current_liability_composition) ?></td>
+            </tr>
+            <tr>
+                    <td width='300px' style="text-align:left">Z-Score Risk Measure</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->zscore_risk_measure)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->zscore_risk_measure)?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->zscore_risk_measure - $key_ratio['previous_year'][$key]->zscore_risk_measure) ?></td>
+            </tr>
+             
             </tbody>
         </table>
     </div>
@@ -2087,5 +2158,336 @@ page[size="A4"] {
 }
 
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    
+    //Api Data Entry No
+    var entryNo = '<?php echo $api_data->entry_no; ?>';
+    var report_id = '<?php echo $input_data['current_year']->id; ?>';
+    $.ajax({
+        method:"GET",
+        url:"/main/getCreditScoreHistory/"+entryNo,
+        dataType:"JSON",
+        success:function(res){
+            var chart = Highcharts.chart('credit-chart', {
+    xAxis: {
+        categories: res.date
+    },
+    plotOptions: {
+        series: {
+            allowPointSelect: true
+        }
+    },
+    series: [{
+        
+        name: 'Credit Score',
+        data: res.value
+    }]
+});
+        }
+    });
+   
+
+
+
+//Revenue Chart
+
+// main/getRevenueChartData/37
+
+$.ajax({
+        method:"GET",
+        url:"/main/getRevenueChartData/"+report_id,
+        dataType:"JSON",
+        success:function(res){
+            Highcharts.chart('revenue_chart', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Revenue Chart'
+            },
+            xAxis: {
+                categories: res.year
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Revenue',
+                data: res.value
+            }]
+        });
+        }
+    });
+
+
+//GP NP margin chart
+
+$.ajax({
+        method:"GET",
+        url:"/main/getNpAndGPMarginChartData/"+report_id,
+        dataType:"JSON",
+        success:function(res){
+            Highcharts.chart('gp_np_margin', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'GP & NP Margin'
+            },
+            
+            xAxis: {
+                categories: res.year
+            },
+            yAxis: {
+                title: {
+                    text: 'Amount'
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'Gross Profit Margin',
+                data: res.gp
+            }, {
+                name: 'Net Profit Margin',
+                data: res.np
+            }]
+        });
+       
+        }
+    });
+
+
+
+// GP and NP
+
+// getGrossNetProfitChartData
+
+$.ajax({
+        method:"GET",
+        url:"/main/getGrossNetProfitChartData/"+report_id,
+        dataType:"JSON",
+        success:function(res){
+            Highcharts.chart('gp_np', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Gross Profit & Net Profit'
+            },
+            xAxis: {
+                categories: res.year
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Gross profit',
+                data: res.gp
+            }, {
+                name: 'Net Profit',
+                data: res.np
+            }]
+        });
+        }
+       
+        
+    });
+
+
+// Normalized EbitDA and Ebit
+
+$.ajax({
+        method:"GET",
+        url:"/main/getNormalizedEbitChartData/"+report_id,
+        dataType:"JSON",
+        success:function(res){
+            Highcharts.chart('ebitda', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Normalized EBITDA and EBIT'
+            },
+            xAxis: {
+                categories: res.year
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Normalised EBITDA',
+                data: res.normalized_ebit
+            }, {
+                name: 'EBIT',
+                data: res.ebit
+            }]
+});
+        }
+       
+        
+    });
+
+
+
+// Liquidity Ratios
+
+$.ajax({
+        method:"GET",
+        url:"/main/getRatioChartData/"+report_id,
+        dataType:"JSON",
+        success:function(res){
+            Highcharts.chart('ratio', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Liquidity Ratios'
+            },
+            xAxis: {
+                categories: res.year
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Current Ratio',
+                data: res.current_ratio
+            }, {
+                name: 'Quick Ratio',
+                data: res.quick_ratio
+            }, {
+                name: 'Cash Ratio',
+                data: res.cash_ratio
+            }]
+        });
+        }
+       
+        
+    });
+
+
+// Working Capital
+
+$.ajax({
+        method:"GET",
+        url:"/main/getWorkingCapitalData/"+report_id,
+        dataType:"JSON",
+        success:function(res){
+            Highcharts.chart('capital', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Working Capital'
+            },
+            xAxis: {
+                categories: res.year
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Current Assets',
+                data: res.current_assets
+            }, {
+                name: 'Current Liabilities',
+                data: res.current_liabilities
+            }, {
+                name: 'Working Capital',
+                data: res.working_capital
+            }]
+        }); 
+        }
+       
+        
+    });
+
+
+// equity
+
+Highcharts.chart('equity', {
+    title: {
+        text: 'Equity'
+    },
+    xAxis: {
+        categories: ["2018","2019"]
+    },
+    labels: {
+       
+    },
+    series: [{
+        type: 'column',
+        name: 'Total Assets',
+        data: [3, 2]
+    }, {
+        type: 'column',
+        name: 'Total Debt',
+        data: [2, 3]
+    }, {
+        type: 'spline',
+        name: 'Equity',
+        data: [3, 2.67],
+        marker: {
+            lineWidth: 2,
+            lineColor: Highcharts.getOptions().colors[3],
+            fillColor: 'white'
+        }
+    }]
+});
+
+//Interest Cover
+
+$.ajax({
+        method:"GET",
+        url:"/main/getInterestCoverChartData/"+report_id,
+        dataType:"JSON",
+        success:function(res){
+            Highcharts.chart('interest_cover', {
+            title: {
+                text: 'Debt to Equity and Interest Cover'
+            },
+            xAxis: {
+                categories: res.year
+            },
+            labels: {
+            
+            },
+            series: [{
+                type: 'column',
+                name: 'Debt/Equity',
+                data: res.debt
+            },{
+                type: 'spline',
+                name: 'Interest Cover',
+                data: res.interest,
+                marker: {
+                    lineWidth: 2,
+                    lineColor: Highcharts.getOptions().colors[3],
+                    fillColor: 'white'
+                }
+            }]
+});  
+        }
+       
+        
+    });
+
+
+});
+
+
+
+
+</script>
 </html>

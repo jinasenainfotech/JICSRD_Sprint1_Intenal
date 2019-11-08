@@ -141,19 +141,74 @@ class Main extends MY_Controller {
 
 	}
 
+	public function getCreditScoreHistory($id)
+	{
+		//Get Credit Score Data
+		$creditScore = $this->Main_model->getCreditScoreData($id);
+		
+		$scoreArray = [];
+		foreach($creditScore as $key => $scoreData){
+
+			$scoreArray['date'][$key] =$scoreData->date;
+			$scoreArray['value'][$key] =intval($scoreData->score);
+		}
+			$scoreArray['date'] = array_reverse($scoreArray['date']);
+			$scoreArray['value'] = array_reverse($scoreArray['value']);
+		
+		
+		echo json_encode($scoreArray);
+	}
+
 	public function view_report(){
 		if(isset($_GET['id'])){
+
 			$id = $this->input->get('id');
-			$this->data['qun_1'] = $this->Main_model->get_data_for_report(intval($id));
-			$this->data['qun_2'] = $this->Main_model->get_data_for_report(intval($id) - 1);
-			$this->data['qun_3'] = $this->Main_model->get_data_for_report(intval($id) - 2);
-			$this->data['cal_1'] = $this->Main_model->get_data_cal(intval($id));
-			$this->data['cal_2'] = $this->Main_model->get_data_cal(intval($id) - 1);
-			$this->data['cal_3'] = $this->Main_model->get_data_cal(intval($id) - 2);
 
+			$whereArray = ['id'=>$id];
 
-// var_dump($this->data['cal_1']);exit();
-			$this->load->view('report',$this->data);
+			$currentYearData = $this->Main_model->getReportData($whereArray)[0];
+
+			// Get Api Data
+			$apiData = $this->Main_model->getApiData($id);
+			$apiDataEntryNo = $apiData->entry_no;
+			
+
+			$currentReportId = $currentYearData->id;
+			$currentReportYear = $currentYearData->financial_year;
+			$companyId = $currentYearData->company_name;
+
+			
+
+			$keyRatioWhere = [
+				'qun_id' => $id
+			];
+
+			$keyRatioData = $this->Main_model->getKeyRatioDataForReport($keyRatioWhere)[0];
+		
+			// Pervious financial years data
+			$previousYearsData = $this->Main_model->getPreviousYearData($currentReportYear,$companyId);
+			// Sort Data as Asc
+			ksort($previousYearsData);
+
+			//Get Previous Years
+			$previousKeyRatioData = [];
+			foreach($previousYearsData as $previous){
+			
+				$data = $this->Main_model->getPreviousKeyRatio($previous->id);
+				$previousKeyRatioData[$previous->financial_year] = $data;
+				
+			}
+
+			ksort($previousKeyRatioData);
+			
+			$response['input_data']['current_year'] = $currentYearData;
+			$response['input_data']['previous_year'] = $previousYearsData;
+			$response['key_ratio']['current_year'] = $keyRatioData;
+			$response['key_ratio']['previous_year'] = $previousKeyRatioData;
+			$response['api_data'] = $apiData;
+			// var_dump($response['input_data']);die;
+		
+			$this->load->view('report',$response);
 
 		}else{
 			$this->jics->alert('error','Report error','Data Grab is not complete');
@@ -377,6 +432,285 @@ class Main extends MY_Controller {
 		}
 		
 
+	}
+
+
+	/**
+	 * Get Current Year Report Data
+	 *
+	 * @param array $array
+	 * @return void
+	 */
+	public function getCurrentYearReportData($array)
+	{
+		return  $this->Main_model->getReportData($array)[0];
+	}
+
+	public function getPreviousYearData($year, $company)
+	{
+		return $this->Main_model->getPreviousYearData($year, $company);
+	}
+
+
+	/**
+	 * Get Revenue Chart Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getRevenueChartData($id)
+	{
+		
+		$where = [
+			'id'=>$id
+		];
+		$reportData = $this->getCurrentYearReportData($where);
+		
+		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
+				
+		$dataArray['year'] = [];
+		$dataArray['value'] = [];
+		foreach($previousYearData as $key => $previous){
+
+			array_push($dataArray['year'],$previous->financial_year);
+			array_push($dataArray['value'],floatval($previous->sales));
+			
+		}
+		array_push($dataArray['year'],$reportData->financial_year);
+		array_push($dataArray['value'],floatval($reportData->sales));
+
+
+		echo json_encode($dataArray);
+	}
+
+	/**
+	 * Get NP & GP Margin Chart Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getNpAndGPMarginChartData($id)
+	{
+		$where = [
+			'id'=>$id
+		];
+		$reportData = $this->getCurrentYearReportData($where);
+		
+		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
+		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
+		
+				
+		$dataArray['year'] = [];
+		$dataArray['gp'] = [];
+		$dataArray['np'] = [];
+		foreach($previousYearData as $key => $previous){
+			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
+			
+			array_push($dataArray['year'],$previous->financial_year);
+			array_push($dataArray['gp'],floatval($previousKeyRatio->gross_profit_margin));
+			array_push($dataArray['np'],floatval($previousKeyRatio->net_profit_margin));
+			
+		}
+		array_push($dataArray['year'],$reportData->financial_year);
+		array_push($dataArray['gp'],floatval($currentKeyRatio->gross_profit_margin));
+		array_push($dataArray['np'],floatval($currentKeyRatio->net_profit_margin));
+
+
+		echo json_encode($dataArray);
+	}
+
+	/**
+	 * Get Gross & Profit Chart Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getGrossNetProfitChartData($id)
+	{
+		$where = [
+			'id'=>$id
+		];
+		$reportData = $this->getCurrentYearReportData($where);
+		
+		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
+				
+		$dataArray['year'] = [];
+		$dataArray['gp'] = [];
+		$dataArray['np'] = [];
+		foreach($previousYearData as $key => $previous){
+
+			array_push($dataArray['year'],$previous->financial_year);
+			array_push($dataArray['gp'],floatval($previous->gross_profit));
+			array_push($dataArray['np'],floatval($previous->profit_before_tax));
+			
+		}
+		array_push($dataArray['year'],$reportData->financial_year);
+		array_push($dataArray['gp'],floatval($reportData->gross_profit));
+		array_push($dataArray['np'],floatval($reportData->profit_before_tax));
+
+
+		echo json_encode($dataArray);
+	}
+
+	/**
+	 * Get Normalized Ebit Chart Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getNormalizedEbitChartData($id)
+	{
+		$where = [
+			'id'=>$id
+		];
+		$reportData = $this->getCurrentYearReportData($where);
+		
+		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
+				
+		$dataArray['year'] = [];
+		$dataArray['ebit'] = [];
+		$dataArray['normalized_ebit'] = [];
+		foreach($previousYearData as $key => $previous){
+
+			array_push($dataArray['year'],$previous->financial_year);
+			array_push($dataArray['ebit'],floatval($previous->ebit));
+			array_push($dataArray['normalized_ebit'],floatval($previous->normalised_ebitda));
+			
+		}
+		array_push($dataArray['year'],$reportData->financial_year);
+		array_push($dataArray['ebit'],floatval($reportData->ebit));
+		array_push($dataArray['normalized_ebit'],floatval($reportData->normalised_ebitda));
+
+
+		echo json_encode($dataArray);
+	}
+
+	/**
+	 * Get Ratio Chart Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getRatioChartData($id)
+	{
+		$where = [
+			'id'=>$id
+		];
+		$reportData = $this->getCurrentYearReportData($where);
+		
+		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
+		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
+		
+				
+		$dataArray['year'] = [];
+		$dataArray['current_ratio'] = [];
+		$dataArray['quick_ratio'] = [];
+		$dataArray['cash_ratio'] = [];
+		foreach($previousYearData as $key => $previous){
+			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
+			
+			array_push($dataArray['year'],$previous->financial_year);
+			array_push($dataArray['current_ratio'],floatval($previousKeyRatio->current_ratio));
+			array_push($dataArray['quick_ratio'],floatval($previousKeyRatio->quick_ratio));
+			array_push($dataArray['cash_ratio'],floatval($previousKeyRatio->cash_ratio));
+			
+		}
+		array_push($dataArray['year'],$reportData->financial_year);
+		array_push($dataArray['current_ratio'],floatval($currentKeyRatio->current_ratio));
+		array_push($dataArray['quick_ratio'],floatval($currentKeyRatio->quick_ratio));
+		array_push($dataArray['cash_ratio'],floatval($currentKeyRatio->cash_ratio));
+
+
+		echo json_encode($dataArray);
+	}
+
+	/**
+	 * Get Equity Chart Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getWorkingetEquityChartData($id)
+	{
+
+	}
+
+	/**
+	 * Get Working Capital Chart Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getWorkingCapitalData($id)
+	{
+		$where = [
+			'id'=>$id
+		];
+		$reportData = $this->getCurrentYearReportData($where);
+		
+		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
+		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
+		
+				
+		$dataArray['year'] = [];
+		$dataArray['current_assets'] = [];
+		$dataArray['current_liabilities'] = [];
+		$dataArray['working_capital'] = [];
+		foreach($previousYearData as $key => $previous){
+			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
+			
+			array_push($dataArray['year'],$previous->financial_year);
+			array_push($dataArray['current_assets'],floatval($previousKeyRatio->current_asset_composition));
+			array_push($dataArray['current_liabilities'],floatval($previousKeyRatio->current_liability_composition));
+			array_push($dataArray['working_capital'],floatval($previousKeyRatio->working_capital));
+			
+		}
+		array_push($dataArray['year'],$reportData->financial_year);
+		array_push($dataArray['current_assets'],floatval($currentKeyRatio->current_asset_composition));
+		array_push($dataArray['current_liabilities'],floatval($currentKeyRatio->current_liability_composition));
+		array_push($dataArray['working_capital'],floatval($currentKeyRatio->working_capital));
+
+
+		echo json_encode($dataArray);
+	}
+
+	/**
+	 * Get Interest Cover Chart Data
+	 *
+	 * @param int $id
+	 * @return void
+	 */
+	public function getInterestCoverChartData($id)
+	{
+		$where = [
+			'id'=>$id
+		];
+		$reportData = $this->getCurrentYearReportData($where);
+		
+		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
+		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
+		
+				
+		$dataArray['year'] = [];
+		$dataArray['debt'] = [];
+		$dataArray['interest'] = [];
+		
+		foreach($previousYearData as $key => $previous){
+			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
+			
+			array_push($dataArray['year'],$previous->financial_year);
+			array_push($dataArray['interest'],floatval($previousKeyRatio->interest_coverage));
+			array_push($dataArray['debt'],floatval($previousKeyRatio->debt_to_equity));
+			
+			
+		}
+		array_push($dataArray['year'],$reportData->financial_year);
+		array_push($dataArray['interest'],floatval($currentKeyRatio->interest_coverage));
+		array_push($dataArray['debt'],floatval($currentKeyRatio->debt_to_equity));
+		
+
+
+		echo json_encode($dataArray);
 	}
 
 	
