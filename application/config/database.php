@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => 'jicsrd-uat.mysql.database.azure.com',
+	'username' => 'JICSRDAdmin@jicsrd-uat',
+	'password' => 'P@ssw0rdJICSRD',
 	'database' => 'jicscw_dev',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
