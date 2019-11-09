@@ -408,6 +408,9 @@ Class Main_model extends CI_Model {
 
 	public function delete_user_by_id($id){
 		
+		$this->db->where('user_id', $id);
+		$this->db->delete('user');
+		return true;
 	}
 
 	public function password_update($id,$password,$recovery_key){

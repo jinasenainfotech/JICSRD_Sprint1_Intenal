@@ -1225,7 +1225,7 @@ public function edit_user(){
 public function delete_user(){
 	$this->jics->auth();
 
-	if($this->Main_model->delete_user_by_id($this->input->post('id')) == true){
+	if($this->Main_model->delete_user_by_id($this->input->post('id'))){
 		echo '1';
 	}else{
 		echo "0";

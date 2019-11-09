@@ -7,7 +7,7 @@
             <div class="col-md-4">
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select the company</label>
                 <select class="custom-select mr-sm-2" name="company" id="coaskd">
-                    <option disabled selected value>Select the Company</option>
+                    <option disabled selected value="">Select the Company</option>
                     <?php
                         // var_dump($companies);exit(); 
                     if(isset($companies)){
@@ -57,11 +57,19 @@
 
             });
             $(document).on('click', '#find', function(event) {
-                $.post("<?= base_url('main/get_d_tbl') ?>",{
+                var company = $('#coaskd').val();
+                var country = $('#country').val();
+
+                if(company == "" && country == ""){
+                    alert('Please select Company and Country');
+                }else{
+                    $.post("<?= base_url('main/get_d_tbl') ?>",{
                     id:$('#coaskd').val(),
                 },function(D){
                     $('#tablellll').html(D);
                 },"text");
+                }
+                
             });
         </script>
         <div class="col-md-12">
