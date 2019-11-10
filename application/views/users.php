@@ -72,7 +72,7 @@
 			</div>
 		</div>
 		<div class="col">
-			<div class="form-group">
+			<div class="form-group" id="designation">
 				<label for="designation">Designation</label>
 				<select id="designation" name="designation" class="browser-default custom-select">
 					<option selected disabled>Designation</option>
@@ -186,6 +186,14 @@
 		});
 	});
 
+	$('#user_role').change(function(){
+		var user_role = $("#user_role").val();
+		if(user_role==3){
+			$("#designation").show();
+		}else{
+			$("#designation").hide();
+		}
+	})
 
 	function user_edit(user_id) {
 		$.post("<?= base_url('main/edit_user')?>", {

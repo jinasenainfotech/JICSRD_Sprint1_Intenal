@@ -17,7 +17,7 @@
     <!-- <script src="https://code.highcharts.com/highcharts.src.js"></script> -->
         <!--   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-            <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         </head>
 <?php 
 // var_dump();die;
@@ -40,7 +40,7 @@
                                 <p>Phone 1300 50 13 12 | Email admin@creditorwatch.com.au</p>
                                 <h1>Financial Analysis Enriched Credit Report</h1>
                             <div class="d-flex flex-wrap justify-content-center pt-2 ">
-                                <button class="btn btn-primary mt-5 " onclick="window.print();" style="font-size:30px">Print this page</button></div>
+                                <button class="btn btn-primary mt-5 prnt-btn " onclick="window.print();" style="font-size:30px">Print this page</button></div>
                             </div>
                         </div>
 
@@ -213,7 +213,7 @@
   </div>
   <div class="col-md-4"> 
       <p class="text-right">0</p>
-      <p class="text-right">Higher Risk</p>
+      <p class="text-right">Lower Risk</p>
   </div>
   </div> 
   </div>
@@ -292,10 +292,10 @@ reason in making a decision about the entity.</p>
             <tr>
                     <th width='300px' style="text-align:left">Financial Year</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><strong><?= $previous->financial_year?>(previous)</strong></td>
+                    <td width="14%" style="text-align:right"><strong><?= $previous->financial_year?></strong></td>
                     <?php } ?>
                     
-                    <td width="14%" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    <td width="14%" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?></strong></td>
                    
                 </tr>
                 <tr>
@@ -364,13 +364,13 @@ reason in making a decision about the entity.</p>
             <tr>
                     <td colspan="<?php echo count($input_data['previous_year']);?>" width='300px' style="text-align:left">Financial Year</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?>(Previous)</strong></td>
+                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?></strong></td>
                     <?php }
                    
                    
                     ?>
                    
-                    <td colspan="<?php echo (count($input_data['previous_year']>0))? 2 : "" ?>" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    <td colspan="<?php echo (count($input_data['previous_year']>0))? 2 : "" ?>" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?></strong></td>
                     
                    
                 </tr>
@@ -528,13 +528,13 @@ reason in making a decision about the entity.</p>
             <tr>
                     <td colspan="<?php echo count($input_data['previous_year']);?>" width='300px' style="text-align:left">Financial Year</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?>(Previous)</strong></td>
+                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?></strong></td>
                     <?php }
                    
                    
                     ?>
                    
-                    <td colspan="<?php echo (count($input_data['previous_year']>0))? 2 : "" ?>" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    <td colspan="<?php echo (count($input_data['previous_year']>0))? 2 : "" ?>" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?></strong></td>
                     
                    
                 </tr>
@@ -797,10 +797,10 @@ reason in making a decision about the entity.</p>
             <tr>
                     <th width='300px' style="text-align:left">Financial Year</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><strong><?= $previous->financial_year?>(previous)</strong></td>
+                    <td width="14%" style="text-align:right"><strong><?= $previous->financial_year?></strong></td>
                     <?php } ?>
                     
-                    <td width="14%" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    <td width="14%" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?></strong></td>
                    
                 </tr>
                 <tr>
@@ -889,13 +889,13 @@ reason in making a decision about the entity.</p>
                     <tr>
                     <td colspan="" width='300px' style="text-align:left">Financial Year</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?>(Previous)</strong></td>
+                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?></strong></td>
                     <?php }
                    
                    
                     ?>
                    
-                    <td colspan="" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    <td colspan="" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?></strong></td>
                     
                    
                 </tr>
@@ -1197,13 +1197,13 @@ reason in making a decision about the entity.</p>
             <tr>
                     <td colspan="" width='300px' style="text-align:left">Financial Year</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?>(Previous)</strong></td>
+                    <td width="" style="text-align:right"><strong><?=($previous->financial_year)?></strong></td>
                     <?php }
                    
                    
                     ?>
                    
-                    <td colspan="" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?>(Current)</strong></td>
+                    <td colspan="" width="" style="text-align:center"><strong><?= $input_data['current_year']->financial_year?></strong></td>
                     
                    
                 </tr>
@@ -2384,7 +2384,7 @@ reason in making a decision about the entity.</p>
         padding: 20px 20px;
     }
     .table td, .table th {
-        padding: .60rem;
+        /* padding: .60rem; */
         vertical-align: top;
         border-top: 1px solid #dee2e6;
     }
@@ -2394,6 +2394,9 @@ reason in making a decision about the entity.</p>
         page {
             margin: 0;
             box-shadow: 0;
+        }
+        .prnt-btn{
+            display:none;
         }
         .content {
             width: 100%;
