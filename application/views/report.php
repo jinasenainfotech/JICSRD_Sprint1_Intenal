@@ -2212,9 +2212,159 @@ reason in making a decision about the entity.</p>
              
             </tbody>
         </table>
+        <div class="">
+        <h3 class="">
+    Glossary of Financial Calculations 
+    </h3>
+<div class="">
+    
+    <table class="table table-bordered table-collapse">
+        <tr class="bg-primary">
+            <th>Profitability Indicators</th>
+            <th>Profitability Indicators</th>
+        </tr>
+        <tr>
+            <td>Gross Profit Margin</td>
+            <td>Gross Profit / Sales shown as a percentage</td>
+        </tr>
+        <tr>
+            <td>EBITDA</td>
+            <td>Earnings Before Interest Depreciation Tax and Amortisation</td>
+        </tr>
+        <tr>
+            <td>Normalised EBITDA</td>
+            <td>Earnings Before Interest Depreciation Tax Amortisation & Extraordinary Items</td>
+        </tr>
+        <tr>
+            <td>EBIT</td>
+            <td>Earnings Before Interest and Tax</td>
+        </tr>
+        <tr>
+            <td>Net Profit Margin</td>
+            <td>Net Profit before Tax / Sales shown as a percentage</td>
+        </tr>
+        <tr>
+            <td>Profitability</td>
+            <td>Annualised Profit after Tax and Dividends / Total Assets shown as a percentage</td>
+        </tr>
+        <tr>
+            <td>Reinvestment</td>
+            <td>Retained Earnings / Total Assets shown as a percentage</td>
+        </tr>
+        <tr>
+            <td>Return on Assets</td>
+            <td>Annualised Profit before Interest and Tax / Total Assets shown as a percentage</td>
+        </tr>
+        <tr>
+            <td>Return on Equity</td>
+            <td>Annualised Profit after Tax / Shareholders Equity shown as a percentage</td>
+        </tr>
+        <tr class="bg-primary">
+            <th>Liquidity Indicators</th>
+            <th>Calculation</th>
+        </tr> 
+        <tr>
+            <td>Working Capital</td>
+            <td>Current Assets - Current Liabilities</td>
+        </tr>   
+        <tr>
+            <td>Working Capital to Sales</td>
+            <td>Working Capital / Annualised Sales shown as a percentage</td>
+        </tr> 
+        <tr>
+            <td>Cash Flow Coverage</td>
+            <td>Annualised Operating Cash Flow / Current Liabilities shown as a percentage</td>
+        </tr>  
+        <tr>
+            <td>Cash Ratio</td>
+            <td>Cash/Current Liabilities shown as a percentage</td>
+        </tr>    
+        <tr>
+            <td>Current Ratio</td>
+            <td>Current Assets / Current Liabilities</td>
+        </tr>    
+        <tr>
+            <td>Quick Ratio</td>
+            <td>(Current Assets - Inventories) / Current Liabilities</td>
+        </tr>
+        <tr>
+            <td>Capital Adequacy</td>
+            <td>Adjusted Net Tangible Assets/Annualised Sales shown as a percentage</td>
+        </tr> 
+        <tr class="bg-primary">
+            <th>Gearing Indicators</th>
+            <th>Calculation</th>
+        </tr>  
+        <tr>
+            <td>Net Tangible Worth</td>
+            <td>Total Net Assets - Intangibles</td>
+        </tr>  
+        <tr>
+            <td>Net Asset Backing</td>
+            <td>Net Tangible Worth / Annualised Sales shown as a percentage</td>
+        </tr>  
+        <tr>
+            <td>Gearing</td>
+            <td>Total Liabilities / Total Assets shown as a percentage</td>
+        </tr> 
+        <tr>
+            <td>Debt to Equity</td>
+            <td>Total Debt/Shareholders Equity</td>
+        </tr> 
+        <tr>
+            <td>Interest Coverage</td>
+            <td>Profit before Tax and Interest Expense / Interest Expense</td>
+        </tr> 
+        <tr>
+            <td>Repayment Capability</td>
+            <td>Annualised Profit before Tax / Total Liabilities shown as a percentage</td>
+        </tr> 
+        <tr>
+            <td>Financial Leverage</td>
+            <td>Total Debt / Annualised EBITDA</td>
+        </tr> 
+        <tr>
+            <td>Short Ratio</td>
+            <td>Current Debt/Total Debt shown as a percentage</td>
+        </tr> 
+        <tr class="bg-primary">
+            <th>Operating Indicators</th>
+            <th>Calculation</th>
+        </tr> 
+        <tr>
+            <td>Operating Leverage</td>
+            <td>Percentage change before Interest and Tax/Percentage change in Sales</td>
+        </tr> 
+        <tr>
+            <td>Creditor Exposure</td>
+            <td>Trade Creditors / Total Assets shown as a percentage</td>
+        </tr> 
+        <tr>
+            <td>Creditor Days</td>
+            <td>(Trade Creditors / Annualised Cost of Goods Sold) x 365 days</td>
+        </tr> 
+        <tr>
+            <td>Inventory Days</td>
+            <td>(Inventories / Annualised Cost of Goods Sold) x 365 Days</td>
+        </tr> 
+        <tr>
+            <td>Debtor Days</td>
+            <td>(Trade Debtors / Annualised Sales) x 365 days</td>
+        </tr> 
+        <tr>
+            <td>Cash Conversion Cycle</td>
+            <td>Debtor Days + Inventory Days - Creditor Days</td>
+        </tr> 
+            
+    </table>
+</div>
+</div>
+        <div class="row mt-5"></div>
     </div>
 </div>
+
 </page>
+
 
 
 </div>
