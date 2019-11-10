@@ -930,7 +930,7 @@ $cal = array(
 
 	'financial_leverage'				=> (isset($x115[$r]) and $x115[$r] != '')? (intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) / $x115 : "" ,
 
-	'short_ratio'						=> (intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r])) / ((intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) * 100),
+	'short_ratio'						=>(((intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) * 100)==0)? 0 : (intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r])) / ((intval($_POST['interest_bearing_debt_1'][$r]) + intval($_POST['lone_from_related_parties'][$r]) + intval($_POST['trade_debtors'][$r])) * 100),
 
 	'operating_leverage'				=> (isset($x119[$r]) and $x119[$r] != '')? ($x119 != 0 )? $x118 / $x119 : 0 : "" ,
 
@@ -942,7 +942,7 @@ $cal = array(
 
 	'debtor_days'						=> (isset($x112[$r]) and $x112[$r] != '')? intval($_POST['trade_debtors'][$r]) / $x112 * 365 : "",
 
-	'cash_conversion_cycle'				=> (intval($_POST['trade_debtors'][$r]) / $x112 * 365) + (intval($_POST['total_inventories'][$r]) / $x116 * 365) - (intval($_POST['trade_creditors'][$r]) / $x116 * 365),
+	'cash_conversion_cycle'				=> (($x112==0)? 0 : (intval($_POST['trade_debtors'][$r]) / $x112 * 365)) + (($x116==0) ? 0 :(intval($_POST['total_inventories'][$r]) / $x116 * 365)) - (($x116==0) ? 0 :(intval($_POST['trade_creditors'][$r]) / $x116 * 365)),
 
 	'sales_annualised'					=> $x112,
 

@@ -191,9 +191,36 @@
                             <p>Entity has acceptable creditworthiness. Extend terms within consideration. Entity has a 0.89%
                             chance of failure within the next 12 months.</p>
                         </div>
-
+                       <div class="container">
+                       <div class="col-md-12">
+                            <?php
+                            $creditScorePercentage = number_format(($api_data->current_credit_score/850)*100,2);
+                            
+                            ?>
+    <div class="progress" style=" height:50px; background:linear-gradient(90deg, rgba(255,0,31,1) 0%, rgba(255,226,0,1) 49%, rgba(18,255,0,1) 100%);">
+  <div class="progress-bar" role="progressbar" style=" text-align:right;width: <?php echo $creditScorePercentage; ?>%; background:rgba(0,0,0,0.2);font-size:30px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+  <?php echo $api_data->current_credit_score; ?>
+</div>
+</div>
+    </div>
+  <div class="col-md-12">
+  <div class="row">
+  <div class="col-md-4"> 
+      <p>0</p>
+      <p class="text-danger">Higher Risk</p>
+  </div> 
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4"> 
+      <p class="text-right">0</p>
+      <p class="text-right">Higher Risk</p>
+  </div>
+  </div> 
+  </div>
+                       </div>
+  
                         <h2 class="mt-5">Historical Credit Scores</h2>
-
+    
                         <!-- API -->
                         <div class="container" id="credit-chart">
                         </div>
@@ -1605,6 +1632,7 @@ reason in making a decision about the entity.</p>
                 $colspan = 3;
             }else{
                 $colspan = count($input_data['previous_year'])+4;
+                $previousStatus = true;
             }
             ?>
         <!-- table -->
