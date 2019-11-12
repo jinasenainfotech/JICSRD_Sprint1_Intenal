@@ -147,8 +147,7 @@
 		<div class="d-flex justify-content-end flex-wrap m-3">
 			<div class="custom-control custom-checkbox">
 
-				<input type="checkbox" class="custom-control-input" id="1111">
-				<label class="custom-control-label" for="1111"> Send to approval </label>
+				
 			</div>
 			<div name="save" id="save" class="btn btn-primary ml-md-3 mr-3 mb-3">  Save & Send to Approve  &nbsp;<i class="fa fa-chevron-circle-right"></i></div>
 			<!-- <button class="btn btn-primary ml-md-3 mb-3">Generate Report</button> -->

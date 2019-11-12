@@ -32,473 +32,452 @@
 			<div class="col-md-6 mr-3 pr-0 pr-md-3 mr-md-0 overflow-auto">
 				<table class=" table overflow-auto" style="margin-top:90px">
 					<tbody>
+					
 						<tr>
 							<th scope="row">ABN</th>
-							<td class="aaa"><?= (isset($year_1->abn))? $year_1->abn : 'N/A' ?></td>
-							<td class="aaa"><?= (isset($year_2->abn))? $year_2->abn : 'N/A' ?></td>
-							<td class="aaa"><?= (isset($year_3->abn))? $year_3->abn : 'N/A' ?></td>
-							<!-- <td class="aaa"><?= (isset($year_1->abn))? $year_1->abn : "N/A"  ?></td> -->
-							<!-- <td class="aaa"><?= $year_2->abn ?></td> -->
-							<!-- <td class="aaa"><?= $year_3->abn ?></td> -->
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?=  $previousYear->abn ?></td>
+							<?php } ?>
+						
+							
 
 						</tr>
 						<tr>
 							<th scope="row">ACN</th>
-							<td class="aaa"><?= (isset($year_1->acn))? $year_1->acn : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->acn))? $year_2->acn : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->acn))? $year_3->acn : "N/A"  ?></td>
+							
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?=  $previousYear->acn ?></td>
+							<?php } ?>
 
 						</tr>
 						<tr>
 							<th scope="row">Company name</th>
-							<td class="aaa"><?= (isset($year_1->entity_name))? $year_1->entity_name : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->entity_name))? $year_2->entity_name : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->entity_name))? $year_3->entity_name : "N/A"  ?></td>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?=  $previousYear->entity_name ?></td>
+							<?php } ?>
 						</tr>
 						<tr>
 							<th scope="row">Rounding</th>
-							<td class="aaa"><?= (isset($year_1->rounding))? $year_1->rounding : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->rounding))? $year_2->rounding : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->rounding))? $year_3->rounding : "N/A"  ?></td>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?=  $previousYear->rounding ?></td>
+							<?php } ?>
 						</tr>
 						<tr>
 							<th scope="row">Base currency</th>
-							<td class="aaa"><?= (isset($year_1->base_currency))? $year_1->base_currency : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->base_currency))? $year_2->base_currency : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->base_currency))? $year_3->base_currency : "N/A"  ?></td>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?=  strtoUpper($previousYear->base_currency) ?></td>
+							<?php } ?>
 						</tr>
 						<tr>
 							<th scope="row">Quality</th>
-							<td class="aaa"><?= (isset($year_1->quality))? $year_1->quality : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->quality))? $year_2->quality : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->quality))? $year_3->quality : "N/A"  ?></td>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?=  $previousYear->quality ?></td>
+							<?php } ?>
 						</tr>
 						<tr>
 							<th scope="row">Reporting period months</th>
-							<td class="aaa"><?= (isset($year_1->reporting_period_months))? $year_1->reporting_period_months : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->reporting_period_months))? $year_2->reporting_period_months : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->reporting_period_months))? $year_3->reporting_period_months : "N/A"  ?></td>
-						</tr>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?=  $previousYear->reporting_period_months ?></td>
+							<?php } ?>
 						<tr>
 							<th scope="row">Scope</th>
-							<td class="aaa"><?= (isset($year_1->scope))? $year_1->scope : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->scope))? $year_2->scope : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->scope))? $year_3->scope : "N/A"  ?></td>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?= $previousYear->scope ?></td>
+							<?php } ?>
 						</tr>
 						<tr>
 							<th scope="row">Confidentiality record</th>
-							<td class="aaa"><?= (isset($year_1->confidentiality_record))? $year_1->confidentiality_record : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->confidentiality_record))? $year_2->confidentiality_record : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->confidentiality_record))? $year_3->confidentiality_record : "N/A"  ?></td>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?=  $previousYear->confidentiality_record ?></td>
+							<?php } ?>
 						</tr>
 						<tr>
 							<th scope="row">Financial year</th>
-							<td class="aaa"><?= (isset($year_1->financial_year))? $year_1->financial_year : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->financial_year))? $year_2->financial_year : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->financial_year))? $year_3->financial_year : "N/A"  ?></td>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?= $previousYear->financial_year ?></td>
+							<?php } ?>
 						</tr>
 						<tr>
 							<th scope="row">Month</th>
-							<td class="aaa"><?= (isset($year_1->month))? $year_1->month : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_2->month))? $year_2->month : "N/A"  ?></td>
-							<td class="aaa"><?= (isset($year_3->month))? $year_3->month : "N/A"  ?></td>
+							<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?= $previousYear->month ?></td>
+							<?php } ?>
 						</tr>
-						<tr class
-						="table-primary"><th scope="row">Income Statement</th>
-						<td></td>
-						<td></td>
-						<td></td>
+						<tr class="table-primary">
+							<td colspan = "<?php echo count($previous)+1 ?>" >
+						Income Statement</td>
+						
 					</tr>
 					<tr>
 						<th scope="row">Sales</th>
-						<td class="aaa"><?= (isset($year_1->sales))? $year_1->sales : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->sales))? $year_2->sales : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->sales))? $year_3->sales : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?= number_format($previousYear->sales,2); ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Cost of sales</th>
-						<td class="aaa"><?= (isset($year_1->cost_of_sales))? $year_1->cost_of_sales : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->cost_of_sales))? $year_2->cost_of_sales : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->cost_of_sales))? $year_3->cost_of_sales : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?= number_format($previousYear->cost_of_sales,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Gross profit</th>
-						<td class="aaa"><?= (isset($year_1->gross_profit))? $year_1->gross_profit : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->gross_profit))? $year_2->gross_profit : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->gross_profit))? $year_3->gross_profit : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+							<td class="aaa"><?= number_format($previousYear->gross_profit,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Other income</th>
-						<td class="aaa"><?= (isset($year_1->other_income))? $year_1->other_income : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->other_income))? $year_2->other_income : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->other_income))? $year_3->other_income : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->other_income,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Depreciation</th>
-						<td class="aaa"><?= (isset($year_1->depreciation))? $year_1->depreciation : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->depreciation))? $year_2->depreciation : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->depreciation))? $year_3->depreciation : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->depreciation,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Amortisation</th>
-						<td class="aaa"><?= (isset($year_1->amortisation))? $year_1->amortisation : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->amortisation))? $year_2->amortisation : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->amortisation))? $year_3->amortisation : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->amortisation,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Impairment</th>
-						<td class="aaa"><?= (isset($year_1->impairment))? $year_1->impairment : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->impairment))? $year_2->impairment : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->impairment))? $year_3->impairment : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->impairment,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Interest expense gross</th>
-						<td class="aaa"><?= (isset($year_1->interest_expense_gross))? $year_1->interest_expense_gross : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->interest_expense_gross))? $year_2->interest_expense_gross : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->interest_expense_gross))? $year_3->interest_expense_gross : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->interest_expense_gross,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Operating lease expense</th>
-						<td class="aaa"><?= (isset($year_1->operating_lease_expense))? $year_1->operating_lease_expense : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->operating_lease_expense))? $year_2->operating_lease_expense : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->operating_lease_expense))? $year_3->operating_lease_expense : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->operating_lease_expense,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Finance lease hire purchase charges</th>
-						<td class="aaa"><?= (isset($year_1->finance_lease_hire_purchase_charges))? $year_1->finance_lease_hire_purchase_charges : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->finance_lease_hire_purchase_charges))? $year_2->finance_lease_hire_purchase_charges : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->finance_lease_hire_purchase_charges))? $year_3->finance_lease_hire_purchase_charges : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->finance_lease_hire_purchase_charges,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Non recurring gains losses</th>
-						<td class="aaa"><?= (isset($year_1->non_recurring_gains_losses))? $year_1->non_recurring_gains_losses : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->non_recurring_gains_losses))? $year_2->non_recurring_gains_losses : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->non_recurring_gains_losses))? $year_3->non_recurring_gains_losses : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->non_recurring_gains_losses,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Other gains losses</th>
-						<td class="aaa"><?= (isset($year_1->other_gains_losses))? $year_1->other_gains_losses : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->other_gains_losses))? $year_2->other_gains_losses : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->other_gains_losses))? $year_3->other_gains_losses : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->other_gains_losses,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Other expenses</th>
-						<td class="aaa"><?= (isset($year_1->other_expenses))? $year_1->other_expenses : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->other_expenses))? $year_2->other_expenses : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->other_expenses))? $year_3->other_expenses : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->other_expenses,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Tax benefit expense</th>
-						<td class="aaa"><?= (isset($year_1->tax_benefit_expense))? $year_1->tax_benefit_expense : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->tax_benefit_expense))? $year_2->tax_benefit_expense : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->tax_benefit_expense))? $year_3->tax_benefit_expense : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->tax_benefit_expense,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Ebit</th>
-						<td class="aaa"><?= (isset($year_1->ebit))? $year_1->ebit : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->ebit))? $year_2->ebit : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->ebit))? $year_3->ebit : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->ebit,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Ebitda</th>
-						<td class="aaa"><?= (isset($year_1->ebitda))? $year_1->ebitda : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->ebitda))? $year_2->ebitda : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->ebitda))? $year_3->ebitda : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->ebitda,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Normalised ebitda</th>
-						<td class="aaa"><?= (isset($year_1->normalised_ebitda))? $year_1->normalised_ebitda : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->normalised_ebitda))? $year_2->normalised_ebitda : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->normalised_ebitda))? $year_3->normalised_ebitda : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->normalised_ebitda,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Profit before tax</th>
-						<td class="aaa"><?= (isset($year_1->profit_before_tax))? $year_1->profit_before_tax : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->profit_before_tax))? $year_2->profit_before_tax : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->profit_before_tax))? $year_3->profit_before_tax : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->profit_before_tax,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Profit before tax after abnormals</th>
-						<td class="aaa"><?= (isset($year_1->profit_before_tax_after_abnormals))? $year_1->profit_before_tax_after_abnormals : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->profit_before_tax_after_abnormals))? $year_2->profit_before_tax_after_abnormals : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->profit_before_tax_after_abnormals))? $year_3->profit_before_tax_after_abnormals : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->profit_before_tax_after_abnormals,2) ?></td>
+							<?php } ?>
 					</tr>
 					
 					<tr>
 						<th scope="row">Profit after tax</th>
-						<td class="aaa"><?= (isset($year_1->profit_after_tax))? $year_1->profit_after_tax : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->profit_after_tax))? $year_2->profit_after_tax : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->profit_after_tax))? $year_3->profit_after_tax : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->profit_after_tax,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Distribution ordividends</th>
-						<td class="aaa"><?= (isset($year_1->distribution_ordividends))? $year_1->distribution_ordividends : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->distribution_ordividends))? $year_2->distribution_ordividends : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->distribution_ordividends))? $year_3->distribution_ordividends : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->distribution_ordividends,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Other post tax items gains losses</th>
-						<td class="aaa"><?= (isset($year_1->other_post_tax_items_gains_losses))? $year_1->other_post_tax_items_gains_losses : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->other_post_tax_items_gains_losses))? $year_2->other_post_tax_items_gains_losses : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->other_post_tax_items_gains_losses))? $year_3->other_post_tax_items_gains_losses : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->other_post_tax_items_gains_losses,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr>
 						<th scope="row">Profit after tax distribution</th>
-						<td class="aaa"><?= (isset($year_1->profit_after_tax_distribution))? $year_1->profit_after_tax_distribution : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->profit_after_tax_distribution))? $year_2->profit_after_tax_distribution : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->profit_after_tax_distribution))? $year_3->profit_after_tax_distribution : "N/A"  ?></td>
+						<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->profit_after_tax_distribution,2) ?></td>
+							<?php } ?>
 					</tr>
 					<tr class
-					="table-primary"><th scope="row">Balance Sheet Assets</th>
-					<td></td>
-					<td></td>
-					<td></td>
+					="table-primary"><td scope="row" colspan="<?php echo count($previous)+1; ?>">Balance Sheet Assets</td>
+					
 				</tr>
 				<tr class
-				="table-primary"><th scope="row">Assets</th>
-				<td></td>
-				<td></td>
-				<td></td>
+				="table-primary"><td scope="row"  colspan="<?php echo count($previous)+1; ?>">Assets</td>
+				
 			</tr>
 			<tr>
 				<th scope="row">Cash</th>
-				<td class="aaa"><?= (isset($year_1->cash))? $year_1->cash : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->cash))? $year_2->cash : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->cash))? $year_3->cash : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->cash,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Trade debtors</th>
-				<td class="aaa"><?= (isset($year_1->trade_debtors))? $year_1->trade_debtors : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->trade_debtors))? $year_2->trade_debtors : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->trade_debtors))? $year_3->trade_debtors : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->trade_debtors,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Total inventories</th>
-				<td class="aaa"><?= (isset($year_1->total_inventories))? $year_1->total_inventories : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->total_inventories))? $year_2->total_inventories : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->total_inventories))? $year_3->total_inventories : "N/A" ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->total_inventories,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Loans to related parties 1</th>
-				<td class="aaa"><?= (isset($year_1->loans_to_related_parties_1))? $year_1->loans_to_related_parties_1 : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->loans_to_related_parties_1))? $year_2->loans_to_related_parties_1 : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->loans_to_related_parties_1))? $year_3->loans_to_related_parties_1 : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->loans_to_related_parties_1,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Other current assets</th>
-				<td class="aaa"><?= (isset($year_1->other_current_assets))? $year_1->other_current_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->other_current_assets))? $year_2->other_current_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->other_current_assets))? $year_3->other_current_assets : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->other_current_assets,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Total current assets</th>
-				<td class="aaa"><?= (isset($year_1->total_current_assets))? $year_1->total_current_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->total_current_assets))? $year_2->total_current_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->total_current_assets))? $year_3->total_current_assets : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->total_current_assets,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Fixed assets</th>
-				<td class="aaa"><?= (isset($year_1->fixed_assets))? $year_1->fixed_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->fixed_assets))? $year_2->fixed_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->fixed_assets))? $year_3->fixed_assets : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->fixed_assets,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Net intangibles</th>
-				<td class="aaa"><?= (isset($year_1->total_current_assets))? $year_1->total_current_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->total_current_assets))? $year_2->total_current_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->total_current_assets))? $year_3->total_current_assets : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->net_intangibles,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Loan to related parties 2</th>
-				<td class="aaa"><?= (isset($year_1->net_intangibles))? $year_1->net_intangibles : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->net_intangibles))? $year_2->net_intangibles : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->net_intangibles))? $year_3->net_intangibles : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->loan_to_related_parties_2,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Other non current assets</th>
-				<td class="aaa"><?= (isset($year_1->loan_to_related_parties_2))? $year_1->loan_to_related_parties_2 : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->loan_to_related_parties_2))? $year_2->loan_to_related_parties_2 : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->loan_to_related_parties_2))? $year_3->loan_to_related_parties_2 : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->other_non_current_assets,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Total non curent assets</th>
-				<td class="aaa"><?= (isset($year_1->other_non_current_assets))? $year_1->other_non_current_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->other_non_current_assets))? $year_2->other_non_current_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->other_non_current_assets))? $year_3->other_non_current_assets : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->total_non_curent_assets,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Total assets</th>
-				<td class="aaa"><?= (isset($year_1->total_assets))? $year_1->total_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->total_assets))? $year_2->total_assets : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->total_assets))? $year_3->total_assets : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->total_assets,2) ?></td>
+							<?php } ?>
 			</tr>
 			<tr class="table-primary">
-				<th scope="row">Liabilities</th>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td scope="row" colspan="<?php echo count($previous)+1 ?>">Liabilities</td>
+				
 			</tr>
 			<tr>
 				<th scope="row">Trade creditors</th>
-				<td class="aaa"><?= (isset($year_1->trade_creditors))? $year_1->trade_creditors : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->trade_creditors))? $year_2->trade_creditors : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->trade_creditors))? $year_3->trade_creditors : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->trade_creditors,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Interest bearing debt 1</th>
-				<td class="aaa"><?= (isset($year_1->interest_bearing_debt_1))? $year_1->interest_bearing_debt_1 : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->interest_bearing_debt_1))? $year_2->interest_bearing_debt_1 : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->interest_bearing_debt_1))? $year_3->interest_bearing_debt_1 : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->interest_bearing_debt_1,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Lone from related parties</th>
-				<td class="aaa"><?= (isset($year_1->lone_from_related_parties))? $year_1->lone_from_related_parties : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->lone_from_related_parties))? $year_2->lone_from_related_parties : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->lone_from_related_parties))? $year_3->lone_from_related_parties : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->lone_from_related_parties,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Other current liabilities</th>
-				<td class="aaa"><?= (isset($year_1->other_current_liabilities))? $year_1->other_current_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->other_current_liabilities))? $year_2->other_current_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->other_current_liabilities))? $year_3->other_current_liabilities : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->other_current_liabilities,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Total current liabilities</th>
-				<td class="aaa"><?= (isset($year_1->total_current_liabilities))? $year_1->total_current_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->total_current_liabilities))? $year_2->total_current_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->total_current_liabilities))? $year_3->total_current_liabilities : "N/A" ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->total_current_liabilities,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Interset Bearing Debt</th>
-				<td class="aaa"><?= (isset($year_1->total_current_liabilities_2))? $year_1->total_current_liabilities_2 : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->total_current_liabilities_2))? $year_2->total_current_liabilities_2 : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->total_current_liabilities_2))? $year_3->total_current_liabilities_2 : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->interest_bearing_debt_1,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Loans from related parites</th>
-				<td class="aaa"><?= (isset($year_1->loans_from_related_parites))? $year_1->loans_from_related_parites : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->loans_from_related_parites))? $year_2->loans_from_related_parites : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->loans_from_related_parites))? $year_3->loans_from_related_parites : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->lone_from_related_parties,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Other non current liabilities</th>
-				<td class="aaa"><?= (isset($year_1->other_non_current_liabilities))? $year_1->other_non_current_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->other_non_current_liabilities))? $year_2->other_non_current_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->other_non_current_liabilities))? $year_3->other_non_current_liabilities : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->other_non_current_liabilities,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Total non current liabilities</th>
-				<td class="aaa"><?= (isset($year_1->total_non_current_liabilities))? $year_1->total_non_current_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->total_non_current_liabilities))? $year_2->total_non_current_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->total_non_current_liabilities))? $year_3->total_non_current_liabilities : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->total_non_current_liabilities,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr>
 				<th scope="row">Total liabilities</th>
-				<td class="aaa"><?= (isset($year_1->total_liabilities))? $year_1->total_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_2->total_liabilities))? $year_2->total_liabilities : "N/A"  ?></td>
-				<td class="aaa"><?= (isset($year_3->total_liabilities))? $year_3->total_liabilities : "N/A"  ?></td>
+				<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->total_liabilities,2) ?></td>
+				<?php } ?>
 			</tr>
 			<tr class
-			="table-primary"><th scope="row">Equity</th>
-			<td></td>
-
-			<td>
-			</td>
-
-
-			<td>
-			</td>
+			="table-primary"><td scope="row" colspan="<?php echo count($previous)+1; ?>">Equity</td>
+			
 
 		</tr>
 		<tr>
 			<th scope="row">Share capital</th>
-			<td class="aaa"><?= (isset($year_1->share_capital))? $year_1->share_capital : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->share_capital))? $year_2->share_capital : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->share_capital))? $year_3->share_capital : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->share_capital,2) ?></td>
+				<?php } ?>
 		</tr>
 		<tr>
 			<th scope="row">Prefence shares</th>
-			<td class="aaa"><?= (isset($year_1->prefence_shares))? $year_1->prefence_shares : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->prefence_shares))? $year_2->prefence_shares : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->prefence_shares))? $year_3->prefence_shares : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->prefence_shares,2) ?></td>
+				<?php } ?>
 		</tr>
 		<tr>
 			<th scope="row">Treasury shares</th>
-			<td class="aaa"><?= (isset($year_1->treasury_shares))? $year_1->treasury_shares : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->treasury_shares))? $year_2->treasury_shares : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->treasury_shares))? $year_3->treasury_shares : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->treasury_shares,2) ?></td>
+				<?php } ?>
 		</tr>
 		<tr>
 			<th scope="row">Equity owner ships</th>
-			<td class="aaa"><?= (isset($year_1->equity_owner_ships))? $year_1->equity_owner_ships : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->equity_owner_ships))? $year_2->equity_owner_ships : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->equity_owner_ships))? $year_3->equity_owner_ships : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->equity_owner_ships,2) ?></td>
+				<?php } ?>
 		</tr>
 		<tr>
 			<th scope="row">Total reserves</th>
-			<td class="aaa"><?= (isset($year_1->total_reserves))? $year_1->total_reserves : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->total_reserves))? $year_2->total_reserves : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->total_reserves))? $year_3->total_reserves : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->total_reserves,2) ?></td>
+				<?php } ?>
 		</tr>
 		<tr>
 			<th scope="row">Ratained earning</th>
-			<td class="aaa"><?= (isset($year_1->ratained_earning))? $year_1->ratained_earning : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->ratained_earning))? $year_2->ratained_earning : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->ratained_earning))? $year_3->ratained_earning : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->ratained_earning,2) ?></td>
+				<?php } ?>
 		</tr>
 		<tr>
 			<th scope="row">Minorty interest</th>
-			<td class="aaa"><?= (isset($year_1->minorty_interest))? $year_1->minorty_interest : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->minorty_interest))? $year_2->minorty_interest : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->minorty_interest))? $year_3->minorty_interest : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->minorty_interest,2) ?></td>
+				<?php } ?>
 		</tr>
 		<tr>
 			<th scope="row">Total equity</th>
-			<td class="aaa"><?= (isset($year_1->total_equity))? $year_1->total_equity : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->total_equity))? $year_2->total_equity : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->total_equity))? $year_3->total_equity : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->total_equity,2) ?></td>
+				<?php } ?>
 		</tr>
 		<tr>
 			<th scope="row">Balance</th>
-			<td class="aaa"><?= (isset($year_1->balance))? $year_1->balance : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_2->balance))? $year_2->balance : "N/A"  ?></td>
-			<td class="aaa"><?= (isset($year_3->balance))? $year_3->balance : "N/A"  ?></td>
+			<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->balance,2) ?></td>
+				<?php } ?>
 		</tr>
-		<tr class
-		="table-primary"><th scope="row">Additional Information</th>
-		<td></td>
-
-		<td>
-		</td>
-
-
-		<td>
-		</td>
+		<tr class="table-primary">
+		<td scope="row" colspan="<?php echo count($previous)+1 ?>">Additional Information</td>
+		
 
 	</tr>
 	<tr>
 		<th scope="row">Operating cash flow</th>
-		<td class="aaa"><?= (isset($year_1->operating_cash_flow))? $year_1->operating_cash_flow : "N/A"  ?></td>
-		<td class="aaa"><?= (isset($year_2->operating_cash_flow))? $year_2->operating_cash_flow : "N/A"  ?></td>
-		<td class="aaa"><?= (isset($year_3->operating_cash_flow))? $year_3->operating_cash_flow : "N/A"  ?></td>
+		<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->operating_cash_flow,2) ?></td>
+				<?php } ?>
 	</tr>
 	<tr>
 		<th scope="row">Contingent liabilities</th>
-		<td class="aaa"><?= (isset($year_1->contingent_liabilities))? $year_1->contingent_liabilities : "N/A"  ?></td>
-		<td class="aaa"><?= (isset($year_2->contingent_liabilities))? $year_2->contingent_liabilities : "N/A"  ?></td>
-		<td class="aaa"><?= (isset($year_3->contingent_liabilities))? $year_3->contingent_liabilities : "N/A"  ?></td>
+		<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->contingent_liabilities,2) ?></td>
+				<?php } ?>
 	</tr>
 	<tr>
 		<th scope="row">Other commitmentes</th>
-		<td class="aaa"><?= (isset($year_1->other_commitmentes))? $year_1->other_commitmentes : "N/A"  ?></td>
-		<td class="aaa"><?= (isset($year_2->other_commitmentes))? $year_2->other_commitmentes : "N/A"  ?></td>
-		<td class="aaa"><?= (isset($year_3->other_commitmentes))? $year_3->other_commitmentes : "N/A"  ?></td>
+		<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->other_commitmentes,2) ?></td>
+				<?php } ?>
 	</tr>
 	<tr>
 		<th scope="row">Operating lease outstanding</th>
-		<td class="aaa"><?= (isset($year_1->operating_lease_outstanding))? $year_1->operating_lease_outstanding : "N/A"  ?></td>
-		<td class="aaa"><?= (isset($year_2->operating_lease_outstanding))? $year_2->operating_lease_outstanding : "N/A"  ?></td>
-		<td class="aaa"><?= (isset($year_3->operating_lease_outstanding))? $year_3->operating_lease_outstanding : "N/A"  ?></td>
+		<?php foreach($previous as $previousYear){ ?>
+				<td class="aaa"><?= number_format($previousYear->operating_lease_outstanding,2) ?></td>
+				<?php } ?>
 	</tr>
 </tbody>
 
@@ -621,8 +600,7 @@
 		<div class="d-flex justify-content-end flex-wrap m-3">
 			<div class="custom-control custom-checkbox">
 
-				<input type="checkbox" class="custom-control-input" id="1111">
-				<label class="custom-control-label" for="1111"> Send to approval </label>
+			
 			</div>
 			<div name="save" id="save" class="btn btn-primary ml-md-3 mr-3 mb-3">  Save & Send to Approve  &nbsp;<i class="fa fa-chevron-circle-right"></i></div>
 			<!-- <button class="btn btn-primary ml-md-3 mb-3">Generate Report</button> -->

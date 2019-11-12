@@ -716,7 +716,7 @@ class Main extends MY_Controller {
 	
 	public function newreport(){
 
-		// var_dump($_POST);die;
+		
 		$this->jics->auth();
 		
 		if (isset($_GET['com']) and $_GET['cun'] != '') {
@@ -727,12 +727,12 @@ class Main extends MY_Controller {
 			$com_name = $_GET['com'];
 			$rep = $this->Main_model->report_row(intval($com_name));
 
-			// var_dump($rep);
 			
+			$this->data['previous'] = $rep;
 
-			(isset($rep[0]))? $this->data['year_1'] = $rep[0] : ''; 
-			(isset($rep[1]))? $this->data['year_2'] = $rep[1] : '';
-			(isset($rep[2]))? $this->data['year_3'] = $rep[2] : '';
+			// (isset($rep[0]))? $this->data['year_1'] = $rep[0] : ''; 
+			// (isset($rep[1]))? $this->data['year_2'] = $rep[1] : '';
+			// (isset($rep[2]))? $this->data['year_3'] = $rep[2] : '';
 			// $this->data['year_2'] = $rep[1];
 			// $this->data['year_3'] = $rep[2];
 		}
@@ -749,9 +749,10 @@ class Main extends MY_Controller {
 			$x = $this->Main_model->get_data_for_report($_GET['id']);
 			$this->data['data_list'] = $x;
 			$com_name = $x[0]->company_name;
-			$this->data['year_1'] = $this->Main_model->recent_reports(intval($com_name));
-			$this->data['year_2'] = $this->Main_model->recent_reports(intval($com_name)-1);
-			$this->data['year_3'] = $this->Main_model->recent_reports(intval($com_name)-2);
+			$rep = $this->Main_model->report_row(intval($com_name));
+
+			
+			$this->data['previous'] = $rep;
 			// var_dump();exit();
 		}else{
 		}
