@@ -272,7 +272,7 @@
 } ?>
 
 var html_dropdwon ='';
-html_dropdwon +='   <option disabled selected value>Select the Company</option>';
+html_dropdwon +='   <option disabled selected value="">Select the Company</option>';
 <?php
 if(isset($companies)){
 	foreach($companies as $row){?>

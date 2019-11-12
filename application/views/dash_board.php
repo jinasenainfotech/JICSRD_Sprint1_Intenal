@@ -14,7 +14,7 @@
                             // echo '<option selected>Choose...</option>';
                         foreach($companies as $row)
                         {
-                            echo '<option value="'.$row->id.'">'.$row->entity_name.'</option>';
+                        echo '<option value="'.$row->id.'">'.$row->entity_name.'-'.$row->country.'</option>';
                         }
                     }else{
                         echo '<option selected>No Companies in Database</option>';
@@ -22,10 +22,7 @@
                     ?>
                 </select>
             </div>
-            <div class="col-md-4">
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select the Country</label>
-                <?= form_dropdown('country', $country,'','class="browser-default custom-select text-capitalize" id="country"');?>
-            </div>
+           
             <div class="col-md-2 pt-4">
                 <div class="btn btn-primary btn-md mt-2 active" id="find">Find</div>
             </div>
@@ -48,7 +45,7 @@
                 var country = $('#country').val();
 
 
-                if(company != "" && country != ""){
+                if(company != "" ||company!=is_null){
                     location.href = '<?= base_url('newreport')?>?com='+ company + '&cun=' + country;
                 }else {
                     alert('select county and company');
@@ -60,8 +57,8 @@
                 var company = $('#coaskd').val();
                 var country = $('#country').val();
 
-                if(company == "" && country == ""){
-                    alert('Please select Company and Country');
+                if(company == ""){
+                    alert('Please select Company');
                 }else{
                     $.post("<?= base_url('main/get_d_tbl') ?>",{
                     id:$('#coaskd').val(),
@@ -81,7 +78,6 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>
-                            <th>Status</th>
                             <th>Report Name</th>
                             <th>Date</th>
                             <th></th>

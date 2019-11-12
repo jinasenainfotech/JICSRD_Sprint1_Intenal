@@ -50,6 +50,17 @@ class Main extends MY_Controller {
 
 		$this->data['country'] = $this->jics->get_companies();
 		$this->data['companies'] = $this->Main_model->get_companies();
+
+		$companyData = [];
+
+		foreach($this->data['companies'] as $company){
+				$company->country = $this->data['country'][$company->country];
+			array_push($companyData, $company);
+		}
+		
+		$this->data['companies'] = $companyData;
+		
+	
 		$this->page_construct('dash_board',$this->data);
 	}
 
@@ -719,7 +730,7 @@ class Main extends MY_Controller {
 		
 		$this->jics->auth();
 		
-		if (isset($_GET['com']) and $_GET['cun'] != '') {
+		if (isset($_GET['com'])) {
 			$company = $this->Main_model->companies_get_by_id($this->input->get('com'));
 			$this->data['company_name'] = $this->input->get('com');
 			$this->data['abn'] = $company[0]->abn;
@@ -1273,10 +1284,11 @@ public function get_d_tbl(){
 	$count = 1;
 	if (isset($table) and $table != false) {
 		foreach ($table as $row) {
+			$report_name = ($row->type==1)? 'Finacial Analyst Enriched Credit Report' : 'Advance Finacial Diagnostic Report';
+			
 			$html .= '<tr>';
 			$html .= '<td>'. $count .'</td>';
-			$html .= '<td>'. $row->status .'</td>';
-			$html .= '<td>'. $row->company_name .'</td>';
+		$html .= '<td>'. $report_name .'</td>';
 			$html .= '<td>'. $row->created_at .'</td>';
 			$html .= '<td><td class="text-center"><div class="btn-group" role="group" aria-label="Basic example"><a class="btn btn-primary" href="'. base_url("newreport").'?id='.$row->id.'">Edit</a></div></td>';
 			$html .= '</tr>';

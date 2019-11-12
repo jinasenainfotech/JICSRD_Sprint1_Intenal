@@ -15,7 +15,9 @@ Class Main_model extends CI_Model {
 		return false;
 	}
 	public function recent_reports($name){
-		$query = $this->db->get_where('quantitave_input', array('company_name' => $name,'status'=>1));
+		$this->db->from('quantitave_input');
+		$this->db->where(array('company_name' => $name,'status'=>1));
+		$query = $this->db->get();
 		if($query->num_rows() > 0)
 		{
 			foreach($query->result() as $key=>$item)
@@ -297,7 +299,8 @@ Class Main_model extends CI_Model {
 
 
 	public function get_companies(){
-		$query = $this->db->get('company_information');
+		$this->db->from('company_information');
+		$query = $this->db->get();
 		if($query->num_rows() > 0)
 		{
 			foreach($query->result() as $key=>$item)
