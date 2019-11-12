@@ -31,6 +31,7 @@
 				<table class=" table overflow-auto" style="margin-top:90px">
 					<tbody>
 						<?php
+						
 						foreach ($col as $co) {
 							echo '<tr>';
 							echo '<th scope="row">'. ucfirst(str_replace("_"," ",$co->Field)) .'</th>';
@@ -102,7 +103,7 @@
 	<div class="d-flex flex-wrap justify-content-end pt-2">
 		<?php if(isset($_GET['id'])){?> 
 			<div>
-				<button class="btn btn-success mb-3" id="approvd">Approved</button>
+				<button type="button" class="btn btn-success mb-3" id="approvd">Approved</button>
 				<button class="btn btn-danger ml-1 mb-3" id="reject" >Reject</button>
 			</div>
 

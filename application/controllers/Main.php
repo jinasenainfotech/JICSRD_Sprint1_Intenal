@@ -100,7 +100,7 @@ class Main extends MY_Controller {
 	}	
 
 	public function approvd(){
-		if($this->Main_model->approved($this->input->post('id')) == true){
+		if($this->Main_model->approved($this->input->post('id'))){
 			echo '1';
 			$this->jics->alert('success','Approved','Report Status');
 		}else{
@@ -716,7 +716,7 @@ class Main extends MY_Controller {
 	
 	public function newreport(){
 
-		// var_dump($_POST);exit();
+		// var_dump($_POST);die;
 		$this->jics->auth();
 		
 		if (isset($_GET['com']) and $_GET['cun'] != '') {
@@ -767,11 +767,11 @@ class Main extends MY_Controller {
 
 				$data = array(
 					// 'status'							=> (isset($_POST['is_app'] != 'on' or $_POST['is_app'] != null))? 1;
-					'status'							=> (isset($_POST['is_app']))? '0' : '1',
+					'status'							=> 0,
 					'type'								=> $this->input->post('report_type'),
 					'user_id'			 				=> $_SESSION['user']['user_id'],
-					'abn'			 					=> intval($_POST['abn'][$r]),
-					'acn'								=> intval($_POST['acn'][$r]),
+					'abn'			 					=> $_POST['abn'][$r],
+					'acn'								=> $_POST['acn'][$r],
 					'company_name'						=> $_POST['name'][$r],
 					'rounding'							=> $_POST['rounding'][$r],
 					'base_currency'						=> $_POST['base_currency'][$r],
@@ -842,7 +842,7 @@ class Main extends MY_Controller {
 					'financial_perfomance'				=> ($_POST['financial_perfomance']),
 				);
 
-// Annualized data calculation engine
+// Annualized data calculation 
 
 $x109 = (intval($_POST['profit_after_tax_distribution'][$r]) / 12) * intval($_POST['reporting_period_months'][$r]); 
 $x110 = ((intval($_POST['profit_before_tax_after_abnormals'][$r]) + intval($_POST['interest_expense_gross'][$r])) / 12) * intval($_POST['reporting_period_months'][$r]); 
@@ -974,7 +974,7 @@ $data_tbl[] = array(
 
 krsort($data_tbl);
 
-// var_dump($data_tbl);
+
 
 if($this->Main_model->report_save($data_tbl) == true){
 	// var_dump($data_tbl);

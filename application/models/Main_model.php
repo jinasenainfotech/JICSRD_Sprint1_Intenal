@@ -15,7 +15,7 @@ Class Main_model extends CI_Model {
 		return false;
 	}
 	public function recent_reports($name){
-		$query = $this->db->get_where('quantitave_input', array('company_name' => $name));
+		$query = $this->db->get_where('quantitave_input', array('company_name' => $name,'status'=>1));
 		if($query->num_rows() > 0)
 		{
 			foreach($query->result() as $key=>$item)
@@ -31,7 +31,7 @@ Class Main_model extends CI_Model {
 	public function get_repots_list(){
 
 		$this->db->select('*');
-		$this->db->where('status', '0');
+		$this->db->where('status',0);
 		$this->db->order_by('id', 'DESC');
 		$this->db->from('quantitave_input');
 		$query = $this->db->get();
@@ -61,7 +61,7 @@ Class Main_model extends CI_Model {
 
 	public function approved($id){
 		$data = array(
-			'status' => '1',
+			'status' => 1,
 		);
 		$this->db->where('id', $id);
 		return $this->db->update('quantitave_input', $data);
@@ -78,6 +78,7 @@ Class Main_model extends CI_Model {
 	public function report_save($data){
 
 		foreach ($data as $item) {
+		
 			$this->db->insert('quantitave_input', $item['data']);
 			$item['cal']['qun_id'] = $this->db->insert_id();
 			$this->db->insert('key_ratio_calculations', $item['cal']);
