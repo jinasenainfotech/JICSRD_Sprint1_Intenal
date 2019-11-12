@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/report-creation.css')?>">
-<script src="<?= base_url('assets/js/jquery.validate.min.js')?>"></script>
+<script src="<?= base_url('assets/js/jquery.validate.js')?>"></script>
 <script src="<?= base_url('assets/js/additional-methods.min.js')?>"></script>
 
 
@@ -188,6 +188,12 @@
 						<td class="aaa"><?= (isset($year_3->other_expenses))? $year_3->other_expenses : "N/A"  ?></td>
 					</tr>
 					<tr>
+						<th scope="row">Tax benefit expense</th>
+						<td class="aaa"><?= (isset($year_1->tax_benefit_expense))? $year_1->tax_benefit_expense : "N/A"  ?></td>
+						<td class="aaa"><?= (isset($year_2->tax_benefit_expense))? $year_2->tax_benefit_expense : "N/A"  ?></td>
+						<td class="aaa"><?= (isset($year_3->tax_benefit_expense))? $year_3->tax_benefit_expense : "N/A"  ?></td>
+					</tr>
+					<tr>
 						<th scope="row">Ebit</th>
 						<td class="aaa"><?= (isset($year_1->ebit))? $year_1->ebit : "N/A"  ?></td>
 						<td class="aaa"><?= (isset($year_2->ebit))? $year_2->ebit : "N/A"  ?></td>
@@ -217,12 +223,7 @@
 						<td class="aaa"><?= (isset($year_2->profit_before_tax_after_abnormals))? $year_2->profit_before_tax_after_abnormals : "N/A"  ?></td>
 						<td class="aaa"><?= (isset($year_3->profit_before_tax_after_abnormals))? $year_3->profit_before_tax_after_abnormals : "N/A"  ?></td>
 					</tr>
-					<tr>
-						<th scope="row">Tax benefit expense</th>
-						<td class="aaa"><?= (isset($year_1->tax_benefit_expense))? $year_1->tax_benefit_expense : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_2->tax_benefit_expense))? $year_2->tax_benefit_expense : "N/A"  ?></td>
-						<td class="aaa"><?= (isset($year_3->tax_benefit_expense))? $year_3->tax_benefit_expense : "N/A"  ?></td>
-					</tr>
+					
 					<tr>
 						<th scope="row">Profit after tax</th>
 						<td class="aaa"><?= (isset($year_1->profit_after_tax))? $year_1->profit_after_tax : "N/A"  ?></td>

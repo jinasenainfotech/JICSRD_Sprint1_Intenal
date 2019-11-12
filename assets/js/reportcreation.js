@@ -79,9 +79,9 @@ $(document).on("keyup", ".form-control", function () {
 
 	});
 
-	if (e.which === 13) {
-		$(this).next('.form-control').focus();
-	}
+	// if (e.which === 13) {
+	// 	$(this).next('.form-control').focus();
+	// }
 
 
 });
@@ -161,13 +161,14 @@ function calculation(row) {
 	var x57 = parseInt($('#balance_' + row).val());
 
 	// EBITDA
+	
 	$("#ebitda_" + row).val(x9 + x6 + x7 + x8 + x5 + x10 + x7);
 
 	// Normalised EBITDA
 	$("#normalised_ebitda_" + row).val(x5 + x6 + x7 + x8 + x9 + x10 + x18 + x11 + x12);
 
 	// Profit Before Tax
-	$("#profit_before_tax_0" + row).val((x3 + x4) - x5 - x6 - x7 - x8 - x9 - x10 - x13);
+	$("#profit_before_tax_" + row).val((x3 + x4) - x5 - x6 - x7 - x8 - x9 - x10 - x13);
 
 	// Profit Before Tax (after abnormal)
 	$("#profit_before_tax_after_abnormals_" + row).val((x3 + x4) - x5 - x6 - x7 - x8 - x9 - x10 - x13 + (x11 + x12));
@@ -621,14 +622,14 @@ function clone() {
 		html += '			<input  data-id="' + count + '" id="row_no_' + count + '" name="row_no[]" type="text" style="display:none;" value="' + todecimal('0.00') + '" placeholder="row_no">';
 		html += '<div class="quantitative-form">';
 		html += '		<div class="form-group">';
-		html += '			<input data-id="' + count + '" value="' + abn + '" id="abn_' + count + '" name="abn[]" type="text" class="form-control"  placeholder="ABN">';
+		html += '			<input data-id="' + count + '" readonly value="' + abn + '" id="abn_' + count + '" name="abn[]" type="text" class="form-control"  placeholder="ABN">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input data-id="' + count + '" value="' + acn + '" id="acn_' + count + '" name="acn[]" type="text" class="form-control"  placeholder="ACN">';
+		html += '			<input data-id="' + count + '" readonly value="' + acn + '" id="acn_' + count + '" name="acn[]" type="text" class="form-control"  placeholder="ACN">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		// html += '			<input data-id="'+ count +'" value="'+ company_name +'" id="name_'+ count +'" name="name[]" type="text" class="form-control" placeholder="Name">';[]
-		html += '			<select data-id="' + count + '" id="name_' + count + '" name="name[]" type="text" class="form-control company" placeholder="Name">';
+		html += '			<select data-id="' + count + '" readonly id="name_' + count + '" name="name[]" type="text" class="form-control company" placeholder="Name">';
 		html += com;
 		html += '			</select>';
 		html += '		</div>';
@@ -656,11 +657,11 @@ function clone() {
 		html += '		<div class="form-group">';
 		html += '			<select data-id="' + count + '" id="quality_' + count + '" name="quality[]" class="browser-default custom-select"  required="required">';
 		html += '				<option value="null">Quality</option>';
-		html += '				<option value="management">management</option>';
-		html += '				<option value="audited">audited</option>';
-		html += '				<option value="statutory">statutory</option>';
-		html += '				<option value="forcast">forcast</option>';
-		html += '				<option value="anualised">anualised</option>';
+		html += '				<option value="management">Management</option>';
+		html += '				<option value="audited">Audited</option>';
+		html += '				<option value="statutory">Statutory</option>';
+		html += '				<option value="forcast">Forcast</option>';
+		html += '				<option value="anualised">Anualised</option>';
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
@@ -828,6 +829,9 @@ function clone() {
 		html += '			<input value="' + other_expenses + '" type="text" class="form-control" name="other_expenses[]" data-id="' + count + '" id="other_expenses_' + count + '" value="0" placeholder="Other Expenses">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
+		html += '			<input value="' + tax_benefit_expense + '" type="text" class="form-control ebit" name="tax_benefit_expense[]" data-id="' + count + '" id="tax_benefit_expense_' + count + '" value="0" placeholder="Tax Benifits">';
+		html += '		</div>';
+		html += '		<div class="form-group">';
 		html += '			<input value="' + ebit + '" type="text" class="form-control" name="ebit[]" data-id="' + count + '" id="ebit_' + count + '" value="0" placeholder="EBIT" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
@@ -842,9 +846,6 @@ function clone() {
 		html += '		<div class="form-group">';
 		html += '			<input value="' + profit_before_tax_after_abnormals + '" type="text" class="form-control" name="profit_before_tax_after_abnormals[]" data-id="' + count + '" id="profit_before_tax_after_abnormals_' + count + '"';
 		html += '		 value="0"	placeholder="Profit Before Tax After Abnormal" readonly>';
-		html += '		</div>';
-		html += '		<div class="form-group">';
-		html += '			<input value="' + tax_benefit_expense + '" type="text" class="form-control ebit" name="tax_benefit_expense[]" data-id="' + count + '" id="tax_benefit_expense_' + count + '" value="0" placeholder="Tax Benifits">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<input value="' + profit_after_tax + '" type="text" class="form-control" name="profit_after_tax[]" data-id="' + count + '" id="profit_after_tax_' + count + '" value="0" placeholder="Profit After Tax" readonly>';
