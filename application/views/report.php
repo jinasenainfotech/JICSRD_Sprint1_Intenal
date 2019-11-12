@@ -2403,6 +2403,7 @@ reason in making a decision about the entity.</p>
         }
         page {
           border: none;
+          font-family:'calibri';
 
       }
       .printbtn{
