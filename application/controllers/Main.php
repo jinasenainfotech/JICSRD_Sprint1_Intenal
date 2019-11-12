@@ -160,7 +160,7 @@ class Main extends MY_Controller {
 		$scoreArray = [];
 		foreach($creditScore as $key => $scoreData){
 
-			$scoreArray['date'][$key] =$scoreData->date;
+			$scoreArray['date'][$key] =date('M Y',strtotime($scoreData->date));
 			$scoreArray['value'][$key] =intval($scoreData->score);
 		}
 			$scoreArray['date'] = array_reverse($scoreArray['date']);
@@ -749,9 +749,9 @@ class Main extends MY_Controller {
 		}
 
 		$cuntry  = $this->jics->get_companies();
-		if (isset($_GET['cun'])) {
-			$this->data['cun'] = $cuntry[$this->input->get('cun')];
-		}
+		// if (isset($_GET['cun'])) {
+		// 	$this->data['cun'] = $cuntry[$this->input->get('cun')];
+		// }
 
 		$this->data['country'] = $this->jics->get_companies();
 		$this->data['companies'] = $this->Main_model->get_companies();
@@ -774,9 +774,10 @@ class Main extends MY_Controller {
 
 		if ($this->form_validation->run() == TRUE) {
 
+			
 			$i = isset($_POST['row_no']) ? sizeof($_POST['row_no']) : 0;
 			for ($r = 0; $r < $i; $r++) { 
-
+				$companyParam = $_POST['name'][$r];
 				$data = array(
 					// 'status'							=> (isset($_POST['is_app'] != 'on' or $_POST['is_app'] != null))? 1;
 					'status'							=> 0,
@@ -991,7 +992,7 @@ krsort($data_tbl);
 if($this->Main_model->report_save($data_tbl) == true){
 	// var_dump($data_tbl);
 	$this->jics->alert('success','Recode Updated Successfull','Save');
-	redirect(base_url('newreport'),'refresh');
+	redirect(base_url('newreport?com=').$companyParam,'refresh');
 }
 // var_dump('*****************************************');	var_dump($data_tbl);exit();
 
