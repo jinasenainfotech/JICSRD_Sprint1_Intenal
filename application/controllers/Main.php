@@ -731,6 +731,9 @@ class Main extends MY_Controller {
 		$this->jics->auth();
 		
 		if (isset($_GET['com'])) {
+			if($_GET['com']=='null'){
+				redirect(base_url('main'),'refresh');
+			}
 			$company = $this->Main_model->companies_get_by_id($this->input->get('com'));
 			$this->data['company_name'] = $this->input->get('com');
 			$this->data['abn'] = $company[0]->abn;
