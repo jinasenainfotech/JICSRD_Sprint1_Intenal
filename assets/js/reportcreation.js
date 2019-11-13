@@ -416,7 +416,7 @@ function clone() {
 	if (typeof (localStorage.getItem('tax_benefit_expense')) != 'undefined' && localStorage.getItem('tax_benefit_expense') !== null) {
 		var tax_benefit_expense = localStorage.getItem('tax_benefit_expense');
 	} else {
-		var tax_benefit_expense = '';
+		var tax_benefit_expense = 0;
 	}
 	if (typeof (localStorage.getItem('profit_after_tax')) != 'undefined' && localStorage.getItem('profit_after_tax') !== null) {
 		var profit_after_tax = localStorage.getItem('profit_after_tax');
@@ -431,7 +431,7 @@ function clone() {
 	if (typeof (localStorage.getItem('other_post_tax_items_gains_losses')) != 'undefined' && localStorage.getItem('other_post_tax_items_gains_losses') !== null) {
 		var other_post_tax_items_gains_losses = localStorage.getItem('other_post_tax_items_gains_losses');
 	} else {
-		var other_post_tax_items_gains_losses = '';
+		var other_post_tax_items_gains_losses = 0;
 	}
 	if (typeof (localStorage.getItem('profit_after_tax_distribution')) != 'undefined' && localStorage.getItem('profit_after_tax_distribution') !== null) {
 		var profit_after_tax_distribution = localStorage.getItem('profit_after_tax_distribution');
@@ -441,27 +441,27 @@ function clone() {
 	if (typeof (localStorage.getItem('cash')) != 'undefined' && localStorage.getItem('cash') !== null) {
 		var cash = localStorage.getItem('cash');
 	} else {
-		var cash = '';
+		var cash = 0;
 	}
 	if (typeof (localStorage.getItem('trade_debtors')) != 'undefined' && localStorage.getItem('trade_debtors') !== null) {
 		var trade_debtors = localStorage.getItem('trade_debtors');
 	} else {
-		var trade_debtors = '';
+		var trade_debtors = 0;
 	}
 	if (typeof (localStorage.getItem('total_inventories')) != 'undefined' && localStorage.getItem('total_inventories') !== null) {
 		var total_inventories = localStorage.getItem('total_inventories');
 	} else {
-		var total_inventories = '';
+		var total_inventories = 0;
 	}
 	if (typeof (localStorage.getItem('loans_to_related_parties_1')) != 'undefined' && localStorage.getItem('loans_to_related_parties_1') !== null) {
 		var loans_to_related_parties_1 = localStorage.getItem('loans_to_related_parties_1');
 	} else {
-		var loans_to_related_parties_1 = '';
+		var loans_to_related_parties_1 = 0;
 	}
 	if (typeof (localStorage.getItem('other_current_assets')) != 'undefined' && localStorage.getItem('other_current_assets') !== null) {
 		var other_current_assets = localStorage.getItem('other_current_assets');
 	} else {
-		var other_current_assets = '';
+		var other_current_assets = 0;
 	}
 	if (typeof (localStorage.getItem('total_current_assets')) != 'undefined' && localStorage.getItem('total_current_assets') !== null) {
 		var total_current_assets = localStorage.getItem('total_current_assets');
@@ -471,17 +471,17 @@ function clone() {
 	if (typeof (localStorage.getItem('fixed_assets')) != 'undefined' && localStorage.getItem('fixed_assets') !== null) {
 		var fixed_assets = localStorage.getItem('fixed_assets');
 	} else {
-		var fixed_assets = '';
+		var fixed_assets = 0;
 	}
 	if (typeof (localStorage.getItem('net_intangibles')) != 'undefined' && localStorage.getItem('net_intangibles') !== null) {
 		var net_intangibles = localStorage.getItem('net_intangibles');
 	} else {
-		var net_intangibles = '';
+		var net_intangibles = 0;
 	}
 	if (typeof (localStorage.getItem('loan_to_related_parties_2')) != 'undefined' && localStorage.getItem('loan_to_related_parties_2') !== null) {
 		var loan_to_related_parties_2 = localStorage.getItem('loan_to_related_parties_2');
 	} else {
-		var loan_to_related_parties_2 = '';
+		var loan_to_related_parties_2 = 0;
 	}
 	if (typeof (localStorage.getItem('other_non_current_assets')) != 'undefined' && localStorage.getItem('other_non_current_assets') !== null) {
 		var other_non_current_assets = localStorage.getItem('other_non_current_assets');
@@ -501,22 +501,22 @@ function clone() {
 	if (typeof (localStorage.getItem('trade_creditors')) != 'undefined' && localStorage.getItem('trade_creditors') !== null) {
 		var trade_creditors = localStorage.getItem('trade_creditors');
 	} else {
-		var trade_creditors = '';
+		var trade_creditors = 0;
 	}
 	if (typeof (localStorage.getItem('interest_bearing_debt_1')) != 'undefined' && localStorage.getItem('interest_bearing_debt_1') !== null) {
 		var interest_bearing_debt_1 = localStorage.getItem('interest_bearing_debt_1');
 	} else {
-		var interest_bearing_debt_1 = '';
+		var interest_bearing_debt_1 = 0;
 	}
 	if (typeof (localStorage.getItem('lone_from_related_parties')) != 'undefined' && localStorage.getItem('lone_from_related_parties') !== null) {
 		var lone_from_related_parties = localStorage.getItem('lone_from_related_parties');
 	} else {
-		var lone_from_related_parties = '';
+		var lone_from_related_parties = 0;
 	}
 	if (typeof (localStorage.getItem('other_current_liabilities')) != 'undefined' && localStorage.getItem('other_current_liabilities') !== null) {
 		var other_current_liabilities = localStorage.getItem('other_current_liabilities');
 	} else {
-		var other_current_liabilities = '';
+		var other_current_liabilities = 0;
 	}
 	if (typeof (localStorage.getItem('total_current_liabilities')) != 'undefined' && localStorage.getItem('total_current_liabilities') !== null) {
 		var total_current_liabilities = localStorage.getItem('total_current_liabilities');
@@ -526,17 +526,17 @@ function clone() {
 	if (typeof (localStorage.getItem('total_current_liabilities_2')) != 'undefined' && localStorage.getItem('total_current_liabilities_2') !== null) {
 		var total_current_liabilities_2 = localStorage.getItem('total_current_liabilities_2');
 	} else {
-		var total_current_liabilities_2 = '';
+		var total_current_liabilities_2 = 0;
 	}
 	if (typeof (localStorage.getItem('loans_from_related_parites')) != 'undefined' && localStorage.getItem('loans_from_related_parites') !== null) {
 		var loans_from_related_parites = localStorage.getItem('loans_from_related_parites');
 	} else {
-		var loans_from_related_parites = '';
+		var loans_from_related_parites = 0;
 	}
 	if (typeof (localStorage.getItem('other_non_current_liabilities')) != 'undefined' && localStorage.getItem('other_non_current_liabilities') !== null) {
 		var other_non_current_liabilities = localStorage.getItem('other_non_current_liabilities');
 	} else {
-		var other_non_current_liabilities = '';
+		var other_non_current_liabilities = 0;
 	}
 	if (typeof (localStorage.getItem('total_non_current_liabilities')) != 'undefined' && localStorage.getItem('total_non_current_liabilities') !== null) {
 		var total_non_current_liabilities = localStorage.getItem('total_non_current_liabilities');
@@ -551,17 +551,17 @@ function clone() {
 	if (typeof (localStorage.getItem('share_capital')) != 'undefined' && localStorage.getItem('share_capital') !== null) {
 		var share_capital = localStorage.getItem('share_capital');
 	} else {
-		var share_capital = '';
+		var share_capital = 0;
 	}
 	if (typeof (localStorage.getItem('prefence_shares')) != 'undefined' && localStorage.getItem('prefence_shares') !== null) {
 		var prefence_shares = localStorage.getItem('prefence_shares');
 	} else {
-		var prefence_shares = '';
+		var prefence_shares = 0;
 	}
 	if (typeof (localStorage.getItem('treasury_shares')) != 'undefined' && localStorage.getItem('treasury_shares') !== null) {
 		var treasury_shares = localStorage.getItem('treasury_shares');
 	} else {
-		var treasury_shares = '';
+		var treasury_shares = 0;
 	}
 	if (typeof (localStorage.getItem('equity_owner_ships')) != 'undefined' && localStorage.getItem('equity_owner_ships') !== null) {
 		var equity_owner_ships = localStorage.getItem('equity_owner_ships');
@@ -571,17 +571,17 @@ function clone() {
 	if (typeof (localStorage.getItem('total_reserves')) != 'undefined' && localStorage.getItem('total_reserves') !== null) {
 		var total_reserves = localStorage.getItem('total_reserves');
 	} else {
-		var total_reserves = '';
+		var total_reserves = 0;
 	}
 	if (typeof (localStorage.getItem('ratained_earning')) != 'undefined' && localStorage.getItem('ratained_earning') !== null) {
 		var ratained_earning = localStorage.getItem('ratained_earning');
 	} else {
-		var ratained_earning = '';
+		var ratained_earning = 0;
 	}
 	if (typeof (localStorage.getItem('minorty_interest')) != 'undefined' && localStorage.getItem('minorty_interest') !== null) {
 		var minorty_interest = localStorage.getItem('minorty_interest');
 	} else {
-		var minorty_interest = '';
+		var minorty_interest = 0;
 	}
 	if (typeof (localStorage.getItem('total_equity')) != 'undefined' && localStorage.getItem('total_equity') !== null) {
 		var total_equity = localStorage.getItem('total_equity');
@@ -596,22 +596,22 @@ function clone() {
 	if (typeof (localStorage.getItem('operating_cash_flow')) != 'undefined' && localStorage.getItem('operating_cash_flow') !== null) {
 		var operating_cash_flow = localStorage.getItem('operating_cash_flow');
 	} else {
-		var operating_cash_flow = '';
+		var operating_cash_flow = 0;
 	}
 	if (typeof (localStorage.getItem('contingent_liabilities')) != 'undefined' && localStorage.getItem('contingent_liabilities') !== null) {
 		var contingent_liabilities = localStorage.getItem('contingent_liabilities');
 	} else {
-		var contingent_liabilities = '';
+		var contingent_liabilities = 0;
 	}
 	if (typeof (localStorage.getItem('other_commitmentes')) != 'undefined' && localStorage.getItem('other_commitmentes') !== null) {
 		var other_commitmentes = localStorage.getItem('other_commitmentes');
 	} else {
-		var other_commitmentes = '';
+		var other_commitmentes = 0;
 	}
 	if (typeof (localStorage.getItem('operating_lease_outstanding')) != 'undefined' && localStorage.getItem('operating_lease_outstanding') !== null) {
 		var operating_lease_outstanding = localStorage.getItem('operating_lease_outstanding');
 	} else {
-		var operating_lease_outstanding = '';
+		var operating_lease_outstanding = 0;
 	}
 
 	var com = localStorage.getItem('html_company');

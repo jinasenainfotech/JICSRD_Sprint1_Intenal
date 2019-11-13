@@ -219,11 +219,16 @@
   </div>
                        </div>
   
-                        <h2 class="mt-5">Historical Credit Scores</h2>
+                        
     
                         <!-- API -->
-                        <div class="container" id="credit-chart">
+                       <div class="row">
+                       <div class = "col-md-12 col-sm-12 chart col-lg-12">
+                           <h2 class="mt-5">Historical Credit Scores</h2>
+                       <div class="container" id="credit-chart">
                         </div>
+                       </div>
+                       </div>
                             
 
 <h2 class="mt-5">Recommendations</h2>
@@ -761,12 +766,12 @@ reason in making a decision about the entity.</p>
 
 <page size="A4">
     <div class="header"></div>
-    <div class="content">
+    <div class="container">
         <h2 class="mt-5">Financial Trend Graphs</h2>
         <div class="col-md-12 row chart">
 
-           
-            <div class="col-md-6" id="revenue_chart"></div>
+        
+        <div class="col-md-6" id="revenue_chart"></div>
             <div class="col-md-6" id="gp_np_margin"></div>
             <div class="col-md-6" id="gp_np"></div>
             <div class="col-md-6" id="ebitda"></div>
@@ -774,6 +779,7 @@ reason in making a decision about the entity.</p>
             <div class="col-md-6" id="capital"></div>
             <div class="col-md-6" id="equity"></div>
             <div class="col-md-6" id="interest_cover"></div>
+        
             
         </div>
                             
