@@ -285,32 +285,32 @@ reason in making a decision about the entity.</p>
     <div class="header"></div>
     <div class="content">
         <!-- Financial Summary  -->
-       <div class="container">
+       <div class="">
        <h2 class="mt-5">Financial Summary </h2>
-        <table class="table cardview summary-table table-bordered">
+        <table class="table  summary-table table-bordered">
             <tbody>
             <tr>
                     <th width='300px' style="text-align:left">Financial Year</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><strong><?= $previous->financial_year?></strong></td>
+                    <td width="" style="text-align:right"><strong><?= $previous->financial_year?></strong></td>
                     <?php } ?>
                     
-                    <td width="14%" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?></strong></td>
+                    <td width="" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?></strong></td>
                    
                 </tr>
                 <tr>
                     <th width='300px' style="text-align:left">Rounding</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= ucfirst($previous->rounding)?></td>
+                    <td width="" style="text-align:right"><?= ucfirst($previous->rounding)?></td>
                     <?php } ?>
                     
-                    <td width="14%" style="text-align:right"><?= ucfirst($input_data['current_year']->rounding)?></td>
+                    <td width="" style="text-align:right"><?= ucfirst($input_data['current_year']->rounding)?></td>
                    
                 </tr>
                 <tr>
-                    <th style="width:40%">Base Currency</th>
+                    <th style="300px">Base Currency</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= strtoupper($previous->base_currency)?></td>
+                    <td width="" style="text-align:right"><?= strtoupper($previous->base_currency)?></td>
                     <?php } ?>
                   
                     <td style="text-align:right"><?= strtoupper($input_data['current_year']->base_currency) ?></td>
@@ -318,36 +318,36 @@ reason in making a decision about the entity.</p>
 
                 </tr>
                 <tr>
-                    <th style="width:40%">Quality</th>
+                    <th style="300px">Quality</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= ucfirst($previous->quality)?></td>
+                    <td width="" style="text-align:right"><?= ucfirst($previous->quality)?></td>
                     <?php } ?>
                     
                     <td style="text-align:right"><?= ucfirst($input_data['current_year']->quality) ?></td>
                     
                 </tr>
                 <tr>
-                    <th style="width:40%">Reporting Period - Months</th>
+                    <th style="300px">Reporting Period - Months</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= $previous->reporting_period_months?></td>
+                    <td width="" style="text-align:right"><?= $previous->reporting_period_months?></td>
                     <?php } ?>
                    
                     <td style="text-align:right"><?= $input_data['current_year']->reporting_period_months?></td>
                     
                 </tr>
                 <tr>
-                    <th style="width:40%">Financial Year</th>
+                    <th style="300px">Financial Year</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= $previous->financial_year?></td>
+                    <td width="" style="text-align:right"><?= $previous->financial_year?></td>
                     <?php } ?>
                     
                     <td style="text-align:right">FY <?= $input_data['current_year']->financial_year?></td>
                     
                 </tr>
                 <tr>
-                    <th style="width:40%">Month</th>
+                    <th style="300px">Month</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= $previous->month?></td>
+                    <td width="" style="text-align:right"><?= $previous->month?></td>
                     <?php } ?>
                   
                     <td style="text-align:right"><?= $input_data['current_year']->month?></td>
@@ -789,33 +789,33 @@ reason in making a decision about the entity.</p>
                 <div class="content">
                  <!-- Financial Performance  -->
 
-                 <div class="row">
-                 <div class="container">
+                
+                 <div class="col-md-12">
        <h2 class="mt-5">Financial Performance </h2>
-        <table class="table cardview summary-table table-bordered">
+        <table class="table  summary-table table-bordered">
             <tbody>
             <tr>
                     <th width='300px' style="text-align:left">Financial Year</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><strong><?= $previous->financial_year?></strong></td>
+                    <td width="" style="text-align:right"><strong><?= $previous->financial_year?></strong></td>
                     <?php } ?>
                     
-                    <td width="14%" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?></strong></td>
+                    <td width="" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?></strong></td>
                    
                 </tr>
                 <tr>
                     <th width='300px' style="text-align:left">Rounding</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= ucfirst($previous->rounding)?></td>
+                    <td width="" style="text-align:right"><?= ucfirst($previous->rounding)?></td>
                     <?php } ?>
                     
-                    <td width="14%" style="text-align:right"><?= ucfirst($input_data['current_year']->rounding)?></td>
+                    <td width="" style="text-align:right"><?= ucfirst($input_data['current_year']->rounding)?></td>
                    
                 </tr>
                 <tr>
-                    <th style="width:40%">Base Currency</th>
+                    <th style="300px">Base Currency</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= strtoupper($previous->base_currency)?></td>
+                    <td width="" style="text-align:right"><?= strtoupper($previous->base_currency)?></td>
                     <?php } ?>
                   
                     <td style="text-align:right"><?= strtoupper($input_data['current_year']->base_currency) ?></td>
@@ -823,54 +823,54 @@ reason in making a decision about the entity.</p>
 
                 </tr>
                 <tr>
-                    <th style="width:40%">Quality</th>
+                    <th style="300px">Quality</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= ucfirst($previous->quality)?></td>
+                    <td width="" style="text-align:right"><?= ucfirst($previous->quality)?></td>
                     <?php } ?>
                     
                     <td style="text-align:right"><?= ucfirst($input_data['current_year']->quality) ?></td>
                     
                 </tr>
                 <tr>
-                    <th style="width:40%">Reporting Period - Months</th>
+                    <th style="300px">Reporting Period - Months</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= $previous->reporting_period_months?></td>
+                    <td width="" style="text-align:right"><?= $previous->reporting_period_months?></td>
                     <?php } ?>
                    
                     <td style="text-align:right"><?= $input_data['current_year']->reporting_period_months?></td>
                     
                 </tr>
                 <tr>
-                    <th style="width:40%">Scope</th>
+                    <th style="300px">Scope</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= $previous->scope?></td>
+                    <td width="" style="text-align:right"><?= $previous->scope?></td>
                     <?php } ?>
                    
                     <td style="text-align:right"><?= $input_data['current_year']->scope?></td>
                     
                 </tr>
                 <tr>
-                    <th style="width:40%">Confidentiality Record</th>
+                    <th style="300px">Confidentiality Record</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= $previous->confidentiality_record?></td>
+                    <td width="" style="text-align:right"><?= $previous->confidentiality_record?></td>
                     <?php } ?>
                    
                     <td style="text-align:right"><?= $input_data['current_year']->confidentiality_record?></td>
                     
                 </tr>
                 <tr>
-                    <th style="width:40%">Financial Year</th>
+                    <th style="300px">Financial Year</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= $previous->financial_year?></td>
+                    <td width="" style="text-align:right"><?= $previous->financial_year?></td>
                     <?php } ?>
                     
                     <td style="text-align:right">FY <?= $input_data['current_year']->financial_year?></td>
                     
                 </tr>
                 <tr>
-                    <th style="width:40%">Month</th>
+                    <th style="300px">Month</th>
                     <?php foreach($input_data['previous_year'] as $previous) { ?>
-                    <td width="14%" style="text-align:right"><?= $previous->month?></td>
+                    <td width="" style="text-align:right"><?= $previous->month?></td>
                     <?php } ?>
                   
                     <td style="text-align:right"><?= $input_data['current_year']->month?></td>
@@ -879,7 +879,7 @@ reason in making a decision about the entity.</p>
             </tbody>
         </table>
        </div>
-                 </div>
+                
                  <div class="col-md-12">
 
                     <!-- Income Statement -->
@@ -1459,28 +1459,10 @@ reason in making a decision about the entity.</p>
                     
                    
                 </tr>
-                
-                
-            </tbody>
-
-        </table>
-
-
-    </div>
-</div>
-</page>
-
-<page size="A4">
-    <div class="header"></div>
-    <div class="content">
-        <table class="table table-bordered">
-        <thead>
                 <tr>
                     <th colspan="<?php echo count($input_data['previous_year'])+2  ?>" class="theading">Equity</th>
                 </tr>
-            </thead>
-            <tbody>
-            <tr>
+                <tr>
                     <td width='300px' style="text-align:left">Share Capital</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->share_capital)?></td>
@@ -1568,17 +1550,10 @@ reason in making a decision about the entity.</p>
                     
                    
                 </tr>
-               
-            </tbody>
-        </table>
-        <!-- Balance Sheet  -->
-
-        <table class="table table-bordered">
-        <thead>
-                
-            </thead>
-            <tbody>
-            <tr>
+                <tr>
+                    <th colspan="<?php echo count($input_data['previous_year'])+2  ?>" class="theading"></th>
+                </tr>
+                <tr>
                     <td width='300px' style="text-align:left">Net Operating Cash Flow</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->operating_cash_flow)?></td>
@@ -1611,14 +1586,16 @@ reason in making a decision about the entity.</p>
                     
                    
                 </tr>
-                
-               
             </tbody>
+
         </table>
-        
+
+
     </div>
 </div>
 </page>
+
+
 
 
 <page size="A4">
@@ -1969,27 +1946,10 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->short_ratio - $key_ratio['previous_year'][$key]->short_ratio) ?></td>
                     <?php } ?>
                 </tr>
-            
-        </tbody>
-
-    </table>
-    <!-- table -->
-</div>
-</div>
-</page>
-<page size="A4">
-    <div class="header"></div>
-    <div class="content">
-        <table class="table table-bordered">
-
-            <thead>
                 <tr>
                 <th colspan="<?php echo $colspan;  ?>" class="theading">Operating</th>
                 </tr>
-
-            </thead>
-            <tbody>
-            <tr>
+                <tr>
                     <td width='300px' style="text-align:left">Operating Leverage</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2067,19 +2027,10 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_conversion_cycle - $key_ratio['previous_year'][$key]->cash_conversion_cycle) ?></td>
                     <?php } ?>
                 </tr>
-                
-                
-            </tbody>
-
-            <thead>
-            <tr>
+                <tr>
                 <th colspan="<?php echo $colspan;  ?>" class="theading">Other Indicators</th>
                 </tr>
-               
-
-            </thead>
-            <tbody>
-            <tr>
+                <tr>
                     <td width='300px' style="text-align:left">Sales (Annualised)</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2209,9 +2160,17 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->zscore_risk_measure - $key_ratio['previous_year'][$key]->zscore_risk_measure) ?></td>
                     <?php } ?>
                 </tr>
-             
-            </tbody>
-        </table>
+        </tbody>
+
+    </table>
+    <!-- table -->
+</div>
+</div>
+</page>
+<page size="A4">
+    <div class="header"></div>
+    <div class="content">
+        
         <div class="">
         <h3 class="">
     Glossary of Financial Calculations 
