@@ -426,7 +426,7 @@ function clone() {
 	if (typeof (localStorage.getItem('distribution_ordividends')) != 'undefined' && localStorage.getItem('distribution_ordividends') !== null) {
 		var distribution_ordividends = localStorage.getItem('distribution_ordividends');
 	} else {
-		var distribution_ordividends = '';
+		var distribution_ordividends = 0;
 	}
 	if (typeof (localStorage.getItem('other_post_tax_items_gains_losses')) != 'undefined' && localStorage.getItem('other_post_tax_items_gains_losses') !== null) {
 		var other_post_tax_items_gains_losses = localStorage.getItem('other_post_tax_items_gains_losses');
