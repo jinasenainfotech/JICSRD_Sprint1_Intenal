@@ -162,7 +162,7 @@ function calculation(row) {
 
 	// EBITDA
 	
-	$("#ebitda_" + row).val(x9 + x6 + x7 + x8 + x5 + x10 + x7);
+	$("#ebitda_" + row).val(x9 + x6 + x7 + x8 + x5 + x10 + x18);
 
 	// Normalised EBITDA
 	$("#normalised_ebitda_" + row).val(x5 + x6 + x7 + x8 + x9 + x10 + x18 + x11 + x12);
@@ -174,13 +174,13 @@ function calculation(row) {
 	$("#profit_before_tax_after_abnormals_" + row).val((x3 + x4) - x5 - x6 - x7 - x8 - x9 - x10 - x13 + (x11 + x12));
 
 	// Profit After Tax
-	$("#profit_after_tax_" + row).val((x3 + x4) - x5 - x6 - x7 - x8 - x9 - x10 - x13 + (x11 + x12));
+	$("#profit_after_tax_" + row).val(x18 + x19);
 
 	// Profit After Tax & Distribution
-	$('#profit_after_tax_distribution_' + row).val(x20 - x21 + x2);
+	$('#profit_after_tax_distribution_' + row).val(x20 - (x21 + x22));
 
 	// Total Current Assets
-	$('#total_current_assets_' + row).val(x25 - x26 + x27 + x28 + x29);
+	$('#total_current_assets_' + row).val(x25 + x26 + x27 + x28 + x29);
 
 	// Total Non-Current Assets
 	$('#total_non_curent_assets_' + row).val(x31 + x32 + x33 + x34);
@@ -341,52 +341,52 @@ function clone() {
 	if (typeof (localStorage.getItem('other_income')) != 'undefined' && localStorage.getItem('other_income') !== null) {
 		var other_income = localStorage.getItem('other_income');
 	} else {
-		var other_income = '';
+		var other_income = 0;
 	}
 	if (typeof (localStorage.getItem('depreciation')) != 'undefined' && localStorage.getItem('depreciation') !== null) {
 		var depreciation = localStorage.getItem('depreciation');
 	} else {
-		var depreciation = '';
+		var depreciation = 0;
 	}
 	if (typeof (localStorage.getItem('amortisation')) != 'undefined' && localStorage.getItem('amortisation') !== null) {
 		var amortisation = localStorage.getItem('amortisation');
 	} else {
-		var amortisation = '';
+		var amortisation = 0;
 	}
 	if (typeof (localStorage.getItem('impairment')) != 'undefined' && localStorage.getItem('impairment') !== null) {
 		var impairment = localStorage.getItem('impairment');
 	} else {
-		var impairment = '';
+		var impairment = 0;
 	}
 	if (typeof (localStorage.getItem('interest_expense_gross')) != 'undefined' && localStorage.getItem('interest_expense_gross') !== null) {
 		var interest_expense_gross = localStorage.getItem('interest_expense_gross');
 	} else {
-		var interest_expense_gross = '';
+		var interest_expense_gross = 0;
 	}
 	if (typeof (localStorage.getItem('operating_lease_expense')) != 'undefined' && localStorage.getItem('operating_lease_expense') !== null) {
 		var operating_lease_expense = localStorage.getItem('operating_lease_expense');
 	} else {
-		var operating_lease_expense = '';
+		var operating_lease_expense = 0;
 	}
 	if (typeof (localStorage.getItem('finance_lease_hire_purchase_charges')) != 'undefined' && localStorage.getItem('finance_lease_hire_purchase_charges') !== null) {
 		var finance_lease_hire_purchase_charges = localStorage.getItem('finance_lease_hire_purchase_charges');
 	} else {
-		var finance_lease_hire_purchase_charges = '';
+		var finance_lease_hire_purchase_charges = 0;
 	}
 	if (typeof (localStorage.getItem('non_recurring_gains_losses')) != 'undefined' && localStorage.getItem('non_recurring_gains_losses') !== null) {
 		var non_recurring_gains_losses = localStorage.getItem('non_recurring_gains_losses');
 	} else {
-		var non_recurring_gains_losses = '';
+		var non_recurring_gains_losses = 0;
 	}
 	if (typeof (localStorage.getItem('other_gains_losses')) != 'undefined' && localStorage.getItem('other_gains_losses') !== null) {
 		var other_gains_losses = localStorage.getItem('other_gains_losses');
 	} else {
-		var other_gains_losses = '';
+		var other_gains_losses = 0;
 	}
 	if (typeof (localStorage.getItem('other_expenses')) != 'undefined' && localStorage.getItem('other_expenses') !== null) {
 		var other_expenses = localStorage.getItem('other_expenses');
 	} else {
-		var other_expenses = '';
+		var other_expenses = 0;
 	}
 	if (typeof (localStorage.getItem('ebit')) != 'undefined' && localStorage.getItem('ebit') !== null) {
 		var ebit = localStorage.getItem('ebit');
@@ -840,7 +840,7 @@ function clone() {
 		html += '			<input value="' + normalised_ebitda + '" type="text" class="form-control"  name="normalised_ebitda[]" data-id="' + count + '" id="normalised_ebitda_' + count + '" value="0" placeholder="Normalise EBITDA" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + profit_before_tax_after_abnormals + '" type="text" class="form-control ebit" name="profit_before_tax[]" data-id="' + count + '" id="profit_before_tax_' + count + '" value="0" placeholder="Profit Before Tax" readonly>';
+		html += '			<input value="' + profit_before_tax + '" type="text" class="form-control ebit" name="profit_before_tax[]" data-id="' + count + '" id="profit_before_tax_' + count + '" value="0" placeholder="Profit Before Tax" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<input value="' + profit_before_tax_after_abnormals + '" type="text" class="form-control" name="profit_before_tax_after_abnormals[]" data-id="' + count + '" id="profit_before_tax_after_abnormals_' + count + '"';
