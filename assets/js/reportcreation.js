@@ -177,7 +177,7 @@ function calculation(row) {
 	$("#profit_after_tax_" + row).val(x18 + x19);
 
 	// Profit After Tax & Distribution
-	$('#profit_after_tax_distribution_' + row).val(x20 - (x21 + x22));
+	$('#profit_after_tax_distribution_' + row).val((x20 - x21) + x22);
 
 	// Total Current Assets
 	$('#total_current_assets_' + row).val(x25 + x26 + x27 + x28 + x29);
