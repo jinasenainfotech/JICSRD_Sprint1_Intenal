@@ -35,9 +35,10 @@
 					
 						<tr>
 							<th scope="row">ABN</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?=  $previousYear->abn ?></td>
-							<?php } ?>
+							<?php }} ?>
 						
 							
 
@@ -45,63 +46,73 @@
 						<tr>
 							<th scope="row">ACN</th>
 							
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?=  $previousYear->acn ?></td>
-							<?php } ?>
+							<?php } } ?>
 
 						</tr>
 						<tr>
 							<th scope="row">Company name</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?=  $previousYear->entity_name ?></td>
-							<?php } ?>
+							<?php } } ?>
 						</tr>
 						<tr>
 							<th scope="row">Rounding</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?=  $previousYear->rounding ?></td>
-							<?php } ?>
+							<?php }} ?>
 						</tr>
 						<tr>
 							<th scope="row">Base currency</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?=  strtoUpper($previousYear->base_currency) ?></td>
-							<?php } ?>
+							<?php }} ?>
 						</tr>
 						<tr>
 							<th scope="row">Quality</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?=  $previousYear->quality ?></td>
-							<?php } ?>
+							<?php }} ?>
 						</tr>
 						<tr>
 							<th scope="row">Reporting period months</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?=  $previousYear->reporting_period_months ?></td>
-							<?php } ?>
+							<?php }} ?>
 						<tr>
 							<th scope="row">Scope</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?= $previousYear->scope ?></td>
-							<?php } ?>
+							<?php }} ?>
 						</tr>
 						<tr>
 							<th scope="row">Confidentiality record</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?=  $previousYear->confidentiality_record ?></td>
-							<?php } ?>
+							<?php }} ?>
 						</tr>
 						<tr>
 							<th scope="row">Financial year</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?= $previousYear->financial_year ?></td>
-							<?php } ?>
+							<?php }} ?>
 						</tr>
 						<tr>
 							<th scope="row">Month</th>
-							<?php foreach($previous as $previousYear){ ?>
+							<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?= $previousYear->month ?></td>
-							<?php } ?>
+							<?php }} ?>
 						</tr>
 						<tr class="table-primary">
 							<td colspan = "<?php echo count($previous)+1 ?>" >
@@ -110,142 +121,165 @@
 					</tr>
 					<tr>
 						<th scope="row">Sales</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?= number_format($previousYear->sales,2); ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Cost of sales</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?= number_format($previousYear->cost_of_sales,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Gross profit</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 							<td class="aaa"><?= number_format($previousYear->gross_profit,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Other income</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->other_income,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Depreciation</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->depreciation,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Amortisation</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->amortisation,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Impairment</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->impairment,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Interest expense gross</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->interest_expense_gross,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Operating lease expense</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->operating_lease_expense,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Finance lease hire purchase charges</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->finance_lease_hire_purchase_charges,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Non recurring gains losses</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->non_recurring_gains_losses,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Other gains losses</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->other_gains_losses,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Other expenses</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->other_expenses,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Tax benefit expense</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->tax_benefit_expense,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Ebit</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->ebit,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Ebitda</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->ebitda,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Normalised ebitda</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->normalised_ebitda,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Profit before tax</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->profit_before_tax,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Profit before tax after abnormals</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->profit_before_tax_after_abnormals,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					
 					<tr>
 						<th scope="row">Profit after tax</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->profit_after_tax,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Distribution ordividends</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->distribution_ordividends,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Other post tax items gains losses</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->other_post_tax_items_gains_losses,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr>
 						<th scope="row">Profit after tax distribution</th>
-						<?php foreach($previous as $previousYear){ ?>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->profit_after_tax_distribution,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 					</tr>
 					<tr class
 					="table-primary"><td scope="row" colspan="<?php echo count($previous)+1; ?>">Balance Sheet Assets</td>
@@ -257,75 +291,87 @@
 			</tr>
 			<tr>
 				<th scope="row">Cash</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->cash,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Trade debtors</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->trade_debtors,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Total inventories</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->total_inventories,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Loans to related parties 1</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->loans_to_related_parties_1,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Other current assets</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->other_current_assets,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Total current assets</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->total_current_assets,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Fixed assets</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->fixed_assets,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Net intangibles</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->net_intangibles,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Loan to related parties 2</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->loan_to_related_parties_2,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Other non current assets</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->other_non_current_assets,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Total non curent assets</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->total_non_curent_assets,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Total assets</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->total_assets,2) ?></td>
-							<?php } ?>
+							<?php }} ?>
 			</tr>
 			<tr class="table-primary">
 				<td scope="row" colspan="<?php echo count($previous)+1 ?>">Liabilities</td>
@@ -333,63 +379,73 @@
 			</tr>
 			<tr>
 				<th scope="row">Trade creditors</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->trade_creditors,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Interest bearing debt 1</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->interest_bearing_debt_1,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Lone from related parties</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->lone_from_related_parties,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Other current liabilities</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->other_current_liabilities,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Total current liabilities</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->total_current_liabilities,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Interset Bearing Debt</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->interest_bearing_debt_1,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Loans from related parites</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->lone_from_related_parties,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Other non current liabilities</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->other_non_current_liabilities,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Total non current liabilities</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->total_non_current_liabilities,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr>
 				<th scope="row">Total liabilities</th>
-				<?php foreach($previous as $previousYear){ ?>
+				<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->total_liabilities,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 			</tr>
 			<tr class
 			="table-primary"><td scope="row" colspan="<?php echo count($previous)+1; ?>">Equity</td>
@@ -398,57 +454,66 @@
 		</tr>
 		<tr>
 			<th scope="row">Share capital</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->share_capital,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr>
 			<th scope="row">Prefence shares</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->prefence_shares,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr>
 			<th scope="row">Treasury shares</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->treasury_shares,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr>
 			<th scope="row">Equity owner ships</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->equity_owner_ships,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr>
 			<th scope="row">Total reserves</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->total_reserves,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr>
 			<th scope="row">Ratained earning</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->ratained_earning,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr>
 			<th scope="row">Minorty interest</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->minorty_interest,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr>
 			<th scope="row">Total equity</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->total_equity,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr>
 			<th scope="row">Balance</th>
-			<?php foreach($previous as $previousYear){ ?>
+			<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->balance,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 		</tr>
 		<tr class="table-primary">
 		<td scope="row" colspan="<?php echo count($previous)+1 ?>">Additional Information</td>
@@ -457,27 +522,31 @@
 	</tr>
 	<tr>
 		<th scope="row">Operating cash flow</th>
-		<?php foreach($previous as $previousYear){ ?>
+		<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->operating_cash_flow,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 	</tr>
 	<tr>
 		<th scope="row">Contingent liabilities</th>
-		<?php foreach($previous as $previousYear){ ?>
+		<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->contingent_liabilities,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 	</tr>
 	<tr>
 		<th scope="row">Other commitmentes</th>
-		<?php foreach($previous as $previousYear){ ?>
+		<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->other_commitmentes,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 	</tr>
 	<tr>
 		<th scope="row">Operating lease outstanding</th>
-		<?php foreach($previous as $previousYear){ ?>
+		<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
 				<td class="aaa"><?= number_format($previousYear->operating_lease_outstanding,2) ?></td>
-				<?php } ?>
+				<?php }} ?>
 	</tr>
 </tbody>
 
