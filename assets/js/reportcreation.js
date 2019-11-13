@@ -231,7 +231,9 @@ $(document).on("click", ".ibtnDel", function () {
 	$(this).closest("div").remove();
 });
 
+var coloumnCount = -1;
 function clone() {
+	coloumnCount++;
 	// var data_abn = localStorage.getItem("abn");
 	var data_company_name = localStorage.getItem("company_name");
 	var data_cun = localStorage.getItem("cun");
@@ -607,9 +609,9 @@ function clone() {
 		var other_commitmentes = '';
 	}
 	if (typeof (localStorage.getItem('operating_lease_outstanding')) != 'undefined' && localStorage.getItem('operating_lease_outstanding') !== null) {
-		var other_commitmentes = localStorage.getItem('operating_lease_outstanding');
+		var operating_lease_outstanding = localStorage.getItem('operating_lease_outstanding');
 	} else {
-		var other_commitmentes = '';
+		var operating_lease_outstanding = '';
 	}
 
 	var com = localStorage.getItem('html_company');
@@ -698,18 +700,18 @@ function clone() {
 		html += '			<select name="scope[]" data-id="' + count + '" id="scope_' + count + '" class="browser-default custom-select"  required="required">';
 		html += '				<option value="0">Scope</option>';
 		html += '				<option value="asic">ASIC</option>';
-		html += '				<option value="consolidated">consolidated</option>';
-		html += '				<option value="parents">parents</option>';
-		html += '				<option value="aggregated">aggregated</option>';
+		html += '				<option value="Consolidated">consolidated</option>';
+		html += '				<option value="Parents">parents</option>';
+		html += '				<option value="Aggregated">aggregated</option>';
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<select name="confidentiality_record[]" data-id="' + count + '" id="confidentiality_record_' + count + '" class="browser-default custom-select"  required="required">';
 		html += '				<option value="0">Confidentiality Record</option>';
-		html += '				<option value="public">public</option>';
-		html += '				<option value="asic">ASIC</option>';
-		html += '				<option value="published">published</option>';
-		html += '				<option value="confidential">Confidential</option>';
+		html += '				<option value="Public">Public</option>';
+		html += '				<option value="Asic">ASIC</option>';
+		html += '				<option value="Published">Published</option>';
+		html += '				<option value="Confidential">Confidential</option>';
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
@@ -829,9 +831,6 @@ function clone() {
 		html += '			<input value="' + other_expenses + '" type="text" class="form-control" name="other_expenses[]" data-id="' + count + '" id="other_expenses_' + count + '" value="0" placeholder="Other Expenses">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + tax_benefit_expense + '" type="text" class="form-control ebit" name="tax_benefit_expense[]" data-id="' + count + '" id="tax_benefit_expense_' + count + '" value="0" placeholder="Tax Benifits">';
-		html += '		</div>';
-		html += '		<div class="form-group">';
 		html += '			<input value="' + ebit + '" type="text" class="form-control" name="ebit[]" data-id="' + count + '" id="ebit_' + count + '" value="0" placeholder="EBIT" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
@@ -846,6 +845,9 @@ function clone() {
 		html += '		<div class="form-group">';
 		html += '			<input value="' + profit_before_tax_after_abnormals + '" type="text" class="form-control" name="profit_before_tax_after_abnormals[]" data-id="' + count + '" id="profit_before_tax_after_abnormals_' + count + '"';
 		html += '		 value="0"	placeholder="Profit Before Tax After Abnormal" readonly>';
+		html += '		</div>';
+		html += '		<div class="form-group">';
+		html += '			<input value="' + tax_benefit_expense + '" type="text" class="form-control ebit" name="tax_benefit_expense[]" data-id="' + count + '" id="tax_benefit_expense_' + count + '" value="0" placeholder="Tax Benifits">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<input value="' + profit_after_tax + '" type="text" class="form-control" name="profit_after_tax[]" data-id="' + count + '" id="profit_after_tax_' + count + '" value="0" placeholder="Profit After Tax" readonly>';
@@ -982,7 +984,7 @@ function clone() {
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<input type="text" class="form-control" name="operating_lease_outstanding[]" data-id="' + count + '" id="operating_lease_outstanding_' + count + '"';
-		html += '		 value="0"	placeholder="Total Operating Lease Outstaning">';
+		html += '		 value="'+operating_lease_outstanding+'"	placeholder="Total Operating Lease Outstaning">';
 		html += '		</div>';
 		html += ' </div>';
 		html += '</div>';
@@ -998,7 +1000,7 @@ function clone() {
 		console.log(data1);
 		console.log(data2);
 
-		document.querySelector('#name_0').value = company_name;
+		document.querySelector('#name_'+coloumnCount).value = company_name;
 		document.querySelector('#rounding_0').value = rounding;
 		document.querySelector('#base_currency_0').value = base_currency;
 		document.querySelector('#quality_0').value = quality;

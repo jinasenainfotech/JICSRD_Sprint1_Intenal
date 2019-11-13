@@ -210,13 +210,7 @@
 						<td class="aaa"><?= number_format($previousYear->other_expenses,2) ?></td>
 							<?php }} ?>
 					</tr>
-					<tr>
-						<th scope="row">Tax benefit expense</th>
-						<?php if(!empty($previous)){
-							 foreach($previous as $previousYear){ ?>
-						<td class="aaa"><?= number_format($previousYear->tax_benefit_expense,2) ?></td>
-							<?php }} ?>
-					</tr>
+					
 					<tr>
 						<th scope="row">Ebit</th>
 						<?php if(!empty($previous)){
@@ -250,6 +244,13 @@
 						<?php if(!empty($previous)){
 							 foreach($previous as $previousYear){ ?>
 						<td class="aaa"><?= number_format($previousYear->profit_before_tax_after_abnormals,2) ?></td>
+							<?php }} ?>
+					</tr>
+					<tr>
+						<th scope="row">Tax benefit expense</th>
+						<?php if(!empty($previous)){
+							 foreach($previous as $previousYear){ ?>
+						<td class="aaa"><?= number_format($previousYear->tax_benefit_expense,2) ?></td>
 							<?php }} ?>
 					</tr>
 					
