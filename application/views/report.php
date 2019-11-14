@@ -298,6 +298,8 @@ reason in making a decision about the entity.</p>
                 if(count($input_data['previous_year'])>1){
                     $lastPreviousYear = end($input_data['previous_year'])->financial_year;
                     
+                }else{
+                    $lastPreviousYear=0;
                 }
 
             
