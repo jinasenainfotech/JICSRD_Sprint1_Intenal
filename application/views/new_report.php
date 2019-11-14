@@ -276,7 +276,7 @@ html_dropdwon +='   <option disabled selected value="">Select the Company</optio
 <?php
 if(isset($companies)){
 	foreach($companies as $row){?>
-		html_dropdwon +='<option value="<?= $row->id?>"><?= $row->entity_name?></option>';
+		html_dropdwon +='<option value="<?= $row->id?>">'+escape(<?= $row->entity_name?>)+'</option>';
 		<?php   		
 	}
 }else{ ?>
