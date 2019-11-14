@@ -263,8 +263,6 @@ function clone() {
 
 
 
-	
-
 
 
 	// if(typeof(localStorage.getItem("acn")) != "undefined" && localStorage.getItem("acacnn") !== null) { var data_acn = localStorage.getItem("acn"); }acn { var data_acn = ''; }
