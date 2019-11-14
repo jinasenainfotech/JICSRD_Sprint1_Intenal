@@ -54,7 +54,8 @@ class Main extends MY_Controller {
 		$companyData = [];
 
 		foreach($this->data['companies'] as $company){
-				$company->country = $this->data['country'][$company->country];
+			
+				$company->country = ((is_null($company->country)) || ($company->country==0))? "" : $this->data['country'][$company->country];
 			array_push($companyData, $company);
 		}
 		
