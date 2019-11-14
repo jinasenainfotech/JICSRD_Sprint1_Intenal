@@ -606,18 +606,18 @@ reason in making a decision about the entity.</p>
                 <tr>
                     <td width='300px' style="text-align:left">Total Current Liabilities</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->other_current_liabilities)?></td>
+                    <td width="" style="text-align:right"><?= number_format($previous->total_current_liabilities)?></td>
                     <?php }
                     if(count($input_data['previous_year']) > 1){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->other_current_liabilities - $input_data['previous_year'][$key-1]->other_current_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_current_liabilities - $input_data['previous_year'][$key-1]->other_current_liabilities)?></td>
                     <?php }
                    
                     ?>
                    
-                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_current_liabilities)?></td>
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_current_liabilities)?></td>
                     <?php 
                     if(count($input_data['previous_year']) > 0){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->other_current_liabilities - $input_data['previous_year'][$key]->other_current_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_current_liabilities - $input_data['previous_year'][$key]->total_current_liabilities)?></td>
                     <?php }
                    
                     ?>
@@ -939,6 +939,17 @@ reason in making a decision about the entity.</p>
                    
                 </tr>
                 <tr>
+                    <td width='300px' style="text-align:left">Other Income </td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->other_income)?></td>
+                    <?php }
+                    ?>
+                   
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_income)?></td>
+                    
+                   
+                </tr>
+                <tr>
                     <td width='300px' style="text-align:left">Depreciation </td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->depreciation)?></td>
@@ -1026,17 +1037,7 @@ reason in making a decision about the entity.</p>
                     
                    
                 </tr>
-                <tr>
-                    <td width='300px' style="text-align:left">Other Gains / (Losses)  </td>
-                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->other_gains_losses)?></td>
-                    <?php }
-                    ?>
-                   
-                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->other_gains_losses)?></td>
-                    
-                   
-                </tr>
+                
                 <tr>
                     <td width='300px' style="text-align:left">Other Expenses</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
@@ -1282,11 +1283,11 @@ reason in making a decision about the entity.</p>
                 <tr>
                     <td width='300px' style="text-align:left">Fixed Assets</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->total_inventories)?></td>
+                    <td width="" style="text-align:right"><?= number_format($previous->fixed_assets)?></td>
                     <?php }
                     ?> 
                    
-                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_inventories)?></td>
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->fixed_assets)?></td>
                     
                    
                 </tr>
@@ -1646,11 +1647,11 @@ reason in making a decision about the entity.</p>
                     <td width='300px' style="text-align:left">Gross Profit Margin</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->gross_profit_margin)?></td>
+                    <td width="" style="text-align:right"><?= number_format($previous->gross_profit_margin,2)?></td>
                     <?php }
                     ?> 
                    
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->gross_profit_margin)?></td>
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->gross_profit_margin,2)?></td>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->gross_profit_margin - $key_ratio['previous_year'][$key]->gross_profit_margin) ?></td>
                     <?php } ?>
