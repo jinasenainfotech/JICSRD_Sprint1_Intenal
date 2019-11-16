@@ -1727,6 +1727,32 @@ reason in making a decision about the entity.</p>
                     <?php } ?>
                 </tr>
                 <tr>
+                    <td width='300px' style="text-align:left">Normalised EBITDA</td>
+                    <td>Thousands</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->normalised_ebitda,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->normalised_ebitda,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->normalised_ebitda - $key_ratio['previous_year'][$key]->normalised_ebitda) ?></td>
+                    <?php } ?>
+                </tr>
+                <tr>
+                    <td width='300px' style="text-align:left">Ebit</td>
+                    <td>Thousands</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->ebit,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->ebit,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->ebit - $key_ratio['previous_year'][$key]->ebit) ?></td>
+                    <?php } ?>
+                </tr>
+                <tr>
                     <td width='300px' style="text-align:left">Net Profit Margin</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2043,11 +2069,11 @@ reason in making a decision about the entity.</p>
                     <td width='300px' style="text-align:left">Creditor Days</td>
                     <td>Days</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->creditor_days)?></td>
+                    <td width="" style="text-align:right"><?= number_format($previous->creditor_days,2)?></td>
                     <?php }
                     ?> 
                    
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->creditor_days)?></td>
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->creditor_days,2)?></td>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->creditor_days - $key_ratio['previous_year'][$key]->creditor_days) ?></td>
                     <?php } ?>
@@ -2082,11 +2108,11 @@ reason in making a decision about the entity.</p>
                     <td width='300px' style="text-align:left">Cash Conversion Cycle</td>
                     <td>Days</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->cash_conversion_cycle)?></td>
+                    <td width="" style="text-align:right"><?= number_format($previous->cash_conversion_cycle,2)?></td>
                     <?php }
                     ?> 
                    
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_conversion_cycle)?></td>
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_conversion_cycle,2)?></td>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_conversion_cycle - $key_ratio['previous_year'][$key]->cash_conversion_cycle) ?></td>
                     <?php } ?>
