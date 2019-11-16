@@ -484,7 +484,7 @@ function clone() {
 	if (typeof (localStorage.getItem('other_non_current_assets')) != 'undefined' && localStorage.getItem('other_non_current_assets') !== null) {
 		var other_non_current_assets = localStorage.getItem('other_non_current_assets');
 	} else {
-		var other_non_current_assets = '';
+		var other_non_current_assets = 0;
 	}
 	if (typeof (localStorage.getItem('total_non_curent_assets')) != 'undefined' && localStorage.getItem('total_non_curent_assets') !== null) {
 		var total_non_curent_assets = localStorage.getItem('total_non_curent_assets');
