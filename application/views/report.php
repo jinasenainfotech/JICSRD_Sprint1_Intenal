@@ -689,7 +689,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= number_format($previous->total_current_liabilities)?></td>
                     <?php }
                     if(count($input_data['previous_year']) > 1){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_current_liabilities - $input_data['previous_year'][$key-1]->other_current_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_current_liabilities - $input_data['previous_year'][$key-1]->total_current_liabilities)?></td>
                     <?php }
                    
                     ?>
