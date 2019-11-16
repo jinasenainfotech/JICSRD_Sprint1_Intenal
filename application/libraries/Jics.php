@@ -204,9 +204,9 @@ class Jics {
 		if($data == 0){
 			return '<span class="same"><i class="fa fa-minus" aria-hidden="true"></i> 0.00 </span>';
 		}elseif($data < 0){
-			return '<span class="down"><i class="fa fa-caret-down"></i>'. number_format($data).'</span>';
+			return '<span class="down"><i class="fa fa-caret-down"></i>'. number_format($data,2).'</span>';
 		}else{
-			return '<span class="up"><i class="fa fa-caret-up"></i>'. number_format($data) .'</span>';
+			return '<span class="up"><i class="fa fa-caret-up"></i>'. number_format($data,2) .'</span>';
 		}
 	}
 
