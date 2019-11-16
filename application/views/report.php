@@ -2041,7 +2041,7 @@ reason in making a decision about the entity.</p>
                 </tr>
                 <tr>
                     <td width='300px' style="text-align:left">Operating Leverage</td>
-                    <td>%</td>
+                    <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->operating_leverage,2)?></td>
                     <?php }
@@ -2122,7 +2122,7 @@ reason in making a decision about the entity.</p>
                 </tr>
                 <tr>
                     <td width='300px' style="text-align:left">Sales (Annualised)</td>
-                    <td>%</td>
+                    <td>Thousands</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->sales_annualised,2)?></td>
                     <?php }
@@ -2135,7 +2135,7 @@ reason in making a decision about the entity.</p>
                 </tr>
             <tr>
                     <td width='300px' style="text-align:left">Activity</td>
-                    <td>%</td>
+                    <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->activity,2)?></td>
                     <?php }
