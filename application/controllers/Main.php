@@ -899,7 +899,7 @@ $x74 = floatval($_POST['total_current_assets'][$r]) - floatval($_POST['total_cur
 (floatval($_POST['total_assets'][$r]) != 0)? $x123 = floatval($_POST['ratained_earning'][$r]) / floatval($_POST['total_assets'][$r]) : $x123 = 0 ; 
 (floatval($_POST['total_assets'][$r]) != 0)? $x122 = $x74 / floatval($_POST['total_assets'][$r]) : $x122 = 0 ;
 
-$x127 = (($x74/floatval($_POST['total_assets'][$r]))*1.2)+((floatval($_POST['ratained_earning'][$r])/floatval($_POST['total_assets'][$r]))*1.4)+((floatval($_POST['ebit'][$r])/floatval($_POST['total_assets'][$r]))*3.3)+((floatval($_POST['total_equity'][$r])/floatval($_POST['total_liabilities'][$r]))*0.6)+((floatval($_POST['sales'][$r])/floatval($_POST['total_assets'][$r]))*1);
+$x127 = ((floatval($_POST['ebit'][$r])/floatval($_POST['total_assets'][$r]))*1.2)+((floatval($_POST['ratained_earning'][$r])/floatval($_POST['total_assets'][$r]))*1.4)+((floatval($_POST['ebit'][$r])/floatval($_POST['total_assets'][$r]))*3.3)+((floatval($_POST['total_equity'][$r])/floatval($_POST['total_liabilities'][$r]))*0.6)+((floatval($_POST['sales'][$r])/floatval($_POST['total_assets'][$r]))*1);
 
 // // $this->jics->alert('warning','Report part calculation not compleded yet','OOPS....!!!!');
 // // redirect(base_url('main/companieslist'),'refresh');

@@ -1881,7 +1881,7 @@ reason in making a decision about the entity.</p>
                 </tr>
                 <tr>
                     <td width='300px' style="text-align:left">Cash Ratio</td>
-                    <td>%</td>
+                    <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->cash_ratio,2)?></td>
                     <?php }
@@ -1894,7 +1894,7 @@ reason in making a decision about the entity.</p>
                 </tr>
                 <tr>
                     <td width='300px' style="text-align:left">Current Ratio</td>
-                    <td>%</td>
+                    <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->current_ratio,2)?></td>
                     <?php }
