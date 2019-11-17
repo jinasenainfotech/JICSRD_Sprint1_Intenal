@@ -925,7 +925,7 @@ $cal = array(
 
 	'working_capital_to_sales'			=> ($x112!=0)?((isset($x112) and $x112 != '')? ($x74 / $x112) * 100 : "") : 0,
 
-	'cash_flow_coverage'				=> (floatval($_POST['total_current_liabilities'][$r])!=0)?((isset($_POST['total_current_liabilities'][$r]) and $_POST['total_current_liabilities'][$r] != '')? ($x113 / floatval($_POST['total_current_liabilities'][$r]) * 100): "") : 0 ,
+	'cash_flow_coverage'				=> (floatval($_POST['operating_cash_flow'][$r])/floatval($_POST['total_current_liabilities'][$r]))*100,
 
 	'cash_ratio'						=> (floatval($_POST['total_current_liabilities'][$r])!=0)?((isset($_POST['total_current_liabilities'][$r]) and $_POST['total_current_liabilities'][$r] != '')? floatval($_POST['cash'][$r]) /floatval($_POST['total_current_liabilities'][$r]): "") : 0 ,
 
@@ -933,7 +933,7 @@ $cal = array(
 
 	'quick_ratio'						=>  (floatval($_POST['total_current_liabilities'][$r])!=0)?((isset($_POST['total_current_liabilities'][$r]) and $_POST['total_current_liabilities'][$r] != '')? (floatval($_POST['total_current_assets'][$r]) - floatval($_POST['total_inventories'][$r])) / floatval($_POST['total_current_liabilities'][$r]): "") : 0 ,
 
-	'capital_adequacy'					=> ($x82!=0)?(($x112/$x82)*100):0,
+	'capital_adequacy'					=> ((floatval($_POST['total_assets'][$r])-floatval($_POST['total_liabilities'][$r])-$x82-floatval($_POST['loans_to_related_parties_1'][$r])-floatval($_POST['loan_to_related_parties_2'][$r]))/$x112)*100,
 
 	'net_tangible_worth'				=> $x82,
 
@@ -974,7 +974,7 @@ $cal = array(
 
 	'related_party_loans_payable'		=> (floatval($_POST['total_liabilities'][$r])!=0)?((isset($_POST['total_liabilities'][$r]) and $_POST['total_liabilities'][$r] != '')? (floatval($_POST['lone_from_related_parties'][$r]) + floatval($_POST['loans_from_related_parites'][$r])) / floatval($_POST['total_liabilities'][$r]) * 100 : ""):0, 
 
-	'related_party_loans_dependency'	=> ($x74!=0)?((isset($x74) && $x74 != '')? (floatval($_POST['lone_from_related_parties'][$r]) + floatval($_POST['loans_from_related_parites'][$r]) / $x74) * 100 : ""):0,
+	'related_party_loans_dependency'	=> ($x74!=0)?((isset($x74) && $x74 != '')? ((floatval($_POST['lone_from_related_parties'][$r]) + floatval($_POST['loans_from_related_parites'][$r])) / $x74) * 100 : ""):0,
 
 	'quick_asset_composition'			=> (floatval($_POST['total_assets'][$r])!=0)?((isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')?(floatval($_POST['total_current_assets'][$r]) - floatval($_POST['total_inventories'][$r])) / floatval($_POST['total_assets'][$r]) * 100 : ""):0,
 

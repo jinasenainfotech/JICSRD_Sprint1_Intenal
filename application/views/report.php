@@ -2149,14 +2149,30 @@ reason in making a decision about the entity.</p>
             <tr>
                     <td width='300px' style="text-align:left">Sales Growth</td>
                     <td>%</td>
-                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->sales_growth,2)?></td>
+                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?php
+                        if(isset($input_data['previous_year'][$key-1])){
+                            $growth = (($input_data['previous_year'][$key]->sales - $input_data['previous_year'][$key-1]->sales)/$input_data['previous_year'][$key-1]->sales)*100;
+                            $growth = number_format($growth,2);
+                        }else{
+                             $growth = 'N/A';
+                         }
+                         echo $growth;
+                        ?></td>
                     <?php }
                     ?> 
                    
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->sales_growth,2)?></td>
+                    <td width="" style="text-align:right"><?php 
+                    if(count($input_data['previous_year'])>0){
+                        $currentGrowth = (($input_data['current_year']->sales - $input_data['previous_year'][$key]->sales)/$input_data['previous_year'][$key]->sales)*100;
+                        $currentGrowth = number_format($currentGrowth,2);
+                    }else{
+                        $currentGrowth ='N/A';
+                    }
+                    echo $currentGrowth;
+                    ?></td>
                     <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->sales_growth - $key_ratio['previous_year'][$key]->sales_growth) ?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($currentGrowth - $growth ) ?></td>
                     <?php } ?>
                 </tr>
             <tr>
