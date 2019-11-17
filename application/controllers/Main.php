@@ -887,7 +887,7 @@ if(isset($sub_0) and $sub_0 != '0'){$x118 = (($sub_1 - $sub_0) / $sub_0) * 100 ;
 // ($sub_2 != 0 or $sub_3 != 0)? : ;
 
 // Financial Indicators calculation engine
-$x82 = floatval($_POST['total_assets'][$r]) - floatval($_POST['total_liabilities'][$r]) - floatval($_POST['net_intangibles'][$r]);
+$x82 = floatval($_POST['total_assets'][$r]) - floatval($_POST['total_liabilities'][$r]) - floatval($_POST['net_intangibles'][$r])-floatval($_POST['loans_to_related_parties_1'][$r])-floatval($_POST['loan_to_related_parties_2'][$r]);
 ($x116 != 0)? $x93 = (floatval($_POST['trade_creditors'][$r]) / $x116) * 365 : $x93 = 0 ;
 ($x116 != 0)? $x94 = (floatval($_POST['total_inventories'][$r]) / $x116) * 365 : $x94 = 0 ;
 ($x112 != 0)? $x95 = (floatval($_POST['trade_debtors'][$r]) / $x112) * 365 : $x95 = 0 ;
@@ -899,7 +899,7 @@ $x74 = floatval($_POST['total_current_assets'][$r]) - floatval($_POST['total_cur
 (floatval($_POST['total_assets'][$r]) != 0)? $x123 = floatval($_POST['ratained_earning'][$r]) / floatval($_POST['total_assets'][$r]) : $x123 = 0 ; 
 (floatval($_POST['total_assets'][$r]) != 0)? $x122 = $x74 / floatval($_POST['total_assets'][$r]) : $x122 = 0 ;
 
-$x127 = ((floatval($_POST['ebit'][$r])/floatval($_POST['total_assets'][$r]))*1.2)+((floatval($_POST['ratained_earning'][$r])/floatval($_POST['total_assets'][$r]))*1.4)+((floatval($_POST['ebit'][$r])/floatval($_POST['total_assets'][$r]))*3.3)+((floatval($_POST['total_equity'][$r])/floatval($_POST['total_liabilities'][$r]))*0.6)+((floatval($_POST['sales'][$r])/floatval($_POST['total_assets'][$r]))*1);
+$x127 = (($x74/floatval($_POST['total_assets'][$r]))*1.2)+((floatval($_POST['ratained_earning'][$r])/floatval($_POST['total_assets'][$r]))*1.4)+((floatval($_POST['ebit'][$r])/floatval($_POST['total_assets'][$r]))*3.3)+((floatval($_POST['total_equity'][$r])/floatval($_POST['total_liabilities'][$r]))*0.6)+((floatval($_POST['sales'][$r])/floatval($_POST['total_assets'][$r]))*1);
 
 // // $this->jics->alert('warning','Report part calculation not compleded yet','OOPS....!!!!');
 // // redirect(base_url('main/companieslist'),'refresh');
@@ -936,9 +936,9 @@ $cal = array(
 	// 'capital_adequacy'					=> ((floatval($_POST['total_assets'][$r])-floatval($_POST['total_liabilities'][$r])-$x82-floatval($_POST['loans_to_related_parties_1'][$r])-floatval($_POST['loan_to_related_parties_2'][$r]))/$x112)*100,
 	'capital_adequacy'					=> ($x112>0)?(($x82/$x112)*100) : 0,
 
-	'net_tangible_worth'				=> $x82,
+	'net_tangible_worth'				=> floatval($_POST['total_assets'][$r]) - floatval($_POST['total_liabilities'][$r]) - floatval($_POST['net_intangibles'][$r]),
 
-	'net_asset_backing'					=> (isset($x112) and $x112 != '')? ($x82 / $x112) * 100 : "" ,
+	'net_asset_backing'					=> (isset($x112) and $x112 != '')? ((floatval($_POST['total_assets'][$r]) - floatval($_POST['total_liabilities'][$r]) - floatval($_POST['net_intangibles'][$r])) / $x112) * 100 : "" ,
 
 	'gearing'							=> (floatval($_POST['total_assets'][$r])!=0)?((isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')? (floatval($_POST['total_liabilities'][$r]) / floatval($_POST['total_assets'][$r])) * 100 : ""):0 ,
 

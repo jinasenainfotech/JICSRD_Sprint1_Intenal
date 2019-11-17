@@ -1215,17 +1215,7 @@ reason in making a decision about the entity.</p>
                     
                    
                 </tr> 
-                <tr>
-                    <td width='300px' style="text-align:left">Distribution or Dividends</td>
-                    <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->distribution_ordividends)?></td>
-                    <?php }
-                    ?>
-                   
-                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->distribution_ordividends)?></td>
-                    
-                   
-                </tr> 
+                 
                 <tr>
                     <td width='300px' style="text-align:left">Distribution or Dividends</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
@@ -1405,12 +1395,12 @@ reason in making a decision about the entity.</p>
                     
                    
                 </tr>
-           
-            
-            <thead>
                 <tr>
                     <th colspan="<?php echo count($input_data['previous_year'])+2  ?>" class="theading">Liabilities</th>
                 </tr>
+            
+            <thead>
+                
             </thead>
             <tbody>
             <tr>
@@ -1710,6 +1700,7 @@ reason in making a decision about the entity.</p>
                     <th colspan="<?php echo $colspan;  ?>" class="theading">Profitability</th>
                 </tr>
             </thead>
+            <div class="clear-fix">
             <tbody>
 
             <tr>
@@ -2207,7 +2198,7 @@ reason in making a decision about the entity.</p>
                     echo $currentGrowth;
                     ?></td>
                     <?php if($growth!='N/A') {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($currentGrowth - $growth ) ?></td>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators(((($input_data['current_year']->sales - $input_data['previous_year'][$key]->sales)/$input_data['previous_year'][$key]->sales)*100) - ((($input_data['previous_year'][$key]->sales - $input_data['previous_year'][$key-1]->sales)/$input_data['previous_year'][$key-1]->sales)*100) ) ?></td>
                     <?php }else{ ?>
                         <td width="" style="text-align:right">-</td>
                     <?php } ?>
