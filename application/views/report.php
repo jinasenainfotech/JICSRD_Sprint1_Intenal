@@ -44,10 +44,6 @@
                             </div>
                         </div>
 
-                    </page>
-
-                    <page size="A4">
-
                         <div class="header"></div>
                         <div class="content">
                             <h2>Organisation Summary</h2>
@@ -175,6 +171,8 @@
                         </div>
 
                     </page>
+
+                
 
 
                     <page size="A4">
@@ -853,19 +851,33 @@ reason in making a decision about the entity.</p>
         </table>
     </div>
 </div>
-</page>
 
-
-
-<page size="A4">
-    <div class="header"></div>
-    <div class="container">
+ <div class="container">
         <h2 class="mt-5">Financial Trend Graphs</h2>
         <div class="col-md-12 row chart">
 
         
         <div class="col-md-6" id="revenue_chart"></div>
             <div class="col-md-6" id="gp_np_margin"></div>
+           
+        
+            
+        </div>
+                            
+                            <!-- Financial Performance  -->
+
+                        </div>
+
+</page>
+
+
+
+<page size="A4">
+<div class="container">
+        
+        <div class="col-md-12 row chart">
+
+        
             <div class="col-md-6" id="gp_np"></div>
             <div class="col-md-6" id="ebitda"></div>
             <div class="col-md-6" id="ratio"></div>
@@ -879,12 +891,12 @@ reason in making a decision about the entity.</p>
                             <!-- Financial Performance  -->
 
                         </div>
-                    </div>
-                </div>
+   
+                   
             </page>
 
             <page size="A4">
-                <div class="header"></div>
+              
                 <div class="content">
                  <!-- Financial Performance  -->
 
@@ -1272,11 +1284,11 @@ reason in making a decision about the entity.</p>
                 <tr>
                     <td width='300px' style="text-align:left">Trade Debtors</td>
                     <?php foreach($input_data['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->trade_debtors)?></td>
+                    <td width="" style="text-align:right"><?= number_format($previous->trade_debtors,2)?></td>
                     <?php }
                     ?>
                    
-                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->trade_debtors)?></td>
+                    <td width="" style="text-align:right"><?= number_format($input_data['current_year']->trade_debtors,2)?></td>
                     
                    
                 </tr>
@@ -1945,7 +1957,7 @@ reason in making a decision about the entity.</p>
                 </tr>
                 <tr>
                     <td width='300px' style="text-align:left">Net Asset Backing</td>
-                    <td>Thousands</td>
+                    <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->net_asset_backing,2)?></td>
                     <?php }
@@ -2012,7 +2024,7 @@ reason in making a decision about the entity.</p>
                 </tr>
                 <tr>
                     <td width='300px' style="text-align:left">Financial Leverage</td>
-                    <td>%</td>
+                    <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
                     <td width="" style="text-align:right"><?= number_format($previous->financial_leverage,2)?></td>
                     <?php }
@@ -2043,13 +2055,36 @@ reason in making a decision about the entity.</p>
                     <td width='300px' style="text-align:left">Operating Leverage</td>
                     <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->operating_leverage,2)?></td>
+                    <td width="" style="text-align:right"><?php 
+                         if(isset($input_data['previous_year'][$key-1])){
+                            $change_of_ebit = ((($input_data['previous_year'][$key]->interest_expense_gross+$input_data['previous_year'][$key]->profit_before_tax_after_abnormals) - ($input_data['previous_year'][$key-1]->interest_expense_gross+$input_data['previous_year'][$key-1]->profit_before_tax_after_abnormals))/($input_data['previous_year'][$key-1]->interest_expense_gross+$input_data['previous_year'][$key-1]->profit_before_tax_after_abnormals))*100;
+                            $change_in_sale = ((($key_ratio['previous_year'][$key]->sales_annualised) - ($key_ratio['previous_year'][$key-1]->sales_annualised))/($key_ratio['previous_year'][$key-1]->sales_annualised))*100;
+                            $operating_leverage = number_format((($change_of_ebit/$change_in_sale)*100),2);
+                        }else{
+                             $operating_leverage = 'N/A';
+                         }
+                         echo $operating_leverage;
+                        ?></td>
                     <?php }
                     ?> 
                    
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->operating_leverage,2)?></td>
-                    <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->operating_leverage - $key_ratio['previous_year'][$key]->operating_leverage) ?></td>
+                    <td width="" style="text-align:right">
+                    <?php
+                    if(count($input_data['previous_year'])>0){
+                        $current_change_of_ebit = ((($input_data['current_year']->interest_expense_gross+$input_data['current_year']->profit_before_tax_after_abnormals) - ($input_data['previous_year'][$key]->interest_expense_gross+$input_data['previous_year'][$key]->profit_before_tax_after_abnormals))/($input_data['previous_year'][$key]->interest_expense_gross+$input_data['previous_year'][$key]->profit_before_tax_after_abnormals))*100;
+                        $current_change_in_sale = ((($key_ratio['current_year']->sales_annualised) - ($key_ratio['previous_year'][$key]->sales_annualised))/($key_ratio['previous_year'][$key]->sales_annualised))*100;
+                        $current_operating_leverage = number_format((($current_change_of_ebit/$current_change_in_sale)*100),2);
+                    }else{
+                        $current_operating_leverage ='N/A';
+                    }
+                    echo $current_operating_leverage;
+                    ?>
+                </td>
+               <?php  ?>
+                    <?php if($current_operating_leverage!='N/A') {?>
+                        <td width="" style="text-align:right"> <?= $this->jics->indicators((($current_change_of_ebit/$current_change_in_sale)*100)- (($change_of_ebit/$change_in_sale)*100))?> </td>
+                    <?php }else{ ?>
+                        <td width="" style="text-align:right"> - </td>
                     <?php } ?>
                 </tr>
                 <tr>
@@ -2095,11 +2130,11 @@ reason in making a decision about the entity.</p>
                     <td width='300px' style="text-align:left">Debtor Days</td>
                     <td>Days</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->debtor_days)?></td>
+                    <td width="" style="text-align:right"><?= number_format($previous->debtor_days,2)?></td>
                     <?php }
                     ?> 
                    
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->debtor_days)?></td>
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->debtor_days,2)?></td>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->debtor_days - $key_ratio['previous_year'][$key]->debtor_days) ?></td>
                     <?php } ?>
@@ -2171,8 +2206,10 @@ reason in making a decision about the entity.</p>
                     }
                     echo $currentGrowth;
                     ?></td>
-                    <?php if($previousStatus!=false) {?>
+                    <?php if($growth!='N/A') {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($currentGrowth - $growth ) ?></td>
+                    <?php }else{ ?>
+                        <td width="" style="text-align:right">-</td>
                     <?php } ?>
                 </tr>
             <tr>

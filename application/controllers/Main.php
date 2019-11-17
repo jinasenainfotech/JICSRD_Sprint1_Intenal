@@ -933,7 +933,8 @@ $cal = array(
 
 	'quick_ratio'						=>  (floatval($_POST['total_current_liabilities'][$r])!=0)?((isset($_POST['total_current_liabilities'][$r]) and $_POST['total_current_liabilities'][$r] != '')? (floatval($_POST['total_current_assets'][$r]) - floatval($_POST['total_inventories'][$r])) / floatval($_POST['total_current_liabilities'][$r]): "") : 0 ,
 
-	'capital_adequacy'					=> ((floatval($_POST['total_assets'][$r])-floatval($_POST['total_liabilities'][$r])-$x82-floatval($_POST['loans_to_related_parties_1'][$r])-floatval($_POST['loan_to_related_parties_2'][$r]))/$x112)*100,
+	// 'capital_adequacy'					=> ((floatval($_POST['total_assets'][$r])-floatval($_POST['total_liabilities'][$r])-$x82-floatval($_POST['loans_to_related_parties_1'][$r])-floatval($_POST['loan_to_related_parties_2'][$r]))/$x112)*100,
+	'capital_adequacy'					=> ($x112>0)?(($x82/$x112)*100) : 0,
 
 	'net_tangible_worth'				=> $x82,
 
