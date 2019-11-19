@@ -479,7 +479,7 @@ class Main extends MY_Controller {
 		$reportData = $this->getCurrentYearReportData($where);
 		
 		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
-				
+		ksort($previousYearData);	
 		$dataArray['year'] = [];
 		$dataArray['value'] = [];
 		foreach($previousYearData as $key => $previous){
@@ -488,6 +488,8 @@ class Main extends MY_Controller {
 			array_push($dataArray['value'],floatval($previous->sales));
 			
 		}
+		
+		// var_dump($previousYearData);die;
 		array_push($dataArray['year'],$reportData->financial_year);
 		array_push($dataArray['value'],floatval($reportData->sales));
 
@@ -510,7 +512,7 @@ class Main extends MY_Controller {
 		
 		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
 		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
-		
+		ksort($previousYearData);
 				
 		$dataArray['year'] = [];
 		$dataArray['gp'] = [];
@@ -545,7 +547,7 @@ class Main extends MY_Controller {
 		$reportData = $this->getCurrentYearReportData($where);
 		
 		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
-				
+		ksort($previousYearData);		
 		$dataArray['year'] = [];
 		$dataArray['gp'] = [];
 		$dataArray['np'] = [];
@@ -578,7 +580,7 @@ class Main extends MY_Controller {
 		$reportData = $this->getCurrentYearReportData($where);
 		
 		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
-				
+		ksort($previousYearData);	
 		$dataArray['year'] = [];
 		$dataArray['ebit'] = [];
 		$dataArray['normalized_ebit'] = [];
@@ -612,7 +614,7 @@ class Main extends MY_Controller {
 		
 		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
 		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
-		
+		ksort($previousYearData);
 				
 		$dataArray['year'] = [];
 		$dataArray['current_ratio'] = [];
@@ -662,7 +664,7 @@ class Main extends MY_Controller {
 		
 		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
 		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
-		
+		ksort($previousYearData);
 				
 		$dataArray['year'] = [];
 		$dataArray['current_assets'] = [];
@@ -701,7 +703,7 @@ class Main extends MY_Controller {
 		
 		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
 		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
-		
+		ksort($previousYearData);
 				
 		$dataArray['year'] = [];
 		$dataArray['debt'] = [];

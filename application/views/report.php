@@ -43,13 +43,16 @@
                                 <button class="btn btn-primary mt-5 prnt-btn " onclick="window.print();" style="font-size:30px">Print this page</button></div>
                             </div>
                         </div>
+                    </page>
+                    <page size="A4">
 
                         <div class="header"></div>
                         <div class="content">
                             <h2>Organisation Summary</h2>
-                            <div class="cardview">
-                                <h4 class="text-center">ABR Summary</h4>
-                                <table class="table">
+                            <div class="container-fluid">
+                                <div class="col-md-12">
+                                <h4 class="text-left">ABR Summary</h4>
+                                <table style="font-size:17px;" class="table table-borderless">
                                     <tbody>
                                         <tr>
                                             <th scope="row">Main Name</th>
@@ -105,68 +108,71 @@
                                 </table>
 
                             </div>
-                            <div class="cardview">
-                                <h4 class="text-center">ASIC Summary</h4>
+                                </div>
+                            <div class="container-fluid mt-5">
+                                <div class="col-md-12">
+                                <h4 class="text-left">ASIC Summary</h4>
 
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">Name</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->name ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">ACN</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->acn ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Type</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->type ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Status</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->staus ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Controlling Jurisdiction</th>
-                                            <!-- API -->
-                                            <td>ASIC</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Registration Date</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->registration_date ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Review Date</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->review_date ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Class</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->calss ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Subclass</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->subclass ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Locality</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->asic_locality ?></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Next Review Date</th>
-                                            <!-- API -->
-                                            <td><?php echo $api_data->review_date ?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                <table style="font-size:17px;" class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->name ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">ACN</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->acn ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Type</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->type ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->staus ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Controlling Jurisdiction</th>
+                            <!-- API -->
+                            <td>ASIC</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Registration Date</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->registration_date ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Review Date</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->review_date ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Class</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->calss ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Subclass</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->subclass ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Locality</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->asic_locality ?></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Next Review Date</th>
+                            <!-- API -->
+                            <td><?php echo $api_data->review_date ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                                                </div>
                             </div>
                         </div>
 
@@ -176,7 +182,7 @@
 
 
                     <page size="A4">
-                        <div class="header"></div>
+                      `
                         <div class="content">
                             <h2 >Non – Financial Based Credit Score</h2>
                             <p class="mt-5">The score is a statistically based score indicating an entity's credit worthiness. The score
@@ -229,7 +235,7 @@
                        </div>
                             
 
-<h2 class="mt-5">Recommendations</h2>
+<h2 class="mt-2">Recommendations</h2>
 <table class="table cardview">
     <thead class="thead-light">
         <tr>
@@ -687,7 +693,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= number_format($previous->total_current_liabilities)?></td>
                     <?php }
                     if(count($input_data['previous_year']) > 1){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_current_liabilities - $input_data['previous_year'][$key-1]->total_current_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->liabilityIndicators($input_data['previous_year'][$key]->total_current_liabilities - $input_data['previous_year'][$key-1]->total_current_liabilities)?></td>
                     <?php }
                    
                     ?>
@@ -695,7 +701,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_current_liabilities)?></td>
                     <?php 
                     if(count($input_data['previous_year']) > 0){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_current_liabilities - $input_data['previous_year'][$key]->total_current_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->liabilityIndicators($input_data['current_year']->total_current_liabilities - $input_data['previous_year'][$key]->total_current_liabilities)?></td>
                     <?php }
                    
                     ?>
@@ -707,7 +713,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= number_format($previous->total_non_current_liabilities)?></td>
                     <?php }
                     if(count($input_data['previous_year']) > 1){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_non_current_liabilities - $input_data['previous_year'][$key-1]->total_non_current_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->liabilityIndicators($input_data['previous_year'][$key]->total_non_current_liabilities - $input_data['previous_year'][$key-1]->total_non_current_liabilities)?></td>
                     <?php }
                    
                     ?>
@@ -715,7 +721,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_non_current_liabilities)?></td>
                     <?php 
                     if(count($input_data['previous_year']) > 0){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_non_current_liabilities - $input_data['previous_year'][$key]->total_non_current_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->liabilityIndicators($input_data['current_year']->total_non_current_liabilities - $input_data['previous_year'][$key]->total_non_current_liabilities)?></td>
                     <?php }
                    
                     ?>
@@ -727,7 +733,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= number_format($previous->total_liabilities)?></td>
                     <?php }
                     if(count($input_data['previous_year']) > 1){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['previous_year'][$key]->total_liabilities - $input_data['previous_year'][$key-1]->total_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->liabilityIndicators($input_data['previous_year'][$key]->total_liabilities - $input_data['previous_year'][$key-1]->total_liabilities)?></td>
                     <?php }
                    
                     ?>
@@ -735,7 +741,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= number_format($input_data['current_year']->total_liabilities)?></td>
                     <?php 
                     if(count($input_data['previous_year']) > 0){ ?>
-                    <td style="text-align:right"><?= $this->jics->indicators($input_data['current_year']->total_liabilities - $input_data['previous_year'][$key]->total_liabilities)?></td>
+                    <td style="text-align:right"><?= $this->jics->liabilityIndicators($input_data['current_year']->total_liabilities - $input_data['previous_year'][$key]->total_liabilities)?></td>
                     <?php }
                    
                     ?>
@@ -809,7 +815,7 @@ reason in making a decision about the entity.</p>
     <div class="header"></div>
     <div class="content">
         <h2>Key Performance Indicator Analysis</h2>
-        <table class="table cardview table-striped ">
+        <table style="font-size:17px;" class="table cardview table-striped ">
             <thead class="thead-light">
                 <tr>
                     <th width='20%'><b> Ratio</b></th>
@@ -857,8 +863,9 @@ reason in making a decision about the entity.</p>
         <div class="col-md-12 row chart">
 
         
-        <div class="col-md-6" id="revenue_chart"></div>
-            <div class="col-md-6" id="gp_np_margin"></div>
+        <div class="col-md-5" id="revenue_chart"></div>
+        <div class="col-md-1"></div>
+            <div class="col-md-5" id="gp_np_margin"></div>
            
         
             
@@ -873,17 +880,25 @@ reason in making a decision about the entity.</p>
 
 
 <page size="A4">
+<div class="content">
 <div class="container">
         
         <div class="col-md-12 row chart">
 
         
-            <div class="col-md-6" id="gp_np"></div>
-            <div class="col-md-6" id="ebitda"></div>
-            <div class="col-md-6" id="ratio"></div>
-            <div class="col-md-6" id="capital"></div>
-            <div class="col-md-6" id="equity"></div>
-            <div class="col-md-6" id="interest_cover"></div>
+            <div class="col-md-5" id="gp_np"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="ebitda"></div>
+        </div>
+        <div class="col-md-12 row chart">
+            <div class="col-md-5" id="ratio"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="capital"></div>
+        </div>
+        <div class="col-md-12 row chart">
+            <div class="col-md-5" id="equity"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" id="interest_cover"></div>
         
             
         </div>
@@ -891,6 +906,7 @@ reason in making a decision about the entity.</p>
                             <!-- Financial Performance  -->
 
                         </div>
+</div>
    
                    
             </page>
@@ -1249,7 +1265,35 @@ reason in making a decision about the entity.</p>
                     
                    
                 </tr> 
-
+            </tbody>
+        </table>
+                 </div>
+                </div>
+            </page>
+            <div class="report-ref"></div>
+            <page size="A4">
+            <div class="col-md-12">
+      
+        <table class="table table-bordered">
+            <tbody>
+            <tr class="summary-table">
+                    <th style="300px">Financial Year</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="" style="text-align:right"><?= $previous->financial_year?></td>
+                    <?php } ?>
+                    
+                    <td style="text-align:right">FY <?= $input_data['current_year']->financial_year?></td>
+                    
+                </tr>
+                <tr class="summary-table">
+                    <th style="300px">Month</th>
+                    <?php foreach($input_data['previous_year'] as $previous) { ?>
+                    <td width="" style="text-align:right"><?= $previous->month?></td>
+                    <?php } ?>
+                  
+                    <td style="text-align:right"><?= $input_data['current_year']->month?></td>
+                    
+                </tr>
                 <tr>
                     <td colspan="<?php echo count($input_data['previous_year'])+2 ?>">
                     <h4>Balance Sheet</h4>
@@ -1644,29 +1688,17 @@ reason in making a decision about the entity.</p>
         </table>
        </div>
                 
-                 <div class="col-md-12">
 
-               
-            <!-- Income Statement -->
-
-
-        </div>
-        <!-- Financial Performance  -->
-
-
-    </div>
-</div>
-</div>
 </page>
 
 
 
 
-
+<div class="report-ref"></div>
 
 <page size="A4">
     <div class="header"></div>
-    <div class="content">
+    <div class="col-md-12">
         <h2>Key Ratios</h2>
 
         <?php
@@ -1680,8 +1712,7 @@ reason in making a decision about the entity.</p>
             ?>
         <!-- table -->
         <table class="table table-bordered">
-            
-            <thead>
+       
                 <tr>
                     <th></th>
                     <th>Denomination</th>
@@ -1699,7 +1730,7 @@ reason in making a decision about the entity.</p>
                 <tr>
                     <th colspan="<?php echo $colspan;  ?>" class="theading">Profitability</th>
                 </tr>
-            </thead>
+           
             <div class="clear-fix">
             <tbody>
 
@@ -1729,7 +1760,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->ebitda - $key_ratio['previous_year'][$key]->ebitda) ?></td>
                     <?php } ?>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Normalised EBITDA</td>
                     <td>Thousands</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -1741,8 +1772,8 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->normalised_ebitda - $key_ratio['previous_year'][$key]->normalised_ebitda) ?></td>
                     <?php } ?>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Ebit</td>
                     <td>Thousands</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -1754,7 +1785,7 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->ebit - $key_ratio['previous_year'][$key]->ebit) ?></td>
                     <?php } ?>
-                </tr>
+                </tr> -->
                 <tr>
                     <td width='300px' style="text-align:left">Net Profit Margin</td>
                     <td>%</td>
@@ -1768,7 +1799,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->net_profit_margin - $key_ratio['previous_year'][$key]->net_profit_margin) ?></td>
                     <?php } ?>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Profitability</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -1780,8 +1811,8 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->profitability - $key_ratio['previous_year'][$key]->profitability) ?></td>
                     <?php } ?>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Reinvestment</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -1793,7 +1824,7 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->reinvestment - $key_ratio['previous_year'][$key]->reinvestment) ?></td>
                     <?php } ?>
-                </tr>
+                </tr> -->
                 <tr>
                     <td width='300px' style="text-align:left">Return on Assets</td>
                     <td>%</td>
@@ -1823,106 +1854,7 @@ reason in making a decision about the entity.</p>
                 
             </tr>
             <tr>
-            <th colspan="<?php echo $colspan; ?>" class="theading">Liquidity</th>
-               
-            </tr>
-        
-        <tr>
-                    <td width='300px' style="text-align:left">Working Capital</td>
-                    <td>Thousands</td>
-                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->working_capital,2)?></td>
-                    <?php }
-                    ?> 
-                   
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->working_capital,2)?></td>
-                    <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->working_capital - $key_ratio['previous_year'][$key]->working_capital) ?></td>
-                    <?php } ?>
-                </tr>
-                <tr>
-                    <td width='300px' style="text-align:left">Working Capital to Sales</td>
-                    <td>%</td>
-                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->working_capital_to_sales,2)?></td>
-                    <?php }
-                    ?> 
-                   
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->working_capital_to_sales,2)?></td>
-                    <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->working_capital_to_sales - $key_ratio['previous_year'][$key]->working_capital_to_sales) ?></td>
-                    <?php } ?>
-                </tr>
-                <tr>
-                    <td width='300px' style="text-align:left">Cash Flow Coverage</td>
-                    <td>%</td>
-                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->cash_flow_coverage,2)?></td>
-                    <?php }
-                    ?> 
-                   
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_flow_coverage,2)?></td>
-                    <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_flow_coverage - $key_ratio['previous_year'][$key]->cash_flow_coverage) ?></td>
-                    <?php } ?>
-                </tr>
-                <tr>
-                    <td width='300px' style="text-align:left">Cash Ratio</td>
-                    <td>X</td>
-                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->cash_ratio,2)?></td>
-                    <?php }
-                    ?> 
-                   
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_ratio,2)?></td>
-                    <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_ratio - $key_ratio['previous_year'][$key]->cash_ratio) ?></td>
-                    <?php } ?>
-                </tr>
-                <tr>
-                    <td width='300px' style="text-align:left">Current Ratio</td>
-                    <td>X</td>
-                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->current_ratio,2)?></td>
-                    <?php }
-                    ?> 
-                   
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->current_ratio,2)?></td>
-                    <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->current_ratio - $key_ratio['previous_year'][$key]->current_ratio) ?></td>
-                    <?php } ?>
-                </tr>
-                <tr>
-                    <td width='300px' style="text-align:left">Quick Ratio</td>
-                    <td>x</td>
-                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->quick_ratio,2)?></td>
-                    <?php }
-                    ?> 
-                   
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->quick_ratio,2)?></td>
-                    <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->quick_ratio - $key_ratio['previous_year'][$key]->quick_ratio) ?></td>
-                    <?php } ?>
-                </tr>
-                <tr>
-                    <td width='300px' style="text-align:left">Capital Adequacy</td>
-                    <td>%</td>
-                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
-                    <td width="" style="text-align:right"><?= number_format($previous->capital_adequacy,2)?></td>
-                    <?php }
-                    ?> 
-                   
-                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->capital_adequacy,2)?></td>
-                    <?php if($previousStatus!=false) {?>
-                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->capital_adequacy - $key_ratio['previous_year'][$key]->capital_adequacy) ?></td>
-                    <?php }?>
-                </tr>
-            
-            
-       
-            <tr>
-            <th colspan="<?php echo $colspan;  ?>" class="theading">Gearing</th>
+            <th colspan="<?php echo $colspan;  ?>" class="theading">Financial Leverage</th>
             </tr>
 
         <tr>
@@ -1938,7 +1870,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->net_tangible_worth - $key_ratio['previous_year'][$key]->net_tangible_worth) ?></td>
                     <?php }?>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Net Asset Backing</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -1950,7 +1882,7 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->net_asset_backing - $key_ratio['previous_year'][$key]->net_asset_backing) ?></td>
                     <?php } ?>
-                </tr>
+                </tr> -->
                
            
                 <tr>
@@ -2005,7 +1937,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->repayment_capability - $key_ratio['previous_year'][$key]->repayment_capability) ?></td>
                     <?php } ?>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Financial Leverage</td>
                     <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2017,8 +1949,8 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->financial_leverage - $key_ratio['previous_year'][$key]->financial_leverage) ?></td>
                     <?php } ?>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Short Ratio</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2030,11 +1962,111 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->short_ratio - $key_ratio['previous_year'][$key]->short_ratio) ?></td>
                     <?php } ?>
+                </tr> -->
+            <tr>
+            <th colspan="<?php echo $colspan; ?>" class="theading">Liquidity</th>
+               
+            </tr>
+        
+        <tr>
+                    <td width='300px' style="text-align:left">Working Capital</td>
+                    <td>Thousands</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->working_capital,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->working_capital,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->working_capital - $key_ratio['previous_year'][$key]->working_capital) ?></td>
+                    <?php } ?>
                 </tr>
                 <tr>
-                <th colspan="<?php echo $colspan;  ?>" class="theading">Operating</th>
+                    <td width='300px' style="text-align:left">Working Capital to Sales</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->working_capital_to_sales,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->working_capital_to_sales,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->working_capital_to_sales - $key_ratio['previous_year'][$key]->working_capital_to_sales) ?></td>
+                    <?php } ?>
+                </tr>
+                <!-- <tr>
+                    <td width='300px' style="text-align:left">Cash Flow Coverage</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->cash_flow_coverage,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_flow_coverage,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_flow_coverage - $key_ratio['previous_year'][$key]->cash_flow_coverage) ?></td>
+                    <?php } ?>
+                </tr> -->
+                <!-- <tr>
+                    <td width='300px' style="text-align:left">Cash Ratio</td>
+                    <td>X</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->cash_ratio,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->cash_ratio,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->cash_ratio - $key_ratio['previous_year'][$key]->cash_ratio) ?></td>
+                    <?php } ?>
+                </tr> -->
+                <tr>
+                    <td width='300px' style="text-align:left">Current Ratio</td>
+                    <td>X</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->current_ratio,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->current_ratio,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->current_ratio - $key_ratio['previous_year'][$key]->current_ratio) ?></td>
+                    <?php } ?>
                 </tr>
                 <tr>
+                    <td width='300px' style="text-align:left">Quick Ratio</td>
+                    <td>x</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->quick_ratio,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->quick_ratio,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->quick_ratio - $key_ratio['previous_year'][$key]->quick_ratio) ?></td>
+                    <?php } ?>
+                </tr>
+                <!-- <tr>
+                    <td width='300px' style="text-align:left">Capital Adequacy</td>
+                    <td>%</td>
+                    <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
+                    <td width="" style="text-align:right"><?= number_format($previous->capital_adequacy,2)?></td>
+                    <?php }
+                    ?> 
+                   
+                    <td width="" style="text-align:right"><?= number_format($key_ratio['current_year']->capital_adequacy,2)?></td>
+                    <?php if($previousStatus!=false) {?>
+                    <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->capital_adequacy - $key_ratio['previous_year'][$key]->capital_adequacy) ?></td>
+                    <?php }?>
+                </tr> -->
+            
+            
+       
+          
+                <tr>
+                <th colspan="<?php echo $colspan;  ?>" class="theading">Asset Turnover</th>
+                </tr>
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Operating Leverage</td>
                     <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2069,8 +2101,8 @@ reason in making a decision about the entity.</p>
                     <?php }else{ ?>
                         <td width="" style="text-align:right"> - </td>
                     <?php } ?>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                     <td width='300px' style="text-align:left">Creditor Exposure</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2082,7 +2114,7 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->creditor_exposure - $key_ratio['previous_year'][$key]->creditor_exposure) ?></td>
                     <?php  } ?>
-                </tr>
+                </tr> -->
                 <tr>
                     <td width='300px' style="text-align:left">Creditor Days</td>
                     <td>Days</td>
@@ -2136,7 +2168,7 @@ reason in making a decision about the entity.</p>
                     <?php } ?>
                 </tr>
                 <tr>
-                <th colspan="<?php echo $colspan;  ?>" class="theading">Other Indicators</th>
+                <th colspan="<?php echo $colspan;  ?>" class="theading">Other Ratios</th>
                 </tr>
                 <tr>
                     <td width='300px' style="text-align:left">Sales (Annualised)</td>
@@ -2151,7 +2183,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->sales_annualised - $key_ratio['previous_year'][$key]->sales_annualised) ?></td>
                     <?php } ?>
                 </tr>
-            <tr>
+            <!-- <tr>
                     <td width='300px' style="text-align:left">Activity</td>
                     <td>X</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2163,7 +2195,7 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->activity - $key_ratio['previous_year'][$key]->activity) ?></td>
                     <?php } ?>
-                </tr>
+                </tr> -->
             <tr>
                     <td width='300px' style="text-align:left">Sales Growth</td>
                     <td>%</td>
@@ -2234,7 +2266,7 @@ reason in making a decision about the entity.</p>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->related_party_loans_dependency - $key_ratio['previous_year'][$key]->related_party_loans_dependency) ?></td>
                     <?php } ?>
                 </tr>
-            <tr>
+            <!-- <tr>
                     <td width='300px' style="text-align:left">Quick Asset Composition</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2246,8 +2278,8 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->quick_asset_composition - $key_ratio['previous_year'][$key]->quick_asset_composition) ?></td>
                     <?php } ?>
-                </tr>
-            <tr>
+                </tr> -->
+            <!-- <tr>
                     <td width='300px' style="text-align:left">Current Asset Composition</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2259,8 +2291,8 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->current_asset_composition - $key_ratio['previous_year'][$key]->current_asset_composition) ?></td>
                     <?php } ?>
-                </tr>
-            <tr>
+                </tr> -->
+            <!-- <tr>
                     <td width='300px' style="text-align:left">Current Liability Composition</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2272,8 +2304,8 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->current_liability_composition - $key_ratio['previous_year'][$key]->current_liability_composition) ?></td>
                     <?php } ?>
-                </tr>
-            <tr>
+                </tr> -->
+            <!-- <tr>
                     <td width='300px' style="text-align:left">Z-Score Risk Measure</td>
                     <td>%</td>
                     <?php foreach($key_ratio['previous_year'] as $key => $previous) { ?>
@@ -2285,14 +2317,16 @@ reason in making a decision about the entity.</p>
                     <?php if($previousStatus!=false) {?>
                     <td width="" style="text-align:right"><?= $this->jics->indicators($key_ratio['current_year']->zscore_risk_measure - $key_ratio['previous_year'][$key]->zscore_risk_measure) ?></td>
                     <?php } ?>
-                </tr>
+                </tr> -->
         </tbody>
 
     </table>
     <!-- table -->
 </div>
-</div>
+
 </page>
+
+<div class="report-ref"></div>
 <page size="A4">
     <div class="header"></div>
     <div class="content">
@@ -2316,26 +2350,26 @@ reason in making a decision about the entity.</p>
             <td>EBITDA</td>
             <td>Earnings Before Interest Depreciation Tax and Amortisation</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td>Normalised EBITDA</td>
             <td>Earnings Before Interest Depreciation Tax Amortisation & Extraordinary Items</td>
-        </tr>
-        <tr>
+        </tr> -->
+        <!-- <tr>
             <td>EBIT</td>
             <td>Earnings Before Interest and Tax</td>
-        </tr>
+        </tr> -->
         <tr>
             <td>Net Profit Margin</td>
             <td>Net Profit before Tax / Sales shown as a percentage</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td>Profitability</td>
             <td>Annualised Profit after Tax and Dividends / Total Assets shown as a percentage</td>
-        </tr>
-        <tr>
+        </tr> -->
+        <!-- <tr>
             <td>Reinvestment</td>
             <td>Retained Earnings / Total Assets shown as a percentage</td>
-        </tr>
+        </tr> -->
         <tr>
             <td>Return on Assets</td>
             <td>Annualised Profit before Interest and Tax / Total Assets shown as a percentage</td>
@@ -2356,14 +2390,14 @@ reason in making a decision about the entity.</p>
             <td>Working Capital to Sales</td>
             <td>Working Capital / Annualised Sales shown as a percentage</td>
         </tr> 
-        <tr>
+        <!-- <tr>
             <td>Cash Flow Coverage</td>
             <td>Annualised Operating Cash Flow / Current Liabilities shown as a percentage</td>
-        </tr>  
-        <tr>
+        </tr>   -->
+        <!-- <tr>
             <td>Cash Ratio</td>
             <td>Cash/Current Liabilities shown as a percentage</td>
-        </tr>    
+        </tr>     -->
         <tr>
             <td>Current Ratio</td>
             <td>Current Assets / Current Liabilities</td>
@@ -2372,10 +2406,10 @@ reason in making a decision about the entity.</p>
             <td>Quick Ratio</td>
             <td>(Current Assets - Inventories) / Current Liabilities</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td>Capital Adequacy</td>
             <td>Adjusted Net Tangible Assets/Annualised Sales shown as a percentage</td>
-        </tr> 
+        </tr>  -->
         <tr class="bg-primary">
             <th>Gearing Indicators</th>
             <th>Calculation</th>
@@ -2384,10 +2418,10 @@ reason in making a decision about the entity.</p>
             <td>Net Tangible Worth</td>
             <td>Total Net Assets - Intangibles</td>
         </tr>  
-        <tr>
+        <!-- <tr>
             <td>Net Asset Backing</td>
             <td>Net Tangible Worth / Annualised Sales shown as a percentage</td>
-        </tr>  
+        </tr>   -->
         <tr>
             <td>Gearing</td>
             <td>Total Liabilities / Total Assets shown as a percentage</td>
@@ -2404,14 +2438,14 @@ reason in making a decision about the entity.</p>
             <td>Repayment Capability</td>
             <td>Annualised Profit before Tax / Total Liabilities shown as a percentage</td>
         </tr> 
-        <tr>
+        <!-- <tr>
             <td>Financial Leverage</td>
             <td>Total Debt / Annualised EBITDA</td>
-        </tr> 
-        <tr>
+        </tr>  -->
+        <!-- <tr>
             <td>Short Ratio</td>
             <td>Current Debt/Total Debt shown as a percentage</td>
-        </tr> 
+        </tr>  -->
         <tr class="bg-primary">
             <th>Operating Indicators</th>
             <th>Calculation</th>
@@ -2446,7 +2480,7 @@ reason in making a decision about the entity.</p>
 </div>
         <div class="row mt-5"></div>
     </div>
-</div>
+
 
 </page>
 
@@ -2562,7 +2596,12 @@ $.ajax({
                 type: 'column'
             },
             title: {
-                text: 'Revenue Chart'
+                text: 'Revenue'
+            },
+            yAxis: {
+                title: {
+                    text: 'Percentage'
+                }
             },
             xAxis: {
                 categories: res.year
@@ -2599,7 +2638,7 @@ $.ajax({
             },
             yAxis: {
                 title: {
-                    text: 'Amount'
+                    text: 'Percentage'
                 }
             },
             plotOptions: {
@@ -2643,6 +2682,11 @@ $.ajax({
             xAxis: {
                 categories: res.year
             },
+            yAxis: {
+                title: {
+                    text: '$'
+                }
+            },
             credits: {
                 enabled: false
             },
@@ -2676,6 +2720,11 @@ $.ajax({
             },
             xAxis: {
                 categories: res.year
+            },
+            yAxis: {
+                title: {
+                    text: '$'
+                }
             },
             credits: {
                 enabled: false
@@ -2712,6 +2761,11 @@ $.ajax({
             xAxis: {
                 categories: res.year
             },
+            yAxis: {
+                title: {
+                    text: '$'
+                }
+            },
             credits: {
                 enabled: false
             },
@@ -2746,8 +2800,15 @@ $.ajax({
             title: {
                 text: 'Working Capital'
             },
+            
             xAxis: {
                 categories: res.year
+            },
+            yAxis: {
+                title: {
+                    text: '$'
+                },
+                minRange: 5
             },
             credits: {
                 enabled: false
@@ -2776,8 +2837,13 @@ Highcharts.chart('equity', {
         text: 'Equity'
     },
     xAxis: {
-        categories: ["2018","2019"]
+        categories: ["2016","2017","2018"]
     },
+    yAxis: {
+                title: {
+                    text: '$'
+                }
+            },
     labels: {
        
     },
@@ -2814,6 +2880,11 @@ $.ajax({
             },
             xAxis: {
                 categories: res.year
+            },
+            yAxis: {
+                title: {
+                    text: 'Percentage'
+                }
             },
             labels: {
             
