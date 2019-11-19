@@ -1822,15 +1822,11 @@ reason in making a decision about the entity.</p>
                 </tr>
                 
             </tr>
-        </tbody>
-        <thead>
             <tr>
             <th colspan="<?php echo $colspan; ?>" class="theading">Liquidity</th>
                
             </tr>
-
-        </thead>
-        <tbody>
+        
         <tr>
                     <td width='300px' style="text-align:left">Working Capital</td>
                     <td>Thousands</td>
@@ -1924,15 +1920,11 @@ reason in making a decision about the entity.</p>
                 </tr>
             
             
-        </tbody>
-
-        <thead>
+       
             <tr>
             <th colspan="<?php echo $colspan;  ?>" class="theading">Gearing</th>
             </tr>
 
-        </thead>
-        <tbody>
         <tr>
                     <td width='300px' style="text-align:left">Net Tangible Worth</td>
                     <td>Thousands</td>
