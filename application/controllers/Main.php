@@ -485,13 +485,13 @@ class Main extends MY_Controller {
 		foreach($previousYearData as $key => $previous){
 
 			array_push($dataArray['year'],$previous->financial_year);
-			array_push($dataArray['value'],floatval($previous->sales));
+			array_push($dataArray['value'],round(floatval($previous->sales),2));
 			
 		}
 		
 		// var_dump($previousYearData);die;
 		array_push($dataArray['year'],$reportData->financial_year);
-		array_push($dataArray['value'],floatval($reportData->sales));
+		array_push($dataArray['value'],round(floatval($reportData->sales),2));
 
 
 		echo json_encode($dataArray);
@@ -521,13 +521,13 @@ class Main extends MY_Controller {
 			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
 			
 			array_push($dataArray['year'],$previous->financial_year);
-			array_push($dataArray['gp'],floatval($previousKeyRatio->gross_profit_margin));
-			array_push($dataArray['np'],floatval($previousKeyRatio->net_profit_margin));
+			array_push($dataArray['gp'],round(floatval($previousKeyRatio->gross_profit_margin),2));
+			array_push($dataArray['np'],round(floatval($previousKeyRatio->net_profit_margin),2));
 			
 		}
 		array_push($dataArray['year'],$reportData->financial_year);
-		array_push($dataArray['gp'],floatval($currentKeyRatio->gross_profit_margin));
-		array_push($dataArray['np'],floatval($currentKeyRatio->net_profit_margin));
+		array_push($dataArray['gp'],round(floatval($currentKeyRatio->gross_profit_margin),2));
+		array_push($dataArray['np'],round(floatval($currentKeyRatio->net_profit_margin),2));
 
 
 		echo json_encode($dataArray);
@@ -624,15 +624,15 @@ class Main extends MY_Controller {
 			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
 			
 			array_push($dataArray['year'],$previous->financial_year);
-			array_push($dataArray['current_ratio'],floatval($previousKeyRatio->current_ratio));
-			array_push($dataArray['quick_ratio'],floatval($previousKeyRatio->quick_ratio));
-			array_push($dataArray['cash_ratio'],floatval($previousKeyRatio->cash_ratio));
+			array_push($dataArray['current_ratio'],round(floatval($previousKeyRatio->current_ratio),2));
+			array_push($dataArray['quick_ratio'],round(floatval($previousKeyRatio->quick_ratio),2));
+			array_push($dataArray['cash_ratio'],round(floatval($previousKeyRatio->cash_ratio),2));
 			
 		}
 		array_push($dataArray['year'],$reportData->financial_year);
-		array_push($dataArray['current_ratio'],floatval($currentKeyRatio->current_ratio));
-		array_push($dataArray['quick_ratio'],floatval($currentKeyRatio->quick_ratio));
-		array_push($dataArray['cash_ratio'],floatval($currentKeyRatio->cash_ratio));
+		array_push($dataArray['current_ratio'],round(floatval($currentKeyRatio->current_ratio),2));
+		array_push($dataArray['quick_ratio'],round(floatval($currentKeyRatio->quick_ratio),2));
+		array_push($dataArray['cash_ratio'],round(floatval($currentKeyRatio->cash_ratio),2));
 
 
 		echo json_encode($dataArray);
@@ -646,7 +646,34 @@ class Main extends MY_Controller {
 	 */
 	public function getWorkingetEquityChartData($id)
 	{
+		$where = [
+			'id'=>$id
+		];
+		$reportData = $this->getCurrentYearReportData($where);
+		
+		$previousYearData = $this->getPreviousYearData($reportData->financial_year, $reportData->company_name);
+		$currentKeyRatio = $this->Main_model->getKeyRatio($id);
+		ksort($previousYearData);
+				
+		$dataArray['year'] = [];
+		$dataArray['total_assets'] = [];
+		$dataArray['total_debt'] = [];
+		$dataArray['equity'] = [];
+		foreach($previousYearData as $key => $previous){
+			
+			array_push($dataArray['year'],$previous->financial_year);
+			array_push($dataArray['total_assets'],round(floatval($previous->total_assets),2));
+			array_push($dataArray['total_debt'],round(floatval($previous->trade_debtors),2));
+			array_push($dataArray['equity'],round(floatval($previous->total_equity),2));
+			
+		}
+		array_push($dataArray['year'],$reportData->financial_year);
+		array_push($dataArray['total_assets'],round(floatval($reportData->total_assets),2));
+		array_push($dataArray['total_debt'],round(floatval($reportData->trade_debtors),2));
+		array_push($dataArray['equity'],round(floatval($reportData->total_equity),2));
 
+
+		echo json_encode($dataArray);
 	}
 
 	/**
@@ -674,14 +701,14 @@ class Main extends MY_Controller {
 			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
 			
 			array_push($dataArray['year'],$previous->financial_year);
-			array_push($dataArray['current_assets'],floatval($previousKeyRatio->current_asset_composition));
-			array_push($dataArray['current_liabilities'],floatval($previousKeyRatio->current_liability_composition));
+			array_push($dataArray['current_assets'],floatval($previous->total_current_assets));
+			array_push($dataArray['current_liabilities'],floatval($previous->total_current_liabilities));
 			array_push($dataArray['working_capital'],floatval($previousKeyRatio->working_capital));
 			
 		}
 		array_push($dataArray['year'],$reportData->financial_year);
-		array_push($dataArray['current_assets'],floatval($currentKeyRatio->current_asset_composition));
-		array_push($dataArray['current_liabilities'],floatval($currentKeyRatio->current_liability_composition));
+		array_push($dataArray['current_assets'],floatval($previous->total_current_assets));
+		array_push($dataArray['current_liabilities'],floatval($reportData->total_current_liabilities));
 		array_push($dataArray['working_capital'],floatval($currentKeyRatio->working_capital));
 
 
@@ -713,14 +740,14 @@ class Main extends MY_Controller {
 			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
 			
 			array_push($dataArray['year'],$previous->financial_year);
-			array_push($dataArray['interest'],floatval($previousKeyRatio->interest_coverage));
-			array_push($dataArray['debt'],floatval($previousKeyRatio->debt_to_equity));
+			array_push($dataArray['interest'],round(floatval($previousKeyRatio->interest_coverage),2));
+			array_push($dataArray['debt'],round(floatval($previousKeyRatio->debt_to_equity),2));
 			
 			
 		}
 		array_push($dataArray['year'],$reportData->financial_year);
-		array_push($dataArray['interest'],floatval($currentKeyRatio->interest_coverage));
-		array_push($dataArray['debt'],floatval($currentKeyRatio->debt_to_equity));
+		array_push($dataArray['interest'],round(floatval($currentKeyRatio->interest_coverage),2));
+		array_push($dataArray['debt'],round(floatval($currentKeyRatio->debt_to_equity),2));
 		
 
 
