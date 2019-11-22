@@ -31,8 +31,8 @@
 						<div class="content">
 							<div class="report-head cover-page" >
 								<img src="<?= base_url('assets/img/logo-report.png')?>" alt="" class="main-logo">
-								<p>Phone 1300 50 13 12 | Email admin@creditorwatch.com.au</p>
-								<h1>Financial Analysis Enriched Credit Report</h1>
+								<p class="text-center">Phone 1300 50 13 12 | Email admin@creditorwatch.com.au</p>
+								<h1 class="text-center">Financial Analysis Enriched Credit Report</h1>
 							<div class="d-flex flex-wrap justify-content-center pt-2 ">
 								<button class="btn btn-primary mt-5 prnt-btn " onclick="window.print();" style="font-size:30px">Print this page</button></div>
 							</div>
@@ -230,10 +230,12 @@
 	
 						<!-- API -->
 					   <div class="row">
-					   <div class = "col-md-10 col-sm-10 chart col-lg-10">
+					   <div class = "col-md-12 col-sm-12 chart col-lg-12">
 						   <h2 class="mt-1">Historical Credit Scores</h2>
+					   <div class="content" style="width:80%">
 					   <div class="container" id="credit-chart">
 						</div>
+					   </div>
 					   </div>
 					   </div>
 							
@@ -343,7 +345,7 @@ reason in making a decision about the entity.</p>
 							$previousColspan = 1;
 						}
 						?>
-					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><?= ucfirst($previous->rounding)?></td>
+					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><strong><?= ucfirst($previous->rounding)?></strong></td>
 					<?php } ?>
 					
 					<?php
@@ -353,7 +355,7 @@ reason in making a decision about the entity.</p>
 						$currentYearColspan = 1;
 					}
 					?>
-					<td width="" colspan ="<?php echo $currentYearColspan; ?>" style="text-align:right"><?= ucfirst($input_data['current_year']->rounding)?></td>
+					<td width="" colspan ="<?php echo $currentYearColspan; ?>" style="text-align:right"><strong><?= ucfirst($input_data['current_year']->rounding)?></strong></td>
 				   
 				</tr>
 				<tr class="summary-table">
@@ -365,7 +367,7 @@ reason in making a decision about the entity.</p>
 							$previousColspan = 1;
 						}
 						?>
-					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><?= strtoupper($previous->base_currency)?></td>
+					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><strong><?= strtoupper($previous->base_currency)?></strong></td>
 					<?php } ?>
 				  
 					<?php
@@ -375,7 +377,7 @@ reason in making a decision about the entity.</p>
 						$currentYearColspan = 1;
 					}
 					?>
-					<td colspan="<?php echo $currentYearColspan; ?>" style="text-align:right"><?= strtoupper($input_data['current_year']->base_currency) ?></td>
+					<td colspan="<?php echo $currentYearColspan; ?>" style="text-align:right"><strong><?= strtoupper($input_data['current_year']->base_currency) ?></strong></td>
 					
 
 				</tr>
@@ -388,7 +390,7 @@ reason in making a decision about the entity.</p>
 							$previousColspan = 1;
 						}
 						?>
-					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><?= ucfirst($previous->quality)?></td>
+					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><strong><?= ucfirst($previous->quality)?></strong></td>
 					<?php } ?>
 					<?php
 					if(count($input_data['previous_year']) > 0){
@@ -397,7 +399,7 @@ reason in making a decision about the entity.</p>
 						$currentYearColspan = 1;
 					}
 					?>
-					<td colspan="<?php echo $currentYearColspan ?>" style="text-align:right"><?= ucfirst($input_data['current_year']->quality) ?></td>
+					<td colspan="<?php echo $currentYearColspan ?>" style="text-align:right"><strong><?= ucfirst($input_data['current_year']->quality) ?></strong></td>
 					
 				</tr>
 				<tr class="summary-table">
@@ -409,7 +411,7 @@ reason in making a decision about the entity.</p>
 							$previousColspan = 1;
 						}
 						?>
-					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><?= $previous->reporting_period_months?></td>
+					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><strong><?= $previous->reporting_period_months?></strong></td>
 					<?php } ?>
 				   
 					<?php
@@ -419,7 +421,7 @@ reason in making a decision about the entity.</p>
 						$currentYearColspan = 1;
 					}
 					?>
-					<td colspan="<?php echo $currentYearColspan; ?>" style="text-align:right"><?= $input_data['current_year']->reporting_period_months?></td>
+					<td colspan="<?php echo $currentYearColspan; ?>" style="text-align:right"><strong><?= $input_data['current_year']->reporting_period_months?></strong></td>
 					
 				</tr>
 				<tr class="summary-table">
@@ -431,7 +433,7 @@ reason in making a decision about the entity.</p>
 							$previousColspan = 1;
 						}
 						?>
-					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><?= $previous->financial_year?></td>
+					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><strong><?= $previous->financial_year?></strong></td>
 					<?php } ?>
 					<?php
 					if(count($input_data['previous_year']) > 0){
@@ -440,7 +442,7 @@ reason in making a decision about the entity.</p>
 						$currentYearColspan = 1;
 					}
 					?>
-					<td colspan="<?php echo $currentYearColspan; ?>" style="text-align:right">FY <?= $input_data['current_year']->financial_year?></td>
+					<td colspan="<?php echo $currentYearColspan; ?>" style="text-align:right"><strong><?= $input_data['current_year']->financial_year?></strong></td>
 					
 				</tr>
 				<tr class="summary-table">
@@ -452,7 +454,7 @@ reason in making a decision about the entity.</p>
 							$previousColspan = 1;
 						}
 						?>
-					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><?= $previous->month?></td>
+					<td width="" colspan="<?php echo $previousColspan; ?>" style="text-align:right"><strong><?= $previous->month?></strong></td>
 					<?php } ?>
 				  
 					<?php
@@ -462,7 +464,7 @@ reason in making a decision about the entity.</p>
 						$currentYearColspan = 1;
 					}
 					?>
-					<td colspan="<?php echo $currentYearColspan ?>" style="text-align:right"><?= $input_data['current_year']->month?></td>
+					<td colspan="<?php echo $currentYearColspan ?>" style="text-align:right"><strong><?= $input_data['current_year']->month?></strong></td>
 					
 				</tr>
 				<tr>
@@ -859,29 +861,27 @@ reason in making a decision about the entity.</p>
 				</tr>
 			</tbody>
 		</table>
-	</div>
-
-
-	<!-- <div class="row">
-					   <div class = "col-md-10 col-sm-10 chart col-lg-10">
-						   <h2 class="mt-1">Historical Credit Scores</h2>
-					   <div class="container" id="credit-chart">
-						</div>
-					   </div>
-					   </div> -->
-
-
-		<h2 class="mt-5">Financial Trend Graphs</h2>
-		<div  class="col-md-12 col-sm-12 chart col-lg-12 row">
-
-		
-		<div style="margin-left:-5em" class="col" id="revenue_chart"></div>
-		
-			<div class="col" id="gp_np_margin"></div>
-		   
-		
-			
 		</div>
+		<div class="content" style="width:85%;">
+		<div class="container">
+		<h2 class="mt-5">Financial Trend Graphs</h2>
+		
+		<div class="col-md-12 col-sm-12 chart col-lg-12 row">
+
+		
+<div class="col" id="revenue_chart"></div>
+
+	<div class="col" id="gp_np_margin"></div>
+   
+
+	
+</div>	
+	
+
+		</div>
+		</div>
+	
+	
 							
 							<!-- Financial Performance  -->
 
@@ -891,21 +891,21 @@ reason in making a decision about the entity.</p>
 
 
 <page size="A4">
-<div class="content">
+<div class="content" style="width:85%">
 <div class="container">
 		
 		<div class="col-md-12 col-sm-12 chart col-lg-12 row">
 
 		
-			<div style="margin-left:-5em" class="col" id="gp_np"></div>
+			<div class="col" id="gp_np"></div>
 			
 			<div class="col" id="ebitda"></div>
 		</div>
 		<div class="clearfix"></div>  
 		<div  class="col-md-12 col-sm-12 chart col-lg-12 row">
-			<div style="margin-left:-1em" class="col" id="ratio"></div>
+			<div class="col" id="ratio"></div>
 			
-			<div style="margin-left:-1em" class="col" id="capital"></div>
+			<div class="col" id="capital"></div>
 		</div>
 		<div class="clearfix"></div>  
 		<div class="col-md-12 col-sm-12 chart col-lg-12 row">
@@ -915,7 +915,7 @@ reason in making a decision about the entity.</p>
 		</div>
 		<div class="clearfix"></div>  
 		<div class="col-md-12 col-sm-12 chart col-lg-12 row">
-			<div style="margin-left:-4em" class="col" id="equity"></div>
+			<div class="col" id="equity"></div>
 			
 			<div class="col" id="interest_cover"></div>
 		
@@ -934,10 +934,8 @@ reason in making a decision about the entity.</p>
 			  
 				<div class="content">
 				 <!-- Financial Performance  -->
-
-				
-				 <div class="col-md-12">
-	   <h2 class="mt-5">Financial Performance </h2>
+		<div class="col-md-12">
+	   <h2 class="mt-2">Financial Performance </h2>
 		<table class="table table-bordered">
 			<tbody>
 				
@@ -2348,14 +2346,14 @@ reason in making a decision about the entity.</p>
 
 <div class="report-ref"></div>
 <page size="A4">
-	<div class="header"></div>
+	
 	<div class="content">
 		
 		<div class="">
-		<h3 class="">
+		<h2 class="">
 	Glossary of Financial Calculations 
-	</h3>
-<div class="">
+	</h2>
+<div class="col-md-12">
 	
 	<table class="table table-bordered table-collapse">
 		<tr class="bg-primary">
@@ -2498,7 +2496,7 @@ reason in making a decision about the entity.</p>
 	</table>
 </div>
 </div>
-		<div class="row mt-5"></div>
+		
 	</div>
 
 
@@ -2532,7 +2530,7 @@ reason in making a decision about the entity.</p>
 		
 		body,
 		page {
-			/* margin: 0; */
+			margin: 0;
 			/* box-shadow: 0; */
 			overflow: visible!important;
 		}
@@ -2541,7 +2539,7 @@ reason in making a decision about the entity.</p>
 			display:none;
 		}
 		.content {
-			width: 90%;
+			/* width: 90%; */
 			overflow: visible!important;
 		}
 		page {
@@ -2589,6 +2587,9 @@ $(document).ready(function(){
 	xAxis: {
 		categories: res.date
 	},
+	title: {
+				text: ''
+			},
 	plotOptions: {
 		series: {
 			allowPointSelect: true
@@ -2944,13 +2945,13 @@ $.ajax({
         title: {
             text: 'Values',
             style: {
-                color: Highcharts.getOptions().colors[0]
+                color: Highcharts.getOptions().colors[1]
             }
         },
         labels: {
             format: '{value}',
             style: {
-                color: Highcharts.getOptions().colors[0]
+                color: Highcharts.getOptions().colors[1]
             }
         }
 
@@ -3023,38 +3024,6 @@ $.ajax({
 });
 
 
-// 			Highcharts.chart('interest_cover', {
-// 			title: {
-// 				text: 'Debt to Equity and Interest Cover'
-// 			},
-// 			xAxis: {
-// 				categories: res.year
-// 			},
-// 			yAxis: {
-// 				title: {
-// 					text: 'Values'
-// 				}
-// 			//    tickPositions: [0.2542,0.2543,0.7217,2.2931,10.0979,1237.8733]
-// 			},
-// 			labels: {
-			
-// 			},
-			
-// 			series: [{
-// 				type: 'column',
-// 				name: 'Debt/Equity',
-// 				data: res.debt
-// 			},{
-// 				type: 'spline',
-// 				name: 'Interest Cover',
-// 				data: res.interest,
-// 				marker: {
-// 					lineWidth: 2,
-// 					lineColor: Highcharts.getOptions().colors[3],
-// 					fillColor: 'white'
-// 				}
-// 			}]
-// });  
 		}
 	   
 		

@@ -156,7 +156,7 @@ progress[value]::-webkit-progress-value {
 
 @media print {
     .cardview {
-        background-color: #efefef !important;
+        /* background-color: #efefef !important; */
         -webkit-print-color-adjust: exact;
     }
 }
