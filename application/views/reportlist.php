@@ -11,16 +11,19 @@
 		<tbody>
 			<?php 
 			$count = 1;
+			if($table!=false){
 			foreach ($table as $row) {
+				$reportType = ($row->type==0)?'Advance Finacial Diagnostic Report':'Finacial Analyst Enriched Credit Report';
 				echo "<tr>";
 				echo "<td>".$count."</td>";
 				echo "<td>".$row->created_at."</td>";
-				echo "<td>".$row->company_name."</td>";
+				echo "<td>".$reportType."</td>";
 				echo "<td> Pending</td>";
 				echo '<td class="text-center"><div class="btn-group" role="group" aria-label="Basic example"><a class="btn btn-primary" href="'. base_url("newreport").'?id='.$row->id.'">Edit</a></div></td>';
 				echo "</tr>";
 				$count ++;
 			}
+		}
 			?>
 		</tbody>
 	</table>

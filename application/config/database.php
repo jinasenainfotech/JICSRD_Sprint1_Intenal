@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'jicsrd-uat.mysql.database.azure.com',
-	'username' => 'JICSRDAdmin@jicsrd-uat',
-	'password' => 'P@ssw0rdJICSRD',
-	'database' => 'jicscw_dev',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'jinasena_test',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

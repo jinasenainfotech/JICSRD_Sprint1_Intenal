@@ -25,6 +25,11 @@
 	border-color: #2196f3 !important;
 }
 
+.invalid-feild{
+	/* border-color:#ff0000; */
+	color:#ff0000;
+}
+
 .quantitave .quantitave-table-wrapper table th {
 	max-height: 49px;
 	max-width: 100%;
@@ -37,6 +42,12 @@
 .form-group {
 	height: 45px !important;
 	margin: 2px 0 !important;
+}
+.rp-type label{
+	color:#ffffff;
+}
+.error{
+	color:#000000;
 }
 
 .quantitave .quantitave-table-wrapper table th,

@@ -474,5 +474,9 @@
 					classification($(this).attr('target-opt'),'<?= base_url('main/classification')?>',$(this).val());
 				});
 
+				$('#anzic_division').change(function(){
+					$('#anzic_group').html('');
+					$('#anzic_class').html('');
+				});
 
 			</script>

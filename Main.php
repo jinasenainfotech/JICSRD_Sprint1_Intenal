@@ -53,16 +53,11 @@ class Main extends MY_Controller {
 
 		$companyData = [];
 
-		if($this->data['companies']!=false){
-			foreach($this->data['companies'] as $company){
+		foreach($this->data['companies'] as $company){
 			
 				$company->country = ((is_null($company->country)) || ($company->country==0))? "" : $this->data['country'][$company->country];
 			array_push($companyData, $company);
 		}
-		}else{
-			$companyData=false;
-		}
-		
 		
 		$this->data['companies'] = $companyData;
 		
@@ -177,12 +172,6 @@ class Main extends MY_Controller {
 	}
 
 	public function view_report(){
-
-		if(!isset($_SESSION['user'])){
-            redirect(base_url('login'),'refresh');
-            die;
-		}
-		
 		if(isset($_GET['id'])){
 
 			$id = $this->input->get('id');
@@ -635,15 +624,15 @@ class Main extends MY_Controller {
 			$previousKeyRatio = $this->Main_model->getKeyratio($previous->id);
 			
 			array_push($dataArray['year'],$previous->financial_year);
-			array_push($dataArray['current_ratio'],round(floatval($previousKeyRatio->current_ratio)));
-			array_push($dataArray['quick_ratio'],round(floatval($previousKeyRatio->quick_ratio)));
-			array_push($dataArray['cash_ratio'],round(floatval($previousKeyRatio->cash_ratio)));
+			array_push($dataArray['current_ratio'],round(floatval($previousKeyRatio->current_ratio),2));
+			array_push($dataArray['quick_ratio'],round(floatval($previousKeyRatio->quick_ratio),2));
+			array_push($dataArray['cash_ratio'],round(floatval($previousKeyRatio->cash_ratio),2));
 			
 		}
 		array_push($dataArray['year'],$reportData->financial_year);
-		array_push($dataArray['current_ratio'],round(floatval($currentKeyRatio->current_ratio)));
-		array_push($dataArray['quick_ratio'],round(floatval($currentKeyRatio->quick_ratio)));
-		array_push($dataArray['cash_ratio'],round(floatval($currentKeyRatio->cash_ratio)));
+		array_push($dataArray['current_ratio'],round(floatval($currentKeyRatio->current_ratio),2));
+		array_push($dataArray['quick_ratio'],round(floatval($currentKeyRatio->quick_ratio),2));
+		array_push($dataArray['cash_ratio'],round(floatval($currentKeyRatio->cash_ratio),2));
 
 
 		echo json_encode($dataArray);
@@ -921,10 +910,10 @@ $x117 = ((floatval($_POST['depreciation'][$r]) + floatval($_POST['amortisation']
 
 $resent_year = $this->Main_model->resent_two_years();
 
-$sub_0 = (!empty($resent_year[0]))?(((floatval($resent_year[0]->profit_before_tax_after_abnormals) + floatval($resent_year[0]->interest_expense_gross)) / 12) * floatval($resent_year[0]->reporting_period_months)):0; 
-$sub_1 = (!empty($resent_year[1]))?(((floatval($resent_year[1]->profit_before_tax_after_abnormals) + floatval($resent_year[1]->interest_expense_gross)) / 12) * floatval($resent_year[1]->reporting_period_months)):0; 
-$sub_2 = (!empty($resent_year[0]))?((floatval($resent_year[0]->sales) / 12) * floatval($resent_year[0]->reporting_period_months)):0;
-$sub_3 = (!empty($resent_year[1]))?((floatval($resent_year[1]->sales) / 12) * floatval($resent_year[1]->reporting_period_months)):0;
+$sub_0 = ((floatval($resent_year[0]->profit_before_tax_after_abnormals) + floatval($resent_year[0]->interest_expense_gross)) / 12) * floatval($resent_year[0]->reporting_period_months); 
+$sub_1 = ((floatval($resent_year[1]->profit_before_tax_after_abnormals) + floatval($resent_year[1]->interest_expense_gross)) / 12) * floatval($resent_year[1]->reporting_period_months); 
+$sub_2 = (floatval($resent_year[0]->sales) / 12) * floatval($resent_year[0]->reporting_period_months);
+$sub_3 = (floatval($resent_year[1]->sales) / 12) * floatval($resent_year[1]->reporting_period_months);
 
 
 // var_dump($sub_0);exit();
@@ -958,11 +947,11 @@ $x127 = ((floatval($_POST['total_assets'][$r])!=0) || (floatval($_POST['total_li
 // (isset($) and $ != '')? : "",
 
 $cal = array(
-	'gross_profit_margin'				=> (floatval($_POST['sales'][$r])!=0)?((isset($_POST['sales'][$r]) and $_POST['sales'][$r] !="")?(floatval($_POST['gross_profit'][$r]) / floatval($_POST['sales'][$r])) * 100 : ""):0,
+	'gross_profit_margin'				=> (isset($_POST['sales'][$r]) and $_POST['sales'][$r] !="")?(floatval($_POST['gross_profit'][$r]) / floatval($_POST['sales'][$r])) * 100 : "",
 	'ebitda'							=> floatval( $_POST['ebitda'][$r]),
 	'normalised_ebitda'					=> floatval($_POST['normalised_ebitda'][$r]),
 	'ebit'								=> floatval($_POST['ebit'][$r]),
-	'net_profit_margin'					=> (floatval($_POST['sales'][$r])!=0)?((isset($_POST['sales'][$r]) and $_POST['sales'][$r] != "")?(floatval($_POST['profit_before_tax_after_abnormals'][$r]) / floatval($_POST['sales'][$r])) * 100 : ""):0 ,
+	'net_profit_margin'					=> (isset($_POST['sales'][$r]) and $_POST['sales'][$r] != "")?(floatval($_POST['profit_before_tax_after_abnormals'][$r]) / floatval($_POST['sales'][$r])) * 100 : "" ,
 	'profitability'						=> (floatval($_POST['total_assets'][$r])!=0)?((isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != "")? ($x109 / floatval($_POST['total_assets'][$r]) * 100) : "") : 0 ,
 	'reinvestment'						=> (floatval($_POST['total_assets'][$r])!=0)?((isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != "")? (floatval($_POST['ratained_earning'][$r]) / floatval($_POST['total_assets'][$r])) * 100 : ""):0,
 	'return_on_assets'					=> (floatval($_POST['total_assets'][$r])!=0)?((isset($_POST['total_assets'][$r]) and $_POST['total_assets'][$r] != '')? ($x110 / floatval($_POST['total_assets'][$r]))* 100 : "") : 0 ,
@@ -1063,8 +1052,7 @@ $this->page_construct('report_creation',$this->data);
 }
 
 public function companieslist(){
-	// $this->jics->auth('1');
-	
+	$this->jics->auth('1');
 	$this->data['country_list'] = $this->jics->get_companies();
 	$this->data['table'] = $this->Main_model->get_companies_tbl();
 	$this->page_construct('companies_list',$this->data);
@@ -1283,7 +1271,7 @@ public function password($password = '')
         }
         if (strlen($password) < 5)
         {
-            $this->form_validation->set_message('password', 'The {field} field must be at least 6 characters in length.');
+            $this->form_validation->set_message('password', 'The {field} field must be at least 5 characters in length.');
             return FALSE;
         }
         if (strlen($password) > 32)
@@ -1292,8 +1280,7 @@ public function password($password = '')
             return FALSE;
         }
         return TRUE;
-	}
-	
+    }
 
 public function users(){
 	// $this->jics->auth('1');
@@ -1333,13 +1320,10 @@ public function users(){
 		);
 
 		if (($this->input->post('hid')) == '0' and $this->Main_model->add_user($data)) {
-
-			$this->jics->alert('success','User has been created','Save');
-			
+			$this->jics->alert('Success!','The record has been added successfully','Save');
 
 		}elseif($this->input->post('hid') != '0' and $this->Main_model->update_user($data,$this->input->post('hid'))){
-			$this->jics->alert('success','User has been created','Update');
-			
+			$this->jics->alert('Success!','Record has been updated successfully','Update');
 		}
 	}else{  
 		$this->data['input'] =  array(
@@ -1393,7 +1377,7 @@ public function profile(){
 	$this->jics->auth();
 
 	$this->form_validation->set_rules('current', 'Current password', 'required');
-	$this->form_validation->set_rules('password_1', 'Password', 'trim|required|min_length[6]|callback_password');
+	$this->form_validation->set_rules('password_1', 'Password', 'trim|required|min_length[6]');
 	$this->form_validation->set_rules('password_2', 'Password confermation', 'trim|required|min_length[6]');
 
 	if ($this->form_validation->run() == TRUE) {

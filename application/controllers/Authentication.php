@@ -37,7 +37,7 @@ class Authentication extends CI_Controller {
 				$this->data['hid'] = $user_data[0]->user_id;
 				$this->load->view('loging', $this->data);
 			}elseif($user_infor = $this->user_check($user_name,$password) and $user_infor != FALSE){
-				if($user_infor[0]->first_loging == '1' and $user_infor[0]->permission_id != '2'){
+				if($user_infor[0]->first_loging == '1'){
 
 
 
@@ -57,21 +57,136 @@ class Authentication extends CI_Controller {
 		}
 	}
 
+
+	public function valid_password($password = '')
+    {
+        $password = trim($password);
+        $regex_lowercase = '/[a-z]/';
+        $regex_uppercase = '/[A-Z]/';
+        $regex_number = '/[0-9]/';
+        $regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+        if (empty($password))
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field is required.');
+            return FALSE;
+        }
+        if (preg_match_all($regex_lowercase, $password) < 1)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must be at least one lowercase letter.');
+            return FALSE;
+        }
+        if (preg_match_all($regex_uppercase, $password) < 1)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must be at least one uppercase letter.');
+            return FALSE;
+        }
+        if (preg_match_all($regex_number, $password) < 1)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must have at least one number.');
+            return FALSE;
+        }
+        if (preg_match_all($regex_special, $password) < 1)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
+            return FALSE;
+        }
+        if (strlen($password) < 5)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field must be at least 5 characters in length.');
+            return FALSE;
+        }
+        if (strlen($password) > 32)
+        {
+            $this->form_validation->set_message('valid_password', 'The {field} field cannot exceed 32 characters in length.');
+            return FALSE;
+        }
+        return TRUE;
+	}
+	
+	/**
+ * Validate Password
+ *
+ * @param string $password
+ * @return void
+ */
+public function password($password = '')
+{
+	$password = trim($password);
+	$regex_lowercase = '/[a-z]/';
+	$regex_uppercase = '/[A-Z]/';
+	$regex_number = '/[0-9]/';
+	$regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+	if (empty($password))
+	{
+		$this->form_validation->set_message('password', 'The {field} field is required.');
+		return FALSE;
+	}
+	if (preg_match_all($regex_lowercase, $password) < 1)
+	{
+		$this->form_validation->set_message('password', 'The {field} field must be at least one lowercase letter.');
+		return FALSE;
+	}
+	if (preg_match_all($regex_uppercase, $password) < 1)
+	{
+		$this->form_validation->set_message('password', 'The {field} field must be at least one uppercase letter.');
+		return FALSE;
+	}
+	if (preg_match_all($regex_number, $password) < 1)
+	{
+		$this->form_validation->set_message('password', 'The {field} field must have at least one number.');
+		return FALSE;
+	}
+	if (preg_match_all($regex_special, $password) < 1)
+	{
+		$this->form_validation->set_message('password', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
+		return FALSE;
+	}
+	if (strlen($password) < 5)
+	{
+		$this->form_validation->set_message('password', 'The {field} field must be at least 5 characters in length.');
+		return FALSE;
+	}
+	if (strlen($password) > 32)
+	{
+		$this->form_validation->set_message('password', 'The {field} field cannot exceed 32 characters in length.');
+		return FALSE;
+	}
+	return TRUE;
+}
+
 	public function first_loging(){
-		$this->form_validation->set_rules('password_1', 'Password', 'trim|required|min_length[6]|max_length[8]');
-		$this->form_validation->set_rules('password_2', 'Password', 'trim|required|min_length[6]|max_length[8]');
+		$this->form_validation->set_rules('password_1', 'Password', 'trim|required|min_length[6]|max_length[16]|callback_password');
+		$this->form_validation->set_rules('password_2', 'Password', 'trim|required|min_length[6]|max_length[16]');
 
-		if($this->form_validation->run() == TRUE){
-			$id = $this->input->post('hid');
-			$recovery_key = random_string('md5' , 16);
-			$psw = password_hash($this->input->post('password_1'), PASSWORD_DEFAULT);
-
-			if($this->Auth_model->user_password_reset($id,$psw,$recovery_key)){
-				$this->data['forget_key'] = $recovery_key;
-			}
+		if($this->input->post('password_1')!=$this->input->post('password_2')){
+			$this->data['status'] = false;
+			$this->data['hid'] = $this->input->post('hid');
+			$this->data['error'] = 'Password and Confirm password is different';
+			return $this->load->view('loging',$this->data);
 
 		}
-		$this->load->view('loging',$this->data);
+		if($this->form_validation->run() == TRUE){
+			$id = $this->input->post('hid');
+			$userData = $this->Auth_model->get_user_by_id($id);
+		
+			$recovery_key = random_string('md5' , 16);
+			$psw = password_hash($this->input->post('password_1'), PASSWORD_DEFAULT);
+			$this->data =[];
+			if($this->Auth_model->user_password_reset($id,$psw,$recovery_key)){
+				
+				$this->data['forget_key'] = $recovery_key;
+				$this->data['permission'] = $userData[0]->permission_id;
+			}
+			$this->load->view('loging',$this->data);
+		}else{
+		
+			$this->data['status'] = false;
+			$this->data['hid'] = $this->input->post('hid');
+			$this->data['error'] = validation_errors();
+			
+			$this->load->view('loging',$this->data);
+		}
+		
 
 	}
 

@@ -7,7 +7,16 @@
 	<link rel="stylesheet" href="<?= base_url('assets/css/toastr.min.css')?>">
 	<link rel="stylesheet" href="<?= base_url('assets/css/datatables.min.css')?>">
 	
-
+<style type="text/css">
+footer{
+	position:fixed;
+	bottom:0;
+	width:100%;
+}
+body{
+	margin-bottom: 100px;
+}
+</style>
 
 	<!-- js -->
 

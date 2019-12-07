@@ -14,7 +14,9 @@
 				<li class="nav-item active mx-2">
 					<a class="nav-link" href="<?= base_url()?>"> Home <span class="sr-only">(current)</span></a>
 				</li>
-				<?php if($admin){?>
+				<?php
+				
+				if($admin || $manager){?>
 				<li class="nav-item mx-2">
 					<a class="nav-link" href="<?= base_url('main/companieslist')?>">Companies</a>
 				</li>
@@ -23,11 +25,11 @@
 						<a class="nav-link" href="<?= base_url('users')?>">Users</a>
 					</li>
 				<?php } ?>
-
+<?php if($admin || $manager){?> 
 				<li class="nav-item mx-2">
 						<a class="nav-link" href="<?= base_url('main/report_list')?>">Pending Reports</a>
 					</li>
-
+<?php } ?>
 				<li class="nav-item dropdown mx-2">
 					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 						<i class="fas fa-user"></i> Welcome <?= $user_name?>

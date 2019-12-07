@@ -15,7 +15,9 @@
 	<script src="<?= base_url('assets/js/bootstrap.min.js')?>" crossorigin="anonymous"></script>
 	<script src="<?= base_url('assets/js/select2.full.min.js')?>" crossorigin="anonymous"></script> -->
 </head>
-
+<?php 
+$permission = $_SESSION['user']['permission']->permission_set_id;
+?>
 <div class="d-flex col-md-12">
 	<h4 class="p-3 col-md-9">Companies List</h4>	
 	<div class="col-md-3 justify-content-end my-4 text-right">
@@ -35,7 +37,10 @@
 					<th class="text-center" scope="col" width="118px">Action</th>
 				</tr>
 			</thead>
-			<?php $x = 1; foreach ($table as $row) { ?>
+			<?php
+			
+			if($table!=false){
+			 $x = 1; foreach ($table as $row) { ?>
 				<tr>
 					<th scope="row"><?= $x ?></th>
 					<!-- <td><?= $country_list[$row->country] ?></td> -->
@@ -58,11 +63,18 @@
 					<td class="text-center">
 						<div class="btn-group" role="group" aria-label="Basic example">
 							<a class="btn btn-primary" href="<?= base_url('companies')?>?id=<?= $row->id ?>">Edit</a>
+							<?php if($permission!=1){
+								?>
 							<button type="button" class="btn ml-2 btn-danger" onclick="delete_recode('<?= $row->id ?>')">delete</button>
+						<?php
+							}
+						?>
 						</div>
 					</td>
 				</tr>
-				<?php $x++; } ?>
+				<?php $x++; }
+				
+			 } ?>
 			</table>
 		</div>
 	</div>

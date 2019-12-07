@@ -1,6 +1,10 @@
 <title>Risk D | User Creation</title>
 <h4 class="text-center py-3">User Creation</h4>
 <div class="container-fluid">
+
+<?php 
+$permission = $_SESSION['user']['permission']->permission_set_id;
+?>
 <div class="row my-4">
 	<div class="col-lg-4">
 		<?= form_open(base_url('users'), 'class="user-creation-form p-md-3 py-3 shadow bg-white"'); ?>
@@ -41,6 +45,11 @@
 		</div>
 		<div class="col">
 			<div class="form-group">
+				<p class="text-danger">
+					
+					The password field must contain at least one Upper Case letter, one lower case letter, one number and one special character.
+					
+				</p>
 				<label for="password">Password</label>
 				<input id="password" name="password" type="password"
 					class="form-control <?= (form_error("password") !=  ""? "is-invalid" : "") ?>"
@@ -58,6 +67,10 @@
 					<?= form_error('confirm_password') ?></div>
 			</div>
 		</div>
+
+		<?php 
+$permission = $_SESSION['user']['permission']->permission_set_id;
+?>
 		<div class="col">
 			<div class="form-group">
 				<label for="user_role">User Role</label>
@@ -66,7 +79,9 @@
 					<option selected disabled>User Role</option>
 					<option value="3">Analyst</option>
 					<option value="1">Manager</option>
+					<?php if($permission!=1) {?>
 					<option value="2">Administrator</option>
+<?php } ?>
 				</select>
 				<div id="error_user_role" style="color: red;font-size: smaller;"><?= form_error('user_role') ?></div>
 			</div>
@@ -156,8 +171,12 @@
 							<div class="btn-group" role="group" aria-label="Basic example">
 								<button type="button" class="btn btn-primary"
 									onclick="user_edit('<?= $row->user_id ?>')">Edit</button>
+
+									<?php if($permission!=1){
+								?>
 								<button type="button" class="btn btn-danger"
 									onclick="user_delete('<?= $row->user_id ?>')">delete</button>
+									<?php } ?>
 							</div>
 						</td>
 					</tr>

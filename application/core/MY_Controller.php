@@ -3,8 +3,9 @@
 class MY_Controller extends CI_Controller {
 
     function page_construct($page, $data = array()) {
-
+        // var_dump($_SESSION);die;
         if(!isset($_SESSION['user'])){
+            
             redirect(base_url('login'),'refresh');
             die;
         }

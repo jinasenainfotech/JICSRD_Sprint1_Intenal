@@ -2,7 +2,19 @@
 <script src="<?= base_url('assets/js/jquery.validate.js')?>"></script>
 <script src="<?= base_url('assets/js/additional-methods.min.js')?>"></script>
 
-
+<?php 
+$readOnly=0;
+if(isset($_GET['id'])){
+	$defaultSelected ='';
+	$reportStatus = $data_list[0]->status;
+	$readOnly = 1;
+	$readonlytext='disabled';
+}else{
+	$readOnly=0;
+	$readonlytext ='';
+}
+?>
+<input type="hidden" id="editable" value="<?php echo $readOnly; ?>"/>
 <!-- report creation ui -->
 <div class="report-create">
 	<div class="d-flex justify-content-end flex-wrap m-3">
@@ -56,7 +68,7 @@
 							<th scope="row">Company name</th>
 							<?php if(!empty($previous)){
 							 foreach($previous as $previousYear){ ?>
-							<td class="aaa"><?=  $previousYear->entity_name ?></td>
+							<td style="overflow: auto; white-space: nowrap;" class="aaa"><?=  $previousYear->entity_name ?></td>
 							<?php } } ?>
 						</tr>
 						<tr>
@@ -555,12 +567,35 @@
 </div>
 <!-- form -->
 <div class="col-md-6">
+<?php
+if(isset($_GET['id'])){
+	$defaultSelected ='';
+	$reportType = $data_list[0]->type;
+}else{
+	$reportType=99;
+	$defaultSelected ='selected';
+}
+$reportTypeArray = [
+	'Advance Financial Diagnostic Report',
+	'Financial Analyst Enriched Credit Report'
+
+]
+?>
 	<?= form_open(base_url('newreport'), 'id="report"'); ?>
-	<div class="form-group mb-0">
-		<select id="report_type" name="report_type" class="browser-default custom-select">
-			<option selected disabled>Select The Report Type</option>
-			<option value="1">Finacial Analyst Enriched Credit Report</option>
-			<option value="0">Advance Finacial Diagnostic Report</option>
+	<div class="form-group mb-0 rp-type">
+		<select <?php echo $readonlytext;  ?> id="report_type" required name="report_type" class="browser-default custom-select">
+			<option <?php echo $defaultSelected;?> disabled>Select The Report Type</option>
+			<?php foreach($reportTypeArray as $key=>$reportArray) {
+				if($reportType==$key){
+					$selected ='selected';
+				}else{
+					$selected = '';
+				}
+		
+				?>
+			<option <?php echo $selected; ?> value="<?php echo $key; ?>"><?php echo $reportArray; ?></option>
+<?php } ?>
+			
 		</select>
 	</div>
 	<div id="div_clone" class="row"></div>
@@ -569,19 +604,25 @@
 
 </div>
 <div class="discription mb-5" id='hide'>
-	<div>
+<?php //if(isset($_GET['id']) && $data_list[0]->status!=1){?>
+	<div id="summery-box">
+		<?php
+		//if($reportType==0){
+		?>
 		<label for="financial_perfomance mt-3">Financial Performance - Executive Summary</label>
-		<textarea class="form-control" name="financial_perfomance" id="financial_perfomance"></textarea>
+		<textarea class="form-control" name="financial_perfomance" id="financial_perfomance"><?php if(isset($data_list[0])){  echo $data_list[0]->financial_perfomance; } ?></textarea>
+		<?php // } ?>
 	</div>
+<?php //} ?>
 </div>
 <div class="d-flex flex-wrap justify-content-end pt-2">
-	<?php if(isset($_GET['id'])){?> 
+	<?php if(isset($_GET['id']) && $data_list[0]->status!=1){?> 
 		<div>
-			<button class="btn btn-success mb-3" id="approvd">Approved</button>
-			<button class="btn btn-danger ml-1 mb-3" id="reject" >Reject</button>
+			<button type="button" class="btn btn-success mb-3" id="approvd">Approved</button>
+			<button type="button" class="btn btn-danger ml-1 mb-3" id="reject" >Reject</button>
 		</div>
 
-
+	<?php } ?>
 
 
 
@@ -635,7 +676,7 @@
 			$('#approvd').click(function(event) {
 				/* Act on the event */
 				$.post("<?= base_url('main/approvd') ?>",{
-					id:'<?= $_GET['id']?>',
+					id:'<?= (isset($_GET['id']))?$_GET['id']:null;?>',
 				},function(D){
 					location.href = '<?= base_url('main/report_list')?>';
 						// alert(D);
@@ -645,7 +686,7 @@
 			$('#reject').click(function(event) {
 				/* Act on the event */
 				$.post("<?= base_url('main/reject') ?>",{
-					id:'<?= $_GET['id']?>',
+					id:'<?= (isset($_GET['id']))?$_GET['id']:null;?>',
 				},function(D){
 					location.href = '<?= base_url('main/report_list')?>';
 						// location.reload();
@@ -659,7 +700,7 @@
 
 
 
-	<?php } ?> 
+
 		<!-- <div>
 			<button id="save_and_approve" name="save_and_approve" class="btn btn-primary ml-md-3 mr-3 mb-3">Save & Send to Approve</button>
 			<button id="save" name="save" class="btn btn-primary ml-md-3 mr-3 mb-3">Save</button>
@@ -672,7 +713,9 @@
 
 			
 			</div>
+			<!-- <?php if(!isset($_GET['id'])){ ?> -->
 			<div name="save" id="save" class="btn btn-primary ml-md-3 mr-3 mb-3">  Save & Send to Approve  &nbsp;<i class="fa fa-chevron-circle-right"></i></div>
+			<!-- <?php } ?> -->
 			<!-- <button class="btn btn-primary ml-md-3 mb-3">Generate Report</button> -->
 		</div>
 
@@ -817,7 +860,8 @@
         				$('#loader-img').hide();
 
 						setTimeout(function(){
-							location.href = reportUrl;
+							window.open(reportUrl, '_blank');
+							// location.href = reportUrl;
 						},2000);
 					
 					}else{
@@ -848,16 +892,16 @@
 
 } ?>
 
-var html_dropdwon ='';
-html_dropdwon +='   <option disabled selected value>Select the Company</option>';
+var html_dropdwon ="";
+html_dropdwon +="<option disabled selected value=''>Select the Company</option>";
 <?php
 if(isset($companies)){
 	foreach($companies as $row){?>
-		html_dropdwon +='<option value="<?= $row->id?>"><?= $row->entity_name?></option>';
+		html_dropdwon +="<option value='<?= $row->id?>'><?= $row->entity_name?></option>";
 		<?php   		
 	}
 }else{ ?>
-	html_dropdwon +='<option selected>No Companies in Database</option>';
+	html_dropdwon +="<option selected>No Companies in Database</option>";
 <?php } ?>
 // html_dropdwon +='  </select>';
 

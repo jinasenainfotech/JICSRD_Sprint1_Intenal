@@ -37,7 +37,7 @@
 
 
 		  <!-- This php tags shows Form validation errors  and all other validation errors-->
-<?= (isset($error)? '<div class="alert alert-warning alert-dismissible fade show">'.$error.'<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<?= (isset($error)? '<div style="font-size:12px;" class="alert alert-warning alert-dismissible fade show">'.$error.'<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button></div>' : '') ?>
 
@@ -49,25 +49,37 @@
 
 <div class="alert alert-success" role="alert" id="copied-alert" style="display:none">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  Your new password reset key has been copied</div>
+  Your new password reset key has been copied</div> 
 
 <!--Admin forget password -> resert Key View in this php tag  -->
-<?= (isset($forget_key)? '<div class="form-inline gray-box"><p><b>NEW RESET KEY</b><br>Your recovery key is a safety net - keep your recovery key somewhere very secure, like a password manager.</p><input class="form-control col " id="restcode" type="text" value="'.$forget_key.'"><div class="btn btn-primary ml-1" id="resetcodeCopybtn">Copy to clipboard</div></div>' : '') ?>
+<?php 
+
+?>
+
+<?=  ((isset($forget_key))&&((isset($permission))&&($permission==2))? '<div class="form-inline gray-box"><p><b>NEW RESET KEY</b><br>Your recovery key is a safety net - keep your recovery key somewhere very secure, like a password manager.</p><input class="form-control col " id="restcode" type="text" value="'.$forget_key.'"><div class="btn btn-primary ml-1" id="resetcodeCopybtn">Copy to clipboard</div></div>' : '') ?>
 
 
 
 
 
-		<?php if(isset($first_loging) and $first_loging == True){ ?>
-		
+		<?php if((isset($first_loging) && $first_loging == True) ||(isset($status) && $status==false)){ ?>
+			<div>
+	<h4 class="text-center">Hey,</h4>
+	<p class="text-center">Welcome to the RiskD, Please enter your new password in below screen.</p>	
+	
+</div>		
 
 <?= form_open(base_url('first_loging')); ?>
-<?= form_input('hid', (isset($hid)? $hid : ''), 'id="hid"'); ?>
+
+<input type="hidden" name="hid" id="hid" value="<?php echo $hid ?>"/> 
 <?= form_label('New Password', 'password_1' , 'class="col-form-label"') ?>
 <?= form_password('password_1', '','class="form-control"'); ?>
+<p class="text-danger">
+		<small>The password field must contain at least one Upper Case letter, one lower case letter, one number and one special character.</small>
+	</p>
 <?= form_label('Confirm Password', 'password_2' , 'class="mt-2 col-form-label"') ?>
 <?= form_password('password_2', '','class="form-control"'); ?>
-<?= form_submit('submit', 'Update','classs="btn btn-primary"'); ?>
+<?= form_submit('submit', 'Update','class="btn btn-lg btn-primary btn-block mt-3"'); ?>
 <?= form_close()?>
 
 

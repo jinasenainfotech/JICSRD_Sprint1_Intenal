@@ -9,17 +9,21 @@ $(document).ready(function ($) {
 	clone();
 });
 
-$(document).on('click', '#save', function () {
+$(document).on('click', '#save', function (e) {
 	var sts = 0;
+	var validform=true;
 	$('input[type="text"]').each(function () {
 		if ($(this).val() == '' || isNaN(parseFloat($(this).val())) || typeof $(this).val() == 'undefined') {
 			sts = 1;
-			$(this).addClass('is-invalid');
+			// $(this).addClass('is-invalid');
+			validform=false;
 		} else {
-			$(this).removeClass('is-invalid');
+			// $(this).removeClass('is-invalid');
+			validform=false;
 		}
 	});
 
+	
 	// 	$('select').each(function(){
 	// 		if($(this).val() == ''){
 	// 			$(this).addClass('is-invalid');
@@ -42,7 +46,8 @@ $(document).on('click', '#save', function () {
 	// }
 
 	if ($("#report").valid() == false) {
-		toastr.error('pleace check the fields', 'Form Validation Error');
+		toastr.error('pleace check the fields', 'Report Type is Required Field');
+		$('.error').html();
 	} else {
 		$('#submit').click();
 		// $('#report').submit();
@@ -66,9 +71,9 @@ $(document).on("keyup", ".form-control", function () {
 
 	$('input[type="text"]').each(function () {
 		if ($(this).val() <= -1) {
-			$(this).addClass('is-invalid');
+			$(this).addClass('invalid-feild');
 		} else {
-			$(this).removeClass('is-invalid');
+			$(this).removeClass('invalid-feild');
 		}
 
 		if (isNaN(parseFloat($(this).val()))) {
@@ -86,6 +91,18 @@ $(document).on("keyup", ".form-control", function () {
 
 });
 $(document).ready(function() {
+	var readOnly = $('#editable').val();
+
+	var reportType = $('#report_type').val();
+
+
+
+	if(reportType!=0 && readOnly==1){
+		$('#summery-box').hide();
+
+	
+	readOnly = (readOnly==1)?'readonly':'';
+	}
   $(window).keydown(function(event){
     if(event.keyCode == 13) {
       event.preventDefault();
@@ -324,12 +341,12 @@ function clone() {
 	if (typeof (localStorage.getItem('sales')) != 'undefined' && localStorage.getItem('sales') !== null) {
 		var sales = localStorage.getItem('sales');
 	} else {
-		var sales = '';
+		var sales = 0;
 	}
 	if (typeof (localStorage.getItem('cost_of_sales')) != 'undefined' && localStorage.getItem('cost_of_sales') !== null) {
 		var cost_of_sales = localStorage.getItem('cost_of_sales');
 	} else {
-		var cost_of_sales = '';
+		var cost_of_sales = 0;
 	}
 	if (typeof (localStorage.getItem('gross_profit')) != 'undefined' && localStorage.getItem('gross_profit') !== null) {
 		var gross_profit = localStorage.getItem('gross_profit');
@@ -616,6 +633,10 @@ function clone() {
 
 
 	if (typeof (count) != "undefined" && count !== null) {
+		var readOnly = $('#editable').val();
+
+		readOnly = (readOnly==1)?'readonly':'';
+		var disabled = ($('#editable').val()==1)?'disabled':'';
 
 		var html = '';
 		html += '<div class="col-md"> <button class="ibtnDel btn btn-secondary col" data-id="' + count + '"><i class="fas fa-trash-alt" aria-hidden="true"></i> Delete</button>';
@@ -629,12 +650,12 @@ function clone() {
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		// html += '			<input data-id="'+ count +'" value="'+ company_name +'" id="name_'+ count +'" name="name[]" type="text" class="form-control" placeholder="Name">';[]
-		html += '			<select data-id="' + count + '" readonly id="name_' + count + '" name="name[]" type="text" class="form-control company" placeholder="Name">';
+		html += '			<select  data-id="' + count + '" readonly id="name_' + count + '" name="name[]" type="text" class="form-control company" placeholder="Name">';
 		html += com;
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<select data-id="' + count + '" id="rounding_' + count + '" name="rounding[]" class="browser-default custom-select" required="required">';
+		html += '			<select '+disabled+' data-id="' + count + '" id="rounding_' + count + '" name="rounding[]" class="browser-default custom-select" required="required">';
 		html += '				<option value="null">Rounding</option>';
 		html += '				<option value="no">None</option>';
 		html += '				<option value="thousands">Thousands</option>';
@@ -642,7 +663,7 @@ function clone() {
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<select data-id="' + count + '" id="base_currency_' + count + '" name="base_currency[]" class="browser-default custom-select" required="required">';
+		html += '			<select '+disabled+' data-id="' + count + '" id="base_currency_' + count + '" name="base_currency[]" class="browser-default custom-select" required="required">';
 		html += '				<option value="null">Base Currency</option>';
 		html += '				<option value="aud">AUD</option>';
 		html += '				<option value="nzd">NZD</option>';
@@ -655,7 +676,7 @@ function clone() {
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<select data-id="' + count + '" id="quality_' + count + '" name="quality[]" class="browser-default custom-select"  required="required">';
+		html += '			<select '+disabled+'  data-id="' + count + '" id="quality_' + count + '" name="quality[]" class="browser-default custom-select"  required="required">';
 		html += '				<option value="null">Quality</option>';
 		html += '				<option value="management">Management</option>';
 		html += '				<option value="audited">Audited</option>';
@@ -665,7 +686,7 @@ function clone() {
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<select name="reporting_period_months[]" type="text" class="browser-default custom-select" data-id="' + count + '" id="reporting_period_months_' + count + '"  required="required">';
+		html += '			<select '+disabled+' name="reporting_period_months[]" type="text" class="browser-default custom-select" data-id="' + count + '" id="reporting_period_months_' + count + '"  required="required">';
 		html += '				<option value="1">1</option>';
 		html += '				<option value="2">2</option>';
 		html += '				<option value="3">3</option>';
@@ -695,16 +716,16 @@ function clone() {
 		html += '			<!--add 1 to 24 numebers as loop-->';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<select name="scope[]" data-id="' + count + '" id="scope_' + count + '" class="browser-default custom-select"  required="required">';
+		html += '			<select '+disabled+' name="scope[]" data-id="' + count + '" id="scope_' + count + '" class="browser-default custom-select"  required="required">';
 		html += '				<option value="0">Scope</option>';
 		html += '				<option value="asic">ASIC</option>';
-		html += '				<option value="Consolidated">consolidated</option>';
-		html += '				<option value="Parents">parents</option>';
-		html += '				<option value="Aggregated">aggregated</option>';
+		html += '				<option value="Consolidated">Consolidated</option>';
+		html += '				<option value="Parents">Parents</option>';
+		html += '				<option value="Aggregated">Aggregated</option>';
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<select name="confidentiality_record[]" data-id="' + count + '" id="confidentiality_record_' + count + '" class="browser-default custom-select"  required="required">';
+		html += '			<select '+disabled+' name="confidentiality_record[]" data-id="' + count + '" id="confidentiality_record_' + count + '" class="browser-default custom-select"  required="required">';
 		html += '				<option value="0">Confidentiality Record</option>';
 		html += '				<option value="Public">Public</option>';
 		html += '				<option value="Asic">ASIC</option>';
@@ -713,7 +734,7 @@ function clone() {
 		html += '			</select>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<select type="text" class="browser-default custom-select" name="financial_year[]" data-id="' + count + '" id="financial_year_' + count + '"  required="required">';
+		html += '			<select '+disabled+' type="text" class="browser-default custom-select" name="financial_year[]" data-id="' + count + '" id="financial_year_' + count + '"  required="required">';
 		html += '				<option value="0">Financial Year</option>';
 		html += '				<option value="2000">FY2000</option>';
 		html += '				<option value="2001">FY2001</option>';
@@ -770,7 +791,7 @@ function clone() {
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		// html += '			<input type="month" class="form-control" name="month[]" data-id="'+ count +'" id="month_'+ count +'" placeholder="Month"  required="required">';
-		html += '<select class="form-control" name="month[]" data-id="' + count + '" id="month_' + count + '" placeholder="Month"  required="required">';
+		html += '<select '+disabled+' class="form-control" name="month[]" data-id="' + count + '" id="month_' + count + '" placeholder="Month"  required="required">';
 		html += "		<option value='0'>--Select Month--</option>";
 		html += "		<option value='1'>Janaury</option>";
 		html += "		<option value='2'>February</option>";
@@ -788,45 +809,45 @@ function clone() {
 		html += '		</div>';
 		html += '		<h6>Income Statement</h6>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + sales + '" type="text" class="form-control gross_profit" name="sales[]" data-id="' + count + '" id="sales_' + count + '" value="0" placeholder="Sales">';
+		html += '			<input '+readOnly+' value="' + sales + '" type="text" class="form-control gross_profit" name="sales[]" data-id="' + count + '" id="sales_' + count + '" value="0" placeholder="Sales">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + cost_of_sales + '" type="text" class="form-control gross_profit" name="cost_of_sales[]" data-id="' + count + '" id="cost_of_sales_' + count + '" value="0" placeholder="Cost Of Sales">';
+		html += '			<input '+readOnly+' value="' + cost_of_sales + '" type="text" class="form-control gross_profit" name="cost_of_sales[]" data-id="' + count + '" id="cost_of_sales_' + count + '" value="0" placeholder="Cost Of Sales">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<input value="' + gross_profit + '" type="text" class="form-control" name="gross_profit[]" data-id="' + count + '" id="gross_profit_' + count + '" value="0" placeholder="Gross Profit" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_income + '" type="text" class="form-control" name="other_income[]" data-id="' + count + '" id="other_income_' + count + '" value="0" placeholder="Other Income">';
+		html += '			<input '+readOnly+' value="' + other_income + '" type="text" class="form-control" name="other_income[]" data-id="' + count + '" id="other_income_' + count + '" value="0" placeholder="Other Income">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + depreciation + '" type="text" class="form-control" name="depreciation[]" data-id="' + count + '" id="depreciation_' + count + '" value="0" placeholder="Depreciation">';
+		html += '			<input '+readOnly+' value="' + depreciation + '" type="text" class="form-control" name="depreciation[]" data-id="' + count + '" id="depreciation_' + count + '" value="0" placeholder="Depreciation">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + amortisation + '" type="text" class="form-control" name="amortisation[]" data-id="' + count + '" id="amortisation_' + count + '" value="0" placeholder="Amortisation">';
+		html += '			<input '+readOnly+' value="' + amortisation + '" type="text" class="form-control" name="amortisation[]" data-id="' + count + '" id="amortisation_' + count + '" value="0" placeholder="Amortisation">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + impairment + '" type="text" class="form-control" name="impairment[]" data-id="' + count + '" id="impairment_' + count + '" value="0" placeholder="Impairement">';
+		html += '			<input '+readOnly+' value="' + impairment + '" type="text" class="form-control" name="impairment[]" data-id="' + count + '" id="impairment_' + count + '" value="0" placeholder="Impairement">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + interest_expense_gross + '" type="text" class="form-control ebit" name="interest_expense_gross[]" data-id="' + count + '" id="interest_expense_gross_' + count + '" value="0" placeholder="Interst Expense">';
+		html += '			<input '+readOnly+' value="' + interest_expense_gross + '" type="text" class="form-control ebit" name="interest_expense_gross[]" data-id="' + count + '" id="interest_expense_gross_' + count + '" value="0" placeholder="Interst Expense">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + operating_lease_expense + '" type="text" class="form-control" name="operating_lease_expense[]" data-id="' + count + '" id="operating_lease_expense_' + count + '"';
+		html += '			<input '+readOnly+' value="' + operating_lease_expense + '" type="text" class="form-control" name="operating_lease_expense[]" data-id="' + count + '" id="operating_lease_expense_' + count + '"';
 		html += '		 value="0"	placeholder="Operating Lease Expense">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + finance_lease_hire_purchase_charges + '" type="text" class="form-control" name="finance_lease_hire_purchase_charges[]" data-id="' + count + '" id="finance_lease_hire_purchase_charges_' + count + '"';
+		html += '			<input '+readOnly+' value="' + finance_lease_hire_purchase_charges + '" type="text" class="form-control" name="finance_lease_hire_purchase_charges[]" data-id="' + count + '" id="finance_lease_hire_purchase_charges_' + count + '"';
 		html += '		 value="0"	placeholder="Finance Lease And Hire Purchase Charges">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + non_recurring_gains_losses + '" type="text" class="form-control" other_expenses name="non_recurring_gains_losses[]" data-id="' + count + '" id="non_recurring_gains_losses_' + count + '" value="0" placeholder="Non-Recurring Ganes">';
+		html += '			<input '+readOnly+' value="' + non_recurring_gains_losses + '" type="text" class="form-control" other_expenses name="non_recurring_gains_losses[]" data-id="' + count + '" id="non_recurring_gains_losses_' + count + '" value="0" placeholder="Non-Recurring Ganes">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_gains_losses + '" type="text" class="form-control" name="other_gains_losses[]" data-id="' + count + '" id="other_gains_losses_' + count + '" value="0" placeholder="Other Ganes">';
+		html += '			<input '+readOnly+' value="' + other_gains_losses + '" type="text" class="form-control" name="other_gains_losses[]" data-id="' + count + '" id="other_gains_losses_' + count + '" value="0" placeholder="Other Ganes">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_expenses + '" type="text" class="form-control" name="other_expenses[]" data-id="' + count + '" id="other_expenses_' + count + '" value="0" placeholder="Other Expenses">';
+		html += '			<input '+readOnly+' value="' + other_expenses + '" type="text" class="form-control" name="other_expenses[]" data-id="' + count + '" id="other_expenses_' + count + '" value="0" placeholder="Other Expenses">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<input value="' + ebit + '" type="text" class="form-control" name="ebit[]" data-id="' + count + '" id="ebit_' + count + '" value="0" placeholder="EBIT" readonly>';
@@ -845,56 +866,56 @@ function clone() {
 		html += '		 value="0"	placeholder="Profit Before Tax After Abnormal" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + tax_benefit_expense + '" type="text" class="form-control ebit" name="tax_benefit_expense[]" data-id="' + count + '" id="tax_benefit_expense_' + count + '" value="0" placeholder="Tax Benifits">';
+		html += '			<input '+readOnly+' value="' + tax_benefit_expense + '" type="text" class="form-control ebit" name="tax_benefit_expense[]" data-id="' + count + '" id="tax_benefit_expense_' + count + '" value="0" placeholder="Tax Benifits">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<input value="' + profit_after_tax + '" type="text" class="form-control" name="profit_after_tax[]" data-id="' + count + '" id="profit_after_tax_' + count + '" value="0" placeholder="Profit After Tax" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + distribution_ordividends + '" type="text" class="form-control" name="distribution_ordividends[]" data-id="' + count + '" id="distribution_ordividends_' + count + '"';
+		html += '			<input '+readOnly+' value="' + distribution_ordividends + '" type="text" class="form-control" name="distribution_ordividends[]" data-id="' + count + '" id="distribution_ordividends_' + count + '"';
 		html += '		 value="0"	placeholder="Distribution Or Divided">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_post_tax_items_gains_losses + '" type="text" class="form-control" name="other_post_tax_items_gains_losses[]" data-id="' + count + '" id="other_post_tax_items_gains_losses_' + count + '" value="0" placeholder="Other Post Tax Items">';
+		html += '			<input '+readOnly+' value="' + other_post_tax_items_gains_losses + '" type="text" class="form-control" name="other_post_tax_items_gains_losses[]" data-id="' + count + '" id="other_post_tax_items_gains_losses_' + count + '" value="0" placeholder="Other Post Tax Items">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + profit_after_tax_distribution + '" type="text" class="form-control" name="profit_after_tax_distribution[]" data-id="' + count + '" id="profit_after_tax_distribution_' + count + '"';
+		html += '			<input '+readOnly+' value="' + profit_after_tax_distribution + '" type="text" class="form-control" name="profit_after_tax_distribution[]" data-id="' + count + '" id="profit_after_tax_distribution_' + count + '"';
 		html += '		 value="0"	placeholder="Profit After Tax And Distribution" readonly>';
 		html += '		</div>';
 		html += '		<h6>Balance Sheet</h6>';
 		html += '		<h6>Assets</h6>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + cash + '" type="text" class="form-control" name="cash[]" data-id="' + count + '" id="cash_' + count + '" value="0" placeholder="Cash">';
+		html += '			<input '+readOnly+' value="' + cash + '" type="text" class="form-control" name="cash[]" data-id="' + count + '" id="cash_' + count + '" value="0" placeholder="Cash">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + trade_debtors + '" type="text" class="form-control" name="trade_debtors[]" data-id="' + count + '" id="trade_debtors_' + count + '" value="0" placeholder="Trade Deptors">';
+		html += '			<input '+readOnly+' value="' + trade_debtors + '" type="text" class="form-control" name="trade_debtors[]" data-id="' + count + '" id="trade_debtors_' + count + '" value="0" placeholder="Trade Deptors">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + total_inventories + '" type="text" class="form-control" name="total_inventories[]" data-id="' + count + '" id="total_inventories_' + count + '" value="0" placeholder="Total Inventories">';
+		html += '			<input '+readOnly+' value="' + total_inventories + '" type="text" class="form-control" name="total_inventories[]" data-id="' + count + '" id="total_inventories_' + count + '" value="0" placeholder="Total Inventories">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + loans_to_related_parties_1 + '" type="text" class="form-control" name="loans_to_related_parties_1[]" data-id="' + count + '" id="loans_to_related_parties_1_' + count + '"';
+		html += '			<input '+readOnly+' value="' + loans_to_related_parties_1 + '" type="text" class="form-control" name="loans_to_related_parties_1[]" data-id="' + count + '" id="loans_to_related_parties_1_' + count + '"';
 		html += '		 value="0"	placeholder="Loans To Related Parties">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_current_assets + '" type="text" class="form-control" name="other_current_assets[]" data-id="' + count + '" id="other_current_assets_' + count + '" value="0" placeholder="Other Current Assets">';
+		html += '			<input '+readOnly+' value="' + other_current_assets + '" type="text" class="form-control" name="other_current_assets[]" data-id="' + count + '" id="other_current_assets_' + count + '" value="0" placeholder="Other Current Assets">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + total_current_assets + '" type="text" class="form-control" name="total_current_assets[]" data-id="' + count + '" id="total_current_assets_' + count + '" value="0" placeholder="Total Current Assets"';
+		html += '			<input '+readOnly+' value="' + total_current_assets + '" type="text" class="form-control" name="total_current_assets[]" data-id="' + count + '" id="total_current_assets_' + count + '" value="0" placeholder="Total Current Assets"';
 		html += '			readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + fixed_assets + '" type="text" class="form-control" name="fixed_assets[]" data-id="' + count + '" id="fixed_assets_' + count + '" value="0" placeholder="Fixed Assets">';
+		html += '			<input '+readOnly+' value="' + fixed_assets + '" type="text" class="form-control" name="fixed_assets[]" data-id="' + count + '" id="fixed_assets_' + count + '" value="0" placeholder="Fixed Assets">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + net_intangibles + '" type="text" class="form-control" name="net_intangibles[]" data-id="' + count + '" id="net_intangibles_' + count + '" value="0" placeholder="Net Intangibles">';
+		html += '			<input '+readOnly+' value="' + net_intangibles + '" type="text" class="form-control" name="net_intangibles[]" data-id="' + count + '" id="net_intangibles_' + count + '" value="0" placeholder="Net Intangibles">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + loan_to_related_parties_2 + '" type="text" class="form-control" name="loan_to_related_parties_2[]" data-id="' + count + '" id="loan_to_related_parties_2_' + count + '"';
+		html += '			<input '+readOnly+' value="' + loan_to_related_parties_2 + '" type="text" class="form-control" name="loan_to_related_parties_2[]" data-id="' + count + '" id="loan_to_related_parties_2_' + count + '"';
 		html += '		 value="0"	placeholder="Loans To Related Parties">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_non_current_assets + '" type="text" class="form-control" name="other_non_current_assets[]" data-id="' + count + '" id="other_non_current_assets_' + count + '"';
+		html += '			<input '+readOnly+' value="' + other_non_current_assets + '" type="text" class="form-control" name="other_non_current_assets[]" data-id="' + count + '" id="other_non_current_assets_' + count + '"';
 		html += '		 value="0"	placeholder="Other Non-Current Assets">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
@@ -906,32 +927,32 @@ function clone() {
 		html += '		</div>';
 		html += '		<h6>Liabilities</h6>'; /******************************/
 		html += '		<div class="form-group">';
-		html += '			<input value="' + trade_creditors + '" type="text" class="form-control" name="trade_creditors[]" data-id="' + count + '" id="trade_creditors_' + count + '" value="0" placeholder="Trade Creaditors">';
+		html += '			<input '+readOnly+' value="' + trade_creditors + '" type="text" class="form-control" name="trade_creditors[]" data-id="' + count + '" id="trade_creditors_' + count + '" value="0" placeholder="Trade Creaditors">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + interest_bearing_debt_1 + '" type="text" class="form-control" name="interest_bearing_debt_1[]" data-id="' + count + '" id="interest_bearing_debt_1_' + count + '" value="0" placeholder="Intereset Bearing Debt">';
+		html += '			<input '+readOnly+' value="' + interest_bearing_debt_1 + '" type="text" class="form-control" name="interest_bearing_debt_1[]" data-id="' + count + '" id="interest_bearing_debt_1_' + count + '" value="0" placeholder="Intereset Bearing Debt">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + lone_from_related_parties + '" type="text" class="form-control" name="lone_from_related_parties[]" data-id="' + count + '" id="lone_from_related_parties_' + count + '"';
+		html += '			<input '+readOnly+' value="' + lone_from_related_parties + '" type="text" class="form-control" name="lone_from_related_parties[]" data-id="' + count + '" id="lone_from_related_parties_' + count + '"';
 		html += '		 value="0"	placeholder="Loan From Related Parties">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_current_liabilities + '" type="text" class="form-control" name="other_current_liabilities[]" data-id="' + count + '" id="other_current_liabilities_' + count + '"';
+		html += '			<input '+readOnly+' value="' + other_current_liabilities + '" type="text" class="form-control" name="other_current_liabilities[]" data-id="' + count + '" id="other_current_liabilities_' + count + '"';
 		html += '		 value="0"	placeholder="Other Current Liabilities">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + total_current_liabilities + '" type="text" class="form-control" name="total_current_liabilities[]" data-id="' + count + '" id="total_current_liabilities_' + count + '"';
+		html += '			<input '+readOnly+' value="' + total_current_liabilities + '" type="text" class="form-control" name="total_current_liabilities[]" data-id="' + count + '" id="total_current_liabilities_' + count + '"';
 		html += '		 value="0"	placeholder="Total Current Liabilities" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + total_current_liabilities_2 + '" type="text" class="form-control" name="total_current_liabilities_2[]" data-id="' + count + '" id="total_current_liabilities_2_' + count + '" value="0" placeholder="Interest Bearing Debt">';
+		html += '			<input '+readOnly+' value="' + total_current_liabilities_2 + '" type="text" class="form-control" name="total_current_liabilities_2[]" data-id="' + count + '" id="total_current_liabilities_2_' + count + '" value="0" placeholder="Interest Bearing Debt">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + loans_from_related_parites + '" type="text" class="form-control" name="loans_from_related_parites[]" data-id="' + count + '" id="loans_from_related_parites_' + count + '"';
+		html += '			<input '+readOnly+' value="' + loans_from_related_parites + '" type="text" class="form-control" name="loans_from_related_parites[]" data-id="' + count + '" id="loans_from_related_parites_' + count + '"';
 		html += '		 value="0"	placeholder="loans From Related Parties">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_non_current_liabilities + '" type="text" class="form-control" name="other_non_current_liabilities[]" data-id="' + count + '" id="other_non_current_liabilities_' + count + '"';
+		html += '			<input '+readOnly+' value="' + other_non_current_liabilities + '" type="text" class="form-control" name="other_non_current_liabilities[]" data-id="' + count + '" id="other_non_current_liabilities_' + count + '"';
 		html += '		 value="0"	placeholder="Other Non-Current Liabilities">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
@@ -943,25 +964,25 @@ function clone() {
 		html += '		</div>';
 		html += '		<h6>Equity</h6>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + share_capital + '" type="text" class="form-control" name="share_capital[]" data-id="' + count + '" id="share_capital_' + count + '" value="0" placeholder="Share Capital">';
+		html += '			<input '+readOnly+' value="' + share_capital + '" type="text" class="form-control" name="share_capital[]" data-id="' + count + '" id="share_capital_' + count + '" value="0" placeholder="Share Capital">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + prefence_shares + '" type="text" class="form-control" name="prefence_shares[]" data-id="' + count + '" id="prefence_shares_' + count + '" value="0" placeholder="Prefence Shares">';
+		html += '			<input '+readOnly+' value="' + prefence_shares + '" type="text" class="form-control" name="prefence_shares[]" data-id="' + count + '" id="prefence_shares_' + count + '" value="0" placeholder="Prefence Shares">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + treasury_shares + '" type="text" class="form-control" name="treasury_shares[]" data-id="' + count + '" id="treasury_shares_' + count + '" value="0" placeholder="Treasury Shares">';
+		html += '			<input '+readOnly+' value="' + treasury_shares + '" type="text" class="form-control" name="treasury_shares[]" data-id="' + count + '" id="treasury_shares_' + count + '" value="0" placeholder="Treasury Shares">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + equity_owner_ships + '" type="text" class="form-control" name="equity_owner_ships[]" data-id="' + count + '" id="equity_owner_ships_' + count + '" value="0" placeholder="Equity Ownerships" readonly>';
+		html += '			<input '+readOnly+' value="' + equity_owner_ships + '" type="text" class="form-control" name="equity_owner_ships[]" data-id="' + count + '" id="equity_owner_ships_' + count + '" value="0" placeholder="Equity Ownerships" readonly>';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + total_reserves + '" type="text" class="form-control" name="total_reserves[]" data-id="' + count + '" id="total_reserves_' + count + '" value="0" placeholder="Total Reserves">';
+		html += '			<input '+readOnly+' value="' + total_reserves + '" type="text" class="form-control" name="total_reserves[]" data-id="' + count + '" id="total_reserves_' + count + '" value="0" placeholder="Total Reserves">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + ratained_earning + '" type="text" class="form-control" name="ratained_earning[]" data-id="' + count + '" id="ratained_earning_' + count + '" value="0" placeholder="Retained Earning">';
+		html += '			<input '+readOnly+' value="' + ratained_earning + '" type="text" class="form-control" name="ratained_earning[]" data-id="' + count + '" id="ratained_earning_' + count + '" value="0" placeholder="Retained Earning">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + minorty_interest + '" type="text" class="form-control" name="minorty_interest[]" data-id="' + count + '" id="minorty_interest_' + count + '" value="0" placeholder="Minority Interest">';
+		html += '			<input '+readOnly+' value="' + minorty_interest + '" type="text" class="form-control" name="minorty_interest[]" data-id="' + count + '" id="minorty_interest_' + count + '" value="0" placeholder="Minority Interest">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
 		html += '			<input value="' + total_equity + '" type="text" class="form-control" name="total_equity[]" data-id="' + count + '" id="total_equity_' + count + '" value="0" placeholder="Total Equity" readonly>';
@@ -971,17 +992,17 @@ function clone() {
 		html += '		</div>';
 		html += '		<h6>Additional Information</h6>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + operating_cash_flow + '" type="text" class="form-control" name="operating_cash_flow[]" data-id="' + count + '" id="operating_cash_flow_' + count + '" value="0" placeholder="Operating Cash Flow">';
+		html += '			<input '+readOnly+' value="' + operating_cash_flow + '" type="text" class="form-control" name="operating_cash_flow[]" data-id="' + count + '" id="operating_cash_flow_' + count + '" value="0" placeholder="Operating Cash Flow">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + contingent_liabilities + '" type="text" class="form-control" name="contingent_liabilities[]" data-id="' + count + '" id="contingent_liabilities_' + count + '"';
+		html += '			<input '+readOnly+' value="' + contingent_liabilities + '" type="text" class="form-control" name="contingent_liabilities[]" data-id="' + count + '" id="contingent_liabilities_' + count + '"';
 		html += '		 value="0"	placeholder="Contingent Liabilities">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input value="' + other_commitmentes + '" type="text" class="form-control" name="other_commitmentes[]" data-id="' + count + '" id="other_commitmentes_' + count + '" value="0" placeholder="Other Commitments">';
+		html += '			<input '+readOnly+' value="' + other_commitmentes + '" type="text" class="form-control" name="other_commitmentes[]" data-id="' + count + '" id="other_commitmentes_' + count + '" value="0" placeholder="Other Commitments">';
 		html += '		</div>';
 		html += '		<div class="form-group">';
-		html += '			<input type="text" class="form-control" name="operating_lease_outstanding[]" data-id="' + count + '" id="operating_lease_outstanding_' + count + '"';
+		html += '			<input '+readOnly+' type="text" class="form-control" name="operating_lease_outstanding[]" data-id="' + count + '" id="operating_lease_outstanding_' + count + '"';
 		html += '		 value="'+operating_lease_outstanding+'"	placeholder="Total Operating Lease Outstaning">';
 		html += '		</div>';
 		html += ' </div>';
@@ -993,10 +1014,6 @@ function clone() {
 		$('#div_clone').append(html);
 		// 	$("#no_of_col").val(count);
 		// }
-
-		console.log(data0);
-		console.log(data1);
-		console.log(data2);
 
 		document.querySelector('#name_'+coloumnCount).value = company_name;
 		document.querySelector('#rounding_0').value = rounding;

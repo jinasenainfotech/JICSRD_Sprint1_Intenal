@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = '';
-$config['base_url']    = 'http://riskd1.azurewebsites.net/';
+$config['base_url']    = 'http://api.test/';
 
 
 /*
@@ -382,7 +382,7 @@ $config['encryption_key'] = 'APANtByIGI1BpVXZTJgcsAG8GZl8pdwwa84';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 1800;
+$config['sess_expiration'] = 86400;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;

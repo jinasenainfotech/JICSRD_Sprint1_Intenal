@@ -36,6 +36,35 @@ Class Main_model extends CI_Model {
 		$this->db->where('status',0);
 		$this->db->order_by('id', 'DESC');
 		$this->db->from('quantitave_input');
+		
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			foreach($query->result() as $key=>$item)
+			{
+			
+			 $company = $this->companies_get_by_id($item->company_name);
+			 if(count($company)>0){
+
+				 $item->company_name = $company[0]->entity_name;
+			 }else{
+				$item->company_name = '';
+			 }
+				$data[] = $item;
+			}
+			return $data;
+		}
+		return false;
+	}
+
+	public function getPendingReportList(){
+
+		$this->db->select('*');
+		$this->db->where('status',0);
+		$this->db->order_by('quantitave_input.id', 'DESC');
+		$this->db->from('quantitave_input');
+		$this->db->join('company_information','company_information.id=quantitave_input.company_name');
+		
 		$query = $this->db->get();
 		if($query->num_rows() > 0)
 		{
@@ -70,6 +99,7 @@ Class Main_model extends CI_Model {
 	}
 
 	public function reject($id){
+		
 		$data = array(
 			'status' => '2',
 		);

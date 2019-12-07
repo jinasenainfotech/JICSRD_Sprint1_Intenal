@@ -81,6 +81,7 @@
 			</div>
 			<!-- form -->
 			<div class="col-md-6">
+				
 				<?= form_open(base_url('newreport'), 'id="report"'); ?>
 				<div class="form-group mb-0">
 					<select id="report_type" name="report_type" class="browser-default custom-select">
@@ -169,8 +170,10 @@
 		/* Act on the event */
 		if($(this).val() == 0){
 			$('#hide').show();
+			$('#summery-box').show();
 		}else{
 			$('#hide').hide();
+			$('#summery-box').hide();
 		}
 	});
 
@@ -276,7 +279,7 @@ html_dropdwon +='   <option disabled selected value="">Select the Company</optio
 <?php
 if(isset($companies)){
 	foreach($companies as $row){?>
-		html_dropdwon +='<option value="<?= $row->id?>">'+escape(<?= $row->entity_name?>)+'</option>';
+		html_dropdwon +="<option value="<?= $row->id?>">"+<?= $row->entity_name?>+"</option>";
 		<?php   		
 	}
 }else{ ?>

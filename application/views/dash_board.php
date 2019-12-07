@@ -9,8 +9,8 @@
                 <select class="custom-select mr-sm-2" name="company" id="coaskd">
                     <option disabled selected value="">Select the Company</option>
                     <?php
-                        // var_dump($companies);exit(); 
-                    if(isset($companies)){
+                       
+                    if((isset($companies)) && ($companies!=false)){
                             // echo '<option selected>Choose...</option>';
                         foreach($companies as $row)
                         {
@@ -23,8 +23,9 @@
                 </select>
             </div>
            
-            <div class="col-md-2 pt-4">
+            <div class="col-md-4 pt-4">
                 <div class="btn btn-primary btn-md mt-2 active" id="find">Find</div>
+                <button class="btn btn-danger mt-2" id="newreport">Create New Report</button>
             </div>
         </div>
 
@@ -34,7 +35,7 @@
     <section>
         <div class="d-flex col-md-12 justify-content-end my-4">
             <!-- <a class="btn btn-primary" href="<?= base_url('newreport')?>?">Create New Report</a> -->
-            <button class="btn btn-primary" id="newreport">Create New Report</button>
+            
         </div>
         <script type="text/javascript">
 
@@ -45,10 +46,10 @@
                 var country = $('#country').val();
 
 
-                if(company != "" ||company!=is_null){
-                    location.href = '<?= base_url('newreport')?>?com='+ company + '&cun=' + country;
+                if(company!=null){
+                   location.href = '<?= base_url('newreport')?>?com='+ company + '&cun=' + country;
                 }else {
-                    alert('select county and company');
+                    alert('select the company');
                 }
 
 
@@ -57,7 +58,7 @@
                 var company = $('#coaskd').val();
                 var country = $('#country').val();
 
-                if(company == ""){
+                if(company ==null){
                     alert('Please select Company');
                 }else{
                     $.post("<?= base_url('main/get_d_tbl') ?>",{

@@ -141,12 +141,14 @@ class Jics {
 
 
 	public function alert($type,$body,$head){
-
+		
 		$CC =& get_instance();
 		$CC->load->library('session');
 		(isset($head))? $alert['head'] = $head:'';
 		(isset($body))? $alert['body'] = $body:'';
+		
 		$CC->session->set_flashdata($type,$alert);
+		
 		return true;
 	}
 
@@ -207,6 +209,16 @@ class Jics {
 			return '<span class="down"><i class="fa fa-caret-down"></i>'. number_format($data,2).'</span>';
 		}else{
 			return '<span class="up"><i class="fa fa-caret-up"></i>'. number_format($data,2) .'</span>';
+		}
+	}
+	public function indicatorsNoDecimal($data){
+
+		if($data == 0){
+			return '<span class="same"><i class="fa fa-minus" aria-hidden="true"></i> 0.00 </span>';
+		}elseif($data < 0){
+			return '<span class="down"><i class="fa fa-caret-down"></i>'. number_format($data).'</span>';
+		}else{
+			return '<span class="up"><i class="fa fa-caret-up"></i>'. number_format($data) .'</span>';
 		}
 	}
 	public function liabilityIndicators($data)
